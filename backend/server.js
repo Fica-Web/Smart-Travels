@@ -3,11 +3,16 @@ import dotenv from 'dotenv';
 import morgan from 'morgan';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import connectDB from './config/connectDB.js'; // Import the database connection function
+import adminRouter from './routers/adminRouter.js'; // Import the admin router
 
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
+
+// Connecting MongoDB
+connectDB();
 
 // CORS options to allow requests from specific origin
 const corsOptions = {
