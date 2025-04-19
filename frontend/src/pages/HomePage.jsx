@@ -1,8 +1,10 @@
 import React from 'react'
+import Navbar from '../components/shared/Navbar'
 
 const HomePage = () => {
     return (
-        <div>
+        <div className=' pt-24'>
+            
             <h1>Home Page</h1>
             <p>This is the home page of the application.</p>
             <p>Welcome to our website!</p>
