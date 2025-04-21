@@ -81,6 +81,23 @@ const adminLogin = async (req, res) => {
     }
 }
 
+const adminLogout = async (req, res) => {
+    try {
+        // Invalidate the token by removing it from the client side
+        res.status(200).json({
+            message: 'Logout successful',
+        });
+    } catch (error) {
+        console.error('Error logging out:', error);
+        res.status(500).json({
+            message: 'Internal server error',
+            error: error.message,
+        });
+    }
+}
+
 export {
     adminSignup,
+    adminLogin,
+    adminLogout,
 }

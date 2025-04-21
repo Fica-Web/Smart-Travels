@@ -28,6 +28,9 @@ app.use(cookieParser()); // Parse cookies from incoming requests
 app.use(morgan('tiny')); // Log HTTP requests using morgan's 'tiny' format
 app.use(cors(corsOptions)); // Enable CORS using the specified options
 
+// Routes setup
+app.use('/api/admin', adminRouter); // Use the admin router for routes starting with /api/admin
+
 app.get('/', (req, res) => {
     res.send('Server is running!');
 });
