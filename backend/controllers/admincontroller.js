@@ -55,6 +55,10 @@ const adminLogin = async (req, res) => {
             return res.status(404).json({ message: 'Admin not found' });
         }
 
+        if (admin.username !== username) {
+            return res.status(401).json({ message: 'Invalid credentials' });
+        }
+
         // compare the password
         const isMatch = await bcrypt.compare(password, admin.password);
         if (!isMatch) {
@@ -62,7 +66,15 @@ const adminLogin = async (req, res) => {
         }
 
         // generate a JWT token
-        const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, { expiresIn: '15d' });
+
+        // Set the JWT token as a secure cookie
+        res.cookie('ruknAdminToken', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production', // Only send cookie over HTTPS in production
+            sameSite: 'strict', // Prevent CSRF attacks
+            maxAge: 15 * 24 * 60 * 60 * 1000 // Set cookie expiration to 15 days in milliseconds
+        });
 
         // remove password from the response
         admin.password = undefined;
