@@ -4,10 +4,10 @@ import Admin from '../model/AdminSchema.js';
 
 const adminSignup = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { username, email, password } = req.body;
 
         // validate the input fields
-        if (!name || !email || !password) {
+        if (!username || !email || !password) {
             return res.status(400).json({ message: 'All fields are required' });
         }
 
@@ -16,7 +16,7 @@ const adminSignup = async (req, res) => {
 
         // create a new admin
         const newAdmin = new Admin({
-            name,
+            username,
             email,
             password: hashedPassword,
         });
@@ -42,10 +42,10 @@ const adminSignup = async (req, res) => {
 
 const adminLogin = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { username, email, password } = req.body;
 
         // validate the input fields
-        if (!name || !email || !password) {
+        if (!username || !email || !password) {
             return res.status(400).json({ message: 'All fields are required' });
         }
 
