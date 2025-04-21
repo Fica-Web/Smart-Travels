@@ -40,6 +40,47 @@ const adminSignup = async (req, res) => {
     }
 }
 
+const adminLogin = async (req, res) => {
+    try {
+        const { name, email, password } = req.body;
+
+        // validate the input fields
+        if (!name || !email || !password) {
+            return res.status(400).json({ message: 'All fields are required' });
+        }
+
+        // find the admin by email
+        const admin = await Admin.findOne({ email });
+        if (!admin) {
+            return res.status(404).json({ message: 'Admin not found' });
+        }
+
+        // compare the password
+        const isMatch = await bcrypt.compare(password, admin.password);
+        if (!isMatch) {
+            return res.status(401).json({ message: 'Invalid credentials' });
+        }
+
+        // generate a JWT token
+        const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+        // remove password from the response
+        admin.password = undefined;
+
+        res.status(200).json({
+            message: 'Login successful',
+            token,
+            admin,
+        });
+    } catch (error) {
+        console.error('Error logging in:', error);
+        res.status(500).json({
+            message: 'Internal server error',
+            error: error.message,
+        });
+    }
+}
+
 export {
     adminSignup,
 }
