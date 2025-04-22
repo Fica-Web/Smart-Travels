@@ -123,7 +123,42 @@ const userLogin = async (req, res) => {
     }
 };
 
+const refreshAccessToken = async (req, res) => {
+    try {
+        const token = req.cookies.refreshToken;
+
+        if (!token) {
+            return res.status(401).json({ message: "No refresh token. Please login again." });
+        }
+
+        // Verify refresh token
+        const decoded = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
+
+        const user = await User.findById(decoded.id);
+        if (!user) {
+            return res.status(404).json({ message: "User not found." });
+        }
+
+        // Create new access token
+        const accessToken = jwt.sign(
+            { id: user._id },
+            process.env.ACCESS_TOKEN_SECRET,
+            { expiresIn: "15m" }
+        );
+
+        res.status(200).json({
+            message: "Access token refreshed",
+            accessToken
+        });
+
+    } catch (error) {
+        console.error("Refresh Token Error:", error);
+        res.status(403).json({ message: "Invalid or expired refresh token" });
+    }
+};
+
 export {
     userSignup,
     userLogin,
+    refreshAccessToken,
 };
