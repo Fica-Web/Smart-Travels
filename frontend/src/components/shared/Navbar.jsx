@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaPhoneAlt } from "react-icons/fa";
+import logo from '../../assets/image/logo/logo.png'
 
 const Navbar = () => {
     const [active, setActive] = useState('Home');
@@ -20,8 +21,8 @@ const Navbar = () => {
     return (
         <nav className="absolute top-0 left-0 w-full flex items-center py-8 px-8 bg-transparent z-50">
             {/* Logo */}
-            <div className="text-black text-2xl font-bold">
-                MyLogo
+            <div className="">
+                <img src={logo} alt="Logo" className="w-25 h-25 object-contain" />
             </div>
 
             {/* Navigation Menu */}
