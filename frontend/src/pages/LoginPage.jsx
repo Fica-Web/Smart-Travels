@@ -4,7 +4,7 @@ import AdminLogin from '../components/shared/AdminLogin'
 const LoginPage = () => {
   return (
     <div>
-        <AdminLogin />
+      <AdminLogin />
     </div>
   )
 }

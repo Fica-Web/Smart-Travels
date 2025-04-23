@@ -4,47 +4,44 @@ import logo from '../../assets/image/logo/logo.png';
 import { IoPower } from "react-icons/io5";
 
 const AdminNavbar = () => {
-  // State to manage whether the modal is visible or not
   const [showModal, setShowModal] = useState(false);
-
-  // Initialize useNavigate from react-router-dom
   const navigate = useNavigate();
 
-  // Function to toggle modal visibility
   const toggleModal = () => {
     setShowModal(!showModal);
   };
 
-  // Function to handle logout action (clear session, redirect to login page)
   const handleLogout = () => {
-    // Here you can add the actual logout logic like clearing session, tokens, etc.
-    // For now, we just alert and redirect.
-    alert('Logged out!');
-    
+    // Clear auth token from localStorage
+    localStorage.removeItem('token');
+
     // Redirect to login page
     navigate('/admin/login');
-    setShowModal(false); // Close the modal after logout
+
+    // Close the modal after logout
+    setShowModal(false);
   };
 
   return (
-    <nav className="p-3 m-1 px-8 bg-gray-800 flex items-center justify-between text-white ">
+    <nav className="p-3 m-1 px-8 bg-gray-800 flex items-center justify-between text-white">
       {/* Logo */}
-      <div className="">
+      <div>
         <img src={logo} alt="Logo" className="w-25 h-25 object-contain" />
       </div>
 
-      <div className="relative ">
+      {/* Logout Button and Modal */}
+      <div className="relative">
         <button
           onClick={toggleModal}
-          className="border border-red-600 text-red-600 px-5 py-2 rounded-md text-sm font-semibold flex items-center gap-2 shadow transition-colors hover:bg-red-600 hover:text-white"
+          className="bg-red-600 text-amber-50 px-5 py-2 rounded-md text-sm font-semibold flex items-center gap-2 shadow transition-colors hover:bg-red-800 "
         >
-          <IoPower className="w-5 h-5 text-red-600 hover:text-white" />
+          <IoPower className="w-5 h-5  text-white" />
           Logout
         </button>
 
-        {/* Modal for confirmation, positioned below the button */}
+        {/* Logout Confirmation Modal */}
         {showModal && (
-          <div className="absolute right-0 mt-1 bg-white p-6 rounded-lg shadow-lg w-56">
+          <div className="absolute right-0 mt-1 bg-white p-6 rounded-lg shadow-lg w-56 z-50">
             <h3 className="text-md mb-4 text-gray-800">Are you sure you want to log out?</h3>
             <div className="flex justify-between space-x-4">
               <button
