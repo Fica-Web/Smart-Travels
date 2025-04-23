@@ -11,31 +11,34 @@ export default function HelpTextDemo() {
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
-    const handleSubmit = () => {
-        const newErrors = {};
-    
-        if (!username.trim()) {
-            newErrors.username = "Username is required!";
-        }
-        if (!email.trim()) {
-            newErrors.email = "Email is required!";
-        } else if (!/\S+@\S+\.\S+/.test(email)) {
-            newErrors.email = "Email is invalid!";
-        }
-        if (!password.trim()) {
-            newErrors.password = "Password is required!";
-        }
-    
-        if (Object.keys(newErrors).length > 0) {
-            setErrors(newErrors);
-        } else {
-            setErrors({});
-            // simulate login
-            localStorage.setItem('token', 'my_token');
-            navigate('/admin'); // go to admin dashboard
-        }
+    const handleLogin = () => {
+      // simulate login
+      localStorage.setItem('token', 'my_token');
+      navigate('/admin'); // go to admin dashboard
     };
-    
+
+    // const handleSubmit = () => {
+    //     const newErrors = {};
+
+    //     if (!username.trim()) {
+    //         newErrors.username = "Username is required!";
+    //     }
+    //     if (!email.trim()) {
+    //         newErrors.email = "Email is required!";
+    //     } else if (!/\S+@\S+\.\S+/.test(email)) {
+    //         newErrors.email = "Email is invalid!";
+    //     }
+    //     if (!password.trim()) {
+    //         newErrors.password = "Password is required!";
+    //     }
+
+    //     if (Object.keys(newErrors).length > 0) {
+    //         setErrors(newErrors);
+    //     } else {
+    //         setErrors({});
+    //         alert("Form submitted successfully!");
+    //     }
+    // };
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-blue-50 to-white p-6">
@@ -85,7 +88,7 @@ export default function HelpTextDemo() {
 
                 <Button
                     label="Log in"
-                    onClick={handleSubmit}
+                    onClick={handleLogin}
                     className="w-full bg-[#3578E5] hover:bg-[#285fb8] text-white font-semibold py-3 rounded-lg shadow-lg transition"
                 />
             </div>

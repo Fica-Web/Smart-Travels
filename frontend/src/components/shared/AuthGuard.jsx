@@ -1,11 +1,17 @@
+
 import React from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
-import useAuth from './useAuth'; // import the hook
+import { Navigate } from 'react-router-dom';
 
-const AuthGuard = () => {
-  const isAuthenticated = useAuth();
-
-  return isAuthenticated ? <Outlet /> : <Navigate to="/admin/login" replace />;
-};
+const AuthGuard = ({ children }) => {
+        const token = localStorage.getItem('token');
+        
+        
+        const isLoggedIn = !!token;
+      
+        return isLoggedIn ? children : <Navigate to="/admin/login" replace />;
+      };
+      
+      
 
 export default AuthGuard;
+

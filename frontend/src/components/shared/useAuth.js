@@ -1,14 +1,16 @@
-import { useEffect, useState } from 'react';
+// import React from 'react';
+import { Navigate } from 'react-router-dom';
 
-const useAuth = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+const AuthGuard = ({ children }) => {
+  const isLoggedIn = !!localStorage.getItem('token'); // or your auth logic
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    setIsAuthenticated(!!token);
-  }, []);
+  // If not logged in, redirect to /admin/login
+  if (!isLoggedIn) {
+    return <Navigate to="/admin/login" replace />;
+  }
 
-  return isAuthenticated;
+  // If logged in, render the children (admin page)
+  return children;
 };
 
-export default useAuth;
+export default AuthGuard;  
