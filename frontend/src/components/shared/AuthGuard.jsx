@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
 const AuthGuard = ({ children }) => {
-  const token = localStorage.getItem('token');
-  const isLoggedIn = !!token;
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
 
-  console.log("AuthGuard: token =", token);
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    setIsAuthenticated(!!token);
+  }, []);
 
-  return isLoggedIn ? children : <Navigate to="/admin/login" replace />;
+  if (isAuthenticated === null) {
+    // You can return a loader here if needed
+    return <div className="text-center p-10">Checking authentication...</div>;
+  }
+
+  return isAuthenticated ? children : <Navigate to="/admin/login" replace />;
 };
 
 export default AuthGuard;

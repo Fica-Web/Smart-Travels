@@ -30,7 +30,13 @@ export default function AdminLogin() {
         }
         if (!password.trim()) {
             newErrors.password = "Password is required!";
-        }
+          } else if (password.length > 8) {
+            newErrors.password = "Password must be at most 8 characters long!";
+          } else if (!/\d/.test(password)) {
+            newErrors.password = "Password must contain at least one number!";
+          } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+            newErrors.password = "Password must contain at least one symbol!";
+          }
 
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
