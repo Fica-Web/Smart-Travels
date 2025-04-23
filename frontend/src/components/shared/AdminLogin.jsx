@@ -2,16 +2,18 @@ import React, { useState } from 'react';
 import { InputText } from "primereact/inputtext";
 import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
+import { useNavigate } from 'react-router-dom';
 
 export default function HelpTextDemo() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({});
+    const navigate = useNavigate();
 
     const handleSubmit = () => {
         const newErrors = {};
-
+    
         if (!username.trim()) {
             newErrors.username = "Username is required!";
         }
@@ -23,14 +25,17 @@ export default function HelpTextDemo() {
         if (!password.trim()) {
             newErrors.password = "Password is required!";
         }
-
+    
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
         } else {
             setErrors({});
-            alert("Form submitted successfully!");
+            // simulate login
+            localStorage.setItem('token', 'my_token');
+            navigate('/admin'); // go to admin dashboard
         }
     };
+    
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-blue-50 to-white p-6">
@@ -64,27 +69,14 @@ export default function HelpTextDemo() {
                 <div className="flex flex-col gap-3 mb-6">
                     <label htmlFor="password" className="text-sm font-medium text-gray-700">Password</label>
                     <Password
-    id="password"
-    value={password}
-    onChange={(e) => setPassword(e.target.value)}
-    toggleMask
-    feedback={false}
-    className="border-2 border-gray-300 rounded-lg shadow-sm focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-200 transition duration-300"
-    inputClassName="border-0 focus:ring-0 focus:outline-none px-22 py-2"
-/>
-
-
-
-
-                    {/* <Password
-    id="password"
-    value={password}
-    onChange={(e) => setPassword(e.target.value)}
-    toggleMask
-    feedback={false}
-    // className="w-full border border-gray-200 rounded-lg shadow-sm focus-within:ring-2 focus-within:ring-blue-300 transition relative !h-auto"
-    inputClassName="border-1 focus:ring-0 focus:outline-none px-4 py-2 w-full border border-gray-200 rounded-lg shadow-sm focus-within:ring-2 focus-within:ring-blue-300 transition relative !h-auto"
- /> */}
+                        id="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        toggleMask
+                        feedback={false}
+                        className="border-2 border-gray-300 rounded-lg shadow-sm focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-200 transition duration-300"
+                        inputClassName="border-0 focus:ring-0 focus:outline-none px-22 py-2"
+                    />
 
 
 
