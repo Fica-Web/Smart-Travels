@@ -3,7 +3,7 @@ import { Home, Users, Settings, Briefcase } from 'lucide-react';
 
 const AdminSidebar = () => {
   return (
-    <div className="h-screen w-64 bg-gray-800 text-white flex flex-col p-4">
+    <div className="h-screen w-64 bg-gray-800 text-white flex flex-col p-6 m-1">
       <h2 className="text-2xl font-bold mb-6">Admin Panel</h2>
       <nav className="flex flex-col space-y-4">
         <a href="#" className="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
