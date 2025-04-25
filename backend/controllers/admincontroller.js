@@ -72,7 +72,7 @@ const adminLogin = async (req, res) => {
         res.cookie('ruknAdminToken', token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production', // Only send cookie over HTTPS in production
-            sameSite: 'strict', // Prevent CSRF attacks
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict', // Prevent CSRF attacks
             maxAge: 15 * 24 * 60 * 60 * 1000 // Set cookie expiration to 15 days in milliseconds
         });
 
@@ -90,14 +90,6 @@ const adminLogin = async (req, res) => {
             message: 'Internal server error',
             error: error.message,
         });
-    }
-}
-
-const isAdminProtected = async (req, res) => {
-    try {
-        res.status(200).json({ admin: req.user, isAuthenticated: true });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
     }
 }
 
