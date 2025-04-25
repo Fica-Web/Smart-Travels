@@ -6,7 +6,6 @@ const adminLoginApi = async (data) => {
         return response.data;
     } catch (error) {
         console.log("error during login:", error.response.data);
-        return toast.error(error.response.data.error);
     }
 }
 

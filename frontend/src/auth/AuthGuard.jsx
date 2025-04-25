@@ -10,11 +10,14 @@ const AuthGuard = ({ children }) => {
   }, []);
 
   if (isAuthenticated === null) {
-    // You can return a loader here if needed
     return <div className="text-center p-10">Checking authentication...</div>;
   }
 
-  return isAuthenticated ? children : <Navigate to="/admin/login" replace />;
+  const loginPath = import.meta.env.VITE_ADMIN_LOGIN_URL || '/admin/login';
+  console.log("Redirecting to login:", loginPath);
+
+  return isAuthenticated ? children : <Navigate to={loginPath} replace />;
 };
 
 export default AuthGuard;
+

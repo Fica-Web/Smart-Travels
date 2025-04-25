@@ -3,7 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import HomeLayout from '../layouts/HomeLayout';
 import AdminLayout from '../layouts/AdminLayout';
 import Loading from '../components/reusable/Loading';
-import AuthGuard from '../components/shared/AuthGuard';
+import AuthGuard from '../auth/AuthGuard';  // Protect routes
 
 // Lazy-loaded pages
 const HomePage = lazy(() => import('../pages/HomePage'));
@@ -25,7 +25,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-
   {
     path: '/admin/login',
     element: (
@@ -34,7 +33,6 @@ const router = createBrowserRouter([
       </Suspense>
     ),
   },
-
   {
     path: '/admin',
     element: (
