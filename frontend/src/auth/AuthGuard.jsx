@@ -14,10 +14,8 @@ const AuthGuard = ({ children }) => {
   }
 
   const loginPath = import.meta.env.VITE_ADMIN_LOGIN_URL || '/admin/login';
-  console.log("Redirecting to login:", loginPath);
 
   return isAuthenticated ? children : <Navigate to={loginPath} replace />;
 };
 
 export default AuthGuard;
-
