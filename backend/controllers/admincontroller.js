@@ -93,14 +93,6 @@ const adminLogin = async (req, res) => {
     }
 }
 
-const isAdminProtected = async (req, res) => {
-    try {
-        res.status(200).json({ admin: req.user, isAuthenticated: true });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-}
-
 const adminLogout = async (req, res) => {
     try {
         // Invalidate the token by removing it from the client side
