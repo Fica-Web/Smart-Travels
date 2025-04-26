@@ -1,9 +1,11 @@
 import React from 'react'
-import Navbar from '../components/reusable/Navbar'
+import Hero from '../components/shared/Hero'
 
 const HomePage = () => {
     return (
         <div className=' pt-24'>
+            <Hero />
+
 
             <h1>Home Page</h1>
             <p>This is the home page of the application.</p>
