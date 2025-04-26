@@ -4,14 +4,16 @@ import HomeLayout from '../layouts/HomeLayout';
 import AdminLayout from '../layouts/AdminLayout';
 import Loading from '../components/reusable/Loading';
 import AuthGuard from '../auth/AuthGuard';  // Protect routes
-import SignUpPage from '../pages/SignUpPage';
+import SignUpPage from '../pages/user/SignUpPage';
+import ResetPassword from '../components/shared/ResetPassword';
 
 // Lazy-loaded pages
 const HomePage = lazy(() => import('../pages/HomePage'));
-const AdminPage = lazy(() => import('../pages/AdminPage'));
-const LoginPage = lazy(() => import('../pages/LoginPage'));
-const UserLoginPage = lazy(() => import('../pages/UserLoginPage'));
-const SignUp = lazy(() => import('../pages/SignUpPage'));
+const AdminPage = lazy(() => import('../pages/admin/AdminPage'));
+const LoginPage = lazy(() => import('../pages/admin/LoginPage'));
+const UserLoginPage = lazy(() => import('../pages/user/UserLoginPage'));
+const SignUp = lazy(() => import('../pages/user/SignUpPage'));
+const ForgetPasswordPage = lazy(() => import('../pages/user/ForgetPasswordPage'))
 
 
 
@@ -39,10 +41,26 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/signup',  // ✅ General login route
+    path: '/signup',
     element: (
       <Suspense fallback={<Loading />}>
         <SignUpPage />
+      </Suspense>
+    ),
+  },
+  {
+    path: '/forgot-password',
+    element: (
+      <Suspense fallback={<Loading />}>
+        <ForgetPasswordPage />
+      </Suspense>
+    ),
+  },
+  {
+    path: '/reset-password',
+    element: (
+      <Suspense fallback={<Loading />}>
+        <ResetPassword />
       </Suspense>
     ),
   },
