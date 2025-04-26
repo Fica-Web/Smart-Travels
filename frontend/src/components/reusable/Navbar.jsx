@@ -4,7 +4,7 @@ import logo from '../../assets/image/logo/logo.png'
 
 const Header = () => {
   return (
-<header className="absolute top-6 left-1/2 transform -translate-x-1/2 w-[96%] max-w-8xl flex justify-between items-center backdrop-blur-md px-1">      
+    <header className="absolute top-6 left-1/2 transform -translate-x-1/2 w-[96%] max-w-8xl flex justify-between items-center backdrop-blur-md px-1">
       {/* Logo */}
       <div className="text-2xl font-bold whitespace-nowrap">
         <img src={logo} alt="" className="w-15 h-15" />
