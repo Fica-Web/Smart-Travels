@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { InputText } from "primereact/inputtext";
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // ✅ Import icons from react-icons
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { adminLoginApi } from '../../services/api/adminApi'; // Adjust path as needed
 
 export default function AdminLogin() {
     const [username, setUsername] = useState('');
@@ -10,14 +11,10 @@ export default function AdminLogin() {
     const [password, setPassword] = useState('');
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [errors, setErrors] = useState({});
+    const [apiError, setApiError] = useState('');
     const navigate = useNavigate();
 
-    const handleLogin = () => {
-        localStorage.setItem('token', 'my_token');
-        navigate('/admin');
-    };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const newErrors = {};
@@ -39,9 +36,26 @@ export default function AdminLogin() {
 
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
-        } else {
-            setErrors({});
-            handleLogin();
+            return;
+        }
+
+        setErrors({});
+        setApiError('');
+
+        try {
+            const response = await adminLoginApi({ username, email, password });
+
+            if (response?.token) {
+                console.log('✅ Admin login successful:', response);
+                localStorage.setItem('token', response.token);
+                navigate('/admin');
+            } else {
+                console.log('❌ Admin login failed: No token received');
+                setApiError('Invalid credentials. Please try again.');
+            }
+        } catch (error) {
+            console.error('❌ Admin login error:', error);
+            setApiError('An error occurred during login. Please try again later.');
         }
     };
 
@@ -94,6 +108,10 @@ export default function AdminLogin() {
                             <small className="text-red-500">{errors.password}</small>
                         )}
                     </div>
+
+                    {apiError && (
+                        <div className="mb-4 text-sm text-red-600 text-center">{apiError}</div>
+                    )}
 
                     <Button
                         label="Log in"
