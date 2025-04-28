@@ -1,9 +1,19 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { userLoginApi } from '../../services/api/userApi';
 
 const UserLoginPage = () => {
-    
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    });
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        
+        console.log("Login form submitted", formData);
+    }
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100 py-16 px-4">
@@ -18,7 +28,6 @@ const UserLoginPage = () => {
                         Back!
                     </div>
                 </div>
-
 
                 {/* Right Side - Form Section */}
                 <div className="md:w-1/2 p-8 md:p-12">
@@ -41,11 +50,9 @@ const UserLoginPage = () => {
 
                     </div>
 
-
-
-                    <form className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-6">
                         <div>
-                            <label className="block text-gray-600 mb-1 text-sm">User Name</label>
+                            <label className="block text-gray-600 mb-1 text-sm">Email</label>
                             <input
                                 type="email"
                                 placeholder="username@gmail.com"
@@ -67,7 +74,7 @@ const UserLoginPage = () => {
                                 <input type="checkbox" id="remember" className="mr-2" />
                                 <label htmlFor="remember">Remember Me</label>
                             </div>
-                            <Link href="/forgot-password" className="text-[#2e6bbf] hover:text-[#4a94d0] hover:underline">Forgot Password?</Link>
+                            <Link to="/forgot-password" className="text-[#2e6bbf] hover:text-[#4a94d0] hover:underline">Forgot Password?</Link>
                         </div>
 
                         <button
@@ -79,7 +86,7 @@ const UserLoginPage = () => {
                     </form>
 
                     <p className="mt-6 text-sm text-center text-gray-600">
-                        New User? <Link href="/signup" className="text-[#2e6bbf] hover:text-[#4a94d0]">Signup</Link>
+                        New User? <Link to="/signup" className="text-[#2e6bbf] hover:text-[#4a94d0]">Signup</Link>
                     </p>
                 </div>
             </div>
@@ -87,4 +94,4 @@ const UserLoginPage = () => {
     )
 }
 
-export default UserLoginPage
+export default UserLoginPage;
