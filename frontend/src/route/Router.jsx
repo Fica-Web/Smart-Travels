@@ -8,7 +8,7 @@ import SignUpPage from '../pages/user/SignUpPage';
 import ResetPassword from '../components/shared/ResetPassword';
 
 // Lazy-loaded pages
-const HomePage = lazy(() => import('../pages/HomePage'));
+const HomePage = lazy(() => import('../pages/user/HomePage'));
 const AdminPage = lazy(() => import('../pages/admin/AdminPage'));
 const LoginPage = lazy(() => import('../pages/admin/LoginPage'));
 const UserLoginPage = lazy(() => import('../pages/user/UserLoginPage'));
