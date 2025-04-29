@@ -6,6 +6,10 @@ export const setAccessToken = (token) => {
     accessToken = token;
 };
 
+export const clearAccessToken = () => {
+    accessToken = null;
+};
+
 const userInstance = axios.create({
     baseURL: import.meta.env.VITE_API_URL + '/user',
     withCredentials: true,
@@ -46,7 +50,8 @@ userInstance.interceptors.response.use(
                 return userInstance(originalRequest); // Retry original request
             } catch (refreshError) {
                 console.error('Refresh token failed:', refreshError);
-                window.location.href = '/login'; // Optional: redirect to login
+                clearAccessToken(); // Clear access token on failure
+                // window.location.href = '/login'; // Optional: redirect to login
                 return Promise.reject(refreshError);
             }
         }

@@ -1,23 +1,9 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../../contexts/AuthContext';
-import { userLoginApi } from '../../services/api/userApi';
 import FormWelcome from '../../components/reusable/FormWelcome';
 import FormTitle from '../../components/reusable/FormTitle';
 import UserLoginForm from '../../components/UserAuth/UserLoginForm';
 
 const UserLoginPage = () => {
-    const [formData, setFormData] = useState({
-        email: '',
-        password: ''
-    });
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        
-        console.log("Login form submitted", formData);
-    }
-
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100 py-16 px-4">
             <div className="flex flex-col md:flex-row bg-white rounded-2xl shadow-lg overflow-hidden max-w-4xl w-full">
@@ -37,11 +23,7 @@ const UserLoginPage = () => {
                         mobileDescription="Login to your account and continue where you left off. Let’s get you back on track!"
                     />
 
-                    <UserLoginForm
-                        formData={formData}
-                        setFormData={setFormData}
-                        handleSubmit={handleSubmit}
-                    />
+                    <UserLoginForm />
 
                     <p className="mt-6 text-sm text-center text-gray-600">
                         New User? <Link to="/signup" className="text-[#2e6bbf] hover:text-[#4a94d0]">Signup</Link>

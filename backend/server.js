@@ -10,7 +10,7 @@ import userRouter from './routers/userRouter.js'; // Import the user router
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000; 
 
 // Connecting MongoDB
 connectDB();
