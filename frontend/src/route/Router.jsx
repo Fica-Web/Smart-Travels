@@ -12,10 +12,8 @@ const HomePage = lazy(() => import('../pages/user/HomePage'));
 const AdminPage = lazy(() => import('../pages/admin/AdminPage'));
 const LoginPage = lazy(() => import('../pages/admin/LoginPage'));
 const UserLoginPage = lazy(() => import('../pages/user/UserLoginPage'));
-const SignUp = lazy(() => import('../pages/user/SignUpPage'));
-const ForgetPasswordPage = lazy(() => import('../pages/user/ForgetPasswordPage'))
-
-
+const ForgetPasswordPage = lazy(() => import('../pages/user/ForgetPasswordPage'));
+const UserProfilePage = lazy(() => import('../pages/user/UserProfilePage'));
 
 const router = createBrowserRouter([
   {
@@ -30,6 +28,14 @@ const router = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: 'profile',
+        element: (
+          <Suspense fallback={<Loading />}>
+            <UserProfilePage />
+          </Suspense>
+        ),
+      }
     ],
   },
   {
