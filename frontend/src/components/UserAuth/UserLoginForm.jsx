@@ -1,33 +1,29 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { userLoginApi } from '../../services/api/userApi';
 
 const UserLoginForm = () => {
-    const { setUser, setAccessToken } = useAuth(); // Access the context values
     const [formData, setFormData] = useState({
         email: '',
         password: ''
     });
     const [error, setError] = useState(null); // State to hold error messages
 
+    const { login } = useAuth(); // Access the context values
+    const navigate = useNavigate(); // For navigation after login
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            // Perform login action here, e.g., call an API
-            const response = await userLoginApi(formData);
-            console.log("Login form submitted", response);
-            // if (response.error) {
-            //     setError(response.error); // Set error message if login fails
-            // }
-            // if (response?.accessToken) {
-            //     setAccessToken(response.accessToken); // Store access token in context
-            //     setUser(response.user); // Set user data in context
-            // }
-        } catch (error) {
-            console.error("Login error:", error.response?.data);
-            setError("Login failed. Please check your credentials and try again.");
+        setError(null);
 
+        try {
+            await login(formData); // this sets token & user in context
+            navigate('/');         // redirect to homepage or dashboard
+        } catch (error) {
+            const serverMessage = error.response?.data?.message;
+            setError(serverMessage || "Login failed. Please try again.");
         }
     }
 
