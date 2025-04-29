@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Rocket, User } from "lucide-react";
 import logo from '../../assets/image/logo/logo.png'
 
@@ -29,7 +30,9 @@ const Header = () => {
           <Rocket size={20} className="text-black" />
         </button>
         <button className="p-3 bg-white rounded-full shadow hover:bg-gray-100">
-          <User size={20} className="text-black" />
+          <Link to={'/profile'}>
+            <User size={20} className="text-black" />
+          </Link>
         </button>
       </div>
     </header>

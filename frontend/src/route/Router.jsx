@@ -1,19 +1,29 @@
 import React, { lazy, Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
+
 import HomeLayout from '../layouts/HomeLayout';
 import AdminLayout from '../layouts/AdminLayout';
 import Loading from '../components/reusable/Loading';
-import AuthGuard from '../auth/AuthGuard';  // Protect routes
-import SignUpPage from '../pages/user/SignUpPage';
-import ResetPassword from '../components/shared/ResetPassword';
+import AuthGuard from '../auth/AuthGuard';
+import UserAuth from '../services/auth/UserAuth';
 
 // Lazy-loaded pages
 const HomePage = lazy(() => import('../pages/user/HomePage'));
 const AdminPage = lazy(() => import('../pages/admin/AdminPage'));
 const LoginPage = lazy(() => import('../pages/admin/LoginPage'));
 const UserLoginPage = lazy(() => import('../pages/user/UserLoginPage'));
+const SignUpPage = lazy(() => import('../pages/user/SignUpPage'));
 const ForgetPasswordPage = lazy(() => import('../pages/user/ForgetPasswordPage'));
+const ResetPassword = lazy(() => import('../components/shared/ResetPassword'));
 const UserProfilePage = lazy(() => import('../pages/user/UserProfilePage'));
+// const NotFoundPage = lazy(() => import('../pages/shared/NotFoundPage'));
+
+// Suspense wrapper
+const withSuspense = (Component) => (
+  <Suspense fallback={<Loading />}>
+    <Component />
+  </Suspense>
+);
 
 const router = createBrowserRouter([
   {
@@ -22,61 +32,37 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: (
-          <Suspense fallback={<Loading />}>
-            <HomePage />
-          </Suspense>
-        ),
+        element: withSuspense(HomePage),
       },
       {
         path: 'profile',
         element: (
-          <Suspense fallback={<Loading />}>
-            <UserProfilePage />
-          </Suspense>
+          <UserAuth>
+            {withSuspense(UserProfilePage)}
+          </UserAuth>
         ),
-      }
+      },
     ],
   },
   {
-    path: '/login',  // ✅ General login route
-    element: (
-      <Suspense fallback={<Loading />}>
-        <UserLoginPage />
-      </Suspense>
-    ),
+    path: '/login',
+    element: withSuspense(UserLoginPage),
   },
   {
     path: '/signup',
-    element: (
-      <Suspense fallback={<Loading />}>
-        <SignUpPage />
-      </Suspense>
-    ),
+    element: withSuspense(SignUpPage),
   },
   {
     path: '/forgot-password',
-    element: (
-      <Suspense fallback={<Loading />}>
-        <ForgetPasswordPage />
-      </Suspense>
-    ),
+    element: withSuspense(ForgetPasswordPage),
   },
   {
     path: '/reset-password',
-    element: (
-      <Suspense fallback={<Loading />}>
-        <ResetPassword />
-      </Suspense>
-    ),
+    element: withSuspense(ResetPassword),
   },
   {
     path: '/admin/login',
-    element: (
-      <Suspense fallback={<Loading />}>
-        <LoginPage />
-      </Suspense>
-    ),
+    element: withSuspense(LoginPage),
   },
   {
     path: '/admin',
@@ -88,14 +74,14 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: (
-          <Suspense fallback={<Loading />}>
-            <AdminPage />
-          </Suspense>
-        ),
+        element: withSuspense(AdminPage),
       },
     ],
   },
+  // {
+  //   path: '*',
+  //   element: withSuspense(NotFoundPage),
+  // },
 ]);
 
 export default router;

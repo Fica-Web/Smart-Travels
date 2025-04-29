@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import { userLoginApi } from '../../services/api/userApi';
 
 const UserLoginForm = () => {
     const [formData, setFormData] = useState({
