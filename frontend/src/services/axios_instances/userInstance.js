@@ -3,7 +3,15 @@ import axios from 'axios';
 let accessToken = null; // Store accessToken in memory
 
 export const setAccessToken = (token) => {
+    if (!token) {
+        console.error('Access token is null or undefined');
+        return;
+    }
     accessToken = token;
+};
+
+export const clearAccessToken = () => {
+    accessToken = null;
 };
 
 const userInstance = axios.create({
@@ -30,27 +38,31 @@ userInstance.interceptors.response.use(
     (response) => response,
     async (error) => {
         const originalRequest = error.config;
-        if (
-            error.response?.status === 401 &&
-            !originalRequest._retry
-        ) {
-            originalRequest._retry = true;
-            try {
-                const refreshResponse = await axios.get(
-                    import.meta.env.VITE_API_URL + '/user/refresh-token',
-                    { withCredentials: true }
-                );
-                const newAccessToken = refreshResponse.data.accessToken;
-                setAccessToken(newAccessToken);
-                originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-                return userInstance(originalRequest); // Retry original request
-            } catch (refreshError) {
-                console.error('Refresh token failed:', refreshError);
-                window.location.href = '/login'; // Optional: redirect to login
-                return Promise.reject(refreshError);
+
+        if (error.response?.status === 401 && !originalRequest._retry) {
+            const errorMessage = error.response?.data?.message || "";
+
+            // 👉 Only refresh if token expired
+            if (errorMessage === 'Access token expired' || errorMessage === 'jwt expired' || errorMessage === 'Access token missing or malformed') {
+                originalRequest._retry = true;
+                try {
+                    const refreshResponse = await axios.get(
+                        import.meta.env.VITE_API_URL + '/user/refresh-token',
+                        { withCredentials: true }
+                    );
+                    const newAccessToken = refreshResponse.data.accessToken;
+                    setAccessToken(newAccessToken);
+                    originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+                    return userInstance(originalRequest);
+                } catch (refreshError) {
+                    console.error('Refresh token failed:', refreshError);
+                    clearAccessToken();
+                    return Promise.reject(refreshError);
+                }
             }
         }
-        return Promise.reject(error);
+
+        return Promise.reject(error); // ⛔ wrong password or any other error will be forwarded as it is
     }
 );
 
