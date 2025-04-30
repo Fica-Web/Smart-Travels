@@ -19,7 +19,7 @@ const UserLoginForm = () => {
 
         try {
             await login(formData); // this sets token & user in context
-            navigate('/');         // redirect to homepage or dashboard
+            // navigate('/');         // redirect to homepage or dashboard
         } catch (error) {
             const serverMessage = error.response?.data?.message;
             setError(serverMessage || "Login failed. Please try again.");

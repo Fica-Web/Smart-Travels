@@ -4,7 +4,6 @@ import Loading from "../../components/reusable/Loading";
 
 const UserAuth = ({ children }) => {
     const { user, loading } = useAuth();
-    console.log("UserAuth component: ", user, loading); // Log user and loading state
     const location = useLocation();
   
     if (loading) {

@@ -55,7 +55,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/signup',
-    element: withSuspense(SignUpPage),
+    element: (
+      <GuestGuard>
+        {withSuspense(SignUpPage)}
+      </GuestGuard>
+    ),
   },
   {
     path: '/forgot-password',

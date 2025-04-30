@@ -3,7 +3,7 @@ import { useAuth } from '../../contexts/AuthContext';
 
 const UserProfilePage = () => {
     const { user } = useAuth(); // Access the user from context
-    console.log('user data:', user); // Log the user data to check if it's being fetched correctly
+    
     return (
         <div>
             <h1 className="text-2xl font-bold mb-4">User Profile</h1>
