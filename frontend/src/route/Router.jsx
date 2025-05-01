@@ -4,9 +4,9 @@ import { createBrowserRouter } from 'react-router-dom';
 import HomeLayout from '../layouts/HomeLayout';
 import AdminLayout from '../layouts/AdminLayout';
 import Loading from '../components/reusable/Loading';
-import AuthGuard from '../auth/AuthGuard';
 import UserAuth from '../services/auth/UserAuth';
 import GuestGuard from '../services/auth/GuestGuard';
+import AdminAuthGuard from '../services/auth/AdminAuthGuard';
 
 // Lazy-loaded pages
 const HomePage = lazy(() => import('../pages/user/HomePage'));
@@ -75,15 +75,16 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin',
-    element: (
-      <AuthGuard>
-        <AdminLayout />
-      </AuthGuard>
-    ),
+    element: <AdminLayout />,
     children: [
       {
-        index: true,
-        element: withSuspense(AdminPage),
+        element: <AdminAuthGuard />,
+        children: [
+          {
+            index: true,
+            element: withSuspense(AdminPage),
+          },
+        ],
       },
     ],
   },

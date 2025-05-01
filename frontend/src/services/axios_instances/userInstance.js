@@ -55,7 +55,6 @@ userInstance.interceptors.response.use(
                     originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
                     return userInstance(originalRequest);
                 } catch (refreshError) {
-                    console.error('Refresh token failed:', refreshError);
                     clearAccessToken();
                     return Promise.reject(refreshError);
                 }
