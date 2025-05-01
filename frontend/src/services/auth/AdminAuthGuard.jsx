@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { isAdminProtectedApi } from "../api/adminApi";
+import Loading from "../../components/reusable/Loading";
 
 const AdminAuthGuard = ({ children }) => {
     const [isAuthorized, setIsAuthorized] = useState(false);
@@ -18,7 +19,7 @@ const AdminAuthGuard = ({ children }) => {
         checkAuth();
     }, []);
 
-    return isAuthorized ? children : null;
+    return isAuthorized ? children : <Loading />;
 }
 
 export default AdminAuthGuard;

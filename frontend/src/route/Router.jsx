@@ -7,6 +7,7 @@ import Loading from '../components/reusable/Loading';
 import UserAuth from '../services/auth/UserAuth';
 import GuestGuard from '../services/auth/GuestGuard';
 import AdminAuthGuard from '../services/auth/AdminAuthGuard';
+import AdminPublicRoute from '../services/auth/AdminPublicRoute';
 
 // Lazy-loaded pages
 const HomePage = lazy(() => import('../pages/user/HomePage'));
@@ -71,7 +72,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin/login',
-    element: withSuspense(LoginPage),
+    element: (
+      <AdminPublicRoute>
+        {withSuspense(LoginPage)}
+      </AdminPublicRoute>
+    ),
   },
   {
     path: '/admin',
