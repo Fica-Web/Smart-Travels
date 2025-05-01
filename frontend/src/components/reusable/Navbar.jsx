@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Rocket, User } from "lucide-react";
-import logo from '../../assets/image/logo/logo.png'
+import logo from '../../assets/image/logo/logo.png';
+import UserLogoutButton from "./UserLogoutButton";
 
 const Header = () => {
   return (
@@ -34,6 +35,7 @@ const Header = () => {
             <User size={20} className="text-black" />
           </Link>
         </button>
+        <UserLogoutButton />
       </div>
     </header>
   );
