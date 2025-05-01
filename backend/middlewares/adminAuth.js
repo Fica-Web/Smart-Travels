@@ -4,7 +4,7 @@ import Admin from '../model/AdminSchema.js';
 const verifyAdmin = async (req, res, next) => {
     try {
         // Prefer cookies first, then Bearer token from headers
-        let token = req.cookies.jwt;
+        let token = req.cookies.ruknAdminToken;
 
         if (!token && req.headers.authorization?.startsWith('Bearer ')) {
             token = req.headers.authorization.split(' ')[1];
