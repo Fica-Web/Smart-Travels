@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 import connectDB from './config/connectDB.js'; // Import the database connection function
 import adminRouter from './routers/adminRouter.js'; // Import the admin router
 import userRouter from './routers/userRouter.js'; // Import the user router
+import blogRouter from './routers/blogsRouter.js'; // Import the blog router
 
 dotenv.config();
 
@@ -32,6 +33,7 @@ app.use(cors(corsOptions)); // Enable CORS using the specified options
 // Routes setup
 app.use('/api/admin', adminRouter); // Use the admin router for routes starting with /api/admin
 app.use('/api/user', userRouter); // Use the user router for routes starting with /api/user
+app.use('/api/blogs', blogRouter); // Use the blog router for routes starting with /api/blogs
 
 app.get('/', (req, res) => {
     res.send('Server is running!');
