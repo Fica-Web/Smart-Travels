@@ -47,15 +47,10 @@ export default function AdminLogin() {
 
             if (response?.token) {
                 console.log('✅ Admin login successful:', response);
-                localStorage.setItem('token', response.token);
                 navigate('/admin');
-            } else {
-                console.log('❌ Admin login failed: No token received');
-                setApiError('Invalid credentials. Please try again.');
             }
         } catch (error) {
             console.error('❌ Admin login error:', error);
-            setApiError('An error occurred during login. Please try again later.');
         }
     };
 
