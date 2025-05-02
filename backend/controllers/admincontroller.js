@@ -93,12 +93,21 @@ const adminLogin = async (req, res) => {
     }
 }
 
+const isAdminProtected = (req, res) => {
+    res.status(200).json({
+        message: 'Authorized admin access',
+        admin: req.admin,
+    });
+};
+
 const adminLogout = async (req, res) => {
     try {
-        // Invalidate the token by removing it from the client side
-        res.status(200).json({
-            message: 'Logout successful',
+        res.clearCookie('ruknAdminToken', {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
         });
+        res.status(200).json({ message: 'Logged out successfully' });
     } catch (error) {
         console.error('Error logging out:', error);
         res.status(500).json({
@@ -111,5 +120,6 @@ const adminLogout = async (req, res) => {
 export {
     adminSignup,
     adminLogin,
+    isAdminProtected,
     adminLogout,
 }
