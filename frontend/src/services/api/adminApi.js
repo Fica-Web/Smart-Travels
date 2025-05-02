@@ -5,7 +5,7 @@ const adminLoginApi = async (data) => {
         const response = await adminInstance.post('/login', data);
         return response.data;
     } catch (error) {
-        console.log("error during login:", error.response.data);
+        console.log("error during login:",  error.response?.data || error.message);
     }
 }
 
@@ -14,7 +14,8 @@ const isAdminProtectedApi = async () => {
         const response = await adminInstance.get('/isAdminProtected');
         return response.data;
     } catch (error) {
-        console.log("error during isAdminProtected:", error.response.data);
+        console.log("error during isAdminProtected:", error);
+        throw error; // Rethrow the error to be handled by the calling function
     }
 }
 
