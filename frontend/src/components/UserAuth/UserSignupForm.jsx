@@ -2,6 +2,7 @@ import { Import } from 'lucide-react';
 import React from 'react'
 import { useState } from 'react';
 import PasswordInput from '../reusable/PasswordInput';
+import { toast } from 'react-toastify'
 
 const UserSignupForm = () => {
     const [formData, setFormData] = useState({
