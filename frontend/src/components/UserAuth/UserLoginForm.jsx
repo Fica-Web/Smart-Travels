@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import PasswordInput from '../reusable/PasswordInput';
+import { toast } from 'react-toastify';
 
 const UserLoginForm = () => {
   const [formData, setFormData] = useState({
@@ -11,13 +12,12 @@ const UserLoginForm = () => {
   const [validatePassword, setValidatePassword] = useState(false);
   const [passwordError, setPasswordError] = useState('');
   const [formErrors, setFormErrors] = useState({});
-  const [error, setError] = useState(null); // API or general error
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setValidatePassword(true); // Trigger internal validation
+    setValidatePassword(true); // trigger validation inside PasswordInput
     const newErrors = {};
 
     if (!formData.email.trim()) {
@@ -32,14 +32,13 @@ const UserLoginForm = () => {
     }
 
     setFormErrors({});
-    setError(null);
 
     try {
-      await login(formData); // Login function from AuthContext
-      navigate('/');         // Redirect to homepage or dashboard
+      await login(formData); // Auth context login
+      navigate('/'); // redirect to homepage or dashboard
     } catch (error) {
-      const serverMessage = error.response?.data?.message;
-      setError(serverMessage || "Login failed. Please try again.");
+      const serverMessage = error.response?.data?.message || error.message || "Login failed. Please try again.";
+      toast.error(serverMessage); // show toast notification on error
     }
   };
 
@@ -74,8 +73,6 @@ const UserLoginForm = () => {
           Forgot Password?
         </Link>
       </div>
-
-      {error && <div className="text-sm text-red-600 text-center">{error}</div>}
 
       <button
         type="submit"
