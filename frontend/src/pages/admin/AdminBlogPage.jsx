@@ -1,8 +1,13 @@
 import React from 'react'
+import AdminBlogDashboard from '../../components/shared/AdminBlogDashboard'
 
 const AdminBlogPage = () => {
   return (
-    <div>AdminBlogPage</div>
+    <div>
+        
+        <AdminBlogDashboard />
+
+    </div>
   )
 }
 
