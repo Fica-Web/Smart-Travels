@@ -5,8 +5,8 @@ dotenv.config(); // Load environment variables from .env file
 // Configure Nodemailer Transporter
 const transporter = nodemailer.createTransport({
     host: 'smtp.zoho.com',
-    port: 587,
-    secure: false, // true for port 465, false for 587
+    port: 465,
+    secure: true, // true for port 465, false for 587
     auth: {
         user: process.env.EMAIL_USER, // Your email address
         pass: process.env.EMAIL_PASS, // Your email password or app password
