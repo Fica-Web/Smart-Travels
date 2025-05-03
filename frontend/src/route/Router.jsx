@@ -18,12 +18,12 @@ const SignUpPage = lazy(() => import('../pages/user/SignUpPage'));
 const ForgetPasswordPage = lazy(() => import('../pages/user/ForgetPasswordPage'));
 const ResetPassword = lazy(() => import('../components/shared/ResetPassword'));
 const UserProfilePage = lazy(() => import('../pages/user/UserProfilePage'));
-const AdminDashboard = lazy(() => import('../pages/admin/AdminDashboardPage'));
-const AdminUsers = lazy(() => import('../pages/admin/AdminUsersPage'));
+const AdminDashboardPage = lazy(() => import('../pages/admin/AdminDashboardPage'));
+const AdminUsersPage = lazy(() => import('../pages/admin/AdminUsersPage'));
 const AdminServices = lazy(() => import('../pages/admin/AdminServices'));
-const AdminBlog = lazy(() => import('../pages/admin/AdminBlogPage'));
-const AdminCarousel = lazy(() => import('../pages/admin/AdminCarouselPage'));
-const AdminSettings = lazy(() => import('../pages/admin/AdminSettingsPage'));
+const AdminBlogPage = lazy(() => import('../pages/admin/AdminBlogPage'));
+const AdminCarouselPage = lazy(() => import('../pages/admin/AdminCarouselPage'));
+const AdminSettingsPage = lazy(() => import('../pages/admin/AdminSettingsPage'));
 // const NotFoundPage = lazy(() => import('../pages/shared/NotFoundPage'));
 
 // Suspense wrapper
@@ -89,19 +89,18 @@ const router = createBrowserRouter([
     element: <AdminLayout />,
     children: [
       {
-        element: <AdminAuthGuard />,
         children: [
           {
-            index: true,
+            index: true, // for "/admin"
             element: withSuspense(AdminPage),
           },
           {
-            path: 'dashboard',
-            element: withSuspense(AdminDashboard),
+            path: 'dashboard', // for "/admin/dashboard"
+            element: withSuspense(AdminDashboardPage),
           },
           {
             path: 'users',
-            element: withSuspense(AdminUsers),
+            element: withSuspense(AdminUsersPage),
           },
           {
             path: 'services',
@@ -109,20 +108,21 @@ const router = createBrowserRouter([
           },
           {
             path: 'blog',
-            element: withSuspense(AdminBlog),
+            element: withSuspense(AdminBlogPage),
           },
           {
             path: 'carousel',
-            element: withSuspense(AdminCarousel),
+            element: withSuspense(AdminCarouselPage),
           },
           {
             path: 'settings',
-            element: withSuspense(AdminSettings),
+            element: withSuspense(AdminSettingsPage),
           },
         ],
       },
     ],
   }
+  
   // {
   //   path: '*',
   //   element: withSuspense(NotFoundPage),
