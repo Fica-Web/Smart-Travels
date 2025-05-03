@@ -2,7 +2,7 @@ import React from 'react'
 
 const AdminUsersPage = () => {
   return (
-    <div>AdminUsersPage</div>
+    <div className='text-9xl text-amber-950'>AdminUsersPage</div>
   )
 }
 
