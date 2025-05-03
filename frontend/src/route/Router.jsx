@@ -18,6 +18,12 @@ const SignUpPage = lazy(() => import('../pages/user/SignUpPage'));
 const ForgetPasswordPage = lazy(() => import('../pages/user/ForgetPasswordPage'));
 const ResetPassword = lazy(() => import('../components/shared/ResetPassword'));
 const UserProfilePage = lazy(() => import('../pages/user/UserProfilePage'));
+const AdminDashboard = lazy(() => import('../pages/admin/AdminDashboardPage'));
+const AdminUsers = lazy(() => import('../pages/admin/AdminUsersPage'));
+const AdminServices = lazy(() => import('../pages/admin/AdminServices'));
+const AdminBlog = lazy(() => import('../pages/admin/AdminBlogPage'));
+const AdminCarousel = lazy(() => import('../pages/admin/AdminCarouselPage'));
+const AdminSettings = lazy(() => import('../pages/admin/AdminSettingsPage'));
 // const NotFoundPage = lazy(() => import('../pages/shared/NotFoundPage'));
 
 // Suspense wrapper
@@ -89,10 +95,34 @@ const router = createBrowserRouter([
             index: true,
             element: withSuspense(AdminPage),
           },
+          {
+            path: 'dashboard',
+            element: withSuspense(AdminDashboard),
+          },
+          {
+            path: 'users',
+            element: withSuspense(AdminUsers),
+          },
+          {
+            path: 'services',
+            element: withSuspense(AdminServices),
+          },
+          {
+            path: 'blog',
+            element: withSuspense(AdminBlog),
+          },
+          {
+            path: 'carousel',
+            element: withSuspense(AdminCarousel),
+          },
+          {
+            path: 'settings',
+            element: withSuspense(AdminSettings),
+          },
         ],
       },
     ],
-  },
+  }
   // {
   //   path: '*',
   //   element: withSuspense(NotFoundPage),
