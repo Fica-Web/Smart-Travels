@@ -1,4 +1,5 @@
 import adminInstance from "../axios_instances/adminInstance";
+import { toast } from "react-toastify";
 
 const adminLoginApi = async (data) => {
     try {
@@ -6,6 +7,7 @@ const adminLoginApi = async (data) => {
         return response.data;
     } catch (error) {
         console.log("error during login:",  error.response?.data || error.message);
+        toast.error(error.response?.data?.message || error.message || "Login failed. Please try again.");
     }
 }
 

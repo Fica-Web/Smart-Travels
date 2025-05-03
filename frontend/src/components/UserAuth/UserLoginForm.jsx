@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import { toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 const UserLoginForm = () => {
     const [formData, setFormData] = useState({
         email: '',
         password: ''
     });
-    const [error, setError] = useState(null); // State to hold error messages
 
     const { login } = useAuth(); // Access the context values
     const navigate = useNavigate(); // For navigation after login
@@ -15,14 +16,13 @@ const UserLoginForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError(null);
 
         try {
             await login(formData); // this sets token & user in context
             // navigate('/');         // redirect to homepage or dashboard
         } catch (error) {
-            const serverMessage = error.response?.data?.message;
-            setError(serverMessage || "Login failed. Please try again.");
+            const serverMessage = error.response?.data?.message || error.message || "Login failed. Please try again.";
+            toast.error(serverMessage);
         }
     }
 
