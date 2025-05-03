@@ -21,22 +21,23 @@ const AdminNavbar = () => {
     // Close the modal after logout
     setShowModal(false);
   };
+  
 
   return (
     <nav className="p-3 m-1 px-8 bg-white flex items-center justify-between text-gray-700 h-[70px] border-b border-gray-200 " >
-       {/* Logo */}
+      {/* Logo */}
       <div>
         <img src={logo} alt="Logo" className="w-25 h-25 object-contain" />
       </div>
 
       {/* Logout Button and Modal */}
       <div className="relative">
-      <button
-  onClick={toggleModal}
-  className="bg-red-600 text-white w-10 h-10 rounded-full flex items-center justify-center shadow hover:bg-red-800 transition-colors"
->
-  <IoPower className="w-7 h-7" />
-</button>
+        <button
+          onClick={toggleModal}
+          className="bg-red-600 text-white w-10 h-10 rounded-full flex items-center justify-center shadow hover:bg-red-800 transition-colors"
+        >
+          <IoPower className="w-7 h-7" />
+        </button>
 
 
         {/* Logout Confirmation Modal */}

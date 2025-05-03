@@ -61,8 +61,7 @@ const SidebarLink = ({ icon, label, to, isCollapsed }) => (
   <NavLink
     to={to}
     className={({ isActive }) =>
-      `flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-200 transition ${
-        isCollapsed ? 'justify-center' : ''
+      `flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-200 transition ${isCollapsed ? 'justify-center' : ''
       } ${isActive ? 'text-[#4a94d0] font-semibold' : 'text-gray-700'}`
     }
   >
