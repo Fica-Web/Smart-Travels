@@ -20,7 +20,7 @@ const AdminSidebar = () => {
 
   return (
     <aside
-      className={`fixed top-[73px] left-0 h-[calc(100vh-60px)] flex flex-col ${isCollapsed ? 'w-25' : 'w-64'} bg-white border border-gray-300 transition-all duration-300 z-50`}
+    className={`fixed top-[75px] left-0 h-[calc(100vh-70px)] flex flex-col ${isCollapsed ? 'w-25' : 'w-64'} bg-white border-r border-gray-300 transition-all duration-300 z-50`}
     >
       <div className="flex flex-col flex-1 overflow-y-auto">
         <div className="p-6">

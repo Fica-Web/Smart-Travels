@@ -12,7 +12,7 @@ const UserSignupForm = () => {
     const [validatePassword, setValidatePassword] = useState(false);
     const [passwordError, setPasswordError] = useState('');
     const [formErrors, setFormErrors] = useState({});
-    const [error, setError] = useState(null);
+    // const [error, setError] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -34,7 +34,7 @@ const UserSignupForm = () => {
         }
 
         setFormErrors({});
-        setError(null);
+        
     }
 
 
