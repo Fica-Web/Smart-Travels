@@ -10,7 +10,7 @@ const Hero = () => {
                 <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-10 w-full md:w-4/5 mt-12 text-left">
 
                     {/* Left (Heading) */}
-                    <div className="flex-1">
+                    <div className="flex-1 font-coastal-clean">
                         <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight text-gray-900">
                             Your Next <br /> Adventure Awaits
                         </h1>
