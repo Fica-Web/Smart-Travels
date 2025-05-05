@@ -7,7 +7,7 @@ import UserLogoutButton from "./UserLogoutButton";
 
 const Header = () => {
   return (
-    <header className="absolute bg-blue-300 top-6 left-1/2 transform -translate-x-1/2 w-[96%] max-w-8xl flex justify-between items-center backdrop-blur-md px-1">
+    <header className="absolute top-6 left-1/2 transform -translate-x-1/2 w-[96%] flex justify-between items-center px-1 z-10">
       {/* Logo */}
       <div className="text-2xl font-bold whitespace-nowrap">
         <img src={logo} alt="" className="w-15 h-15" />
