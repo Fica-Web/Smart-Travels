@@ -1,6 +1,6 @@
-// src/pages/admin/AdminBlogDashboard.jsx
 import React, { useEffect, useState } from 'react';
 import { getAllBlogs } from '../../services/api/blogsApi';
+import blogsInstance from '../../services/axios_instances/blogsInstance';
 import AdminBlogForm from '../shared/AdminBlogForm';
 
 const AdminBlogDashboard = () => {
@@ -9,13 +9,18 @@ const AdminBlogDashboard = () => {
   const [showForm, setShowForm] = useState(false);
 
   const loadBlogs = async () => {
+    console.log('Axios baseURL:', blogsInstance.defaults.baseURL);
+
     try {
       const res = await getAllBlogs();
-      setBlogs(res.data);
-      console.log('Blogs loaded successfully:', res.data); // ✅ Success log
+      console.log('Blogs loaded successfully:', res.data);
+
+      // ✅ Ensure blogs is always an array to avoid .map crash
+      const blogData = Array.isArray(res.data) ? res.data : res.data.blogs || [];
+      setBlogs(blogData);
     } catch (err) {
       console.error('Error fetching blogs:', err);
-     
+      setBlogs([]); // Prevent .map crash
     }
   };
 
@@ -36,8 +41,7 @@ const AdminBlogDashboard = () => {
   return (
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-4">Admin Blog Dashboard</h1>
-      
-      {/* Add Blog button and "All Blogs" header on the same line */}
+
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-semibold">All Blogs</h2>
         <button

@@ -50,78 +50,82 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="max-w-3xl mx-auto bg-white shadow-md rounded-xl p-6 md:p-8 space-y-6 border border-gray-200"
-    >
-      <h2 className="text-2xl font-semibold text-gray-800">
+    <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl p-8 mt-12">
+      <h2 className="text-3xl font-bold text-gray-800 mb-8">
         {selectedBlog ? 'Edit Blog' : 'Create New Blog'}
       </h2>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
-        <input
-          type="text"
-          className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          placeholder="Enter blog title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-      </div>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Blog Title */}
+        <div>
+          <label className="block text-gray-700 text-sm font-medium mb-1">Title</label>
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Enter blog title"
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 mt-1 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+            required
+          />
+        </div>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Content</label>
-        <textarea
-          className="w-full border border-gray-300 rounded-lg p-3 h-40 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-          placeholder="Enter blog content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          required
-        />
-      </div>
+        {/* Blog Content */}
+        <div>
+          <label className="block text-gray-700 text-sm font-medium mb-1">Content</label>
+          <textarea
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            rows="6"
+            placeholder="Write the blog content..."
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 mt-1 text-gray-800 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+            required
+          ></textarea>
+        </div>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">Cover Image</label>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={(e) => setCoverImage(e.target.files[0])}
-          className="block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4
-            file:rounded-full file:border-0
-            file:text-sm file:font-semibold
-            file:bg-blue-50 file:text-blue-700
-            hover:file:bg-blue-100"
-        />
-      </div>
+        {/* Cover Image */}
+        <div>
+          <label className="block text-gray-700 text-sm font-medium mb-2">Cover Image</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setCoverImage(e.target.files[0])}
+            className="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4
+              file:rounded-md file:border-0
+              file:text-sm file:font-medium
+              file:bg-blue-100 file:text-blue-700
+              hover:file:bg-blue-200 transition"
+          />
+        </div>
 
-      <div className="flex flex-wrap gap-3 pt-2">
-        <button
-          type="submit"
-          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-lg transition"
-        >
-          {selectedBlog ? 'Update' : 'Create'}
-        </button>
+        {/* Action Buttons */}
+        <div className="flex flex-wrap gap-4 pt-4">
+          <button
+            type="submit"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2.5 rounded-lg shadow-md transition"
+          >
+            {selectedBlog ? 'Update Blog' : 'Create Blog'}
+          </button>
 
-        {selectedBlog && (
+          {selectedBlog && (
+            <button
+              type="button"
+              onClick={handleDelete}
+              className="bg-red-600 hover:bg-red-700 text-white font-medium px-6 py-2.5 rounded-lg shadow-md transition"
+            >
+              Delete Blog
+            </button>
+          )}
+
           <button
             type="button"
-            onClick={handleDelete}
-            className="bg-red-600 hover:bg-red-700 text-white font-semibold px-5 py-2 rounded-lg transition"
+            onClick={onCancel}
+            className="bg-gray-500 hover:bg-gray-600 text-white font-medium px-6 py-2.5 rounded-lg shadow-md transition"
           >
-            Delete
+            Cancel
           </button>
-        )}
-
-        <button
-          type="button"
-          onClick={onCancel}
-          className="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-5 py-2 rounded-lg transition"
-        >
-          Cancel
-        </button>
-      </div>
-    </form>
+        </div>
+      </form>
+    </div>
   );
 };
 

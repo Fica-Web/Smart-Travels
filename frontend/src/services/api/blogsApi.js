@@ -3,19 +3,17 @@ import blogsInstance from '../axios_instances/blogsInstance';
 // Fetch all blogs
 const getAllBlogs = async () => {
   try {
-    const response = await blogsInstance.get('/api/admin/blog/');
-    return response.data;
+    const response = await blogsInstance.get('/'); // ← FIXED
+    return response;
   } catch (error) {
     console.log('Error fetching blogs:', error.response?.data || error.message);
     throw error;
   }
 };
 
-
-// Create a blog
 const createBlog = async (data) => {
   try {
-    const response = await blogsInstance.post('/api/admin/blog/', data);
+    const response = await blogsInstance.post('/', data); // ← FIXED
     return response.data;
   } catch (error) {
     console.log('Error creating blog:', error.response?.data || error.message);
@@ -23,7 +21,6 @@ const createBlog = async (data) => {
   }
 };
 
-// Update a blog by ID
 const updateBlog = async (id, data) => {
   try {
     const response = await blogsInstance.put(`/${id}`, data);
@@ -34,7 +31,6 @@ const updateBlog = async (id, data) => {
   }
 };
 
-// Delete a blog by ID
 const deleteBlog = async (id) => {
   try {
     const response = await blogsInstance.delete(`/${id}`);
