@@ -4,12 +4,10 @@ dotenv.config(); // Load environment variables from .env file
 
 // Configure Nodemailer Transporter
 const transporter = nodemailer.createTransport({
-    host: 'smtp.zoho.com',
-    port: 587,
-    secure: false, // true for port 465, false for 587
+    service: 'gmail',
     auth: {
-        user: process.env.EMAIL_USER, // Your email address
-        pass: process.env.EMAIL_PASS, // Your email password or app password
+        user: process.env.EMAIL_USER, // Your Gmail address
+        pass: process.env.EMAIL_PASS, // App password (NOT your regular password)
     },
 });
 
@@ -23,7 +21,6 @@ export const sendEmail = async (name, email, message) => {
             text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
         };
 
-        console.log("Sending email with options:", mailOptions);
         await transporter.sendMail(mailOptions);
         return { success: true, message: "Message sent successfully!" };
     } catch (error) {
