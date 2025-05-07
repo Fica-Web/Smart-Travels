@@ -11,4 +11,7 @@
 @theme {
     /* font-family */
     --font-coastal-clean: CoastalClean, sans-serif;
+
+    /* Colors */
+    --color-primary-blue: #1E3A8A;
 }
