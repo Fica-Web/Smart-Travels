@@ -1,28 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import AdminNavbar from '../components/shared/AdminNavbar';
 import AdminSidebar from '../components/shared/AdminSidebar';
 
 const AdminLayout = () => {
-    return (
-        <div className="flex flex-col h-screen">
-            {/* Top Navbar */}
-            <AdminNavbar />
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
-            {/* Main layout: sidebar + content */}
-            <div className="flex flex-1 overflow-hidden">
-                {/* Sidebar with fixed width */}
-                <div className="w-64 bg-gray-800 text-white">
-                    <AdminSidebar />
-                </div>
+  return (
+    <div className="flex flex-col h-screen">
+      <AdminNavbar />
 
-                {/* Main content area */}
-                <main className="flex-1 bg-gray-100 p-4 overflow-auto">
-                    <Outlet />
-                </main>
-            </div>
-        </div>
-    );
+      <div className="flex flex-1 overflow-hidden">
+        {/* Sidebar handles its own width */}
+        <AdminSidebar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
+
+        {/* Main content shifts based on sidebar state */}
+        <main
+          className={`flex-1 p-4 overflow-auto transition-all duration-300 ${
+            isCollapsed ? 'ml-16' : 'ml-64'
+          }`}
+        >
+          <Outlet />
+        </main>
+      </div>
+    </div>
+  );
 };
 
 export default AdminLayout;
