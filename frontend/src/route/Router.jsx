@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import HomeLayout from '../layouts/HomeLayout';
 import AdminLayout from '../layouts/AdminLayout';
+import { AuthProvider } from '../contexts/AuthContext';
 import Loading from '../components/reusable/Loading';
 import UserAuth from '../services/auth/UserAuth';
 import GuestGuard from '../services/auth/GuestGuard';
@@ -14,7 +15,7 @@ const HomePage = lazy(() => import('../pages/user/HomePage'));
 const LoginPage = lazy(() => import('../pages/admin/LoginPage'));
 const UserLoginPage = lazy(() => import('../pages/user/UserLoginPage'));
 const SignUpPage = lazy(() => import('../pages/user/SignUpPage'));
-const ForgetPasswordPage = lazy(() => import('../pages/user/ForgetPasswordPage'));
+const ForgotPasswordPage = lazy(() => import('../pages/user/ForgotPasswordPage'));
 const UserServicePage = lazy(() => import('../pages/user/ServicePage'));
 const ResetPassword = lazy(() => import('../components/shared/ResetPassword'));
 const UserProfilePage = lazy(() => import('../pages/user/UserProfilePage'));
@@ -38,7 +39,11 @@ const withSuspense = (Component) => (
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <HomeLayout />,
+    element: (
+      <AuthProvider>
+        <HomeLayout />
+      </AuthProvider>
+    ),
     children: [
       {
         index: true,
@@ -61,22 +66,26 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: (
-      <GuestGuard>
-        {withSuspense(UserLoginPage)}
-      </GuestGuard>
+      <AuthProvider>
+        <GuestGuard>
+          {withSuspense(UserLoginPage)}
+        </GuestGuard>
+      </AuthProvider>
     ),
   },
   {
     path: '/signup',
     element: (
-      <GuestGuard>
-        {withSuspense(SignUpPage)}
-      </GuestGuard>
+      <AuthProvider>
+        <GuestGuard>
+          {withSuspense(SignUpPage)}
+        </GuestGuard>
+      </AuthProvider>
     ),
   },
   {
     path: '/forgot-password',
-    element: withSuspense(ForgetPasswordPage),
+    element: withSuspense(ForgotPasswordPage),
   },
   {
     path: '/reset-password',

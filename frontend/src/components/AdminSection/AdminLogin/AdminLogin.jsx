@@ -3,8 +3,8 @@ import { InputText } from "primereact/inputtext";
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 // import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import PasswordInput from '../reusable/PasswordInput';
-import { adminLoginApi } from '../../services/api/adminApi'; // Adjust path as needed
+import PasswordInput from '../../reusable/PasswordInput';
+import { adminLoginApi } from '../../../services/api/adminApi'; // Adjust path as needed
 
 export default function AdminLogin() {
     const [username, setUsername] = useState('');

@@ -1,8 +1,8 @@
 // src/components/pages/AdminBlogEditor.jsx
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getBlogById } from '../../services/api/blogsApi';
-import AdminBlogForm from '../../components/shared/AdminBlogForm';
+import { getBlogById } from '../../services/api/blogsApi'; // Adjust the import path as necessary
+import AdminBlogForm from '../../components/AdminSection/AdminBlog/AdminBlogForm'; 
 
 const AdminBlogEditor = () => {
   const { id } = useParams();
