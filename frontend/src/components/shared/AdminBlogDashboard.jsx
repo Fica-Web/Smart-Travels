@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getAllBlogs } from '../../services/api/blogsApi';
 import blogsInstance from '../../services/axios_instances/blogsInstance';
 import AdminBlogForm from '../shared/AdminBlogForm';
+import AdminHero from '../reusable/AdminHero';
 
 const AdminBlogDashboard = () => {
   const [blogs, setBlogs] = useState([]);
@@ -39,10 +40,10 @@ const AdminBlogDashboard = () => {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold mb-4">Admin Blog Dashboard</h1>
+    <div className="">
+      <AdminHero title='Blogs'  />
 
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between items-center p-6 mb-6">
         <h2 className="text-2xl font-semibold">All Blogs</h2>
         <button
           onClick={handleCreate}
