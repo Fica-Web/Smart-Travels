@@ -11,6 +11,9 @@ const getAllBlogs = async () => {
   }
 };
 
+
+
+
 const createBlog = async (data) => {
   console.log('API Key:', import.meta.env.VITE_API_KEY); // Log API key for debugging
   try {
@@ -33,10 +36,7 @@ const createBlog = async (data) => {
 };
 
 
-export const getBlogById = async (id) => {
-  return await blogsInstance.get(`/${id}`);
-};
-
+// Fetch a single blog by its ID
 
 
 
