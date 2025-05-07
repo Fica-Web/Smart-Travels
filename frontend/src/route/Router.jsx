@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import HomeLayout from '../layouts/HomeLayout';
 import AdminLayout from '../layouts/AdminLayout';
+import { AuthProvider } from '../contexts/AuthContext';
 import Loading from '../components/reusable/Loading';
 import UserAuth from '../services/auth/UserAuth';
 import GuestGuard from '../services/auth/GuestGuard';
@@ -38,7 +39,11 @@ const withSuspense = (Component) => (
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <HomeLayout />,
+    element: (
+      <AuthProvider>
+        <HomeLayout />
+      </AuthProvider>
+    ),
     children: [
       {
         index: true,

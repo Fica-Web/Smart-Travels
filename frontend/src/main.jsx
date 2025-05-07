@@ -7,9 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AuthProvider>
-      <ToastContainer />
-      <App />
-    </AuthProvider>
+    <ToastContainer />
+    <App />
   </StrictMode>,
 )
