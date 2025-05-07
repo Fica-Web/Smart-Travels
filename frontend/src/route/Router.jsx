@@ -11,7 +11,6 @@ import AdminPublicRoute from '../services/auth/AdminPublicRoute';
 
 // Lazy-loaded pages
 const HomePage = lazy(() => import('../pages/user/HomePage'));
-const AdminPage = lazy(() => import('../pages/admin/AdminPage'));
 const LoginPage = lazy(() => import('../pages/admin/LoginPage'));
 const UserLoginPage = lazy(() => import('../pages/user/UserLoginPage'));
 const SignUpPage = lazy(() => import('../pages/user/SignUpPage'));
@@ -96,13 +95,10 @@ const router = createBrowserRouter([
     element: <AdminLayout />,
     children: [
       {
+        element: <AdminAuthGuard />,
         children: [
           {
             index: true, // for "/admin"
-            element: withSuspense(AdminPage),
-          },
-          {
-            path: 'dashboard', // for "/admin/dashboard"
             element: withSuspense(AdminDashboardPage),
           },
           {
