@@ -1,2 +1,14 @@
 @import "tailwindcss";
   
+@font-face {
+    font-family: CoastalClean;
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+    src: url('./assets/fonts/Coastal-Clean.woff2') format('woff2');
+}
+
+@theme {
+    /* font-family */
+    --font-coastal-clean: CoastalClean, sans-serif;
+}
