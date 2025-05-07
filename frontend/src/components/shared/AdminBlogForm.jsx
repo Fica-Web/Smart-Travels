@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { createBlog, updateBlog, deleteBlog } from '../../services/api/blogsApi';
 import CoverImageUpload from '../reusable/CoverImageUpload';
 
@@ -14,18 +15,26 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
     contentSections: [{ contentTitle: '', contentDescription: '' }]
   });
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (selectedBlog) {
-      setFormData({
+    if (selectedBlog && typeof selectedBlog === 'object') {
+      console.log('Populating form with:', selectedBlog);
+      setFormData(prevData => ({
+        ...prevData,
         title: selectedBlog.title || '',
         coverImage: selectedBlog.coverImage || null,
         coverImagePreviewUrl: selectedBlog.coverImage || null,
         author: selectedBlog.author || '',
         category: selectedBlog.category || '',
         description: selectedBlog.description || '',
-        contentSections: selectedBlog.contentSections || [{ contentTitle: '', contentDescription: '' }]
-      });
+        contentSections: Array.isArray(selectedBlog.content)
+          ? selectedBlog.content.map(section => ({
+              contentTitle: section.contentTitle || '',
+              contentDescription: section.contentDescription || ''
+            }))
+          : [{ contentTitle: '', contentDescription: '' }]
+      }));
     } else {
       setFormData({
         title: '',
@@ -61,7 +70,6 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Form validation (same as before)
     const newErrors = {};
 
     if (!formData.title.trim()) newErrors.title = 'Title is required';
@@ -71,46 +79,43 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
     if (!formData.coverImage) newErrors.coverImage = 'Cover image is required';
 
     formData.contentSections.forEach((section, index) => {
-        if (!section.contentTitle.trim()) {
-            newErrors[`contentTitle_${index}`] = 'Content Title is required';
-        }
-        if (!section.contentDescription.trim()) {
-            newErrors[`contentDescription_${index}`] = 'Content Description is required';
-        }
+      if (!section.contentTitle.trim()) {
+        newErrors[`contentTitle_${index}`] = 'Content Title is required';
+      }
+      if (!section.contentDescription.trim()) {
+        newErrors[`contentDescription_${index}`] = 'Content Description is required';
+      }
     });
 
     setErrors(newErrors);
 
-    // If there are validation errors, return without submitting the form
     if (Object.keys(newErrors).length > 0) return;
 
-    // Log the formData before sending it to the API
     console.log("Form Data being submitted:", formData);
 
     const jsonData = {
-        title: formData.title,
-        author: formData.author,
-        category: formData.category,
-        description: formData.description,
-        content: formData.contentSections,
-        coverImage: formData.coverImage // It's a URL or File object
+      title: formData.title,
+      author: formData.author,
+      category: formData.category,
+      description: formData.description,
+      content: formData.contentSections,
+      coverImage: formData.coverImage
     };
 
     try {
-        // Send the request to the backend (either create or update based on selectedBlog)
-        if (selectedBlog) {
-            await updateBlog(selectedBlog._id, jsonData); // Pass JSON data
-        } else {
-            await createBlog(jsonData); // Pass JSON data
-        }
-        onBlogSaved();
-    } catch (err) {
-        console.error('Error saving blog:', err.response?.data?.message || err.message);
-        alert(`Error saving blog: ${err.response?.data?.message || err.message}`);
-    }
-};
+      if (selectedBlog) {
+        await updateBlog(selectedBlog._id, jsonData);
+      } else {
+        await createBlog(jsonData);
+      }
 
-  
+      onBlogSaved();
+      navigate('/admin/blog');
+    } catch (err) {
+      console.error('Error saving blog:', err.response?.data?.message || err.message);
+      alert(`Error saving blog: ${err.response?.data?.message || err.message}`);
+    }
+  };
 
   const handleContentChange = (index, field, value) => {
     const updatedContent = [...formData.contentSections];
@@ -130,7 +135,6 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
     setFormData(prevData => ({ ...prevData, contentSections: updatedContent }));
   };
 
-
   const handleDelete = async () => {
     if (selectedBlog) {
       const confirmDelete = window.confirm('Are you sure you want to delete this blog?');
@@ -138,7 +142,7 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
         try {
           await deleteBlog(selectedBlog._id);
           alert('Blog deleted successfully');
-          onBlogSaved(); // Trigger the parent callback to update the list
+          onBlogSaved();
         } catch (err) {
           console.error('Error deleting blog:', err.response?.data?.message || err.message);
           alert(`Error deleting blog: ${err.response?.data?.message || err.message}`);
@@ -154,7 +158,6 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-5">
-        {/* Blog Title */}
         <div>
           <label className="block text-gray-700 font-medium">Title</label>
           <input
@@ -167,7 +170,6 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
           {errors.title && <p className="text-red-500 text-sm">{errors.title}</p>}
         </div>
 
-        {/* Author */}
         <div>
           <label className="block text-gray-700 font-medium">Author</label>
           <input
@@ -179,7 +181,6 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
           {errors.author && <p className="text-red-500 text-sm">{errors.author}</p>}
         </div>
 
-        {/* Category */}
         <div>
           <label className="block text-gray-700 font-medium">Category</label>
           <input
@@ -191,7 +192,6 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
           {errors.category && <p className="text-red-500 text-sm">{errors.category}</p>}
         </div>
 
-        {/* Short Description */}
         <div>
           <label className="block text-gray-700 font-medium">Short Description</label>
           <textarea
@@ -203,14 +203,12 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
           {errors.description && <p className="text-red-500 text-sm">{errors.description}</p>}
         </div>
 
-        {/* Cover Image */}
         <CoverImageUpload
           onImageChange={(file) => setFormData({ ...formData, coverImage: file })}
           coverImagePreview={formData.coverImagePreviewUrl}
           error={errors.coverImage}
         />
 
-        {/* Content Sections */}
         <div className="space-y-4">
           <h3 className="text-lg font-semibold">Content Sections</h3>
           {formData.contentSections.map((section, index) => (
@@ -223,7 +221,9 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
                   onChange={(e) => handleContentChange(index, 'contentTitle', e.target.value)}
                   className="w-full border border-gray-500 p-2 rounded-md mt-1"
                 />
-                {errors[`contentTitle_${index}`] && <p className="text-red-500 text-sm">{errors[`contentTitle_${index}`]}</p>}
+                {errors[`contentTitle_${index}`] && (
+                  <p className="text-red-500 text-sm">{errors[`contentTitle_${index}`]}</p>
+                )}
               </div>
 
               <div>
@@ -234,7 +234,9 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
                   rows="3"
                   className="w-full border border-gray-500 p-2 rounded-md mt-1"
                 />
-                {errors[`contentDescription_${index}`] && <p className="text-red-500 text-sm">{errors[`contentDescription_${index}`]}</p>}
+                {errors[`contentDescription_${index}`] && (
+                  <p className="text-red-500 text-sm">{errors[`contentDescription_${index}`]}</p>
+                )}
               </div>
 
               {index > 0 && (
@@ -257,8 +259,6 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
           </button>
         </div>
 
-
-        {/* Action Buttons */}
         <div className="flex gap-4 pt-4">
           <button
             type="submit"

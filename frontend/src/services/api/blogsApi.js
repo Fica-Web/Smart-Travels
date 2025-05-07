@@ -33,6 +33,11 @@ const createBlog = async (data) => {
 };
 
 
+export const getBlogById = async (id) => {
+  return await blogsInstance.get(`/${id}`);
+};
+
+
 
 
 const updateBlog = async (id, data) => {
