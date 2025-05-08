@@ -216,10 +216,32 @@ const forgotPassword = async (req, res) => {
         const resetUrl = `${process.env.CLIENT_URL}/reset-password?token=${token}&email=${email}`;
         await sendEmail({
             to: user.email,
-            subject: 'Password Reset',
-            html: `Reset your password using this link: ${resetUrl}`,
+            subject: 'Reset Your Password - SmartTravels',
+            html: `
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; background: #f4f4f4; padding: 40px; border-radius: 8px;">
+                    <div style="text-align: center;">
+                        <img src="https://yourdomain.com/logo.png" alt="SmartTravels Logo" style="max-width: 150px; margin-bottom: 20px;" />
+                    </div>
+                    <h2 style="color: #333;">Reset Your Password</h2>
+                    <p style="color: #555;">Hi ${user.name || 'there'},</p>
+                    <p style="color: #555;">
+                        We received a request to reset your password. Click the button below to choose a new one. This link will expire in 15 minutes.
+                    </p>
+                    <div style="text-align: center; margin: 30px 0;">
+                        <a href="${resetUrl}" style="background-color: #2e6bbf; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold;">
+                            Reset Password
+                        </a>
+                    </div>
+                    <p style="color: #999; font-size: 12px; text-align: center;">
+                        If you didn’t request this, you can safely ignore this email.
+                    </p>
+                    <hr style="margin: 30px 0;" />
+                    <p style="color: #aaa; font-size: 12px; text-align: center;">
+                        &copy; ${new Date().getFullYear()} SmartTravels. All rights reserved.
+                    </p>
+                </div>
+            `,
         });
-        console.log(`Reset password function loaded, ${process.env.CLIENT_URL}`);
 
         res.status(200).json({ message: 'Reset link sent to email' });
     } catch (error) {

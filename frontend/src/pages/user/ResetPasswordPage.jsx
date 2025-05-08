@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 import { resetPasswordApi } from "../../services/api/userApi";
 import PasswordInput from "../../components/reusable/PasswordInput";
 
@@ -15,7 +16,6 @@ const ResetPasswordPage = () => {
     const [passwordError, setPasswordError] = useState("");
     const [confirmPasswordError, setConfirmPasswordError] = useState("");
     const [formError, setFormError] = useState("");
-    const [message, setMessage] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const validate = true;
@@ -23,7 +23,6 @@ const ResetPasswordPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setFormError("");
-        setMessage("");
 
         if (!password || !confirmPassword) {
             return setFormError("All fields are required.");
@@ -42,8 +41,8 @@ const ResetPasswordPage = () => {
             const newPassword = password.trim();
             const response = await resetPasswordApi({ token, email, newPassword });
             if (response.success) {
-                setMessage("Password reset successful. Redirecting to login...");
-                setTimeout(() => navigate("/login"), 3000);
+                toast.success("Password reset successful.");
+                navigate("/login");
             } else {
                 setFormError(response.error || "Reset failed. Try again.");
             }
@@ -81,7 +80,6 @@ const ResetPasswordPage = () => {
                     />
 
                     {formError && <div className="text-red-500 text-sm text-center">{formError}</div>}
-                    {message && <div className="text-green-600 text-sm text-center">{message}</div>}
 
                     <button
                         type="submit"
