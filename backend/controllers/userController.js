@@ -189,6 +189,43 @@ const submitMessage = async (req, res) => {
     }
 };
 
+const forgotPassword = async (req, res) => {
+    try {
+        const { email } = req.body;
+
+        if (!email) {
+            return res.status(400).json({ message: "Email is required" });
+        }
+
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        const token = jwt.sign({ id: user._id }, process.env.RESET_PASSWORD_SECRET, { expiresIn: "15m" });
+
+        const resetLink = `${process.env.FRONTEND_URL}/reset-password/${token}`;
+
+        const emailResponse = await sendEmail({
+            to: user.email,
+            subject: 'Password Reset Link',
+            html: `
+              <p>You requested a password reset</p>
+              <p><a href="${resetLink}">Click here</a> to reset your password. This link will expire in 15 minutes.</p>
+            `
+        });
+
+        if (emailResponse.success) {
+            res.status(200).json({ message: "Password reset link sent to your email" });
+        } else {
+            res.status(500).json({ message: "Failed to send email" });
+        }
+    } catch (error) {
+        console.error("forgot password error", error);
+        res.status(500).json({ message: "Internal server error", error: error.message });
+    }
+}
+
 const getUserProfile = async (req, res) => {
     try {
         const userId = req.user.id; // Assuming you have middleware to set req.user
@@ -211,5 +248,6 @@ export {
     refreshAccessToken,
     logoutUser,
     submitMessage,
+    forgotPassword,
     getUserProfile,
 };
