@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createBlog, updateBlog, deleteBlog } from '../../../services/api/blogsApi';
-import CoverImageUpload from '../../reusable/CoverImageUpload';
+import { createBlog, updateBlog, deleteBlog } from '../../services/api/blogsApi';
+import CoverImageUpload from '../reusable/CoverImageUpload';
 
 const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
   const [formData, setFormData] = useState({
     title: '',
+    content: '',
     coverImage: null,
     coverImagePreviewUrl: null,
     author: '',
@@ -68,15 +69,15 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const newErrors = {};
-  
+
     if (!formData.title.trim()) newErrors.title = 'Title is required';
     if (!formData.author.trim()) newErrors.author = 'Author is required';
     if (!formData.category.trim()) newErrors.category = 'Category is required';
     if (!formData.description.trim()) newErrors.description = 'Short description is required';
     if (!formData.coverImage) newErrors.coverImage = 'Cover image is required';
-  
+
     formData.contentSections.forEach((section, index) => {
       if (!section.contentTitle.trim()) {
         newErrors[`contentTitle_${index}`] = 'Content Title is required';
@@ -85,41 +86,36 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
         newErrors[`contentDescription_${index}`] = 'Content Description is required';
       }
     });
-  
+
     setErrors(newErrors);
-  
+
     if (Object.keys(newErrors).length > 0) return;
-  
+
     console.log("Form Data being submitted:", formData);
-  
-    // Ensure that content is passed as an array of objects
+
     const jsonData = {
       title: formData.title,
       author: formData.author,
       category: formData.category,
       description: formData.description,
-      content: formData.contentSections, // Make sure content is correctly assigned as an array
+      content: formData.contentSections,
       coverImage: formData.coverImage
     };
-  
+
     try {
       if (selectedBlog) {
-        await updateBlog(selectedBlog._id, jsonData);  // Update blog if selectedBlog exists
+        await updateBlog(selectedBlog._id, jsonData);
       } else {
-        await createBlog(jsonData);  // Create new blog if no selectedBlog
+        await createBlog(jsonData);
       }
-  
-      onBlogSaved();  // Notify the parent that the blog is saved
-      navigate('/admin/blog');  // Navigate to blog listing
+
+      onBlogSaved();
+      navigate('/admin/blog');
     } catch (err) {
       console.error('Error saving blog:', err.response?.data?.message || err.message);
       alert(`Error saving blog: ${err.response?.data?.message || err.message}`);
     }
   };
-  
-  
-  
-  
 
   const handleContentChange = (index, field, value) => {
     const updatedContent = [...formData.contentSections];

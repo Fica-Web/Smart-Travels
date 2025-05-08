@@ -1,4 +1,3 @@
-// src/components/pages/AdminBlogEditor.jsx
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getBlogById } from '../../services/api/blogsApi'; // Adjust the import path as necessary
@@ -13,7 +12,8 @@ const AdminBlogEditor = () => {
     const fetchBlog = async () => {
       try {
         const res = await getBlogById(id);
-        setBlog(res.data.blog);
+        console.log('Fetched blog:', res); // ✅ for debugging
+        setBlog(res.data?.blog || res.blog || res); // ✅ ensure correct structure
       } catch (err) {
         console.error('Error loading blog:', err);
       }

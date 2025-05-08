@@ -39,7 +39,21 @@ const createBlog = async (data) => {
 
 
 
+
 // Fetch a single blog by its ID
+// Fetch a single blog by its ID
+const getBlogById = async (id) => {
+  try {
+    const response = await blogsInstance.get(`/${id}`);
+    console.log("Fetched blog data:", response.data);  // Log the full response for debugging
+    return response.data; // Make sure to return response.data directly
+  } catch (error) {
+    console.log(`Error fetching blog ${id}:`, error.response?.data || error.message);
+    throw error;
+  }
+};
+
+
 
 
 
@@ -66,6 +80,7 @@ const deleteBlog = async (id) => {
 export {
   getAllBlogs,
   createBlog,
+  getBlogById,
   updateBlog,
   deleteBlog,
 };
