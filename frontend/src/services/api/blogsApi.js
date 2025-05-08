@@ -11,13 +11,18 @@ const getAllBlogs = async () => {
   }
 };
 
+
+
+
 const createBlog = async (data) => {
-  console.log('API Key:', import.meta.env.VITE_API_KEY); // Log API key for debugging
+  console.log('API Key:', import.meta.env.VITE_API_KEY);
+
   try {
     const response = await blogsInstance.post('/', data, {
       headers: {
-        'Content-Type': 'multipart/form-data', // Ensure the Content-Type is set for file uploads
+        'Content-Type': 'multipart/form-data',
       },
+      withCredentials: true, // <-- Add this line to send cookies
     });
 
     if (response.data) {
@@ -33,20 +38,33 @@ const createBlog = async (data) => {
 };
 
 
-export const getBlogById = async (id) => {
-  return await blogsInstance.get(`/${id}`);
+
+
+// Fetch a single blog by its ID
+// Fetch a single blog by its ID
+const getBlogById = async (id) => {
+  try {
+    const response = await blogsInstance.get(`/${id}`);
+    console.log("Fetched blog data:", response.data);  // Log the full response for debugging
+    return response.data; // Make sure to return response.data directly
+  } catch (error) {
+    console.log(`Error fetching blog ${id}:`, error.response?.data || error.message);
+    throw error;
+  }
 };
 
 
 
 
+
+// Function to update a blog
 const updateBlog = async (id, data) => {
   try {
     const response = await blogsInstance.put(`/${id}`, data);
     return response.data;
   } catch (error) {
     console.log(`Error updating blog ${id}:`, error.response?.data || error.message);
-    throw error;
+    throw error;  // Re-throw the error after logging
   }
 };
 
@@ -63,6 +81,7 @@ const deleteBlog = async (id) => {
 export {
   getAllBlogs,
   createBlog,
+  getBlogById,
   updateBlog,
   deleteBlog,
 };

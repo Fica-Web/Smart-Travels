@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createBlog, updateBlog } from '../../../services/api/blogsApi';
-import CoverImageUpload from '../../reusable/CoverImageUpload';
+import { createBlog, updateBlog, deleteBlog } from '../../services/api/blogsApi';
+import CoverImageUpload from '../reusable/CoverImageUpload';
 
 const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
   const [formData, setFormData] = useState({
     title: '',
+    content: '',
     coverImage: null,
     coverImagePreviewUrl: null,
     author: '',
@@ -29,9 +30,9 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
         description: selectedBlog.description || '',
         contentSections: Array.isArray(selectedBlog.content)
           ? selectedBlog.content.map(section => ({
-            contentTitle: section.contentTitle || '',
-            contentDescription: section.contentDescription || ''
-          }))
+              contentTitle: section.contentTitle || '',
+              contentDescription: section.contentDescription || ''
+            }))
           : [{ contentTitle: '', contentDescription: '' }]
       }));
     } else {
@@ -66,8 +67,6 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
     };
   }, [formData.coverImage]);
 
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -92,18 +91,7 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
 
     if (Object.keys(newErrors).length > 0) return;
 
-    // Process coverImage
-    let coverImageData = formData.coverImage;
-
-    if (formData.coverImage && typeof formData.coverImage !== 'string') {
-      // Convert File object to base64 string
-      coverImageData = await new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(formData.coverImage);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = (error) => reject(error);
-      });
-    }
+    console.log("Form Data being submitted:", formData);
 
     const jsonData = {
       title: formData.title,
@@ -111,7 +99,7 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
       category: formData.category,
       description: formData.description,
       content: formData.contentSections,
-      coverImage: coverImageData
+      coverImage: formData.coverImage
     };
 
     try {
@@ -124,13 +112,10 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
       onBlogSaved();
       navigate('/admin/blog');
     } catch (err) {
-      console.error('Error saving blog:', err.response?.data?.message || err);
+      console.error('Error saving blog:', err.response?.data?.message || err.message);
+      alert(`Error saving blog: ${err.response?.data?.message || err.message}`);
     }
   };
-
-
-
-
 
   const handleContentChange = (index, field, value) => {
     const updatedContent = [...formData.contentSections];
@@ -148,6 +133,22 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
   const removeContentSection = (index) => {
     const updatedContent = formData.contentSections.filter((_, idx) => idx !== index);
     setFormData(prevData => ({ ...prevData, contentSections: updatedContent }));
+  };
+
+  const handleDelete = async () => {
+    if (selectedBlog) {
+      const confirmDelete = window.confirm('Are you sure you want to delete this blog?');
+      if (confirmDelete) {
+        try {
+          await deleteBlog(selectedBlog._id);
+          alert('Blog deleted successfully');
+          onBlogSaved();
+        } catch (err) {
+          console.error('Error deleting blog:', err.response?.data?.message || err.message);
+          alert(`Error deleting blog: ${err.response?.data?.message || err.message}`);
+        }
+      }
+    }
   };
 
   return (
@@ -258,7 +259,7 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
           </button>
         </div>
 
-        <div className="flex justify-between pt-4">
+        <div className="flex gap-4 pt-4">
           <button
             type="submit"
             className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md transition"
@@ -266,17 +267,24 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
             {selectedBlog ? 'Update Blog' : 'Submit Blog'}
           </button>
 
-          <div className="flex gap-4">
+          {selectedBlog && (
             <button
               type="button"
-              onClick={onCancel}
-              className="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg shadow-md transition"
+              onClick={handleDelete}
+              className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-lg shadow-md transition"
             >
-              Cancel
+              Delete Blog
             </button>
-          </div>
-        </div>
+          )}
 
+          <button
+            type="button"
+            onClick={onCancel}
+            className="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg shadow-md transition"
+          >
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );

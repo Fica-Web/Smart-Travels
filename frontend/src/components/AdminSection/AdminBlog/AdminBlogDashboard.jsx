@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { getAllBlogs } from '../../../services/api/blogsApi';
+import { getAllBlogs, deleteBlog } from '../../../services/api/blogsApi';
 import blogsInstance from '../../../services/axios_instances/blogsInstance';
 import AdminHero from '../../reusable/AdminHero';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const AdminBlogDashboard = () => {
   const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(false); // State for loading
   const navigate = useNavigate();
 
   const loadBlogs = async () => {
@@ -31,6 +33,22 @@ const AdminBlogDashboard = () => {
 
   const handleCreate = () => {
     navigate('/admin/blog/new');
+  };
+
+  const handleDelete = async (blogId) => {
+    if (window.confirm('Are you sure you want to delete this blog?')) {
+      setLoading(true); // Set loading to true before deleting
+      try {
+        await deleteBlog(blogId);
+        setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog._id !== blogId));
+        toast.success('Blog deleted successfully');
+      } catch (err) {
+        console.error('Error deleting blog:', err);
+        toast.error('Failed to delete the blog');
+      } finally {
+        setLoading(false); // Set loading to false after the operation completes
+      }
+    }
   };
 
   return (
@@ -81,12 +99,21 @@ const AdminBlogDashboard = () => {
                   {blog.description}
                 </p>
 
-                <button
-                  onClick={() => handleEdit(blog)}
-                  className="mt-auto bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition"
-                >
-                  Edit Blog
-                </button>
+                <div className="flex justify-between gap-2 mt-auto">
+                  <button
+                    onClick={() => handleEdit(blog)}
+                    className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition"
+                  >
+                    Edit Blog
+                  </button>
+                  <button
+                    onClick={() => handleDelete(blog._id)}
+                    disabled={loading} // Disable button while loading
+                    className={`bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  >
+                    {loading ? 'Deleting...' : 'Delete Blog'} {/* Show loading text */}
+                  </button>
+                </div>
               </div>
             </div>
           ))}

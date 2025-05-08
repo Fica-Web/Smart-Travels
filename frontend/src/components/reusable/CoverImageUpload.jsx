@@ -79,19 +79,19 @@ const CoverImageUpload = ({
       />
 
       {preview && (
-        <div className="relative mt-3 inline-block max-w-xs rounded-lg shadow-lg overflow-hidden">
+        <div className="relative mt-3 inline-block w-48 h-32 rounded-lg shadow-md overflow-hidden">
           <img
             src={preview}
             alt="Preview"
-            className="object-cover w-full h-48 rounded-lg"
+            className="object-cover w-full h-full rounded-lg"
           />
           <button
             type="button"
             onClick={handleRemoveImage}
-            className="absolute top-2 right-2 bg-white text-gray-700 hover:bg-gray-100 rounded-full p-1 shadow-md"
+            className="absolute top-1 right-1 bg-white text-gray-700 hover:bg-gray-100 rounded-full p-1 shadow"
             aria-label="Remove image"
           >
-            X
+            &times;
           </button>
         </div>
       )}
@@ -100,38 +100,41 @@ const CoverImageUpload = ({
 
       {/* Crop Modal */}
       <Modal
-        isOpen={showCropModal}
-        onRequestClose={() => setShowCropModal(false)}
-        ariaHideApp={false}
-        className="fixed inset-0 bg-white z-50 flex justify-center items-center p-4 overflow-auto max-w-3xl mx-auto"
-        overlayClassName="fixed inset-0 bg-black bg-opacity-50 z-50"
+  isOpen={showCropModal}
+  onRequestClose={() => setShowCropModal(false)}
+  ariaHideApp={false}
+  className="fixed inset-0 z-50 flex items-center justify-center"
+  overlayClassName="fixed inset-0 bg-transparent z-40"
+>
+  <div className="bg-gradient-to-br from-white to-gray-100 rounded-lg shadow-lg p-6 w-[90vw] max-w-4xl max-h-[90vh] overflow-auto">
+    <div className="relative w-full h-96 bg-gray-100 rounded-lg overflow-hidden">
+      <Cropper
+        image={imageSrc}
+        crop={crop}
+        zoom={zoom}
+        aspect={16 / 9}
+        onCropChange={setCrop}
+        onZoomChange={handleZoomChange}
+        onCropComplete={handleCropComplete}
+      />
+    </div>
+    <div className="flex justify-end mt-4 space-x-2">
+      <button
+        onClick={() => setShowCropModal(false)}
+        className="bg-gray-500 text-white px-4 py-2 rounded-md focus:outline-none hover:bg-gray-400"
       >
-        <div className="relative w-full h-[400px] bg-gray-100 rounded-lg overflow-hidden">
-          <Cropper
-            image={imageSrc}
-            crop={crop}
-            zoom={zoom}
-            aspect={16 / 9}
-            onCropChange={setCrop}
-            onZoomChange={handleZoomChange} // Use the updated zoom handler
-            onCropComplete={handleCropComplete}
-          />
-        </div>
-        <div className="flex justify-between mt-4 space-x-4">
-          <button
-            onClick={() => setShowCropModal(false)}
-            className="bg-gray-500 text-white px-4 py-2 rounded-md focus:outline-none hover:bg-gray-400"
-          >
-            Cancel
-          </button>
-          <button
-            onClick={handleCropConfirm}
-            className="bg-blue-600 text-white px-4 py-2 rounded-md focus:outline-none hover:bg-blue-500"
-          >
-            {loading ? 'Cropping...' : 'Crop & Save'} {/* Show loading text */}
-          </button>
-        </div>
-      </Modal>
+        Cancel
+      </button>
+      <button
+        onClick={handleCropConfirm}
+        className="bg-blue-600 text-white px-4 py-2 rounded-md focus:outline-none hover:bg-blue-500"
+      >
+        {loading ? 'Cropping...' : 'Crop & Save'}
+      </button>
+    </div>
+  </div>
+</Modal>
+
     </div>
   );
 };
