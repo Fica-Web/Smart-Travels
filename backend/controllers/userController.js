@@ -231,7 +231,7 @@ const forgotPassword = async (req, res) => {
 const resetPassword = async (req, res) => {
     try {
         const { token, email, newPassword } = req.body;
-        const user = await Admin.findOne({ email });
+        const user = await User.findOne({ email });
 
         if (!user) return res.status(404).json({ message: 'Invalid request' });
 

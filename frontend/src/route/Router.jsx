@@ -17,7 +17,7 @@ const UserLoginPage = lazy(() => import('../pages/user/UserLoginPage'));
 const SignUpPage = lazy(() => import('../pages/user/SignUpPage'));
 const ForgotPasswordPage = lazy(() => import('../pages/user/ForgotPasswordPage'));
 const UserServicePage = lazy(() => import('../pages/user/ServicePage'));
-const ResetPassword = lazy(() => import('../components/shared/ResetPassword'));
+const resetPasswordPage = lazy(() => import('../pages/user/ResetPasswordPage'));
 const UserProfilePage = lazy(() => import('../pages/user/UserProfilePage'));
 const AdminDashboardPage = lazy(() => import('../pages/admin/AdminDashboardPage'));
 const AdminUsersPage = lazy(() => import('../pages/admin/AdminUsersPage'));
@@ -89,7 +89,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/reset-password',
-    element: withSuspense(ResetPassword),
+    element: withSuspense(resetPasswordPage),
   },
   {
     path: '/admin/login',
