@@ -1,5 +1,5 @@
-import React from 'react'
 import { useState } from 'react';
+import { forgotPasswordApi } from '../../services/api/userApi';
 
 const ForgotPasswordPage = () => {
     const [email, setEmail] = useState("");
@@ -16,19 +16,12 @@ const ForgotPasswordPage = () => {
         }
 
         // Call API to send password reset email (pseudo code)
-        const response = await fetch("/api/forgot-password", {
-            method: "POST",
-            body: JSON.stringify({ email }),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
+        const response = await forgotPasswordApi(email);
 
-        const result = await response.json();
-        if (response.ok) {
-            setMessage("Password reset instructions have been sent to your email.");
+        if (response.success) {
+            setMessage("Password reset email sent. Please check your inbox.");
         } else {
-            setMessage(result.message || "Something went wrong. Please try again.");
+            setMessage(response.error || "Failed to send reset email. Please try again.");
         }
     };
 

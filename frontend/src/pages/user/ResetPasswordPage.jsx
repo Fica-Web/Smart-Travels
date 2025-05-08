@@ -39,7 +39,8 @@ const ResetPasswordPage = () => {
 
         setIsSubmitting(true);
         try {
-            const response = await resetPasswordApi({ token, email, password });
+            const newPassword = password.trim();
+            const response = await resetPasswordApi({ token, email, newPassword });
             if (response.success) {
                 setMessage("Password reset successful. Redirecting to login...");
                 setTimeout(() => navigate("/login"), 3000);
