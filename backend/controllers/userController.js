@@ -1,4 +1,5 @@
 import bcrypt from 'bcryptjs';
+import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 import User from "../model/userSchema.js";
 import { sendEmail } from '../config/emailService.js';
@@ -199,27 +200,28 @@ const forgotPassword = async (req, res) => {
 
         const user = await User.findOne({ email });
         if (!user) {
-            return res.status(404).json({ message: "User not found" });
+            return res.status(404).json({ message: 'No account with that email' });
         }
 
-        const token = jwt.sign({ id: user._id }, process.env.RESET_PASSWORD_SECRET, { expiresIn: "15m" });
+        // Generate a token
+        const token = crypto.randomBytes(32).toString('hex');
 
-        const resetLink = `${process.env.FRONTEND_URL}/user/reset-password/${token}`;
+        // Hash and save to DB (don't save raw token)
+        const hash = crypto.createHash('sha256').update(token).digest('hex');
+        user.resetPasswordToken = hash;
+        user.resetPasswordExpires = Date.now() + 1000 * 60 * 15; // 15 min
+        await user.save();
 
-        const emailResponse = await sendEmail({
+        // Send email
+        const resetUrl = `${process.env.CLIENT_URL}/reset-password?token=${token}&email=${email}`;
+        await sendEmail({
             to: user.email,
-            subject: 'Password Reset Link',
-            html: `
-              <p>You requested a password reset</p>
-              <p><a href="${resetLink}">Click here</a> to reset your password. This link will expire in 15 minutes.</p>
-            `
+            subject: 'Password Reset',
+            html: `Reset your password using this link: ${resetUrl}`,
         });
+        console.log(`Reset password function loaded, ${process.env.CLIENT_URL}`);
 
-        if (emailResponse.success) {
-            res.status(200).json({ message: "Password reset link sent to your email" });
-        } else {
-            res.status(500).json({ message: "Failed to send email" });
-        }
+        res.status(200).json({ message: 'Reset link sent to email' });
     } catch (error) {
         console.error("forgot password error", error);
         res.status(500).json({ message: "Internal server error", error: error.message });
@@ -228,27 +230,27 @@ const forgotPassword = async (req, res) => {
 
 const resetPassword = async (req, res) => {
     try {
-        const { token, newPassword } = req.body;
+        const { token, email, newPassword } = req.body;
+        const user = await Admin.findOne({ email });
 
-        if (!token || !newPassword) {
-            return res.status(400).json({ message: "Token and new password are required" });
+        if (!user) return res.status(404).json({ message: 'Invalid request' });
+
+        const hash = crypto.createHash('sha256').update(token).digest('hex');
+
+        if (
+            user.resetPasswordToken !== hash ||
+            user.resetPasswordExpires < Date.now()
+        ) {
+            return res.status(400).json({ message: 'Token expired or invalid' });
         }
 
-        const decoded = jwt.verify(token, process.env.RESET_PASSWORD_SECRET);
-        const user = await User.findById(decoded.id);
+        user.password = await bcrypt.hash(newPassword, 10);
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpires = undefined;
 
-        if (!user) {
-            return res.status(404).json({ message: "User not found" });
-        }
-
-        // Hash new password
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(newPassword, salt);
-
-        user.password = hashedPassword;
         await user.save();
 
-        res.status(200).json({ message: "Password reset successfully" });
+        res.status(200).json({ message: 'Password has been reset' });
     } catch (error) {
         console.error("Reset password error", error);
         res.status(500).json({ message: "Internal server error", error: error.message });
