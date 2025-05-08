@@ -12,13 +12,13 @@ const transporter = nodemailer.createTransport({
 });
 
 // Function to send an email
-export const sendEmail = async (name, email, message) => {
+export const sendEmail = async ({ to, subject, html }) => {
     try {
         const mailOptions = {
             from: process.env.EMAIL_USER, // Sender's email
-            to: process.env.RECEIVER_EMAIL, // Your email where you want to receive messages
-            subject: `New Contact Form Submission from ${name}`,
-            text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+            to,
+            subject,
+            html,
         };
 
         await transporter.sendMail(mailOptions);

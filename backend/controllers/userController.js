@@ -1,4 +1,5 @@
 import bcrypt from 'bcryptjs';
+import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 import User from "../model/userSchema.js";
 import { sendEmail } from '../config/emailService.js';
@@ -189,6 +190,95 @@ const submitMessage = async (req, res) => {
     }
 };
 
+const forgotPassword = async (req, res) => {
+    try {
+        const { email } = req.body;
+
+        if (!email) {
+            return res.status(400).json({ message: "Email is required" });
+        }
+
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ message: 'No account with that email' });
+        }
+
+        // Generate a token
+        const token = crypto.randomBytes(32).toString('hex');
+
+        // Hash and save to DB (don't save raw token)
+        const hash = crypto.createHash('sha256').update(token).digest('hex');
+        user.resetPasswordToken = hash;
+        user.resetPasswordExpires = Date.now() + 1000 * 60 * 15; // 15 min
+        await user.save();
+
+        // Send email
+        const resetUrl = `${process.env.CLIENT_URL}/reset-password?token=${token}&email=${email}`;
+        await sendEmail({
+            to: user.email,
+            subject: 'Reset Your Password - SmartTravels',
+            html: `
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; background: #f4f4f4; padding: 40px; border-radius: 8px;">
+                    <div style="text-align: center;">
+                        <img src="https://yourdomain.com/logo.png" alt="SmartTravels Logo" style="max-width: 150px; margin-bottom: 20px;" />
+                    </div>
+                    <h2 style="color: #333;">Reset Your Password</h2>
+                    <p style="color: #555;">Hi ${user.name || 'there'},</p>
+                    <p style="color: #555;">
+                        We received a request to reset your password. Click the button below to choose a new one. This link will expire in 15 minutes.
+                    </p>
+                    <div style="text-align: center; margin: 30px 0;">
+                        <a href="${resetUrl}" style="background-color: #2e6bbf; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold;">
+                            Reset Password
+                        </a>
+                    </div>
+                    <p style="color: #999; font-size: 12px; text-align: center;">
+                        If you didn’t request this, you can safely ignore this email.
+                    </p>
+                    <hr style="margin: 30px 0;" />
+                    <p style="color: #aaa; font-size: 12px; text-align: center;">
+                        &copy; ${new Date().getFullYear()} SmartTravels. All rights reserved.
+                    </p>
+                </div>
+            `,
+        });
+
+        res.status(200).json({ message: 'Reset link sent to email' });
+    } catch (error) {
+        console.error("forgot password error", error);
+        res.status(500).json({ message: "Internal server error", error: error.message });
+    }
+}
+
+const resetPassword = async (req, res) => {
+    try {
+        const { token, email, newPassword } = req.body;
+        const user = await User.findOne({ email });
+
+        if (!user) return res.status(404).json({ message: 'Invalid request' });
+
+        const hash = crypto.createHash('sha256').update(token).digest('hex');
+
+        if (
+            user.resetPasswordToken !== hash ||
+            user.resetPasswordExpires < Date.now()
+        ) {
+            return res.status(400).json({ message: 'Token expired or invalid' });
+        }
+
+        user.password = await bcrypt.hash(newPassword, 10);
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpires = undefined;
+
+        await user.save();
+
+        res.status(200).json({ message: 'Password has been reset' });
+    } catch (error) {
+        console.error("Reset password error", error);
+        res.status(500).json({ message: "Internal server error", error: error.message });
+    }
+}
+
 const getUserProfile = async (req, res) => {
     try {
         const userId = req.user.id; // Assuming you have middleware to set req.user
@@ -211,5 +301,7 @@ export {
     refreshAccessToken,
     logoutUser,
     submitMessage,
+    forgotPassword,
+    resetPassword,
     getUserProfile,
 };

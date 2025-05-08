@@ -1,35 +1,76 @@
-import React from 'react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
+import { forgotPasswordApi } from '../../services/api/userApi';
+
+const TIMER_KEY = 'forgot_password_timer_expiry';
 
 const ForgotPasswordPage = () => {
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
+    const [isDisabled, setIsDisabled] = useState(false);
+    const [timer, setTimer] = useState(0);
+
+    // On mount, check for an existing timer in localStorage
+    useEffect(() => {
+        const expiry = localStorage.getItem(TIMER_KEY);
+
+        if (expiry) {
+            const remaining = Math.floor((+expiry - Date.now()) / 1000);
+            if (remaining > 0) {
+                setIsDisabled(true);
+                setTimer(remaining);
+            } else {
+                localStorage.removeItem(TIMER_KEY);
+            }
+        }
+    }, []);
+
+    // Countdown effect
+    useEffect(() => {
+        let countdown;
+
+        if (timer > 0) {
+            countdown = setInterval(() => {
+                setTimer((prev) => {
+                    if (prev <= 1) {
+                        setIsDisabled(false);
+                        localStorage.removeItem(TIMER_KEY);
+                        return 0;
+                    }
+                    return prev - 1;
+                });
+            }, 1000);
+        }
+
+        return () => clearInterval(countdown);
+    }, [timer]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Check if email is valid
         if (!email) {
             setMessage("Please enter a valid email address.");
-
             return;
         }
 
-        // Call API to send password reset email (pseudo code)
-        const response = await fetch("/api/forgot-password", {
-            method: "POST",
-            body: JSON.stringify({ email }),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
+        const response = await forgotPasswordApi(email);
 
-        const result = await response.json();
-        if (response.ok) {
-            setMessage("Password reset instructions have been sent to your email.");
+        if (response.success) {
+            setMessage('')
+            toast.success("Password reset email sent. Please check your inbox.");
+            setIsDisabled(true);
+            const expiryTime = Date.now() + 120000; // 2 minutes in ms
+            localStorage.setItem(TIMER_KEY, expiryTime.toString());
+            setTimer(120);
         } else {
-            setMessage(result.message || "Something went wrong. Please try again.");
+            setMessage(response.error || "Failed to send reset email. Please try again.");
         }
+    };
+
+    const formatTime = (seconds) => {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
     };
 
     return (
@@ -50,19 +91,21 @@ const ForgotPasswordPage = () => {
                         />
                     </div>
                     {message && (
-                        <div className="text-center text-sm text-gray-600 mt-2">{message}</div>
+                        <div className="text-center text-sm text-red-600 mt-2">{message}</div>
                     )}
                     <button
                         type="submit"
-                        className="w-full bg-[#2e6bbf] hover:bg-[#4a94d0] text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#4a94d0] focus:ring-offset-2 transition"
+                        disabled={isDisabled}
+                        className={`w-full ${
+                            isDisabled ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#2e6bbf] hover:bg-[#4a94d0]'
+                        } text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#4a94d0] focus:ring-offset-2 transition`}
                     >
-                        Send Reset Link
+                        {isDisabled ? `Wait ${formatTime(timer)}` : 'Send Reset Link'}
                     </button>
                 </form>
             </div>
         </div>
     );
-}
-
+};
 
 export default ForgotPasswordPage;
