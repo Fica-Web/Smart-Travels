@@ -204,7 +204,7 @@ const forgotPassword = async (req, res) => {
 
         const token = jwt.sign({ id: user._id }, process.env.RESET_PASSWORD_SECRET, { expiresIn: "15m" });
 
-        const resetLink = `${process.env.FRONTEND_URL}/reset-password/${token}`;
+        const resetLink = `${process.env.FRONTEND_URL}/user/reset-password/${token}`;
 
         const emailResponse = await sendEmail({
             to: user.email,
@@ -222,6 +222,35 @@ const forgotPassword = async (req, res) => {
         }
     } catch (error) {
         console.error("forgot password error", error);
+        res.status(500).json({ message: "Internal server error", error: error.message });
+    }
+}
+
+const resetPassword = async (req, res) => {
+    try {
+        const { token, newPassword } = req.body;
+
+        if (!token || !newPassword) {
+            return res.status(400).json({ message: "Token and new password are required" });
+        }
+
+        const decoded = jwt.verify(token, process.env.RESET_PASSWORD_SECRET);
+        const user = await User.findById(decoded.id);
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // Hash new password
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+        user.password = hashedPassword;
+        await user.save();
+
+        res.status(200).json({ message: "Password reset successfully" });
+    } catch (error) {
+        console.error("Reset password error", error);
         res.status(500).json({ message: "Internal server error", error: error.message });
     }
 }
@@ -249,5 +278,6 @@ export {
     logoutUser,
     submitMessage,
     forgotPassword,
+    resetPassword,
     getUserProfile,
 };
