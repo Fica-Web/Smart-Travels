@@ -24,9 +24,10 @@ const SectionHeading = ({ backgroundText, heading, subtext }) => {
       </div>
 
       {/* Subtext below the background large text */}
-      <div className="text-center mt-4">
-        <p className="text-sm sm:text-base text-gray-600">{subtext}</p>
-      </div>
+      <div className="text-center mt-2">
+  <p className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto">{subtext}</p>
+</div>
+
     </section>
   );
 };
