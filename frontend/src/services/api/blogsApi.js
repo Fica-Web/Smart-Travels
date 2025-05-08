@@ -57,13 +57,14 @@ const getBlogById = async (id) => {
 
 
 
+// Function to update a blog
 const updateBlog = async (id, data) => {
   try {
     const response = await blogsInstance.put(`/${id}`, data);
     return response.data;
   } catch (error) {
     console.log(`Error updating blog ${id}:`, error.response?.data || error.message);
-    throw error;
+    throw error;  // Re-throw the error after logging
   }
 };
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createBlog, updateBlog, deleteBlog } from '../../../services/api/blogsApi';
+import { createBlog, updateBlog } from '../../../services/api/blogsApi';
 import CoverImageUpload from '../../reusable/CoverImageUpload';
 
 const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
@@ -29,9 +29,9 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
         description: selectedBlog.description || '',
         contentSections: Array.isArray(selectedBlog.content)
           ? selectedBlog.content.map(section => ({
-              contentTitle: section.contentTitle || '',
-              contentDescription: section.contentDescription || ''
-            }))
+            contentTitle: section.contentTitle || '',
+            contentDescription: section.contentDescription || ''
+          }))
           : [{ contentTitle: '', contentDescription: '' }]
       }));
     } else {
@@ -66,17 +66,19 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
     };
   }, [formData.coverImage]);
 
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const newErrors = {};
-  
+
     if (!formData.title.trim()) newErrors.title = 'Title is required';
     if (!formData.author.trim()) newErrors.author = 'Author is required';
     if (!formData.category.trim()) newErrors.category = 'Category is required';
     if (!formData.description.trim()) newErrors.description = 'Short description is required';
     if (!formData.coverImage) newErrors.coverImage = 'Cover image is required';
-  
+
     formData.contentSections.forEach((section, index) => {
       if (!section.contentTitle.trim()) {
         newErrors[`contentTitle_${index}`] = 'Content Title is required';
@@ -85,41 +87,50 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
         newErrors[`contentDescription_${index}`] = 'Content Description is required';
       }
     });
-  
+
     setErrors(newErrors);
-  
+
     if (Object.keys(newErrors).length > 0) return;
-  
-    console.log("Form Data being submitted:", formData);
-  
-    // Ensure that content is passed as an array of objects
+
+    // Process coverImage
+    let coverImageData = formData.coverImage;
+
+    if (formData.coverImage && typeof formData.coverImage !== 'string') {
+      // Convert File object to base64 string
+      coverImageData = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(formData.coverImage);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+      });
+    }
+
     const jsonData = {
       title: formData.title,
       author: formData.author,
       category: formData.category,
       description: formData.description,
-      content: formData.contentSections, // Make sure content is correctly assigned as an array
-      coverImage: formData.coverImage
+      content: formData.contentSections,
+      coverImage: coverImageData
     };
-  
+
     try {
       if (selectedBlog) {
-        await updateBlog(selectedBlog._id, jsonData);  // Update blog if selectedBlog exists
+        await updateBlog(selectedBlog._id, jsonData);
       } else {
-        await createBlog(jsonData);  // Create new blog if no selectedBlog
+        await createBlog(jsonData);
       }
-  
-      onBlogSaved();  // Notify the parent that the blog is saved
-      navigate('/admin/blog');  // Navigate to blog listing
+
+      onBlogSaved();
+      navigate('/admin/blog');
     } catch (err) {
-      console.error('Error saving blog:', err.response?.data?.message || err.message);
-      alert(`Error saving blog: ${err.response?.data?.message || err.message}`);
+      console.error('Error saving blog:', err.response?.data?.message || err);
     }
   };
-  
-  
-  
-  
+
+
+
+
 
   const handleContentChange = (index, field, value) => {
     const updatedContent = [...formData.contentSections];
@@ -137,22 +148,6 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
   const removeContentSection = (index) => {
     const updatedContent = formData.contentSections.filter((_, idx) => idx !== index);
     setFormData(prevData => ({ ...prevData, contentSections: updatedContent }));
-  };
-
-  const handleDelete = async () => {
-    if (selectedBlog) {
-      const confirmDelete = window.confirm('Are you sure you want to delete this blog?');
-      if (confirmDelete) {
-        try {
-          await deleteBlog(selectedBlog._id);
-          alert('Blog deleted successfully');
-          onBlogSaved();
-        } catch (err) {
-          console.error('Error deleting blog:', err.response?.data?.message || err.message);
-          alert(`Error deleting blog: ${err.response?.data?.message || err.message}`);
-        }
-      }
-    }
   };
 
   return (
@@ -263,7 +258,7 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
           </button>
         </div>
 
-        <div className="flex gap-4 pt-4">
+        <div className="flex justify-between pt-4">
           <button
             type="submit"
             className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md transition"
@@ -271,24 +266,17 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
             {selectedBlog ? 'Update Blog' : 'Submit Blog'}
           </button>
 
-          {selectedBlog && (
+          <div className="flex gap-4">
             <button
               type="button"
-              onClick={handleDelete}
-              className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-lg shadow-md transition"
+              onClick={onCancel}
+              className="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg shadow-md transition"
             >
-              Delete Blog
+              Cancel
             </button>
-          )}
-
-          <button
-            type="button"
-            onClick={onCancel}
-            className="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg shadow-md transition"
-          >
-            Cancel
-          </button>
+          </div>
         </div>
+
       </form>
     </div>
   );
