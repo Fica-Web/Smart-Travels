@@ -1,15 +1,15 @@
 import React from 'react'
-import AdminBlogForm from '../../components/shared/AdminBlogForm'
+import AdminBlogForm from '../../components/AdminSection/AdminBlog/AdminBlogForm';
 import { useNavigate } from 'react-router-dom';
 
 const AdminBlogFormPage = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <div>
-         <AdminBlogForm
-      onBlogSaved={() => navigate('/admin/blog')}
-      onCancel={() => navigate('/admin/blog')}
-    />
+      <AdminBlogForm
+        onBlogSaved={() => navigate('/admin/blog')}
+        onCancel={() => navigate('/admin/blog')}
+      />
     </div>
   )
 }

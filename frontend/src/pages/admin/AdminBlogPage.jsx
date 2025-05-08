@@ -1,5 +1,5 @@
 import React from 'react'
-import AdminBlogDashboard from '../../components/shared/AdminBlogDashboard'
+import AdminBlogDashboard from '../../components/AdminSection/AdminBlog/AdminBlogDashboard'
 
 const AdminBlogPage = () => {
   return (

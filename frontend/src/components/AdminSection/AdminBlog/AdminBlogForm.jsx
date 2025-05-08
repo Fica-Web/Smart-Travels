@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createBlog, updateBlog, deleteBlog } from '../../services/api/blogsApi';
-import CoverImageUpload from '../reusable/CoverImageUpload';
+import { createBlog, updateBlog, deleteBlog } from '../../../services/api/blogsApi';
+import CoverImageUpload from '../../reusable/CoverImageUpload';
 
 const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
   const [formData, setFormData] = useState({
