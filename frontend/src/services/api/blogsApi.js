@@ -15,12 +15,14 @@ const getAllBlogs = async () => {
 
 
 const createBlog = async (data) => {
-  console.log('API Key:', import.meta.env.VITE_API_KEY); // Log API key for debugging
+  console.log('API Key:', import.meta.env.VITE_API_KEY);
+
   try {
     const response = await blogsInstance.post('/', data, {
       headers: {
-        'Content-Type': 'multipart/form-data', // Ensure the Content-Type is set for file uploads
+        'Content-Type': 'multipart/form-data',
       },
+      withCredentials: true, // <-- Add this line to send cookies
     });
 
     if (response.data) {
@@ -34,6 +36,7 @@ const createBlog = async (data) => {
     throw error;
   }
 };
+
 
 
 // Fetch a single blog by its ID

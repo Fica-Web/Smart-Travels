@@ -1,17 +1,12 @@
-// Inside blogsApi.js
+// services/axios_instances/adminInstance.js
+import axios from 'axios';
 
-import axios from 'axios'; // If you're using axios for API calls
+const adminInstance = axios.create({
+  baseURL: `${import.meta.env.VITE_API_URL}/admin`, // e.g., https://smart-travels.onrender.com/api/admin
+  withCredentials: true, // Needed if backend uses cookies
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
 
-const API_URL = 'https://your-api-url.com'; // Replace with your API URL
-
-// Define the getBlogById function
-export const getBlogById = async (id) => {
-  try {
-    const response = await axios.get(`${API_URL}/blogs/${id}`, {
-      withCredentials: true, // if using cookies or session
-    });
-    return response.data; // return the data from the API response
-  } catch (error) {
-    throw new Error('Error fetching blog by ID');
-  }
-};
+export default adminInstance;
