@@ -8,9 +8,8 @@ const AdminSidebar = ({ isCollapsed, setIsCollapsed }) => {
 
   return (
     <aside
-      className={`fixed top-[75px] left-0 h-[calc(100vh-70px)] flex flex-col ${
-        isCollapsed ? 'w-16' : 'w-64'
-      } bg-white border-r border-gray-300 transition-all duration-300 z-50`}
+      className={`fixed top-[75px] left-0 h-[calc(100vh-70px)] flex flex-col ${isCollapsed ? 'w-16' : 'w-64'
+        } bg-white border-r border-gray-300 transition-all duration-300 z-50`}
     >
       <div className="flex flex-col flex-1 overflow-y-auto">
         <div className="p-6">
@@ -64,9 +63,8 @@ const SidebarLink = ({ icon, label, to, isCollapsed, end }) => (
       const inactiveClasses =
         'text-gray-600 hover:bg-gray-100'; // Inactive colors
 
-      return `${baseClasses} ${layoutClasses} ${
-        isActive ? activeClasses : inactiveClasses
-      }`;
+      return `${baseClasses} ${layoutClasses} ${isActive ? activeClasses : inactiveClasses
+        }`;
     }}
   >
     {({ isActive }) => (

@@ -30,9 +30,9 @@ const AdminBlogForm = ({ selectedBlog, onBlogSaved, onCancel }) => {
         description: selectedBlog.description || '',
         contentSections: Array.isArray(selectedBlog.content)
           ? selectedBlog.content.map(section => ({
-              contentTitle: section.contentTitle || '',
-              contentDescription: section.contentDescription || ''
-            }))
+            contentTitle: section.contentTitle || '',
+            contentDescription: section.contentDescription || ''
+          }))
           : [{ contentTitle: '', contentDescription: '' }]
       }));
     } else {
