@@ -6,7 +6,7 @@ import img2 from '../../../assets/image/hero/Ruknhero.jpg'
 
 const ChooseUs = () => {
     return (
-        <div>
+        <div className="px-20">
             <SectionHeading
                 backgroundText="CHOOSE US"
                 heading="Your Trusted Travel Partner"

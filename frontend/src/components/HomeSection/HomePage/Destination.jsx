@@ -5,7 +5,7 @@ import { ArrowUpRight } from 'lucide-react'
 
 const Destination = () => {
   return (
-    <div className="px-6">
+    <div className="px-20">
       <SectionHeading
         backgroundText="Destination"
         heading="Featured Destinations"

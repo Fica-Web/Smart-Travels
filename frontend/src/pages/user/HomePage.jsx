@@ -10,7 +10,7 @@ const HomePage = () => {
             <Hero />
             <Destination />
             <ChooseUs />
-            <BlogSection />
+            <BlogSection isHomePage={true}  />
 
 
         </>
