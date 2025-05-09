@@ -4,8 +4,8 @@ import AdminBlogDashboard from '../../components/AdminSection/AdminBlog/AdminBlo
 const AdminBlogPage = () => {
   return (
     <div>
-        
-        <AdminBlogDashboard />
+
+      <AdminBlogDashboard />
 
     </div>
   )
