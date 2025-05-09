@@ -16,8 +16,6 @@ const getBlogs = async (req, res) => {
 const createBlog = async (req, res) => {
     try {
         const { title, description, content, author, category, tags, publishedAt } = req.body;
-        console.log('Request Body:', req.body); // Log the request body for debugging
-        console.log('Request File:', req.file); // Log the request file for debugging
 
         // Ensure content is an array
         const parsedContent = typeof content === "string" ? JSON.parse(content) : content;

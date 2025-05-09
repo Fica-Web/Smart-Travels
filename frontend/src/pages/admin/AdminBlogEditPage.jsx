@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getBlogById } from '../../services/api/blogsApi'; // Adjust the import path as necessary
+import { getSingleBlogApi } from '../../services/api/blogsApi'; // Adjust the import path as necessary
 import AdminBlogForm from '../../components/AdminSection/AdminBlog/AdminBlogForm'; 
 
 const AdminBlogEditor = () => {
@@ -11,7 +11,7 @@ const AdminBlogEditor = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await getBlogById(id);
+        const res = await getSingleBlogApi(id);
         console.log('Fetched blog:', res); // ✅ for debugging
         setBlog(res.data?.blog || res.blog || res); // ✅ ensure correct structure
       } catch (err) {

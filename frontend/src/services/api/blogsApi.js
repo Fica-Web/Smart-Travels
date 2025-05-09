@@ -1,4 +1,5 @@
 import blogsInstance from '../axios_instances/blogsInstance';
+import { toast } from 'react-toastify';
 
 // Fetch all blogs
 const getAllBlogs = async () => {
@@ -40,9 +41,11 @@ const createBlogApi = async (data) => {
 
   try {
     const response = await blogsInstance.post('/', formData, config);
+    toast.success('Blog created successfully!');
     return response.data;
   } catch (error) {
     console.log('Error creating blog:', error.response?.data || error.message);
+    toast.error('Error creating blog!');
     throw error;
   }
 };
@@ -68,14 +71,36 @@ const getSingleBlogApi = async (id) => {
 
 // Function to update a blog
 const updateBlogApi = async (id, data) => {
+  const formData = new FormData();
+
+  // Append text fields
+  formData.append("title", formData.title);
+  formData.append("description", formData.description);
+  formData.append("slug", formData.slug);
+  formData.append("author", formData.author);
+  formData.append("category", formData.category);
+  formData.append("tags", JSON.stringify(formData.tags)); // Convert tags to JSON string
+  formData.append("content", JSON.stringify(formData.content)); // Convert content to JSON string
+
+  // Append image file
+  formData.append("coverImage", formData.coverImage);
+
+  const config = {
+      headers: {
+          "Content-Type": "multipart/form-data",
+      },
+  };
+
   try {
-    const response = await blogsInstance.put(`/${id}`, data);
-    return response.data;
+      console.log('Update blog works')
+      const response = await blogsInstance.put(`/${id}`, data, config);
+      console.log('updated blogs response:', response);
+      toast.success(response.data.message)
+      return response.data;
   } catch (error) {
-    console.log(`Error updating blog ${id}:`, error.response?.data || error.message);
-    throw error;  // Re-throw the error after logging
+      console.log("error updating blogs:", error?.response?.data);
   }
-};
+}
 
 const deleteBlogApi = async (id) => {
   try {

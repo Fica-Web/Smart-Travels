@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { createBlogApi, updateBlogApi, deleteBlogApi } from '../../../services/api/blogsApi';
+import { createBlogApi, updateBlogApi, deleteBlogApi, getSingleBlogApi } from '../../../services/api/blogsApi';
 import CoverImageUpload from '../../reusable/CoverImageUpload';
 
 const AdminBlogForm = ({ onCancel, reset }) => {
@@ -28,10 +28,8 @@ const AdminBlogForm = ({ onCancel, reset }) => {
             const fetchBlog = async () => {
                 try {
                     const response = await getSingleBlogApi(id);
-                    // console.log('tags:', response.blog.tags)
                     setFormData({
                         ...response.blog,
-                        // tags: JSON.parse(response.blog.tags).join(", "), // Convert array to string
                         coverImagePreview: response.blog.coverImage, // Set preview
                     });
                 } catch (err) {
@@ -129,12 +127,10 @@ const AdminBlogForm = ({ onCancel, reset }) => {
             if (id) {
                 await updateBlogApi(id, {
                     ...formData,
-                    // tags: JSON.stringify(formData.tags.split(",").map(tag => tag.trim())), // Convert tags to array
                 });
             } else {
                 await createBlogApi({
                     ...formData,
-                    // tags: JSON.stringify(formData.tags.split(",").map(tag => tag.trim())), // Convert tags to array
                 });
             }
         } finally {
