@@ -5,6 +5,7 @@ import { getCroppedImg } from '../../utils/cropImage'; // Import the utility fun
 
 const CoverImageUpload = ({
   onImageChange,
+  onCroppedImage,
   coverImagePreview,
   error,
   label = "Cover Image"
@@ -56,7 +57,7 @@ const CoverImageUpload = ({
       try {
         const blob = await getCroppedImg(imageSrc, croppedAreaPixels);
         const file = new File([blob], 'cropped-image.jpg', { type: 'image/jpeg' });
-        onImageChange(file); // Pass the cropped image to the parent component
+        onCroppedImage(file); // Pass the cropped image to the parent component
         setPreview(URL.createObjectURL(file));
         setShowCropModal(false);
         console.log("Cropping success");
@@ -100,40 +101,40 @@ const CoverImageUpload = ({
 
       {/* Crop Modal */}
       <Modal
-  isOpen={showCropModal}
-  onRequestClose={() => setShowCropModal(false)}
-  ariaHideApp={false}
-  className="fixed inset-0 z-50 flex items-center justify-center"
-  overlayClassName="fixed inset-0 bg-transparent z-40"
->
-  <div className="bg-gradient-to-br from-white to-gray-100 rounded-lg shadow-lg p-6 w-[90vw] max-w-4xl max-h-[90vh] overflow-auto">
-    <div className="relative w-full h-96 bg-gray-100 rounded-lg overflow-hidden">
-      <Cropper
-        image={imageSrc}
-        crop={crop}
-        zoom={zoom}
-        aspect={16 / 9}
-        onCropChange={setCrop}
-        onZoomChange={handleZoomChange}
-        onCropComplete={handleCropComplete}
-      />
-    </div>
-    <div className="flex justify-end mt-4 space-x-2">
-      <button
-        onClick={() => setShowCropModal(false)}
-        className="bg-gray-500 text-white px-4 py-2 rounded-md focus:outline-none hover:bg-gray-400"
+        isOpen={showCropModal}
+        onRequestClose={() => setShowCropModal(false)}
+        ariaHideApp={false}
+        className="fixed inset-0 z-50 flex items-center justify-center"
+        overlayClassName="fixed inset-0 bg-transparent z-40"
       >
-        Cancel
-      </button>
-      <button
-        onClick={handleCropConfirm}
-        className="bg-blue-600 text-white px-4 py-2 rounded-md focus:outline-none hover:bg-blue-500"
-      >
-        {loading ? 'Cropping...' : 'Crop & Save'}
-      </button>
-    </div>
-  </div>
-</Modal>
+        <div className="bg-gradient-to-br from-white to-gray-100 rounded-lg shadow-lg p-6 w-[90vw] max-w-4xl max-h-[90vh] overflow-auto">
+          <div className="relative w-full h-96 bg-gray-100 rounded-lg overflow-hidden">
+            <Cropper
+              image={imageSrc}
+              crop={crop}
+              zoom={zoom}
+              aspect={16 / 9}
+              onCropChange={setCrop}
+              onZoomChange={handleZoomChange}
+              onCropComplete={handleCropComplete}
+            />
+          </div>
+          <div className="flex justify-end mt-4 space-x-2">
+            <button
+              onClick={() => setShowCropModal(false)}
+              className="bg-gray-500 text-white px-4 py-2 rounded-md focus:outline-none hover:bg-gray-400"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={handleCropConfirm}
+              className="bg-blue-600 text-white px-4 py-2 rounded-md focus:outline-none hover:bg-blue-500"
+            >
+              {loading ? 'Cropping...' : 'Crop & Save'}
+            </button>
+          </div>
+        </div>
+      </Modal>
 
     </div>
   );

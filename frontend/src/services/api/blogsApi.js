@@ -11,26 +11,36 @@ const getAllBlogs = async () => {
   }
 };
 
+const createBlogApi = async (data) => {
+  const formData = new FormData();
 
+  for (const key in data) {
+    if (!data.hasOwnProperty(key)) continue;
+    
+    // Skip preview field
+    if (key === 'coverImagePreview') continue;
 
+    if (key === 'content') {
+      formData.append('content', JSON.stringify(data.content)); // Properly stringify
+    } else if (key !== 'coverImage') {
+      formData.append(key, data[key]);
+    }
+  }
 
-const createBlog = async (data) => {
-  console.log('API Key:', import.meta.env.VITE_API_KEY);
+  // Append cover image
+  if (data.coverImage) {
+    formData.append('coverImage', data.coverImage); // single File
+  }
+
+  const config = {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  };
 
   try {
-    const response = await blogsInstance.post('/', data, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-      withCredentials: true, // <-- Add this line to send cookies
-    });
-
-    if (response.data) {
-      console.log('Blog created successfully:', response.data);
-      return response.data;
-    } else {
-      throw new Error('Received empty response from the server');
-    }
+    const response = await blogsInstance.post('/', formData, config);
+    return response.data;
   } catch (error) {
     console.log('Error creating blog:', error.response?.data || error.message);
     throw error;
@@ -39,10 +49,9 @@ const createBlog = async (data) => {
 
 
 
-
 // Fetch a single blog by its ID
 // Fetch a single blog by its ID
-const getBlogById = async (id) => {
+const getSingleBlogApi = async (id) => {
   try {
     const response = await blogsInstance.get(`/${id}`);
     console.log("Fetched blog data:", response.data);  // Log the full response for debugging
@@ -58,7 +67,7 @@ const getBlogById = async (id) => {
 
 
 // Function to update a blog
-const updateBlog = async (id, data) => {
+const updateBlogApi = async (id, data) => {
   try {
     const response = await blogsInstance.put(`/${id}`, data);
     return response.data;
@@ -68,7 +77,7 @@ const updateBlog = async (id, data) => {
   }
 };
 
-const deleteBlog = async (id) => {
+const deleteBlogApi = async (id) => {
   try {
     const response = await blogsInstance.delete(`/${id}`);
     return response.data;
@@ -80,8 +89,8 @@ const deleteBlog = async (id) => {
 
 export {
   getAllBlogs,
-  createBlog,
-  getBlogById,
-  updateBlog,
-  deleteBlog,
+  createBlogApi,
+  getSingleBlogApi,
+  updateBlogApi,
+  deleteBlogApi,
 };

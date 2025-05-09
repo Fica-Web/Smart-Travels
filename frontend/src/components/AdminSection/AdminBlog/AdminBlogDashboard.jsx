@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getAllBlogs, deleteBlog } from '../../../services/api/blogsApi';
+import { getAllBlogs, deleteBlogApi } from '../../../services/api/blogsApi';
 import blogsInstance from '../../../services/axios_instances/blogsInstance';
 import AdminHero from '../../reusable/AdminHero';
 import { useNavigate } from 'react-router-dom';
