@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { Rocket, User, Menu, X } from "lucide-react";
 import logo from '../../assets/image/logo/logo.png';
 import navOptions from "../../data/navOptions";
@@ -13,9 +13,9 @@ const Header = () => {
       {/* Header */}
       <header className="absolute top-6 left-1/2 transform -translate-x-1/2 w-[96%] flex justify-between items-center px-1 z-30">
         {/* Logo */}
-        <div className="text-2xl font-bold whitespace-nowrap">
-          <img src={logo} alt="Logo" className="w-15 h-15" />
-        </div>
+        <Link to={'/'}>
+          <img src={logo} alt="Logo" className="w-32 h-auto" />
+        </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex bg-white/10 backdrop-blur-md rounded-full p-1 space-x-1 ring-1 ring-white/20">

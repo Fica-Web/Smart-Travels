@@ -249,13 +249,6 @@ const AdminBlogForm = ({ onCancel }) => {
                 </div>
     
                 <div className="flex gap-4 pt-4">
-                    {/* <button
-                        type="submit"
-                        className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md transition"
-                        disabled={loading}
-                    >
-                        {loading ? "Saving..." : id ? "Update Blog" : "Submit Blog"}
-                    </button> */}
                     <ReusableSubmitButton
                         loading={loading}
                         text={id ? 'Update Blog' : 'Create Blog'}
