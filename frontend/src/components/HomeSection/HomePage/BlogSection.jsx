@@ -8,9 +8,8 @@ const BlogSection = ({ isHomePage = false }) => {
   const blogsToDisplay = isHomePage ? blogData.slice(0, 4) : blogData;
   const [firstBlog, ...remainingBlogs] = blogsToDisplay;
 
-
   return (
-    <div className="px-20 sm:px-6 lg:px-20 py-16 bg-gray-50">
+    <div className="sm:px-6 md:px-20 py-16 bg-gray-50">
       <SectionHeading
         backgroundText="TRAVEL BLOG"
         heading="Explore Travel Tips And Latest Trends"
@@ -20,11 +19,11 @@ const BlogSection = ({ isHomePage = false }) => {
       {/* First Blog - Horizontal Feature */}
       <div className="flex flex-col md:flex-row overflow-hidden mt-12 group h-auto md:h-[350px]">
         {/* Left Side Image */}
-        <div className="w-full md:w-[790px] h-80 sm:h-90 md:h-full sm: overflow-hidden pr-4">
+        <div className="w-[280px] h-[400px] sm:w-full sm:h-80 md:w-[790px] md:h-full overflow-hidden sm:p-2 mx-auto">
           <img
             src={firstBlog.coverImage}
             alt={firstBlog.title}
-            className="w-full h-full object-cover rounded-xl"
+            className="w-full h-full object-cover rounded-2xl"
           />
         </div>
 
@@ -34,13 +33,12 @@ const BlogSection = ({ isHomePage = false }) => {
             <h3 className="text-3xl md:text-4xl font-semibold text-gray-800 leading-snug pb-5 break-words max-w-xl">
               {firstBlog.title}
             </h3>
-
             <p className="text-gray-600 font-normal leading-relaxed">
               {firstBlog.shortDescription}
             </p>
           </div>
 
-          <div className="flex justify-between items-center text-sm text-gray-500 pt-6  border-gray-200">
+          <div className="flex justify-between items-center text-sm text-gray-500 pt-6 border-gray-200">
             <span className="flex items-center gap-1 text-gray-500 text-sm">
               <span>{firstBlog.date}</span>
               <BsDot className="text-black text-2xl" />
@@ -54,13 +52,12 @@ const BlogSection = ({ isHomePage = false }) => {
         </div>
       </div>
 
-
       {/* Remaining Blogs Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-16">
-        {remainingBlogs.map((blog) => (
+        {remainingBlogs.map((blog, index) => (
           <div
             key={blog.id}
-            className="transition duration-300 overflow-hidden group relative"
+            className={`transition duration-300 overflow-hidden group relative ${index > 0 ? 'hidden sm:block' : ''}`}
           >
             <div className="overflow-hidden rounded-xl">
               <img
@@ -75,7 +72,7 @@ const BlogSection = ({ isHomePage = false }) => {
                 {blog.title}
               </h3>
 
-              <div className="flex justify-between items-center text-sm text-gray-500 pt-2  border-gray-200">
+              <div className="flex justify-between items-center text-sm text-gray-500 pt-2 border-gray-200">
                 <span className="flex items-center space-x-1">
                   <span>{blog.date}</span>
                   <BsDot className="text-black text-2xl" />
@@ -89,9 +86,8 @@ const BlogSection = ({ isHomePage = false }) => {
           </div>
         ))}
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default BlogSection
+export default BlogSection;
