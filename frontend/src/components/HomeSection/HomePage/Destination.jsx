@@ -5,7 +5,7 @@ import { ArrowUpRight } from 'lucide-react'
 
 const Destination = () => {
   return (
-    <div className="px-20">
+    <div className="sm:px-4 md:px-20 ">
       <SectionHeading
         backgroundText="Destination"
         heading="Featured Destinations"
@@ -13,11 +13,12 @@ const Destination = () => {
       />
 
       {/* Masonry-like layout */}
-      <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 mt-14 pt-5">
+      <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 mt-14 pt-5 ">
         {destinations.map((item, index) => (
           <div
             key={index}
-            className="relative rounded-2xl overflow-hidden shadow-lg group transform transition-transform duration-300 hover:scale-105"
+            className="relative rounded-2xl overflow-hidden shadow-lg group transform transition-transform duration-300 md:hover:scale-105 sm:hover:scale-100
+"
           >
             <img
               src={item.imageUrl}

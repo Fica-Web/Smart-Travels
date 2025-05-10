@@ -3,13 +3,13 @@ import React from 'react';
 const SectionHeading = ({ backgroundText, heading, subtext }) => {
   return (
     <section className=''>
-      <div className="relative w-full  text-center  py-16 sm:py-20 lg:py-32 px-4 sm:px-6 lg:px-8  overflow-hidden">
+      <div className="relative w-full text-center py-16 sm:py-20 lg:py-32 overflow-hidden">
         {/* Background large text */}
         <h1 className="
           absolute top-1/2 -translate-y-1/2 inset-x-0 
           text-[12vw] sm:text-[8vw] md:text-[10vw] 
           font-extrabold text-gray-200 opacity-60 
-          uppercase tracking-wide
+          uppercase tracking-wide 
           pointer-events-none select-none leading-none
         ">
           {backgroundText}
@@ -39,4 +39,4 @@ const SectionHeading = ({ backgroundText, heading, subtext }) => {
   );
 };
 
-export default SectionHeading;
+export default SectionHeading; 
