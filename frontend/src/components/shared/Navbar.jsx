@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Rocket, User, Menu, X } from "lucide-react";
 import logo from '../../assets/image/logo/logo.png';

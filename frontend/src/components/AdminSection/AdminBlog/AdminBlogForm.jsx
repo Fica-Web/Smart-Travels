@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { createBlogApi, updateBlogApi, deleteBlogApi, getSingleBlogApi } from '../../../services/api/blogsApi';
 import CoverImageUpload from '../../reusable/CoverImageUpload';
 
-const AdminBlogForm = ({ onCancel, reset }) => {
+const AdminBlogForm = ({ onCancel }) => {
     const { id } = useParams(); // Get blog ID from URL
     
     const initialState = {
@@ -39,12 +39,6 @@ const AdminBlogForm = ({ onCancel, reset }) => {
             fetchBlog();
         }
     }, [id]);
-
-    useEffect(() => {
-        if (reset) {
-            setFormData(initialState); // Reset form when reset flag changes
-        }
-    }, [reset]);
 
     const validateForm = () => {
         let newErrors = {};
@@ -133,6 +127,8 @@ const AdminBlogForm = ({ onCancel, reset }) => {
                     ...formData,
                 });
             }
+
+            setFormData(initialState); // Reset form after submission
         } finally {
             setLoading(false); // 🔹 Hide loading state after response
         }
