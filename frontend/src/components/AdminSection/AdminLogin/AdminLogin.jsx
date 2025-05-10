@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { InputText } from "primereact/inputtext";
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
-// import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import PasswordInput from '../../reusable/PasswordInput';
 import { adminLoginApi } from '../../../services/api/adminApi'; // Adjust path as needed
 

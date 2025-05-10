@@ -39,7 +39,7 @@ const AdminBlogDashboard = () => {
     if (window.confirm('Are you sure you want to delete this blog?')) {
       setLoading(true); // Set loading to true before deleting
       try {
-        await deleteBlog(blogId);
+        await deleteBlogApi(blogId);
         setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog._id !== blogId));
         toast.success('Blog deleted successfully');
       } catch (err) {
@@ -59,7 +59,7 @@ const AdminBlogDashboard = () => {
         <h2 className="text-2xl font-semibold text-gray-800">All Blogs</h2>
         <button
           onClick={handleCreate}
-          className="bg-blue-600 text-white px-5 py-2 rounded-lg shadow hover:bg-blue-700 transition duration-200"
+          className="bg-blue-600 text-white px-5 py-2 rounded-lg shadow hover:bg-blue-700 transition duration-200 cursor-pointer"
         >
           + Create New Blog
         </button>
@@ -102,14 +102,14 @@ const AdminBlogDashboard = () => {
                 <div className="flex justify-between gap-2 mt-auto">
                   <button
                     onClick={() => handleEdit(blog)}
-                    className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition"
+                    className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition cursor-pointer"
                   >
                     Edit Blog
                   </button>
                   <button
                     onClick={() => handleDelete(blog._id)}
                     disabled={loading} // Disable button while loading
-                    className={`bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    className={`bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition cursor-pointer ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                   >
                     {loading ? 'Deleting...' : 'Delete Blog'} {/* Show loading text */}
                   </button>

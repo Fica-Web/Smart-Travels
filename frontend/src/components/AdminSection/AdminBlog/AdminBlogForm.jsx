@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { createBlogApi, updateBlogApi, deleteBlogApi, getSingleBlogApi } from '../../../services/api/blogsApi';
+import { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { createBlogApi, updateBlogApi, getSingleBlogApi } from '../../../services/api/blogsApi';
 import CoverImageUpload from '../../reusable/CoverImageUpload';
+import ReusableSubmitButton from '../../reusable/ReusableSubmitButton';
 
-const AdminBlogForm = ({ onCancel, reset }) => {
+const AdminBlogForm = ({ onCancel }) => {
     const { id } = useParams(); // Get blog ID from URL
+    const navigate = useNavigate(); // For navigation after submission
     
     const initialState = {
         title: "",
@@ -39,12 +41,6 @@ const AdminBlogForm = ({ onCancel, reset }) => {
             fetchBlog();
         }
     }, [id]);
-
-    useEffect(() => {
-        if (reset) {
-            setFormData(initialState); // Reset form when reset flag changes
-        }
-    }, [reset]);
 
     const validateForm = () => {
         let newErrors = {};
@@ -128,11 +124,14 @@ const AdminBlogForm = ({ onCancel, reset }) => {
                 await updateBlogApi(id, {
                     ...formData,
                 });
+                navigate(`/admin/blog`); // Redirect to the blog details page after update   
             } else {
                 await createBlogApi({
                     ...formData,
                 });
             }
+
+            setFormData(initialState); // Reset form after submission
         } finally {
             setLoading(false); // 🔹 Hide loading state after response
         }
@@ -250,13 +249,11 @@ const AdminBlogForm = ({ onCancel, reset }) => {
                 </div>
     
                 <div className="flex gap-4 pt-4">
-                    <button
-                        type="submit"
-                        className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md transition"
-                        disabled={loading}
-                    >
-                        {loading ? "Saving..." : id ? "Update Blog" : "Submit Blog"}
-                    </button>
+                    <ReusableSubmitButton
+                        loading={loading}
+                        text={id ? 'Update Blog' : 'Create Blog'}
+                        loadingText={id ? 'Updating...' : 'Submitting...'}
+                    />
     
                     <button
                         type="button"
