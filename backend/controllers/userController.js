@@ -6,59 +6,86 @@ import { sendEmail } from '../config/emailService.js';
 
 const userSignup = async (req, res) => {
     try {
-        const {
-            username,
-            email,
-            password,
-            phone,
-            fullName,
-            dob,
-            nationality,
-        } = req.body;
+        const { username, email, password } = req.body;
 
-        // Validate required fields
         if (!username || !email || !password) {
             return res.status(400).json({ message: 'Username, email, and password are required' });
         }
 
-        // Check for existing user
         const existingUser = await User.findOne({ email: email.toLowerCase() });
         if (existingUser) {
             return res.status(409).json({ message: 'User already exists with this email' });
         }
 
-        // Hash password
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        // Create new user
+        // Generate a 6-digit OTP
+        const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+        // Hash OTP for storage (security)
+        const otpHash = crypto.createHash('sha256').update(otp).digest('hex');
+        const otpExpires = Date.now() + 10 * 60 * 1000; // 10 minutes expiry
+
+        // Create new user with OTP (but mark as not verified)
         const newUser = new User({
             username,
             email: email.toLowerCase(),
             password: hashedPassword,
-            phone,
-            fullName,
-            dob,
-            nationality,
+            isVerified: false, // Custom field to track verification
+            otpHash,
+            otpExpires,
         });
 
-        // Save user
         await newUser.save();
 
-        // Remove password before sending response
-        newUser.password = undefined;
+        // Send OTP via email (use any mail service)
+        await sendEmail({
+            to: email,
+            subject: 'Your OTP Verification Code',
+            text: `Your OTP code is ${otp}. It will expire in 10 minutes.`,
+        });
 
-        res.status(201).json({
-            message: 'Signup successful',
-            user: newUser
+        res.status(200).json({
+            message: 'Signup successful. OTP sent to email.',
+            email,
         });
 
     } catch (error) {
-        console.error('Error signing up user:', error);
-        res.status(500).json({
-            message: 'Internal server error',
-            error: error.message
-        });
+        console.error('Error during signup:', error);
+        res.status(500).json({ message: 'Internal server error', error: error.message });
+    }
+};
+
+const verifyOtp = async (req, res) => {
+    try {
+        const { email, otp } = req.body;
+
+        if (!email || !otp) {
+            return res.status(400).json({ message: 'Email and OTP are required' });
+        }
+
+        const user = await User.findOne({ email: email.toLowerCase() });
+        if (!user) return res.status(404).json({ message: 'User not found' });
+
+        if (user.isVerified) return res.status(400).json({ message: 'User already verified' });
+
+        const otpHash = crypto.createHash('sha256').update(otp).digest('hex');
+
+        if (user.otpHash !== otpHash || user.otpExpires < Date.now()) {
+            return res.status(400).json({ message: 'Invalid or expired OTP' });
+        }
+
+        user.isVerified = true;
+        user.otpHash = undefined;
+        user.otpExpires = undefined;
+        await user.save();
+
+        res.status(200).json({ message: 'OTP verified successfully' });
+
+    } catch (error) {
+        console.error('Error verifying OTP:', error);
+        res.status(500).json({ message: 'Internal server error', error: error.message });
     }
 };
 
