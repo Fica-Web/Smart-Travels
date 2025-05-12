@@ -11,15 +11,16 @@ const OtpVerificationForm = ({ email, onVerified }) => {
         e.preventDefault();
         setLoading(true);
         setError('');
-        try {
-            verifyOtpApi({ email, otp });
-            setSuccess('Verification successful! You can now login.');
+        
+        const response = await verifyOtpApi({ email, otp });
+        if (response.success) {
+            setSuccess('OTP verified successfully!');
             onVerified();
-        } catch (err) {
-            setError(err.response?.data?.message || 'OTP verification failed');
-        } finally {
-            setLoading(false);
+        } else {
+            console.error('OTP verification error:', response.error);
+            setError(response.error || 'OTP verification failed');
         }
+        setLoading(false);
     };
 
     return (

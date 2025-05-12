@@ -6,47 +6,57 @@ import { sendEmail } from '../config/emailService.js';
 
 const userSignup = async (req, res) => {
     try {
-        const { name: username, email, password } = req.body;
-        console.log("Signup data:", req.body);
+        // Extract and sanitize input
+        const username = req.body.name?.trim();
+        const email = req.body.email?.trim().toLowerCase();
+        const password = req.body.password;
 
         if (!username || !email || !password) {
-            return res.status(400).json({ message: 'Username, email, and password are required' });
+            return res.status(400).json({ message: 'Username, email, and password are required.' });
         }
 
-        const existingUser = await User.findOne({ email: email.toLowerCase() });
-        if (existingUser) {
-            return res.status(409).json({ message: 'User already exists with this email' });
+        // Check for existing user
+        const existingUser = await User.findOne({ email });
+
+        if (existingUser && existingUser.isVerified) {
+            return res.status(409).json({ message: 'User already exists with this email.' });
         }
 
+        // Generate hashed password and OTP
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        // Generate a 6-digit OTP
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
-
-        // Hash OTP for storage (security)
         const otpHash = crypto.createHash('sha256').update(otp).digest('hex');
-        const otpExpires = Date.now() + 5 * 60 * 1000; // 5 minutes expiry
+        const otpExpires = Date.now() + 5 * 60 * 1000; // 5 minutes
 
-        // Create new user with OTP (but mark as not verified)
-        const newUser = new User({
-            username,
-            email: email.toLowerCase(),
-            password: hashedPassword,
-            isVerified: false, // Custom field to track verification
-            otpHash,
-            otpExpires,
-        });
+        if (existingUser && !existingUser.isVerified) {
+            // Update existing unverified user
+            existingUser.username = username;
+            existingUser.password = hashedPassword;
+            existingUser.otpHash = otpHash;
+            existingUser.otpExpires = otpExpires;
+            await existingUser.save();
+        } else {
+            // Create new user
+            const newUser = new User({
+                username,
+                email,
+                password: hashedPassword,
+                isVerified: false,
+                otpHash,
+                otpExpires,
+            });
 
-        await newUser.save();
+            await newUser.save();
+        }
 
-        // Send OTP via email (use any mail service)
-        const response = await sendEmail({
+        // Send OTP email
+        await sendEmail({
             to: email,
             subject: 'Your OTP Verification Code',
-            html: `Your OTP code is ${otp}. It will expire in 10 minutes.`,
+            html: `<p>Your OTP code is <strong>${otp}</strong>. It will expire in 5 minutes.</p>`,
         });
-        console.log('Email sent:', response);
 
         res.status(200).json({
             message: 'Signup successful. OTP sent to email.',

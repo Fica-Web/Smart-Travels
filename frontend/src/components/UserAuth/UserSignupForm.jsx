@@ -42,7 +42,12 @@ const UserSignupForm = ({ onOTPSent }) => {
         if (!isValid) return;
 
         const response = await userSignupApi(formData);
-        onOTPSent(formData.email);
+        if (response.success) {
+            onOTPSent(formData.email);
+        } else {
+            toast.error(response.error);
+        }
+        
     }
 
 
