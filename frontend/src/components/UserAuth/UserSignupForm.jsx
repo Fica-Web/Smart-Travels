@@ -3,7 +3,7 @@ import { userSignupApi } from '../../services/api/userApi';
 import PasswordInput from '../reusable/PasswordInput';
 import { toast } from 'react-toastify';
 
-const UserSignupForm = () => {
+const UserSignupForm = ({ onOTPSent }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -41,7 +41,8 @@ const UserSignupForm = () => {
         const isValid = validateForm();
         if (!isValid) return;
 
-        const respose = await userSignupApi(formData);
+        const response = await userSignupApi(formData);
+        onOTPSent(formData.email);
     }
 
 

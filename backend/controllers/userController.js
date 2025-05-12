@@ -6,7 +6,8 @@ import { sendEmail } from '../config/emailService.js';
 
 const userSignup = async (req, res) => {
     try {
-        const { username, email, password } = req.body;
+        const { name: username, email, password } = req.body;
+        console.log("Signup data:", req.body);
 
         if (!username || !email || !password) {
             return res.status(400).json({ message: 'Username, email, and password are required' });
@@ -25,7 +26,7 @@ const userSignup = async (req, res) => {
 
         // Hash OTP for storage (security)
         const otpHash = crypto.createHash('sha256').update(otp).digest('hex');
-        const otpExpires = Date.now() + 10 * 60 * 1000; // 10 minutes expiry
+        const otpExpires = Date.now() + 5 * 60 * 1000; // 5 minutes expiry
 
         // Create new user with OTP (but mark as not verified)
         const newUser = new User({
@@ -40,11 +41,12 @@ const userSignup = async (req, res) => {
         await newUser.save();
 
         // Send OTP via email (use any mail service)
-        await sendEmail({
+        const response = await sendEmail({
             to: email,
             subject: 'Your OTP Verification Code',
-            text: `Your OTP code is ${otp}. It will expire in 10 minutes.`,
+            html: `Your OTP code is ${otp}. It will expire in 10 minutes.`,
         });
+        console.log('Email sent:', response);
 
         res.status(200).json({
             message: 'Signup successful. OTP sent to email.',
@@ -324,6 +326,7 @@ const getUserProfile = async (req, res) => {
 
 export {
     userSignup,
+    verifyOtp,
     userLogin,
     refreshAccessToken,
     logoutUser,

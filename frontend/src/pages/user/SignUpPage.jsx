@@ -1,9 +1,22 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import FormWelcome from "../../components/reusable/FormWelcome";
 import FormTitle from "../../components/reusable/FormTitle";
 import UserSignupForm from "../../components/UserAuth/UserSignupForm";
+import OtpVerificationForm from "../../components/UserAuth/OtpVerificationForm";
 
 const SignUpPage = () => {
+    const [email, setEmail] = useState('');
+    const [step, setStep] = useState('signup');
+
+    const handleOtpSent = (userEmail) => {
+        setEmail(userEmail);
+        setStep('otp');
+    };
+
+    const handleVerified = () => {
+        setStep('verified');
+    };
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100 py-16 px-4">
             <div className="flex flex-col md:flex-row bg-white rounded-2xl shadow-lg overflow-hidden max-w-4xl w-full">
@@ -23,7 +36,9 @@ const SignUpPage = () => {
                         mobileDescription="Create your account and become part of our community. Let’s get started!"
                     />
 
-                    <UserSignupForm />
+                    {step === 'signup' && <UserSignupForm onOTPSent={handleOtpSent} />}
+                    {step === 'otp' && <OtpVerificationForm email={email} onVerified={handleVerified} />}
+                    {step === 'verified' && <p>Account verified! You can now log in.</p>}
 
                     <p className="mt-6 text-sm text-center text-gray-600">
                         Already have an account?{" "}
