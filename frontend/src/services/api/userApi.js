@@ -33,6 +33,16 @@ export const verifyOtpApi = async (data) => {
     }
 }
 
+export const resendOtpApi = async (email) => {
+    try {
+        const response = await userInstance.post('/resend-otp', { email });
+        return { success: true, data: response.data };
+    } catch (error) {
+        console.error('Resend OTP API Error:', error.response?.data);
+        return { success: false, error: error.response?.data?.message || 'Resend OTP failed' };
+    }
+}
+
 export const getUserProfile = async () => {
     try {
         const response = await userInstance.get('/profile');

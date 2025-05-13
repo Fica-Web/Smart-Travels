@@ -101,6 +101,41 @@ const verifyOtp = async (req, res) => {
     }
 };
 
+const resendOtp = async (req, res) => {
+    try {
+        const { email } = req.body;
+
+        if (!email) {
+            return res.status(400).json({ message: 'Email is required' });
+        }
+
+        const user = await User.findOne({ email: email.toLowerCase() });
+        if (!user) return res.status(404).json({ message: 'User not found' });
+
+        if (user.isVerified) return res.status(400).json({ message: 'User already verified' });
+
+        // Generate new OTP
+        const otp = Math.floor(100000 + Math.random() * 900000).toString();
+        const otpHash = crypto.createHash('sha256').update(otp).digest('hex');
+        const otpExpires = Date.now() + 5 * 60 * 1000;
+
+        user.otpHash = otpHash;
+        user.otpExpires = otpExpires;
+        await user.save();
+
+        await sendEmail({
+            to: user.email,
+            subject: 'Your OTP Code (Resent)',
+            html: `Your new OTP is ${otp}. It expires in 5 minutes.`,
+        });
+
+        res.status(200).json({ message: 'OTP resent successfully' });
+    } catch (error) {
+        console.error('Error resending OTP:', error);
+        res.status(500).json({ message: 'Internal server error', error: error.message });
+    }
+}
+
 const userLogin = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -337,6 +372,7 @@ const getUserProfile = async (req, res) => {
 export {
     userSignup,
     verifyOtp,
+    resendOtp,
     userLogin,
     refreshAccessToken,
     logoutUser,

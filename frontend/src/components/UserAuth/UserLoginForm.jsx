@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import PasswordInput from '../reusable/PasswordInput';
+import ReusableSubmitButton from '../reusable/ReusableSubmitButton';
 import { toast } from 'react-toastify';
 
 const UserLoginForm = () => {
@@ -12,12 +13,13 @@ const UserLoginForm = () => {
     const [validatePassword, setValidatePassword] = useState(false);
     const [passwordError, setPasswordError] = useState('');
     const [formErrors, setFormErrors] = useState({});
+    const [loading, setLoading] = useState(false); // ✅ Track submit loading
     const { login } = useAuth();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setValidatePassword(true); // trigger validation inside PasswordInput
+        setValidatePassword(true);
         const newErrors = {};
 
         if (!formData.email.trim()) {
@@ -32,14 +34,17 @@ const UserLoginForm = () => {
         }
 
         setFormErrors({});
+        setLoading(true); // ✅ Start loading
 
         try {
-            await login(formData); // Auth context login
-            navigate('/'); // redirect to homepage or dashboard
+            await login(formData);
+            navigate('/');
         } catch (error) {
             const serverMessage = error.response?.data?.message || error.message || "Login failed. Please try again.";
-            toast.error(serverMessage); // show toast notification on error
+            toast.error(serverMessage);
         }
+
+        setLoading(false); // ✅ End loading
     };
 
     return (
@@ -74,12 +79,12 @@ const UserLoginForm = () => {
                 </Link>
             </div>
 
-            <button
+            <ReusableSubmitButton
+                loading={loading}
+                text="Login"
+                loadingText="Logging in..."
                 type="submit"
-                className="w-full bg-[#2e6bbf] hover:bg-[#4a94d0] text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#4a94d0] focus:ring-offset-2 transition"
-            >
-                Login
-            </button>
+            />
         </form>
     );
 };

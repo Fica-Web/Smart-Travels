@@ -1,85 +1,71 @@
 import { useState, useEffect } from 'react';
-import { verifyOtpApi } from '../../services/api/userApi';
+import { verifyOtpApi, resendOtpApi } from '../../services/api/userApi';
 import { toast } from 'react-toastify';
-
-const OTP_EXPIRY_KEY = 'otp_expiry_timestamp';
 
 const OtpVerificationForm = ({ email, onVerified }) => {
     const [otp, setOtp] = useState('');
     const [loading, setLoading] = useState(false);
+    const [resending, setResending] = useState(false);
     const [success, setSuccess] = useState('');
-    const [resendTimer, setResendTimer] = useState(120); // 2 min resend
-    const [otpExpirySeconds, setOtpExpirySeconds] = useState(0);
-    const [otpExpired, setOtpExpired] = useState(false);
+    const [resendTimer, setResendTimer] = useState(120); // 2-minute resend timer
 
-    // Initialize/resume OTP expiry timer
+    // Proper countdown timer without multiple intervals
     useEffect(() => {
-    const startExpiryTimer = () => {
-        const expiry = Number(localStorage.getItem(OTP_EXPIRY_KEY));
-        if (!expiry || isNaN(expiry)) return;
+        if (resendTimer <= 0) return;
 
         const interval = setInterval(() => {
-            const remaining = Math.floor((expiry - Date.now()) / 1000);
-            if (remaining <= 0) {
-                clearInterval(interval);
-                setOtpExpired(true);
-                setOtpExpirySeconds(0);
-                toast.error('OTP has expired. Please request a new one.');
-            } else {
-                setOtpExpired(false);
-                setOtpExpirySeconds(remaining);
-            }
+            setResendTimer((prev) => {
+                if (prev <= 1) {
+                    clearInterval(interval);
+                    return 0;
+                }
+                return prev - 1;
+            });
         }, 1000);
 
-        return interval;
-    };
-
-    const intervalId = startExpiryTimer();
-
-    // Cleanup on unmount
-    return () => clearInterval(intervalId);
-}, [localStorage.getItem(OTP_EXPIRY_KEY)]); // <- re-run when expiry timestamp changes
-
-    // 2-minute resend timer
-    useEffect(() => {
-        if (resendTimer > 0) {
-            const interval = setInterval(() => {
-                setResendTimer((prev) => prev - 1);
-            }, 1000);
-            return () => clearInterval(interval);
-        }
-    }, [resendTimer]);
+        return () => clearInterval(interval);
+    }, [resendTimer > 0]); // Only restart when timer is active again
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (otpExpired) {
-            toast.error('OTP has expired. Please request a new one.');
-            return;
-        }
-
         setLoading(true);
         setSuccess('');
 
-        const response = await verifyOtpApi({ email, otp });
-        if (response.success) {
-            setSuccess('✅ OTP verified successfully!');
-            onVerified();
-        } else {
-            toast.error(response.error || 'OTP verification failed');
+        try {
+            const response = await verifyOtpApi({ email, otp: otp.trim() });
+            if (response.success) {
+                setSuccess('✅ OTP verified successfully!');
+                onVerified();
+                toast.success('OTP verified successfully!');
+            } else {
+                toast.error(response.error || 'OTP verification failed');
+            }
+        } catch (error) {
+            toast.error('An unexpected error occurred');
+            console.error(error);
         }
 
         setLoading(false);
     };
 
-    const handleResendOtp = () => {
-        // Call your resend API here (mocked)
-        toast.success('OTP resent successfully!');
-        setOtp('');
-        setResendTimer(120);
-        setOtpExpired(false);
+    const handleResendOtp = async () => {
+        if (resendTimer > 0 || resending) return;
 
-        const newExpiry = Date.now() + 5 * 60 * 1000; // 5 mins from now
-        localStorage.setItem(OTP_EXPIRY_KEY, newExpiry);
+        setResending(true);
+        try {
+            const response = await resendOtpApi(email);
+            if (response.success) {
+                toast.success('OTP resent successfully!');
+                setOtp('');
+                setResendTimer(120);
+            } else {
+                toast.error(response.error || 'Failed to resend OTP');
+            }
+        } catch (error) {
+            toast.error('An error occurred while resending OTP');
+            console.error(error);
+        }
+        setResending(false);
     };
 
     const formatTime = (seconds) => {
@@ -94,17 +80,13 @@ const OtpVerificationForm = ({ email, onVerified }) => {
                 📩 OTP sent to <span className="font-medium">{email}</span>
             </p>
 
-            <p className="text-sm text-gray-500">
-                OTP expires in: <span className="font-medium">{formatTime(otpExpirySeconds)}</span>
-            </p>
-
             <div>
                 <label className="block text-sm text-gray-600 mb-1">Enter OTP</label>
                 <input
                     type="text"
                     value={otp}
                     onChange={(e) => {
-                        const value = e.target.value;
+                        const value = e.target.value.trim();
                         if (/^\d{0,6}$/.test(value)) {
                             setOtp(value);
                         }
@@ -113,18 +95,16 @@ const OtpVerificationForm = ({ email, onVerified }) => {
                     placeholder="6-digit code"
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#4a94d0]"
                     required
-                    disabled={otpExpired}
                 />
             </div>
 
             <button
                 type="submit"
-                disabled={loading || otp.length !== 6 || otpExpired}
+                disabled={loading || otp.length !== 6}
                 className={`w-full font-semibold py-2 px-4 rounded-xl transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2
-                    ${loading || otp.length !== 6 || otpExpired
+                    ${loading || otp.length !== 6
                         ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                        : 'bg-[#2e6bbf] hover:bg-[#4a94d0] text-white cursor-pointer'}
-                `}
+                        : 'bg-[#2e6bbf] hover:bg-[#4a94d0] text-white cursor-pointer'}`}
             >
                 {loading ? 'Verifying...' : 'Verify OTP'}
             </button>
@@ -138,22 +118,18 @@ const OtpVerificationForm = ({ email, onVerified }) => {
                 <button
                     type="button"
                     onClick={handleResendOtp}
-                    disabled={resendTimer > 0}
+                    disabled={resendTimer > 0 || resending}
                     className={`${
-                        resendTimer > 0
+                        resendTimer > 0 || resending
                             ? 'text-gray-400 cursor-not-allowed'
                             : 'text-primary-blue hover:underline cursor-pointer'
                     }`}
                 >
-                    Resend OTP {resendTimer > 0 && `in ${formatTime(resendTimer)}`}
+                    {resending
+                        ? 'Resending...'
+                        : `Resend OTP${resendTimer > 0 ? ` in ${formatTime(resendTimer)}` : ''}`}
                 </button>
             </p>
-
-            {otpExpired && (
-                <p className="text-sm text-red-500 text-center mt-2">
-                    ⚠️ OTP has expired. Please resend to get a new code.
-                </p>
-            )}
         </form>
     );
 };
