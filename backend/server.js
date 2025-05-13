@@ -8,6 +8,7 @@ import adminRouter from './routers/adminRouter.js'; // Import the admin router
 import userRouter from './routers/userRouter.js'; // Import the user router
 import blogRouter from './routers/blogsRouter.js'; // Import the blog router
 import carouselRouter from './routers/carouselRouter.js'; // Import the carousel router
+import destinationRouter from './routers/destinationRouter.js'; // Import the destination router
 
 dotenv.config();
 
@@ -36,6 +37,7 @@ app.use('/api/admin', adminRouter); // Use the admin router for routes starting 
 app.use('/api/user', userRouter); // Use the user router for routes starting with /api/user
 app.use('/api/blogs', blogRouter); // Use the blog router for routes starting with /api/blogs
 app.use('/api/carousel', carouselRouter); // Use the carousel router for routes starting with /api/carousel
+app.use('/api/destination', destinationRouter); // Use the destination router for routes starting with /api/destination
 
 app.get('/', (req, res) => {
     res.send('Server is running!');

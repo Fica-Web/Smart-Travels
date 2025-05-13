@@ -1,4 +1,4 @@
-import Destination from '../models/Destination.js';
+import Destination from '../model/destinationSchema.js';
 import slugify from 'slugify';
 import cloudinary from "../config/cloudinary.js";
 

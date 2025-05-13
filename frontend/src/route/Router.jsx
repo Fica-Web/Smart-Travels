@@ -26,8 +26,10 @@ const AdminServices = lazy(() => import('../pages/admin/AdminServices'));
 const AdminBlogPage = lazy(() => import('../pages/admin/AdminBlogPage'));
 const AdminCarouselPage = lazy(() => import('../pages/admin/AdminCarouselPage'));
 const AdminSettingsPage = lazy(() => import('../pages/admin/AdminSettingsPage'));
-const AdminBlogFormPage = lazy(() => import('../pages/admin/AdminBlogFormPage'))
-const AdminBlogEditPage = lazy(() => import('../pages/admin/AdminBlogEditPage'))
+const AdminBlogFormPage = lazy(() => import('../pages/admin/AdminBlogFormPage'));
+const AdminBlogEditPage = lazy(() => import('../pages/admin/AdminBlogEditPage'));
+const AdminDestinationPage = lazy(() => import('../pages/admin/AdminDestinationPage'));
+const AdminDestinationFormPage = lazy(() => import('../pages/admin/AdminDestinationFormPage'));
 // const NotFoundPage = lazy(() => import('../pages/shared/NotFoundPage'));
 
 // Suspense wrapper
@@ -124,6 +126,23 @@ const router = createBrowserRouter([
             element: withSuspense(AdminServices),
           },
           {
+            path: 'destination',
+            children: [
+              {
+                index: true,
+                element: withSuspense(AdminDestinationPage), // Page to list all destinations
+              },
+              {
+                path: 'new',
+                element: withSuspense(AdminDestinationFormPage), // Create new destination
+              },
+              {
+                path: 'edit/:id',
+                element: withSuspense(AdminDestinationFormPage), // Edit existing destination
+              },
+            ],
+          },
+          {
             path: 'blog',
             children: [
               {
@@ -152,7 +171,7 @@ const router = createBrowserRouter([
       },
     ],
   }
-  
+
   // {
   //   path: '*',
   //   element: withSuspense(NotFoundPage),
