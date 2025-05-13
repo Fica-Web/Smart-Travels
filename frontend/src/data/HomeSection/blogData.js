@@ -1,5 +1,5 @@
 // src/data/HomeSection/blogData.js
-import image1 from '../../assets/image/hero/Ruknhero.jpg'
+import image1 from '../../assets/image/Destination/trvlhero.jpg'
 
 export const blogData = [
     {

@@ -6,7 +6,7 @@ import { AiOutlineCopyright } from "react-icons/ai";
 
 const Footer = () => {
   return (
-<footer className="relative w-full text-white py-12 px-6 sm:px-12 bg-gradient-to-b from-sky-200 to-sky-500">
+<footer className="relative w-full text-white py-12 px-6 sm:px-12 bg-black">
       {/* Top Section */}
       <div className="pb-12 border-b border-gray-700 flex flex-col md:flex-row justify-between gap-8">
         {/* Left Section */}

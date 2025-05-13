@@ -1,5 +1,6 @@
 import heroImage from '../../assets/image/hero/lagoon-landscape.jpg';
 import ReusableHero from "../../components/reusable/ReusableHero"
+import BlogSection from "../../components/HomeSection/HomePage/BlogSection"
 
 const BlogPage = () => {
     return (
@@ -8,6 +9,7 @@ const BlogPage = () => {
                 bgImage={heroImage}
                 title="Blog"
             />
+            <BlogSection isHomePage={false}/>
         </div>
     )
 }

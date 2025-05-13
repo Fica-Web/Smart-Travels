@@ -28,6 +28,7 @@ const AdminCarouselPage = lazy(() => import('../pages/admin/AdminCarouselPage'))
 const AdminSettingsPage = lazy(() => import('../pages/admin/AdminSettingsPage'));
 const AdminBlogFormPage = lazy(() => import('../pages/admin/AdminBlogFormPage'))
 const AdminBlogEditPage = lazy(() => import('../pages/admin/AdminBlogEditPage'))
+const BlogDetails = lazy(() => import('../pages/user/BlogDetailsPage'))
 // const NotFoundPage = lazy(() => import('../pages/shared/NotFoundPage'));
 
 // Suspense wrapper
@@ -56,8 +57,18 @@ const router = createBrowserRouter([
       },
       {
         path: 'blog',
-        element: withSuspense(BlogPage),
+        children: [
+          {
+            index: true,
+            element: withSuspense(BlogPage),
+          },
+          {
+            path: ':id',
+            element: withSuspense(BlogDetails),
+          },
+        ],
       },
+
       {
         path: 'profile',
         element: (
@@ -152,7 +163,7 @@ const router = createBrowserRouter([
       },
     ],
   }
-  
+
   // {
   //   path: '*',
   //   element: withSuspense(NotFoundPage),
