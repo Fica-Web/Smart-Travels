@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { Rocket, User, Menu, X } from "lucide-react";
-import logo from '../../assets/image/logo/white.png';
+import logo from '../../assets/image/logo/logo.png';
 import navOptions from "../../data/navOptions";
 import UserLogoutButton from "../reusable/UserLogoutButton";
 
