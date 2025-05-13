@@ -1,45 +1,71 @@
 import { useState, useEffect } from 'react';
-import { verifyOtpApi } from '../../services/api/userApi';
+import { verifyOtpApi, resendOtpApi } from '../../services/api/userApi';
 import { toast } from 'react-toastify';
 
 const OtpVerificationForm = ({ email, onVerified }) => {
     const [otp, setOtp] = useState('');
     const [loading, setLoading] = useState(false);
+    const [resending, setResending] = useState(false);
     const [success, setSuccess] = useState('');
     const [resendTimer, setResendTimer] = useState(120); // 2-minute resend timer
 
-    // 2-minute resend countdown
+    // Proper countdown timer without multiple intervals
     useEffect(() => {
-        if (resendTimer > 0) {
-            const interval = setInterval(() => {
-                setResendTimer((prev) => prev - 1);
-            }, 1000);
-            return () => clearInterval(interval);
-        }
-    }, [resendTimer]);
+        if (resendTimer <= 0) return;
+
+        const interval = setInterval(() => {
+            setResendTimer((prev) => {
+                if (prev <= 1) {
+                    clearInterval(interval);
+                    return 0;
+                }
+                return prev - 1;
+            });
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, [resendTimer > 0]); // Only restart when timer is active again
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         setLoading(true);
         setSuccess('');
 
-        const response = await verifyOtpApi({ email, otp });
-        if (response.success) {
-            setSuccess('✅ OTP verified successfully!');
-            onVerified();
-        } else {
-            toast.error(response.error || 'OTP verification failed');
+        try {
+            const response = await verifyOtpApi({ email, otp: otp.trim() });
+            if (response.success) {
+                setSuccess('✅ OTP verified successfully!');
+                onVerified();
+                toast.success('OTP verified successfully!');
+            } else {
+                toast.error(response.error || 'OTP verification failed');
+            }
+        } catch (error) {
+            toast.error('An unexpected error occurred');
+            console.error(error);
         }
 
         setLoading(false);
     };
 
-    const handleResendOtp = () => {
-        // Call your resend API here (mocked)
-        toast.success('OTP resent successfully!');
-        setOtp('');
-        setResendTimer(120);
+    const handleResendOtp = async () => {
+        if (resendTimer > 0 || resending) return;
+
+        setResending(true);
+        try {
+            const response = await resendOtpApi(email);
+            if (response.success) {
+                toast.success('OTP resent successfully!');
+                setOtp('');
+                setResendTimer(120);
+            } else {
+                toast.error(response.error || 'Failed to resend OTP');
+            }
+        } catch (error) {
+            toast.error('An error occurred while resending OTP');
+            console.error(error);
+        }
+        setResending(false);
     };
 
     const formatTime = (seconds) => {
@@ -60,7 +86,7 @@ const OtpVerificationForm = ({ email, onVerified }) => {
                     type="text"
                     value={otp}
                     onChange={(e) => {
-                        const value = e.target.value;
+                        const value = e.target.value.trim();
                         if (/^\d{0,6}$/.test(value)) {
                             setOtp(value);
                         }
@@ -92,14 +118,16 @@ const OtpVerificationForm = ({ email, onVerified }) => {
                 <button
                     type="button"
                     onClick={handleResendOtp}
-                    disabled={resendTimer > 0}
+                    disabled={resendTimer > 0 || resending}
                     className={`${
-                        resendTimer > 0
+                        resendTimer > 0 || resending
                             ? 'text-gray-400 cursor-not-allowed'
                             : 'text-primary-blue hover:underline cursor-pointer'
                     }`}
                 >
-                    Resend OTP {resendTimer > 0 && `in ${formatTime(resendTimer)}`}
+                    {resending
+                        ? 'Resending...'
+                        : `Resend OTP${resendTimer > 0 ? ` in ${formatTime(resendTimer)}` : ''}`}
                 </button>
             </p>
         </form>

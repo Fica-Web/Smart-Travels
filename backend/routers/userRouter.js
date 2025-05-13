@@ -3,6 +3,7 @@ const router = express.Router();
 import {
     userSignup,
     verifyOtp,
+    resendOtp,
     userLogin,
     refreshAccessToken,
     logoutUser,
@@ -15,6 +16,7 @@ import verifyUser from '../middlewares/verifyUser.js';
 
 router.post('/signup', userSignup);
 router.post('/verify-otp', verifyOtp); // OTP verification route
+router.post('/resend-otp', resendOtp); // Resend OTP route
 router.post('/login', userLogin);
 router.get('/refresh-token', refreshAccessToken);
 router.post('/logout', logoutUser);
