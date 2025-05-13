@@ -5,7 +5,7 @@ const ReusableSubmitButton = ({ loading, text, loadingText, ...props }) => {
             {...props}
             disabled={loading}
             className={`w-full py-2 rounded-md cursor-pointer text-white transition duration-200 
-                ${loading ? "bg-gray-500 cursor-not-allowed" : "bg-green-500 hover:bg-green-600"}
+                ${loading ? "bg-gray-500 cursor-not-allowed" : "bg-[#2e6bbf] hover:bg-[#4a94d0]"}
             `}
         >
             {loading ? (
