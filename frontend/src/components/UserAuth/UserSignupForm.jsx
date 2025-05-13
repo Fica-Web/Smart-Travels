@@ -1,10 +1,9 @@
-import { Import } from 'lucide-react';
-import React from 'react'
 import { useState } from 'react';
+import { userSignupApi } from '../../services/api/userApi';
 import PasswordInput from '../reusable/PasswordInput';
-import { toast } from 'react-toastify'
+import { toast } from 'react-toastify';
 
-const UserSignupForm = () => {
+const UserSignupForm = ({ onOTPSent }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -15,8 +14,7 @@ const UserSignupForm = () => {
     const [formErrors, setFormErrors] = useState({});
     // const [error, setError] = useState(null);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const validateForm = () => {
         setValidatePassword(true); // Trigger internal validation
         const newErrors = {};
 
@@ -31,16 +29,29 @@ const UserSignupForm = () => {
 
         if (Object.keys(newErrors).length > 0 || passwordError) {
             setFormErrors(newErrors);
-            return;
+            return false; // Form is invalid
         }
 
         setFormErrors({});
+        return true; // Form is valid
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const isValid = validateForm();
+        if (!isValid) return;
+
+        const response = await userSignupApi(formData);
+        if (response.success) {
+            onOTPSent(formData.email);
+        } else {
+            toast.error(response.error);
+        }
         
     }
 
 
     return (
-
         <>
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
