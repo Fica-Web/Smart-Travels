@@ -25,8 +25,6 @@ const createBlog = async (req, res) => {
             return res.status(400).json({ error: "Missing required fields" });
         }
 
-        console.log('Content Type:', typeof parsedContent);
-
         // Upload image to Cloudinary
         const coverImage = await cloudinary.uploader.upload(req.file.path);
 
