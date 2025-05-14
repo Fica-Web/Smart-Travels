@@ -1,10 +1,14 @@
-import React from 'react'
+import AdminHero from "../../components/reusable/AdminHero";
 
 const AdminDestinationPage = () => {
     return (
-        <div>
-        
-        </div>
+        <>
+            <AdminHero 
+                title="Manage Destinations" 
+                link="/admin/destination/new"
+                button="Add New Destination"
+            />
+        </>
     )
 }
 

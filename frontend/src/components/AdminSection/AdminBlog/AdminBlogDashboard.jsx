@@ -53,16 +53,14 @@ const AdminBlogDashboard = () => {
 
   return (
     <div className="min-h-screen px-4 md:px-10 py-8 bg-gray-100">
-      <AdminHero title="Manage Blogs" />
+      <AdminHero 
+        title="Manage Blogs" 
+        link='/admin/blog/new'
+        button='Create New Blog'
+      />
 
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
         <h2 className="text-2xl font-semibold text-gray-800">All Blogs</h2>
-        <button
-          onClick={handleCreate}
-          className="bg-blue-600 text-white px-5 py-2 rounded-lg shadow hover:bg-blue-700 transition duration-200 cursor-pointer"
-        >
-          + Create New Blog
-        </button>
       </div>
 
       {blogs.length === 0 ? (
