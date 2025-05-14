@@ -86,3 +86,109 @@ export const createDestination = async (req, res) => {
         });
     }
 };
+
+export const updateDestination = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const {
+            title,
+            destination,
+            duration,
+            pricePerPerson,
+            country,
+            isPublished
+        } = req.body;
+
+        let days = [];
+        let inclusions = [];
+
+        // Parse days and inclusions from the request body
+        if (req.body.days) {
+            try {
+                days = typeof req.body.days === 'string' ? JSON.parse(req.body.days) : req.body.days;
+            } catch (error) {
+                return res.status(400).json({ message: 'Invalid days format. Please provide a valid JSON array.' });
+            }
+        }
+
+        if (req.body.inclusions) {
+            try {
+                inclusions = typeof req.body.inclusions === 'string' ? JSON.parse(req.body.inclusions) : req.body.inclusions;
+            } catch (error) {
+                return res.status(400).json({ message: 'Invalid inclusions format. Please provide a valid JSON array.' });
+            }
+        }
+
+        // Validate required fields
+        if (!title || !destination || !duration || !Array.isArray(days) || days.length === 0) {
+            return res.status(400).json({ message: 'Title, destination, duration, and at least one day plan are required.' });
+        }
+
+        // Find the existing destination
+        const existingDestination = await Destination.findById(id);
+        if (!existingDestination) {
+            return res.status(404).json({ message: 'Destination not found' });
+        }
+
+        // Generate slug
+        const generatedSlug = slugify(title, { lower: true, strict: true });
+
+        // If slug changed, check for duplicate
+        if (generatedSlug !== existingDestination.slug) {
+            const slugExists = await Destination.findOne({ slug: generatedSlug });
+            if (slugExists) {
+                return res.status(409).json({ message: 'A destination with a similar title already exists. Please choose a different title.' });
+            }
+        }
+
+        // Handle image upload if a new file is provided
+        let coverImageUrl = existingDestination.coverImage;
+        let coverImageId = existingDestination.coverImageId;
+
+        if (req.file) {
+            const coverImage = await cloudinary.uploader.upload(req.file.path);
+            if (!coverImage) {
+                return res.status(500).json({ message: 'Failed to upload image to Cloudinary' });
+            }
+
+            // Remove old image
+            if (coverImageId) {
+                await cloudinary.uploader.destroy(coverImageId);
+            }
+
+            coverImageUrl = coverImage.secure_url;
+            coverImageId = coverImage.public_id;
+        }
+
+        // Update the destination
+        const updatedDestination = await Destination.findByIdAndUpdate(
+            id,
+            {
+                title,
+                destination,
+                slug: generatedSlug,
+                duration,
+                pricePerPerson,
+                days,
+                inclusions,
+                coverImage: coverImageUrl,
+                coverImageId,
+                country,
+                isPublished: isPublished ?? existingDestination.isPublished
+            },
+            { new: true }
+        );
+
+        res.status(200).json({
+            message: 'Destination updated successfully',
+            destination: updatedDestination
+        });
+
+    } catch (error) {
+        console.error('Error updating destination:', error);
+        res.status(500).json({
+            message: 'Internal server error',
+            error: error.message
+        });
+    }
+};
