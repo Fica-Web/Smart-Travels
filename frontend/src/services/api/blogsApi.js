@@ -56,7 +56,7 @@ const createBlogApi = async (data) => {
 // Fetch a single blog by its ID
 const getSingleBlogApi = async (id) => {
   try {
-    const response = await blogsInstance.get(`/:${id}`);
+    const response = await blogsInstance.get(`/${id}`);
     console.log("Fetched blog data:", response.data);  // Log the full response for debugging
     return response.data; // Make sure to return response.data directly
   } catch (error) {

@@ -32,6 +32,7 @@ const BlogDetails = () => {
 
   return (
     <div className="blog-details">
+      dcfvgbhnjmk,
       <h1>{blog.title}</h1>
       <img src={blog.coverImage} alt={blog.title} />
       <p>{blog.description}</p>
