@@ -16,11 +16,32 @@ export const userLoginApi = async (credentials) => {
 export const userSignupApi = async (data) => {
     try {
         const response = await userInstance.post('/signup', data);
+        console.log('Signup API Response:', response.data);
         return { success: true, data: response.data };
     } catch (error) {
+        console.error('Signup API Error:', error.response?.data || error);
         return { success: false, error: error.response?.data?.message || 'Signup failed' };
     }
 };
+
+export const verifyOtpApi = async (data) => {
+    try {
+        const response = await userInstance.post('/verify-otp', data);
+        return { success: true, data: response.data };
+    } catch (error) {
+        return { success: false, error: error.response?.data?.message || 'OTP verification failed' };
+    }
+}
+
+export const resendOtpApi = async (email) => {
+    try {
+        const response = await userInstance.post('/resend-otp', { email });
+        return { success: true, data: response.data };
+    } catch (error) {
+        console.error('Resend OTP API Error:', error.response?.data);
+        return { success: false, error: error.response?.data?.message || 'Resend OTP failed' };
+    }
+}
 
 export const getUserProfile = async () => {
     try {

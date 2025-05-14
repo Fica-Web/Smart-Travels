@@ -6,7 +6,8 @@ import { AiOutlineCopyright } from "react-icons/ai";
 
 const Footer = () => {
   return (
-<footer className="relative w-full text-white py-12 px-6 sm:px-12 bg-black">
+    <footer className="relative w-full text-white py-12 px-6 sm:px-12 bg-gradient-to-b from-sky-700 via-sky-800 to-sky-900">
+
       {/* Top Section */}
       <div className="pb-12 border-b border-gray-700 flex flex-col md:flex-row justify-between gap-8">
         {/* Left Section */}
@@ -25,9 +26,14 @@ const Footer = () => {
             <ul className="space-y-2 text-gray-400 text-sm">
               {navOptions.map((item, index) => (
                 <li key={index}>
-                  <Link to={item.path} className="hover:text-white transition">
+                  <Link
+                    to={item.path}
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    className="hover:text-white transition"
+                  >
                     {item.name}
                   </Link>
+
                 </li>
               ))}
             </ul>

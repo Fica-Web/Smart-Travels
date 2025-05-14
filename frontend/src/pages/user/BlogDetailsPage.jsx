@@ -3,9 +3,10 @@ import BlogDetails from '../../components/HomeSection/BlogPage/BlogDetails'
 
 const BlogDetailsPage = () => {
   return (
-    <div>
-      <BlogDetails />
-    </div>
+  <div>
+    <BlogDetails />
+  </div>
+    
   )
 }
 
