@@ -1,5 +1,5 @@
-
-const ReusableHero = ({ bgImage, title }) => {
+import bgImage from '../../assets/image/blog/blog-hero.png'
+const ReusableHero = ({ title }) => {
     return (
         <div className='w-full md:h-[70vh] h-[60vh] bg-cover bg-center relative' style={{ backgroundImage: `url(${bgImage})` }}>
             <div className="flex justify-center items-center w-full h-full">

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { Rocket, User, Menu, X } from "lucide-react";
-import logo from '../../assets/image/logo/white.png';
+import logo from '../../assets/image/logo/logo.png';
 import navOptions from "../../data/navOptions";
 import UserLogoutButton from "../reusable/UserLogoutButton";
 
@@ -18,17 +18,17 @@ const Header = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex bg-white/10 backdrop-blur-md rounded-full p-1 space-x-1 ring-1 ring-white/20">
+        <nav className="hidden lg:flex gap-2 bg-[#4A94D0]/10 backdrop-blur-md rounded-full p-2 space-x-1 ring-1 ring-[#4A94D0]/20">
           {navOptions.map((item) => (
             <NavLink
               key={item.name}
               to={item.path}
               end={item.end}
               className={({ isActive }) =>
-                `px-5 py-2 rounded-full transition ${
+                `px-5 py-1 rounded-full transition ${
                   isActive
                     ? 'bg-white text-black shadow font-medium'
-                    : 'text-white bg-white/20 hover:bg-white/30'
+                    : 'text-white bg-[#4A94D0]/40 hover:bg-[#4A94D0]/80'
                 }`
               }
             >
