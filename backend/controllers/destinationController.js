@@ -9,11 +9,31 @@ export const createDestination = async (req, res) => {
             destination,
             duration,
             pricePerPerson,
-            days,
-            inclusions,
             country,
             isPublished
         } = req.body;
+
+        let days = [];
+        let inclusions = [];
+
+        // Parse days and inclusions from the request body
+        if (req.body.days) {
+            try {
+                days = JSON.parse(req.body.days);
+            } catch (error) {   
+                return res.status(400).json({ message: 'Invalid days format. Please provide a valid JSON array.' });
+            }   
+        }
+
+        if (req.body.inclusions) {
+            try {
+                inclusions = JSON.parse(req.body.inclusions);
+            } catch (error) {
+                return res.status(400).json({ message: 'Invalid inclusions format. Please provide a valid JSON array.' });
+            }
+        }
+
+        console.log('Request body:', req.body);
 
         // Validate required fields
         if (!title || !destination || !duration || !req.file || !days || days.length === 0) {
@@ -31,6 +51,10 @@ export const createDestination = async (req, res) => {
         
         // Upload image to Cloudinary
         const coverImage = await cloudinary.uploader.upload(req.file.path);
+        if (!coverImage) {
+            return res.status(500).json({ message: 'Failed to upload image to Cloudinary' });
+        }
+        console.log('Uploaded image:', coverImage);
 
         // Create new destination
         const newDestination = new Destination({
@@ -41,7 +65,8 @@ export const createDestination = async (req, res) => {
             pricePerPerson,
             days,
             inclusions,
-            coverImage,
+            coverImage: coverImage.secure_url,
+            coverImageId: coverImage.public_id,
             country,
             isPublished: isPublished ?? false,
         });

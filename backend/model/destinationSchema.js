@@ -24,6 +24,7 @@ const destinationSchema = new mongoose.Schema({
     inclusions: [{ type: String }], // e.g., ["Hotel stay", "Breakfast", "Sightseeing"]
 
     coverImage: { type: String, required: true }, // Main banner image
+    coverImageId: { type: String, unique: true }, // For cloud storage reference
 
     country: { type: String }, // e.g., "India", "UAE"
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { createDestinationApi } from '../../../services/api/destinationApi';
 import CoverImageUpload from '../../reusable/CoverImageUpload';
+import ReusableSubmitButton from '../../reusable/ReusableSubmitButton';
 
 const AdminDestinationForm = ({ destinationId }) => {
     const isEditMode = Boolean(destinationId);
@@ -72,7 +73,7 @@ const AdminDestinationForm = ({ destinationId }) => {
 
     const handleCroppedImage = (croppedImageBlob) => {
         const previewURL = URL.createObjectURL(croppedImageBlob);
-        
+
         setFormData((prevState) => ({
             ...prevState,
             coverImage: croppedImageBlob, // For API upload
@@ -80,10 +81,21 @@ const AdminDestinationForm = ({ destinationId }) => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        const response = createDestinationApi(formData, destinationId);
+        setLoading(true);
+        setErrors({}); // Reset errors
+
+        const response = await createDestinationApi(formData);
+        if (response.success) {
+            toast.success("Destination created successfully");
+            setFormData(initialState);
+        } else {
+            toast.error("Failed to create destination");
+            setErrors(prev => ({ ...prev, server: response.message }));
+        }
+
+        setLoading(false);
     };
 
     return (
@@ -130,7 +142,7 @@ const AdminDestinationForm = ({ destinationId }) => {
                     className="border border-gray-300 rounded-md px-4 py-2 w-full"
                 />
             </div>
-                
+
             <CoverImageUpload
                 onImageChange={handleImageChange}
                 onCroppedImage={handleCroppedImage}
@@ -193,12 +205,11 @@ const AdminDestinationForm = ({ destinationId }) => {
                 <label>Publish this destination</label>
             </div>
 
-            <button
-                type="submit"
-                className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
-            >
-                Submit
-            </button>
+            <ReusableSubmitButton
+                loading={loading}
+                text={isEditMode ? "Update Destination" : "Create Destination"}
+                loadingText={isEditMode ? "Updating..." : "Creating..."}
+            />
         </form>
     );
 };

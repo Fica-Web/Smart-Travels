@@ -1,11 +1,29 @@
 import destinationInstance from "../axios_instances/destinationInstance";
 
 export const createDestinationApi = async (data) => {
+    const formData = new FormData();
+
+    for (const key in data) {
+        if (key === 'inclusions' || key === 'days') {
+            formData.append(key, JSON.stringify(data[key]));
+        } else {
+            formData.append(key, data[key]);
+        }
+    }
+
+    const config = {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    };
     try {
-        const response = await destinationInstance.post("/", data);
-        return response.data;
+        const response = await destinationInstance.post("/", formData, config);
+        return { success: true, data: response.data };
     } catch (error) {
         console.error("Error creating destination:", error);
-        throw error;
+        return {
+            success: false,
+            message: error.response?.data?.message || error.message || "Unknown error",
+        };
     }
 }
