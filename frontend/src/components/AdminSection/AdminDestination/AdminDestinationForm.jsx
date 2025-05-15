@@ -35,8 +35,9 @@ const AdminDestinationForm = ({ destinationId }) => {
             (async () => {
                 setLoading(true);
                 const res = await getDestinationByIdApi(destinationId);
+                console.log('res:', res)
                 if (res.success) {
-                    const destination = res.data;
+                    const destination = res.data.destination;
                     setFormData({
                         ...destination,
                         pricePerPerson: destination.pricePerPerson || '',
@@ -216,7 +217,7 @@ const AdminDestinationForm = ({ destinationId }) => {
 
             <div>
                 <label className="font-medium">Inclusions</label>
-                {formData.inclusions.map((item, index) => (
+                {formData?.inclusions?.map((item, index) => (
                     <div key={index} className="flex items-center gap-2 mt-2">
                         <input
                             type="text"

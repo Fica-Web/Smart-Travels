@@ -1,4 +1,5 @@
 import AdminHero from "../../components/reusable/AdminHero";
+import AdminDestinationListing from "../../components/AdminSection/AdminDestination/AdminDestinationListing";
 
 const AdminDestinationPage = () => {
     return (
@@ -8,6 +9,7 @@ const AdminDestinationPage = () => {
                 link="/admin/destination/new"
                 button="Add New Destination"
             />
+            <AdminDestinationListing />
         </>
     )
 }

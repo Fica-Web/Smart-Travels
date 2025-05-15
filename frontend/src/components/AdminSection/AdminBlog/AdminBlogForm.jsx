@@ -152,7 +152,7 @@ const AdminBlogForm = ({ onCancel }) => {
                         name="title"
                         value={formData.title}
                         onChange={handleInputChange}
-                        className="w-full border border-gray-500 p-2 rounded-md mt-1"
+                        className="w-full border border-gray-300 p-2 rounded-md mt-1"
                     />
                     {errors.title && <p className="text-red-500 text-sm">{errors.title}</p>}
                 </div>
@@ -164,7 +164,7 @@ const AdminBlogForm = ({ onCancel }) => {
                         name="author"
                         value={formData.author}
                         onChange={handleInputChange}
-                        className="w-full border border-gray-500 p-2 rounded-md mt-1"
+                        className="w-full border border-gray-300 p-2 rounded-md mt-1"
                     />
                     {errors.author && <p className="text-red-500 text-sm">{errors.author}</p>}
                 </div>
@@ -176,7 +176,7 @@ const AdminBlogForm = ({ onCancel }) => {
                         name="category"
                         value={formData.category}
                         onChange={handleInputChange}
-                        className="w-full border border-gray-500 p-2 rounded-md mt-1"
+                        className="w-full border border-gray-300 p-2 rounded-md mt-1"
                     />
                     {errors.category && <p className="text-red-500 text-sm">{errors.category}</p>}
                 </div>
@@ -188,7 +188,7 @@ const AdminBlogForm = ({ onCancel }) => {
                         value={formData.description}
                         onChange={handleInputChange}
                         rows="3"
-                        className="w-full border border-gray-500 p-2 rounded-md mt-1"
+                        className="w-full border border-gray-300 p-2 rounded-md mt-1"
                     />
                 </div>
 
