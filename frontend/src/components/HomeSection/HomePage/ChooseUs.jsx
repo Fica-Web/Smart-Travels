@@ -3,7 +3,6 @@ import SectionHeading from '../../reusable/SectionHeading'
 import img from '../../../assets/image/Destination/vertical-shot-beautiful-eiffel-tower-captured-paris-france.jpg'
 import img2 from '../../../assets/image/hero/Ruknhero.jpg'
 
-
 const ChooseUs = () => {
     return (
         <div className="sm:px-6 md:px-20 ">
@@ -13,39 +12,64 @@ const ChooseUs = () => {
                 subtext="Handpicked travel experiences to the most iconic, breathtaking, and exciting locations. Choose your next adventure and start making memories today."
             />
 
-            <div className="grid grid-cols-[auto_auto_auto] gap-4 px-6 py-12 items-center justify-center">
+            {/* Responsive Wrapper */}
+            <div className="w-full flex flex-col md:grid md:grid-cols-[auto_auto_auto] gap-8 px-4 pt-5 mt-11 items-center justify-center">
+
                 {/* Left Column */}
-                <div className="flex flex-col justify-between h-[450px] space-y-4 items-center">
-                    <div className="sm:w-40 md:w-60 h-[170px] bg-gray-100 rounded-xl overflow-hidden">
+                    {/* <div className="hidden sm:block w-full md:w-[400px] h-[300px] bg-gray-100 rounded-xl overflow-hidden mx-auto">
                         <img
                             src={img2}
                             alt=""
                             className="w-full h-full object-cover rounded-xl"
+                        /> */}
+                    <div className="flex flex-col justify-between w-full md:w-[400px] h-[400px] md:h-[600px] space-y-6 items-center order-3 md:order-none">
+                        <div className="w-full md:w-[400px] h-[200px] bg-[#4A94D0]/10 rounded-3xl hidden md:flex items-center justify-center mx-auto text-xl font-semibold">
+                          Box 1
+                        </div>
+                        <div className="w-full md:w-[400px] h-[200px] bg-[#4A94D0]/10 rounded-3xl flex items-center justify-center mx-auto text-xl font-semibold">
+                            Box 2
+                        </div>
+                        <div className="w-full md:w-[400px] h-[200px] bg-[#4A94D0]/10 rounded-3xl flex items-center justify-center mx-auto text-xl font-semibold">
+                                  <img
+                            src={img2}
+                            alt=""
+                            className="w-full h-full object-cover rounded-xl"
+                        /> 
+                        </div>
+                    </div>
+
+                    {/* Center Image */}
+                    <div className="flex items-center justify-center w-full md:w-[450px] h-[400px] md:h-[600px] order-2 md:order-none mx-auto">
+                        <img
+                            src={img}
+                            alt="Center"
+                            className="h-full w-auto object-cover rounded-2xl shadow-lg"
                         />
                     </div>
 
-                    <div className="sm:w-40 md:w-60 h-[170px] bg-[#4A94D0]/10 rounded-xl flex items-center justify-center">Box 2</div>
-                    <div className="sm:w-40 md:w-60 h-[170px] bg-[#4A94D0]/10 rounded-xl  flex items-center justify-center">Box 3</div>
+                    {/* Right Column */}
+                    <div className="flex flex-col justify-between w-full md:w-[400px] h-[400px] md:h-[600px] space-y-6 items-center order-3 md:order-none">
+                        <div className="w-full md:w-[400px] h-[200px] bg-[#4A94D0]/10 rounded-3xl hidden md:flex items-center justify-center mx-auto text-xl font-semibold">
+                            
+                                <img
+                            src={img2}
+                            alt=""
+                            className="w-full h-full object-cover rounded-xl"
+                        /> 
+
+                          
+                        </div>
+                        <div className="w-full md:w-[400px] h-[200px] bg-[#4A94D0]/10 rounded-3xl flex items-center justify-center mx-auto text-xl font-semibold">
+                            Box 5
+                        </div>
+                        <div className="w-full md:w-[400px] h-[200px] bg-[#4A94D0]/10 rounded-3xl flex items-center justify-center mx-auto text-xl font-semibold">
+                            Box 6
+                        </div>
+                    </div>
                 </div>
 
-                {/* Center Image */}
-                <div className="flex items-center justify-center h-[450px]">
-                    <img
-                        src={img}
-                        alt="Center"
-                        className="h-full w-auto object-cover rounded-2xl shadow-lg"
-                    />
-                </div>
-
-                {/* Right Column */}
-                <div className="flex flex-col justify-between h-[450px] space-y-4 items-center">
-                    <div className="sm:w-50 md:w-60 h-[170px] bg-[#4A94D0]/10 rounded-xl  flex items-center justify-center">Box 4</div>
-                    <div className="sm:w-50 md:w-60 h-[170px] bg-[#4A94D0]/10 rounded-xl flex items-center justify-center">Box 5</div>
-                    <div className="sm:w-50 md:w-60 h-[170px] bg-[#4A94D0]/10 rounded-xl flex items-center justify-center">Box 6</div>
-                </div>
             </div>
-        </div>
-    )
+            )
 }
 
-export default ChooseUs
+            export default ChooseUs

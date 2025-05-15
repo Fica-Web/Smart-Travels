@@ -15,7 +15,7 @@ const SingleBlog = ({ isHomePage, firstBlog, remainingBlogs }) => {
     <>
       {/* Featured Blog on Homepage */}
       {isHomePage && firstBlog && (
-        <div className="flex flex-col md:flex-row overflow-hidden mt-12 group h-auto md:h-[350px]">
+        <div className="flex flex-col md:flex-row overflow-hidden mt-11 pt-5 group h-auto md:h-[350px]">
           {/* Image */}
           <div className="w-[280px] h-[400px] sm:w-full sm:h-80 md:w-[790px] md:h-full overflow-hidden sm:p-2 mx-auto">
             <Link to={`/blog/${firstBlog._id}`}>
@@ -65,14 +65,15 @@ const SingleBlog = ({ isHomePage, firstBlog, remainingBlogs }) => {
 
       {/* Blog Grid */}
       <div className="grid gap-12 mt-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {isHomePage
-          ? remainingBlogs.slice(0, 3).map((blog) => (
-              <BlogCard key={blog._id} blog={blog} />
-            ))
-          : [firstBlog, ...remainingBlogs].map((blog) => (
-              <BlogCard key={blog._id} blog={blog} />
-            ))}
-      </div>
+  {isHomePage
+    ? remainingBlogs.slice(0, 3).map((blog) => (
+        <BlogCard key={blog._id} blog={blog} isHomepage={true} />
+      ))
+    : [firstBlog, ...remainingBlogs].map((blog) => (
+        <BlogCard key={blog._id} blog={blog} isHomepage={false} />
+      ))}
+</div>
+
     </>
   );
 };

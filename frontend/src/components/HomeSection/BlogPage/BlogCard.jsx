@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { BsDot } from 'react-icons/bs';
 import { ArrowUpRight } from 'lucide-react';
 
-const BlogCard = ({ blog }) => {
+const BlogCard = ({ blog, isHomepage }) => {
   return (
     <div className="transition duration-300 overflow-hidden group relative">
       <Link to={`/blog/${blog._id}`}>
@@ -22,9 +22,14 @@ const BlogCard = ({ blog }) => {
             {blog.title}
           </h3>
         </Link>
-        <p className="text-gray-600 text-lg line-clamp-3 leading-relaxed">
-          {blog.description}
-        </p>
+
+        {/* Conditionally render description */}
+        {!isHomepage && (
+          <p className="text-gray-600 text-lg line-clamp-3 leading-relaxed">
+            {blog.description}
+          </p>
+        )}
+
         <div className="flex justify-between items-center text-sm text-gray-500 pt-2 border-gray-200">
           <span className="flex items-center space-x-1 text-sm text-gray-500">
             <span>
@@ -46,5 +51,6 @@ const BlogCard = ({ blog }) => {
     </div>
   );
 };
+
 
 export default BlogCard;
