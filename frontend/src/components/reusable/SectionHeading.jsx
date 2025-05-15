@@ -3,7 +3,7 @@ import React from 'react';
 const SectionHeading = ({ backgroundText, heading, subtext }) => {
   return (
     <section className=''>
-      <div className="relative w-full text-center py-16 sm:py-20 lg:py-45 overflow-hidden ">
+      <div className="relative w-full text-center py-16 sm:py-20 lg:py-40 overflow-hidden ">
         {/* Background large text */}
         <h1 className="font-coastal-clean 
     absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
