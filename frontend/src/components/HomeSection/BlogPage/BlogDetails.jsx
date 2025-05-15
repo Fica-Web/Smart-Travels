@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getSingleBlogApi } from '../../../services/api/blogsApi';
+import BlogDetailsHero from '../../reusable/BlogDetailsHero';
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -16,7 +17,7 @@ const BlogDetails = () => {
     const fetchBlog = async () => {
       try {
         const data = await getSingleBlogApi(id);
-        console.log('data', data.blog)
+        console.log('data', data.blog);
         setBlog(data);
       } catch (error) {
         console.error('Error fetching blog:', error);
@@ -32,29 +33,15 @@ const BlogDetails = () => {
   if (!blog) return <p>Blog not found.</p>;
 
   return (
-    <section className=''>
-      <div
-        className="w-full md:h-[70vh] h-[60vh] bg-cover bg-center relative rounded-b-[50px]"
-        style={{ backgroundImage: `url(${blog.blog.coverImage})` }}
-      >
-        {/* Bottom gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent rounded-b-[50px]" />
+    <section>
+      <BlogDetailsHero blog={blog.blog}/>
+      
 
-        <div className="absolute bottom-3 left-10 right-10 z-10 p-5">
-          <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-white drop-shadow-sm">
-              {blog.blog.title}
-            </h1>
-          </div>
-        </div>
-        <div>
-        </div>
-      </div>
-      <div className='w-full md:flex justify-center p-10 px-20 gap-30'>
-        <div className="w-auto flex flex-col items-start  space-y-8 ">
+      <div className="w-full flex flex-col md:flex-row justify-center p-5 md:p-10 md:px-20 gap-10">
+        <div className="flex flex-row md:flex-col items-start space-x-6 md:space-x-0 md:space-y-6 mb-6 md:mb-0">
           <div className="w-full max-w-[120px] text-left">
             <p className="text-sm">Date</p>
-            <p className="font-semibold">
+            <p className="text-md md:text-xl font-medium">
               {new Date(blog.blog.createdAt).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
@@ -63,47 +50,41 @@ const BlogDetails = () => {
             </p>
           </div>
 
-           <div className=" ">
+          <div className='hidden md:block'>
             <p className="text-sm">Written By</p>
-            <p className=" text-xl md:text-xl font-medium">{blog.blog.author}</p>
+            <p className="text-md md:text-xl font-medium">{blog.blog.author}</p>
           </div>
+
 
           <div className="w-full max-w-[120px] text-left">
             <p className="text-sm">Category</p>
-            <p className="  text-xl md:text-xl font-medium">{blog.blog.category}</p>
+            <p className="text-md md:text-xl font-medium">{blog.blog.category}</p>
           </div>
-
         </div>
 
-
-
-
-        <div className='w-3/4 '>
-          <div className=''>
-            <h1 className='text-2xl font-bold '>Description</h1>
-            <p className="text-gray-600 text-md  leading-relaxed pt-3">{blog.blog.description}</p>
+        <div className="w-full md:w-3/4">
+          <div>
+            <h1 className="text-xl md:text-2xl font-bold">Description</h1>
+            <p className="text-gray-600 text-md leading-relaxed pt-3">{blog.blog.description}</p>
           </div>
-          <div className="pt-6 ">
+
+          <div className="pt-6">
             <img
               src={blog.blog.coverImage}
               alt={blog.blog.title}
-              className="h-[300px] w-full max-w-4xl rounded-2xl object-cover"
+              className="w-full h-auto max-h-[300px] rounded-2xl object-cover"
             />
           </div>
-          <div className="">
-  {blog.blog.content.map((item) => (
-    <div key={item._id} className="pt-6   bg-white ">
 
-      <h2 className="text-xl font-semibold">{item.contentTitle}</h2>
-      <p className="text-gray-700 pt-3">{item.contentDescription}</p>
-    </div>
-  ))}
-</div>
-
-
-
+          <div>
+            {blog.blog.content.map((item) => (
+              <div key={item._id} className="pt-6 bg-white">
+                <h2 className="text-lg md:text-xl font-semibold">{item.contentTitle}</h2>
+                <p className="text-gray-700 pt-3">{item.contentDescription}</p>
+              </div>
+            ))}
+          </div>
         </div>
-
       </div>
     </section>
   );

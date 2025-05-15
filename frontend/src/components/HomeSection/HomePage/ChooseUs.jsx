@@ -16,7 +16,7 @@ const ChooseUs = () => {
             <div className="grid grid-cols-[auto_auto_auto] gap-4 px-6 py-12 items-center justify-center">
                 {/* Left Column */}
                 <div className="flex flex-col justify-between h-[450px] space-y-4 items-center">
-                    <div className="sm:w-40 md:w-60 h-[170px] bg-gray-100 rounded-xl shadow overflow-hidden">
+                    <div className="sm:w-40 md:w-60 h-[170px] bg-gray-100 rounded-xl overflow-hidden">
                         <img
                             src={img2}
                             alt=""
@@ -24,8 +24,8 @@ const ChooseUs = () => {
                         />
                     </div>
 
-                    <div className="sm:w-40 md:w-60 h-[170px] bg-gray-100 rounded-xl shadow flex items-center justify-center">Box 2</div>
-                    <div className="sm:w-40 md:w-60 h-[170px] bg-gray-100 rounded-xl shadow flex items-center justify-center">Box 3</div>
+                    <div className="sm:w-40 md:w-60 h-[170px] bg-[#4A94D0]/10 rounded-xl flex items-center justify-center">Box 2</div>
+                    <div className="sm:w-40 md:w-60 h-[170px] bg-[#4A94D0]/10 rounded-xl  flex items-center justify-center">Box 3</div>
                 </div>
 
                 {/* Center Image */}
@@ -39,9 +39,9 @@ const ChooseUs = () => {
 
                 {/* Right Column */}
                 <div className="flex flex-col justify-between h-[450px] space-y-4 items-center">
-                    <div className="sm:w-50 md:w-60 h-[170px] bg-gray-100 rounded-xl shadow flex items-center justify-center">Box 4</div>
-                    <div className="sm:w-50 md:w-60 h-[170px] bg-gray-100 rounded-xl shadow flex items-center justify-center">Box 5</div>
-                    <div className="sm:w-50 md:w-60 h-[170px] bg-gray-100 rounded-xl shadow flex items-center justify-center">Box 6</div>
+                    <div className="sm:w-50 md:w-60 h-[170px] bg-[#4A94D0]/10 rounded-xl  flex items-center justify-center">Box 4</div>
+                    <div className="sm:w-50 md:w-60 h-[170px] bg-[#4A94D0]/10 rounded-xl flex items-center justify-center">Box 5</div>
+                    <div className="sm:w-50 md:w-60 h-[170px] bg-[#4A94D0]/10 rounded-xl flex items-center justify-center">Box 6</div>
                 </div>
             </div>
         </div>

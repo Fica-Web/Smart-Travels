@@ -29,7 +29,7 @@ const BlogSection = ({ isHomePage = false }) => {
   const [firstBlog, ...remainingBlogs] = blogs;
 
   return (
-    <div className="sm:px-6 md:px-20 py-16 bg-gray-50">
+    <div className="sm:px-6 md:px-20 py-16 ">
       {isHomePage && (
         <SectionHeading
           backgroundText="TRAVEL BLOG"
