@@ -2,6 +2,56 @@ import Destination from '../model/destinationSchema.js';
 import slugify from 'slugify';
 import cloudinary from "../config/cloudinary.js";
 
+export const getAllDestinations = async (req, res) => {
+    try {
+        const { page = 1, limit = 9 } = req.query; // Default to page 1 and limit 9
+        const skip = (page - 1) * limit; // Calculate the number of documents to skip
+
+        const destinations = await Destination.find() // Fetch all destinations
+            .skip(skip) // Skip the first (page - 1) * limit documents
+            .limit(limit) // Limit the number of documents to the specified limit
+            .sort({ createdAt: -1 }); // Sort by createdAt in descending order
+
+        const totalDestinations = await Destination.countDocuments(); // Get the total number of documents
+
+        res.status(200).json({
+            message: 'Destinations fetched successfully', // Success message
+            destinations, // Fetched destinations
+            totalPages: Math.ceil(totalDestinations / limit), // Calculate total pages
+            currentPage: parseInt(page), // Current page number
+        });
+    } catch (error) {
+        console.error('Error fetching destinations:', error);
+        res.status(500).json({
+            message: 'Internal server error',
+            error: error.message
+        });
+    }
+}
+
+export const getDestinationById = async (req, res) => {
+    try {
+        const { id } = req.params; // Extract the destination ID from the request parameters
+
+        const destination = await Destination.findById(id); // Find the destination by ID
+
+        if (!destination) {
+            return res.status(404).json({ message: 'Destination not found' }); // If not found, return 404
+        }
+
+        res.status(200).json({
+            message: 'Destination fetched successfully',
+            destination
+        });
+    } catch (error) {
+        console.error('Error fetching destination:', error);
+        res.status(500).json({
+            message: 'Internal server error',
+            error: error.message
+        });
+    }
+}
+
 export const createDestination = async (req, res) => {
     try {
         const {
