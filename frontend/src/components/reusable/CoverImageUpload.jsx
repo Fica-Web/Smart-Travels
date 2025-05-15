@@ -76,7 +76,7 @@ const CoverImageUpload = ({
         type="file"
         accept="image/*"
         onChange={handleFileChange}
-        className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full border border-gray-300 file:bg-gray-900 file:px-3 file:py-1 file:rounded-xl file:text-gray-200 cursor-pointer p-2 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
       />
 
       {preview && (
