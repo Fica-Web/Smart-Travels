@@ -14,7 +14,7 @@ const Header = () => {
       <header className="absolute top-6 left-1/2 transform -translate-x-1/2 w-[96%] flex justify-between items-center px-1 z-30">
         {/* Logo */}
         <Link to={'/'}>
-          <img src={logo} alt="Logo" className="w-32 h-auto" />
+          <img src={logo} alt="Logo" className="w-25 md:w-32 h-auto" />
         </Link>
 
         {/* Desktop Nav */}
