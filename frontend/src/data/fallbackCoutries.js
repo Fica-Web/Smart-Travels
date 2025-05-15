@@ -1,0 +1,33 @@
+const fallbackCountries = [
+  'Azerbaijan',
+  'Bhutan',
+  'Turkey',
+  'UAE',
+  'Saudi Arabia',
+  'Thailand',
+  'Singapore',
+  'Malaysia',
+  'Indonesia',
+  'Japan',
+  'South Korea',
+  'India',
+  'Sri Lanka',
+  'Qatar',
+  'Oman',
+  'Maldives',
+  'Nepal',
+  'Vietnam',
+  'Egypt',
+  'Jordan',
+  'Morocco',
+  'Philippines',
+  'Uzbekistan',
+  'Kuwait',
+  'Bahrain',
+].map((country) => ({
+  label: country,
+  value: country,
+  name: country,
+}));
+
+export default fallbackCountries;

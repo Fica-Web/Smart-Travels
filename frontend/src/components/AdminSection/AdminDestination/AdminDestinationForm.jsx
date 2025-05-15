@@ -6,6 +6,7 @@ import {
     getDestinationByIdApi,
 } from '../../../services/api/destinationApi';
 import CoverImageUpload from '../../reusable/CoverImageUpload';
+import CountrySelect from '../../reusable/CountrySelect';
 import DynamicContentSections from '../../reusable/DynamicContentSection';
 import ReusableSubmitButton from '../../reusable/ReusableSubmitButton';
 
@@ -199,12 +200,10 @@ const AdminDestinationForm = ({ destinationId }) => {
                     className="border border-gray-300 rounded-md px-4 py-2 w-full"
                     required
                 />
-                <input
-                    type="text"
-                    placeholder="Country"
+                
+                <CountrySelect
                     value={formData.country}
-                    onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                    className="border border-gray-300 rounded-md px-4 py-2 w-full"
+                    onChange={(val) => setFormData({ ...formData, country: val })}
                 />
             </div>
 
