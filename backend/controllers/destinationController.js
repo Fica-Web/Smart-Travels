@@ -1,5 +1,6 @@
 import Destination from '../model/destinationSchema.js';
 import slugify from 'slugify';
+import mongoose from 'mongoose';
 import cloudinary from "../config/cloudinary.js";
 
 export const getAllDestinations = async (req, res) => {
