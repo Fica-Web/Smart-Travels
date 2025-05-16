@@ -25,7 +25,7 @@ const AboutUs = () => {
                 className="w-full h-full object-cover rounded-xl"
               />
             </div>
-            <div className="w-full h-[290px] bg-[#4A94D0]/10 rounded-3xl hidden md:flex items-center justify-center text-xl font-semibold">
+            <div className="w-full h-[290px] bg-[#4A94D0]/10 rounded-3xl flex items-center justify-center text-xl font-semibold">
               Box 1
             </div>
           </div>
@@ -44,7 +44,7 @@ const AboutUs = () => {
             <div className="w-full h-[290px] bg-[#4A94D0]/10 rounded-3xl flex items-center justify-center text-xl font-semibold">
               Box 5
             </div>
-            <div className="w-full h-[290px] rounded-3xl overflow-hidden hidden md:block">
+            <div className="w-full h-[290px] rounded-3xl overflow-hidden ">
               <img
                 src={img3}
                 alt="About 3"
