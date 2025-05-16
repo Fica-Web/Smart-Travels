@@ -5,7 +5,7 @@ import ChooseUs from '../../components/HomeSection/HomePage/ChooseUs'
 
 const AboutPage = () => {
   return (
-    <div>
+    <div className='pb-15'>
           <ReusableHero 
                 title="About"
             />

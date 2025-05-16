@@ -3,7 +3,7 @@ import BlogDetails from '../../components/HomeSection/BlogPage/BlogDetails'
 
 const BlogDetailsPage = () => {
   return (
-  <div>
+  <div className='p-15'>
     <BlogDetails />
   </div>
     

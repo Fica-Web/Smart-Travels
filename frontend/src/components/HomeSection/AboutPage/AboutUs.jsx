@@ -13,7 +13,7 @@ const AboutUs = () => {
         subtext="Explore travel tips, hidden gems, and expert guides to make your next adventure unforgettable!"
       />
 
-      <div className="pt-5 mt-6 px-3 md:px-17">
+      <div className="pt-5 mt-6 px-3 md:px-17 ">
         <div className="w-full grid md:grid-cols-3 gap-6 md:px-14 items-start justify-center">
 
           {/* Left Column */}
