@@ -1,14 +1,17 @@
 // src/data/destinations.js
 import image1 from '../../assets/image/hero/heroImage.jpg'
 import image2 from '../../assets/image/Destination/aerial-shot-houses-built-sea-land-with-trees-maldives-islands (1).jpg'
-// import image3 from '../../assets/image/Destination/testimonials2 (1).jpg'
+import image3 from '../../assets/image/Destination/mesmerizing-shot-beautiful-waterfall-rhodopes-mountain (1).jpg'
 import image4 from '../../assets/image/Destination/vertical-shot-beautiful-eiffel-tower-captured-paris-france.jpg'
+import image5 from '../../assets/image/Destination/about (1).jpg'
+import image6 from '../../assets/image/Destination/trvlhero.jpg'
+
 
 export const destinations = [
     {
       title: "Lapland, Finland",
       description: "Escape to the snowy landscapes of Lapland for the chance to see the Northern Lights.",
-      imageUrl: image2, // or use online URLs
+      imageUrl: image1, // or use online URLs
     },
     {
       title: "Paris, France",
@@ -23,17 +26,17 @@ export const destinations = [
     {
       title: "Tokyo, Japan",
       description: "Experience the perfect blend of modern skyscrapers and ancient traditions in Tokyo.",
-      imageUrl: image1,
+      imageUrl: image3,
     },
     {
       title: "Alps, Switzerland",
       description: "Explore the snow-covered peaks and charming villages of the Alps, perfect for nature lovers.",
-      imageUrl: image2,
+      imageUrl: image6,
     },
     {
       title: "Bali, Indonesia",
       description: "Relax and rejuvenate on Bali’s stunning beaches and explore its vibrant culture.",
-      imageUrl: image2,
+      imageUrl: image5,
     },
   ]
   
