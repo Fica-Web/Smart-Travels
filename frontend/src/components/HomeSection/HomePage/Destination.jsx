@@ -13,7 +13,7 @@ const Destination = () => {
   />
 
   {/* 3-column custom layout */}
- <div className="flex flex-col md:flex-row w-full gap-6 mt-15 pt-5  md:p-0">
+ <div className="flex flex-col md:flex-row w-full gap-6 mt-1 md:mt-11 pt-5  md:p-0">
 
     {/* Column 1 */}
    {/* Column 1 */}
