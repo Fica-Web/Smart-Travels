@@ -30,33 +30,34 @@ const ChooseUs = () => {
                     <div className="w-full h-[200px] bg-[#4A94D0]/10 rounded-3xl flex items-center justify-center text-xl font-semibold">
                         Box 2
                     </div>
-                     <div className="w-full md:w-[400px] h-[200px] bg-[#4A94D0]/10 rounded-3xl hidden md:flex items-center justify-center mx-auto text-xl font-semibold order-4 md:order-none">
-      <img
-        src={img2}
-        alt=""
-        className="w-full h-full object-cover rounded-xl"
-      />
-    </div>
+                    <div className="w-full md:w-[400px] h-[200px] bg-[#4A94D0]/10 rounded-3xl hidden md:flex items-center justify-center mx-auto text-xl font-semibold order-4 md:order-none">
+                        <img
+                            src={img2}
+                            alt=""
+                            className="w-full h-full object-cover rounded-xl"
+                        />
+                    </div>
                 </div>
 
                 {/* Center Image */}
-                <div className="flex items-center justify-center w-full md:w-[450px] h-[400px] md:h-[600px] order-3 md:order-none">
+                <div className="flex items-center justify-center w-full md:w-[400px] h-[400px] md:h-[600px] order-3 md:order-none ">
                     <img
                         src={img}
                         alt="Center"
-                        className="h-full w-auto object-cover rounded-2xl shadow-lg"
+                        className="w-full md:w-auto h-full object-cover rounded-2xl shadow-lg"
                     />
                 </div>
 
+
                 {/* Right Column */}
                 <div className="flex flex-col justify-between w-full md:w-[400px] h-auto md:h-[600px] space-y-6 items-center order-4 md:order-none">
-                     <div className="w-full md:w-[400px] h-[200px] bg-[#4A94D0]/10 rounded-3xl hidden md:flex items-center justify-center mx-auto text-xl font-semibold order-4 md:order-none">
-      <img
-        src={img2}
-        alt=""
-        className="w-full h-full object-cover rounded-xl"
-      />
-    </div>
+                    <div className="w-full md:w-[400px] h-[200px] bg-[#4A94D0]/10 rounded-3xl hidden md:flex items-center justify-center mx-auto text-xl font-semibold order-4 md:order-none">
+                        <img
+                            src={img2}
+                            alt=""
+                            className="w-full h-full object-cover rounded-xl"
+                        />
+                    </div>
                     <div className="w-full h-[200px] bg-[#4A94D0]/10 rounded-3xl flex items-center justify-center text-xl font-semibold">
                         Box 5
                     </div>
@@ -66,8 +67,8 @@ const ChooseUs = () => {
                 </div>
 
             </div>
-    </div>
-            )
+        </div>
+    )
 }
 
-            export default ChooseUs
+export default ChooseUs
