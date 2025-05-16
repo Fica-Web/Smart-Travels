@@ -242,3 +242,38 @@ export const updateDestination = async (req, res) => {
         });
     }
 };
+
+export const deleteDestination = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        // Validate ObjectId
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ error: "Invalid destination ID format" });
+        }
+
+        // Find the destination to get image info
+        const destination = await Destination.findById(id);
+        if (!destination) {
+            return res.status(404).json({ error: "Destination not found" });
+        }
+
+        // Delete cover image from Cloudinary
+        if (destination.coverImageId) {
+            try {
+                const result = await cloudinary.uploader.destroy(destination.coverImageId);
+                console.log("Cloudinary image deletion result:", result);
+            } catch (cloudErr) {
+                console.error("Error deleting image from Cloudinary:", cloudErr);
+            }
+        }
+
+        // Delete the destination from DB
+        await Destination.findByIdAndDelete(id);
+
+        res.status(200).json({ message: "Destination and cover image deleted successfully" });
+    } catch (error) {
+        console.error("Error during destination deletion:", error);
+        res.status(500).json({ error: error.message, message: "Internal Server Error" });
+    }
+};

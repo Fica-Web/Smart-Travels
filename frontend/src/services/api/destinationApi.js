@@ -86,3 +86,16 @@ export const updateDestinationApi = async (data, id) => {
         };
     }
 }
+
+export const deleteDestinationApi = async (id) => {
+    try {
+        const response = await destinationInstance.delete(`/${id}`);
+        return { success: true, data: response.data };
+    } catch (error) {
+        console.error("Error deleting destination:", error);
+        return {
+            success: false,
+            message: error.response?.data?.message || error.message || "Unknown error",
+        };
+    }
+}
