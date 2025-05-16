@@ -206,6 +206,10 @@ const AdminBlogForm = ({ onCancel }) => {
                     onAdd={addContentSection}
                     onRemove={removeContentSection}
                     errors={errors}
+                    fieldConfig={[
+                        { name: "contentTitle", label: "Content Title" },
+                        { name: "contentDescription", label: "Content Description", type: "textarea" }
+                    ]}
                 />
 
                 <div className="flex gap-4 pt-4">
