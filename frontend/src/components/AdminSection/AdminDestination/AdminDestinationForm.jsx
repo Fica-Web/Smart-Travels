@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import {
     createDestinationApi,
     updateDestinationApi,
@@ -12,6 +13,7 @@ import ReusableSubmitButton from '../../reusable/ReusableSubmitButton';
 
 const AdminDestinationForm = ({ destinationId }) => {
     const isEditMode = Boolean(destinationId);
+    const navigate = useNavigate()
 
     const initialState = {
         title: '',
@@ -148,6 +150,7 @@ const AdminDestinationForm = ({ destinationId }) => {
             if (response.success) {
                 toast.success("Destination updated successfully");
                 setFormData(initialState);
+                navigate('/admin/destination')
             } else {
                 toast.error("Failed to update destination");
                 setErrors(prev => ({ ...prev, server: response.message }));
@@ -201,7 +204,7 @@ const AdminDestinationForm = ({ destinationId }) => {
                     className="border border-gray-300 rounded-md px-4 py-2 w-full"
                     required
                 />
-                
+
                 <CountrySelect
                     value={formData.country}
                     onChange={(val) => setFormData({ ...formData, country: val })}
@@ -252,6 +255,10 @@ const AdminDestinationForm = ({ destinationId }) => {
                 onAdd={addDay}
                 onRemove={removeDay}
                 errors={errors}
+                fieldConfig={[
+                    { name: "title", label: "Day Title" },
+                    { name: "description", label: "Day Description", type: "textarea" }
+                ]}
             />
 
             <div className="flex items-center">

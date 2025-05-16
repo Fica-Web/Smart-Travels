@@ -34,7 +34,11 @@ const AdminDestinationListing = () => {
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {destinations.map((destination) => (
-                        <AdminSingleDestination key={destination._id} destination={destination} />
+                        <AdminSingleDestination 
+                            key={destination._id} 
+                            destination={destination} 
+                            setDestinations={setDestinations}
+                        />
                     ))}
                 </div>
             )}
