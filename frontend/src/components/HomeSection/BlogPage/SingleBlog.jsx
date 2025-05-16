@@ -17,7 +17,7 @@ const SingleBlog = ({ isHomePage, firstBlog, remainingBlogs }) => {
       {isHomePage && firstBlog && (
         <div className="flex flex-col md:flex-row overflow-hidden mt-11 pt-5 group h-auto md:h-[350px]">
           {/* Image */}
-          <div className="w-[280px] h-[400px] sm:w-full sm:h-80 md:w-[790px] md:h-full overflow-hidden sm:p-2 mx-auto">
+          <div className="w-[280px] h-[400px] sm:w-full sm:h-80 md:w-[790px] md:h-full overflow-hidden  mx-auto">
             <Link to={`/blog/${firstBlog._id}`}>
               <img
                 src={firstBlog.coverImage}
