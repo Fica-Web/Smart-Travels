@@ -1,5 +1,36 @@
 import destinationInstance from "../axios_instances/destinationInstance";
 
+export const getAllDestinationsApi = async (page, limit) => {
+    try {
+        const response = await destinationInstance.get("/", {
+            params: {
+                page,
+                limit,
+            },
+        });
+        return { success: true, data: response.data };
+    } catch (error) {
+        console.error("Error fetching destinations:", error);
+        return {
+            success: false,
+            message: error.response?.data?.message || error.message || "Unknown error",
+        };
+    }
+}
+
+export const getDestinationByIdApi = async (id) => {
+    try {
+        const response = await destinationInstance.get(`/${id}`);
+        return { success: true, data: response.data };
+    } catch (error) {
+        console.error("Error fetching destination:", error);
+        return {
+            success: false,
+            message: error.response?.data?.message || error.message || "Unknown error",
+        };
+    }
+}
+
 export const createDestinationApi = async (data) => {
     const formData = new FormData();
 
@@ -28,19 +59,6 @@ export const createDestinationApi = async (data) => {
     }
 }
 
-export const getDestinationByIdApi = async (id) => {
-    try {
-        const response = await destinationInstance.get(`/${id}`);
-        return { success: true, data: response.data };
-    } catch (error) {
-        console.error("Error fetching destination:", error);
-        return {
-            success: false,
-            message: error.response?.data?.message || error.message || "Unknown error",
-        };
-    }
-}
-
 export const updateDestinationApi = async (data, id) => {
     const formData = new FormData();
 
@@ -62,6 +80,19 @@ export const updateDestinationApi = async (data, id) => {
         return { success: true, data: response.data };
     } catch (error) {
         console.error("Error updating destination:", error);
+        return {
+            success: false,
+            message: error.response?.data?.message || error.message || "Unknown error",
+        };
+    }
+}
+
+export const deleteDestinationApi = async (id) => {
+    try {
+        const response = await destinationInstance.delete(`/${id}`);
+        return { success: true, data: response.data };
+    } catch (error) {
+        console.error("Error deleting destination:", error);
         return {
             success: false,
             message: error.response?.data?.message || error.message || "Unknown error",

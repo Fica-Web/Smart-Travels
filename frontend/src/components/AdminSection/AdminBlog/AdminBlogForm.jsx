@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { createBlogApi, updateBlogApi, getSingleBlogApi } from '../../../services/api/blogsApi';
 import CoverImageUpload from '../../reusable/CoverImageUpload';
+import DynamicContentSections from '../../reusable/DynamicContentSection';
 import ReusableSubmitButton from '../../reusable/ReusableSubmitButton';
 
 const AdminBlogForm = ({ onCancel }) => {
     const { id } = useParams(); // Get blog ID from URL
     const navigate = useNavigate(); // For navigation after submission
-    
+
     const initialState = {
         title: "",
         description: "",
@@ -22,7 +23,7 @@ const AdminBlogForm = ({ onCancel }) => {
 
     const [formData, setFormData] = useState(initialState);
     const [errors, setErrors] = useState({});
-    const [loading, setLoading] = useState(false); 
+    const [loading, setLoading] = useState(false);
 
     // Fetch blog details if editing
     useEffect(() => {
@@ -90,14 +91,14 @@ const AdminBlogForm = ({ onCancel }) => {
 
     const handleCroppedImage = (croppedImageBlob) => {
         const previewURL = URL.createObjectURL(croppedImageBlob);
-        
+
         setFormData((prevState) => ({
             ...prevState,
             coverImage: croppedImageBlob, // For API upload
             coverImagePreview: previewURL, // For preview
         }));
     };
-    
+
     const handleContentChange = (index, field, value) => {
         const updatedContent = [...formData.content];
         updatedContent[index][field] = value;
@@ -142,7 +143,7 @@ const AdminBlogForm = ({ onCancel }) => {
             <h2 className="text-2xl font-bold text-gray-800 mb-6">
                 {id ? 'Edit Blog' : 'Create New Blog'}
             </h2>
-    
+
             <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
                     <label className="block text-gray-700 font-medium">Title</label>
@@ -151,11 +152,11 @@ const AdminBlogForm = ({ onCancel }) => {
                         name="title"
                         value={formData.title}
                         onChange={handleInputChange}
-                        className="w-full border border-gray-500 p-2 rounded-md mt-1"
+                        className="w-full border border-gray-300 p-2 rounded-md mt-1"
                     />
                     {errors.title && <p className="text-red-500 text-sm">{errors.title}</p>}
                 </div>
-    
+
                 <div>
                     <label className="block text-gray-700 font-medium">Author</label>
                     <input
@@ -163,11 +164,11 @@ const AdminBlogForm = ({ onCancel }) => {
                         name="author"
                         value={formData.author}
                         onChange={handleInputChange}
-                        className="w-full border border-gray-500 p-2 rounded-md mt-1"
+                        className="w-full border border-gray-300 p-2 rounded-md mt-1"
                     />
                     {errors.author && <p className="text-red-500 text-sm">{errors.author}</p>}
                 </div>
-    
+
                 <div>
                     <label className="block text-gray-700 font-medium">Category</label>
                     <input
@@ -175,11 +176,11 @@ const AdminBlogForm = ({ onCancel }) => {
                         name="category"
                         value={formData.category}
                         onChange={handleInputChange}
-                        className="w-full border border-gray-500 p-2 rounded-md mt-1"
+                        className="w-full border border-gray-300 p-2 rounded-md mt-1"
                     />
                     {errors.category && <p className="text-red-500 text-sm">{errors.category}</p>}
                 </div>
-    
+
                 <div>
                     <label className="block text-gray-700 font-medium">Short Description</label>
                     <textarea
@@ -187,74 +188,37 @@ const AdminBlogForm = ({ onCancel }) => {
                         value={formData.description}
                         onChange={handleInputChange}
                         rows="3"
-                        className="w-full border border-gray-500 p-2 rounded-md mt-1"
+                        className="w-full border border-gray-300 p-2 rounded-md mt-1"
                     />
                 </div>
-    
+
                 <CoverImageUpload
                     onImageChange={handleImageChange}
                     onCroppedImage={handleCroppedImage}
                     coverImagePreview={formData.coverImagePreview}
                     error={errors.coverImage}
                 />
-    
-                <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">Content Sections</h3>
-                    {formData.content.map((section, index) => (
-                        <div key={index} className="border border-gray-500 p-4 rounded-lg bg-gray-100">
-                            <div>
-                                <label className="block text-gray-700 font-medium">Content Title</label>
-                                <input
-                                    type="text"
-                                    value={section.contentTitle}
-                                    onChange={(e) => handleContentChange(index, 'contentTitle', e.target.value)}
-                                    className="w-full border border-gray-500 p-2 rounded-md mt-1"
-                                />
-                                {errors[`contentTitle${index}`] && (
-                                    <p className="text-red-500 text-sm">{errors[`contentTitle${index}`]}</p>
-                                )}
-                            </div>
-    
-                            <div>
-                                <label className="block text-gray-700 font-medium">Content Description</label>
-                                <textarea
-                                    value={section.contentDescription}
-                                    onChange={(e) => handleContentChange(index, 'contentDescription', e.target.value)}
-                                    rows="3"
-                                    className="w-full border border-gray-500 p-2 rounded-md mt-1"
-                                />
-                                {errors[`contentDescription${index}`] && (
-                                    <p className="text-red-500 text-sm">{errors[`contentDescription${index}`]}</p>
-                                )}
-                            </div>
-    
-                            {index > 0 && (
-                                <button
-                                    type="button"
-                                    onClick={() => removeContentSection(index)}
-                                    className="text-red-500 font-semibold mt-2 hover:text-red-700"
-                                >
-                                    Remove Section
-                                </button>
-                            )}
-                        </div>
-                    ))}
-                    <button
-                        type="button"
-                        onClick={addContentSection}
-                        className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200"
-                    >
-                        + Add Section
-                    </button>
-                </div>
-    
+
+                <DynamicContentSections
+                    title="Content Sections"
+                    sections={formData.content}
+                    onChange={handleContentChange}
+                    onAdd={addContentSection}
+                    onRemove={removeContentSection}
+                    errors={errors}
+                    fieldConfig={[
+                        { name: "contentTitle", label: "Content Title" },
+                        { name: "contentDescription", label: "Content Description", type: "textarea" }
+                    ]}
+                />
+
                 <div className="flex gap-4 pt-4">
                     <ReusableSubmitButton
                         loading={loading}
                         text={id ? 'Update Blog' : 'Create Blog'}
                         loadingText={id ? 'Updating...' : 'Submitting...'}
                     />
-    
+
                     <button
                         type="button"
                         onClick={onCancel}
@@ -265,7 +229,7 @@ const AdminBlogForm = ({ onCancel }) => {
                 </div>
             </form>
         </div>
-    );    
+    );
 };
 
 export default AdminBlogForm;

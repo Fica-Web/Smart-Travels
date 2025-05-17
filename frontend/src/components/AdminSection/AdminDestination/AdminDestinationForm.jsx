@@ -1,15 +1,19 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import {
     createDestinationApi,
     updateDestinationApi,
     getDestinationByIdApi,
 } from '../../../services/api/destinationApi';
 import CoverImageUpload from '../../reusable/CoverImageUpload';
+import CountrySelect from '../../reusable/CountrySelect';
+import DynamicContentSections from '../../reusable/DynamicContentSection';
 import ReusableSubmitButton from '../../reusable/ReusableSubmitButton';
 
 const AdminDestinationForm = ({ destinationId }) => {
     const isEditMode = Boolean(destinationId);
+    const navigate = useNavigate()
 
     const initialState = {
         title: '',
@@ -33,8 +37,9 @@ const AdminDestinationForm = ({ destinationId }) => {
             (async () => {
                 setLoading(true);
                 const res = await getDestinationByIdApi(destinationId);
+                console.log('res:', res)
                 if (res.success) {
-                    const destination = res.data;
+                    const destination = res.data.destination;
                     setFormData({
                         ...destination,
                         pricePerPerson: destination.pricePerPerson || '',
@@ -62,7 +67,10 @@ const AdminDestinationForm = ({ destinationId }) => {
     };
 
     const addDay = () => {
-        setFormData({ ...formData, days: [...formData.days, { title: '', description: '' }] });
+        setFormData(prev => ({
+            ...prev,
+            days: [...prev.days, { contentTitle: '', contentDescription: '' }]
+        }))
     };
 
     const addInclusion = () => {
@@ -142,6 +150,7 @@ const AdminDestinationForm = ({ destinationId }) => {
             if (response.success) {
                 toast.success("Destination updated successfully");
                 setFormData(initialState);
+                navigate('/admin/destination')
             } else {
                 toast.error("Failed to update destination");
                 setErrors(prev => ({ ...prev, server: response.message }));
@@ -195,12 +204,10 @@ const AdminDestinationForm = ({ destinationId }) => {
                     className="border border-gray-300 rounded-md px-4 py-2 w-full"
                     required
                 />
-                <input
-                    type="text"
-                    placeholder="Country"
+
+                <CountrySelect
                     value={formData.country}
-                    onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                    className="border border-gray-300 rounded-md px-4 py-2 w-full"
+                    onChange={(val) => setFormData({ ...formData, country: val })}
                 />
             </div>
 
@@ -213,7 +220,7 @@ const AdminDestinationForm = ({ destinationId }) => {
 
             <div>
                 <label className="font-medium">Inclusions</label>
-                {formData.inclusions.map((item, index) => (
+                {formData?.inclusions?.map((item, index) => (
                     <div key={index} className="flex items-center gap-2 mt-2">
                         <input
                             type="text"
@@ -240,40 +247,19 @@ const AdminDestinationForm = ({ destinationId }) => {
                 </button>
             </div>
 
-            <div>
-                <label className="font-medium">Day-wise Plan</label>
-                {formData.days.map((day, index) => (
-                    <div key={index} className="mt-2 border p-3 rounded-md relative">
-                        <button
-                            type="button"
-                            onClick={() => removeDay(index)}
-                            className="absolute top-1 right-1 text-red-500 font-bold"
-                        >
-                            ×
-                        </button>
-                        <input
-                            type="text"
-                            placeholder={`Day ${index + 1} Title`}
-                            value={day.title}
-                            onChange={(e) => handleDayChange(index, 'title', e.target.value)}
-                            className="border border-gray-300 rounded-md px-4 py-2 w-full mb-2"
-                        />
-                        <textarea
-                            placeholder="Description"
-                            value={day.description}
-                            onChange={(e) => handleDayChange(index, 'description', e.target.value)}
-                            className="border border-gray-300 rounded-md px-4 py-2 w-full"
-                        />
-                    </div>
-                ))}
-                <button
-                    type="button"
-                    onClick={addDay}
-                    className="text-blue-600 mt-2"
-                >
-                    + Add Day
-                </button>
-            </div>
+            <DynamicContentSections
+                title="Day-wise Plans"
+                addButtonLabel="+ Add Day"
+                sections={formData.days}
+                onChange={handleDayChange}
+                onAdd={addDay}
+                onRemove={removeDay}
+                errors={errors}
+                fieldConfig={[
+                    { name: "title", label: "Day Title" },
+                    { name: "description", label: "Day Description", type: "textarea" }
+                ]}
+            />
 
             <div className="flex items-center">
                 <input

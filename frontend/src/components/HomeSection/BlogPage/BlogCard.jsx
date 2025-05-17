@@ -16,9 +16,9 @@ const BlogCard = ({ blog, isHomepage }) => {
         </div>
       </Link>
 
-      <div className="p-5 space-y-3">
+      <div className="pt-5 space-y-3">
         <Link to={`/blog/${blog._id}`}>
-          <h3 className="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition">
+          <h3 className="text-xl font-semibold text-secondary-blue group-hover:text-blue-600 transition">
             {blog.title}
           </h3>
         </Link>

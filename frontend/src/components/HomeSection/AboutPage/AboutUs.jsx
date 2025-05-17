@@ -10,11 +10,11 @@ const AboutUs = () => {
       <SectionHeading
         backgroundText="OUR STORY"
         heading="About Our Journey"
-        subtext="Explore travel tips, hidden gems, and expert guides to make your next adventure unforgettable!"
+        subtext="We are your trusted travel partner, dedicated to delivering seamless, personalized journeys that create unforgettable memories."
       />
 
-      <div className="pt-5 mt-6 px-3 md:px-17 ">
-        <div className="w-full grid md:grid-cols-3 gap-6 md:px-14 items-start justify-center">
+      <div className="  px-3 md:px-17 ">
+        <div className="w-full grid md:grid-cols-3 gap-6  md:pt-3 md:px-14 items-start justify-center">
 
           {/* Left Column */}
           <div className="w-full md:w-auto">
@@ -26,14 +26,21 @@ const AboutUs = () => {
                   className="w-full h-full object-cover rounded-xl"
                 />
               </div>
-              <div className="w-full h-[200px] md:h-[290px] bg-[#4A94D0]/10 rounded-3xl p-6 md:p-4 flex flex-col items-start justify-start gap-4 text-xl font-semibold">
-                <h1 className="text-lg sm:text-2xl font-semibold md:pt-5">
-                  Our Mission
-                </h1>
-                <p className="text-sm sm:text-base text-gray-600 max-w-2xl">
-                  Our mission is to empower travelers with seamless, stress-free, and unforgettable journeys. We provide personalized experiences, expert guidance, and competitive pricing through complete travel solutions. From booking to return, we ensure every detail is thoughtfully planned so you can focus on making lasting memories.
-                </p>
+              <div className="w-full h-[200px] md:h-[290px] bg-[#4A94D0]/10 rounded-3xl p-6 md:p-8  flex flex-col items-start justify-start gap-4 text-xl ">
+                <div className='flex items-center justify-start '>
+                  <div className='w-[4px] h-[20px] bg-[#4A94D0] rounded-xl'></div>
+                  <h1 className="text-lg sm:text-2xl pl-3 font-semibold text-secondary-blue">
+                    Our Mission
+                  </h1>
+                </div>
+                <div className=' '>
+                  <p
+                    className="text-sm sm:text-base text-secondary-blue/80 max-w-2xl text-justify "
+                    style={{ wordSpacing: "-0.05rem" }}
+                  >
+                    Our mission is to provide travelers with seamless and stress-free journeys worldwide. We deliver personalized experiences, expert guidance, and competitive pricing tailored to meet your unique needs. From booking to return, we carefully plan every detail so you can focus on creating unforgettable and lasting memories.</p>                </div>
               </div>
+
             </div>
           </div>
 
@@ -51,22 +58,34 @@ const AboutUs = () => {
 
           {/* Right Column */}
           <div className="w-full md:w-auto">
-            <div className="flex flex-col justify-between w-full  h-[400px] md:h-[600px] space-y-5 md:space-y-4 ">
-              <div className="w-full h-[200px] md:h-[290px]  bg-[#4A94D0]/10 rounded-3xl p-6 md:p-4 flex flex-col items-start justify-start gap-4 text-xl font-semibold">
-                <h1 className="text-lg sm:text-2xl font-semibold md:pt-5">
-                  Our Vision
-                </h1>
-                <p className="text-sm sm:text-base text-gray-600 max-w-2xl">
-                  Our vision is to be the most trusted and innovative travel partner, known for exceptional service, reliability, and personalized experiences. We strive to inspire travel, simplify planning, and create meaningful journeys that leave lasting impressions on every traveler.</p>
+            <div className="flex flex-col w-full h-[400px] md:h-[600px] space-y-5 ">
+
+              <div className="w-full h-[200px] md:h-[290px] bg-[#4A94D0]/10 rounded-3xl p-6 md:p-8  flex flex-col items-start justify-start gap-4 text-xl ">
+                <div className='flex items-center justify-start '>
+                  <div className='w-[4px] h-[20px] bg-[#4A94D0] rounded-xl'></div>
+                  <h1 className="text-lg sm:text-2xl text-secondary-blue pl-3 font-semibold">
+                    Our Vision
+                  </h1>
+                </div>
+                <div className=' '>
+                  <p
+                    className="text-sm sm:text-base text-secondary-blue/80 max-w-2xl text-justify  "
+                    style={{ wordSpacing: "-0.05rem" }}
+                  >
+                    Our vision is to be the trusted and innovative travel partner, known for exceptional service, reliability, and personalized experiences tailored to individual needs. We strive to inspire travel, simplify planning, and create meaningful, enriching journeys that leave lasting impressions on every traveler we have the privilege to serve.                    </p>
+                </div>
               </div>
               <div className="w-full h-[200px] md:h-[290px] rounded-3xl overflow-hidden">
                 <img
                   src={img3}
-                  alt="About 3"
+                  alt="About 1"
                   className="w-full h-full object-cover rounded-xl"
                 />
               </div>
+
+
             </div>
+
           </div>
 
         </div>
