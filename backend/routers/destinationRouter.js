@@ -8,7 +8,10 @@ import {
     createDestination,
     updateDestination,
     deleteDestination,
+    getPublishedDestinations,
 } from '../controllers/destinationController.js';
+
+router.get('/is-published', getPublishedDestinations);
 
 router.use(verifyAdmin); // Ensure admin authentication for the following routes
 

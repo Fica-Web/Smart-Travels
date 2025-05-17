@@ -30,7 +30,7 @@ const AdminDestinationListing = () => {
             {loading ? (
                 <Loading />
             ) : destinations.length === 0 ? (
-                <p>No destinations found.</p>
+                <p className="flex justify-center mt-32">No destinations found.</p>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {destinations.map((destination) => (

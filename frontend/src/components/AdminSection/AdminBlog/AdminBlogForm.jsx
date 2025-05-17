@@ -62,31 +62,24 @@ const AdminBlogForm = ({ onCancel }) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-
-        if (file) {
-            // Validate file type
-            if (!file.type.startsWith("image/")) {
-                setErrors({ ...errors, coverImage: "Only image files are allowed" });
-                return;
-            }
-
-            // Validate file size (2MB limit)
-            if (file.size > 2 * 1024 * 1024) {
-                setErrors({ ...errors, coverImage: "File size must be less than 2MB" });
-                return;
-            }
-
-            // Store the file for submission
-            setFormData((prevState) => ({
-                ...prevState,
-                coverImage: file, // This is needed for the API request
-                coverImagePreview: URL.createObjectURL(file), // Preview
+    const handleImageChange = (file) => {
+        if (!file) {
+            setFormData(prev => ({
+                ...prev,
+                coverImage: '',
+                coverImagePreview: null
             }));
-
-            setErrors({ ...errors, coverImage: null }); // Clear errors if valid
+            setErrors(prev => ({ ...prev, coverImage: 'Invalid image file' }));
+            return;
         }
+
+        setFormData(prev => ({
+            ...prev,
+            coverImage: file,
+            coverImagePreview: URL.createObjectURL(file),
+        }));
+
+        setErrors(prev => ({ ...prev, coverImage: null }));
     };
 
     const handleCroppedImage = (croppedImageBlob) => {

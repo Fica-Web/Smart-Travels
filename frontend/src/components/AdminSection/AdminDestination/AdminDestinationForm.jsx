@@ -89,29 +89,26 @@ const AdminDestinationForm = ({ destinationId }) => {
         setFormData({ ...formData, days: updated });
     };
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-
-        if (file) {
-            if (!file.type.startsWith('image/')) {
-                setErrors({ ...errors, coverImage: 'Only image files are allowed' });
-                return;
-            }
-
-            if (file.size > 2 * 1024 * 1024) {
-                setErrors({ ...errors, coverImage: 'File size must be less than 2MB' });
-                return;
-            }
-
-            setFormData((prevState) => ({
-                ...prevState,
-                coverImage: file,
-                coverImagePreview: URL.createObjectURL(file),
+    const handleImageChange = (file) => {
+        if (!file) {
+            setFormData(prev => ({
+                ...prev,
+                coverImage: '',
+                coverImagePreview: null
             }));
-
-            setErrors({ ...errors, coverImage: null });
+            setErrors(prev => ({ ...prev, coverImage: 'Invalid image file' }));
+            return;
         }
+
+        setFormData(prev => ({
+            ...prev,
+            coverImage: file,
+            coverImagePreview: URL.createObjectURL(file),
+        }));
+
+        setErrors(prev => ({ ...prev, coverImage: null }));
     };
+
 
     const handleCroppedImage = (croppedImageBlob) => {
         const previewURL = URL.createObjectURL(croppedImageBlob);
@@ -148,11 +145,11 @@ const AdminDestinationForm = ({ destinationId }) => {
             console.log('Updating destination with ID:', destinationId);
             const response = await updateDestinationApi(formData, destinationId);
             if (response.success) {
-                toast.success("Destination updated successfully");
+                toast.success(response.message || "Destination updated successfully");
                 setFormData(initialState);
                 navigate('/admin/destination')
             } else {
-                toast.error("Failed to update destination");
+                toast.error(response.message || "Failed to update destination");
                 setErrors(prev => ({ ...prev, server: response.message }));
             }
         } else {
