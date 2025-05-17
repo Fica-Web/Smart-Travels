@@ -145,11 +145,11 @@ const AdminDestinationForm = ({ destinationId }) => {
             console.log('Updating destination with ID:', destinationId);
             const response = await updateDestinationApi(formData, destinationId);
             if (response.success) {
-                toast.success("Destination updated successfully");
+                toast.success(response.message || "Destination updated successfully");
                 setFormData(initialState);
                 navigate('/admin/destination')
             } else {
-                toast.error("Failed to update destination");
+                toast.error(response.message || "Failed to update destination");
                 setErrors(prev => ({ ...prev, server: response.message }));
             }
         } else {
