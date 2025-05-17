@@ -3,7 +3,7 @@ import BlogSection from "../../components/HomeSection/HomePage/BlogSection"
 
 const BlogPage = () => {
     return (
-        <div className=''>
+        <div className='pb-15'>
             <ReusableHero 
                 title="Blog"
             />
