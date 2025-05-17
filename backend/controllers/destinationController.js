@@ -30,6 +30,49 @@ export const getAllDestinations = async (req, res) => {
     }
 }
 
+export const getPublishedDestinations = async (req, res) => {
+    try {
+        // Destructure `page` and `limit` from query parameters; set default values
+        const { page = 1, limit = 9 } = req.query;
+
+        // Convert page and limit to integers and calculate the number of items to skip
+        const skip = (parseInt(page) - 1) * parseInt(limit);
+
+        // Use Promise.all to run both database operations in parallel:
+        // 1. Get paginated published destinations
+        // 2. Count total number of published destinations
+        const [destinations, total] = await Promise.all([
+            Destination.find({ isPublished: true })         // Filter only published destinations
+                .sort({ createdAt: -1 })                    // Sort by creation date (latest first)
+                .skip(skip)                                 // Skip documents for pagination
+                .limit(parseInt(limit)),                    // Limit the number of documents
+
+            Destination.countDocuments({ isPublished: true }) // Count total published destinations
+        ]);
+
+        // Respond with the fetched data and pagination metadata
+        res.status(200).json({
+            success: true,
+            data: destinations, // The paginated destination list
+            meta: {
+                total,                         // Total published destinations
+                page: parseInt(page),          // Current page
+                limit: parseInt(limit),        // Items per page
+                totalPages: Math.ceil(total / limit) // Total number of pages
+            }
+        });
+
+    } catch (error) {
+        // If an error occurs, log it and send an error response
+        console.error('Error fetching destinations:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Internal server error',
+            error: error.message
+        });
+    }
+};
+
 export const getDestinationById = async (req, res) => {
     try {
         const { id } = req.params; // Extract the destination ID from the request parameters
