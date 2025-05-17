@@ -6,14 +6,14 @@ import BlogSection from '../../components/HomeSection/HomePage/BlogSection'
 
 const HomePage = () => {
     return (
-        <>
+        <div className='pb-15'>
             <Hero />
             <Destination />
             <ChooseUs />
             <BlogSection isHomePage={true}  />
 
 
-        </>
+        </div>
     )
 }
 

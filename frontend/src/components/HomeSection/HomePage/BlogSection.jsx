@@ -29,11 +29,11 @@ const BlogSection = ({ isHomePage = false }) => {
   const [firstBlog, ...remainingBlogs] = blogs;
 
   return (
-    <div className="sm:px-6 md:px-20  ">
+    <div className="px-4 md:px-20  ">
       {isHomePage && (
         <SectionHeading
           backgroundText="TRAVEL BLOG"
-          heading="Explore Travel Tips And Latest Trends"
+          heading="Discover Travel Tips & Trends"
           subtext="Explore travel tips, hidden gems, and expert guides to make your next adventure unforgettable!"
         />
       )}
