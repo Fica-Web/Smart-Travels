@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import Cropper from 'react-easy-crop';
+import { toast } from 'react-toastify';
 import { getCroppedImg } from '../../utils/cropImage'; // Import the utility function
 
 const CoverImageUpload = ({
@@ -28,10 +29,25 @@ const CoverImageUpload = ({
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
+
     if (file) {
+      // Validate image type
+      if (!file.type.startsWith('image/')) {
+        onImageChange(null); // Important to clear previous valid file
+        return toast.error("Only image files are allowed");
+      }
+
+      // Validate size
+      if (file.size > 2 * 1024 * 1024) {
+        onImageChange(null);
+        return toast.error("File size must be less than 2MB");
+      }
+
+      // If validation passes, send to parent and open crop modal
+      onImageChange(file); // This is needed to set state in parent correctly
       const previewUrl = URL.createObjectURL(file);
-      setImageSrc(previewUrl); // Set the image source to start cropping
-      setShowCropModal(true); // Open the crop modal
+      setImageSrc(previewUrl);
+      setShowCropModal(true);
     }
   };
 
@@ -60,7 +76,7 @@ const CoverImageUpload = ({
         onCroppedImage(file); // Pass the cropped image to the parent component
         setPreview(URL.createObjectURL(file));
         setShowCropModal(false);
-        console.log("Cropping success");
+        console.log("Cropping success:", file.size);
       } catch (error) {
         console.error("Error cropping image", error);
       } finally {
