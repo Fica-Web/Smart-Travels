@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import fallbackCountries from '../../data/fallbackCoutries';
 
@@ -79,6 +79,7 @@ const CountrySelect = ({ value, onChange }) => {
             <Select
                 isLoading={loading}
                 options={options}
+                value={options.find(option => option.value === value) || null}
                 onChange={(selected) => onChange(selected.value)}
                 placeholder="Select a country..."
                 components={{ SingleValue: customSingleValue, Option: customOption }}
