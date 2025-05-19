@@ -13,10 +13,6 @@ const navOptions = [
         path: '/bookings'
     },
     {
-        name: 'Services',
-        path: '/services'
-    },
-    {
         name: 'Blog',
         path: '/blog'
     },
