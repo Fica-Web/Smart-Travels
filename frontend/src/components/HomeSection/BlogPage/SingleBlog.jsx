@@ -17,7 +17,7 @@ const SingleBlog = ({ isHomePage, firstBlog, remainingBlogs }) => {
       {isHomePage && firstBlog && (
         <div className="flex flex-col md:flex-row justify-between overflow-hidden  mt-1 md:mt-11 pt-5 group h-auto md:h-[350px] ">
           {/* Image */}
-          <div className="w-full h-[400px] sm:w-full sm:h-80 md:w-[790px] md:h-full overflow-hidden  md:mr-19 mx-auto ">
+          <div className="w-full h-[400px] sm:w-full sm:h-80 md:w-[790px] md:h-full overflow-hidden mr-0 md:mr-19 mx-auto ">
             <Link to={`/blog/${firstBlog._id}`}>
               <img
                 src={firstBlog.coverImage}
@@ -28,10 +28,10 @@ const SingleBlog = ({ isHomePage, firstBlog, remainingBlogs }) => {
           </div>
 
           {/* Text */}
-          <div className="w-full md:w-[490px] h-full p-6 md:p-1 space-y-5 md:mr-3 flex flex-col justify-center bg-white rounded-3xl">
+          <div className="w-full md:w-[490px] h-full p-1 pt-4 md:pt-0 space-y-5 mr-0 md:mr-3 flex flex-col justify-center  rounded-3xl">
             <div className="flex-col justify-between">
               <Link to={`/blog/${firstBlog._id}`}>
-                <h3 className="text-3xl md:text-4xl font-semibold text-secondary-blue leading-snug pb-5 break-words max-w-xl transition">
+                <h3 className="text-xl md:text-4xl font-semibold text-secondary-blue leading-snug pb-5 break-words max-w-xl transition">
                   {firstBlog.title}
                 </h3>
               </Link>
