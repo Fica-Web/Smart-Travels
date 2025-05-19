@@ -38,7 +38,7 @@ const BlogDetails = () => {
       
 
       <div className="w-full flex flex-col md:flex-row justify-center p-5 md:p-10 md:px-20 ">
-        <div className="flex flex-row md:flex-col items-start space-x-6 md:space-x-0 md:space-y-6 mb-6 md:mb-0">
+        <div className="flex flex-row md:flex-col items-start space-x-6 md:space-x-0 md:space-y-6 md:pr-4 mb-6 md:mb-0 ">
           <div className="w-full max-w-[120px] text-left">
             <p className="text-sm">Date</p>
             <p className="text-md md:text-xl font-medium">
@@ -62,7 +62,7 @@ const BlogDetails = () => {
           </div>
         </div>
 
-        <div className="w-full md:w-3/4">
+        <div className="w-full md:w-3/4  md:pl-6">
           <div>
             <h1 className="text-xl md:text-2xl font-bold">Description</h1>
             <p className="text-gray-600 text-md leading-relaxed pt-3">{blog.blog.description}</p>

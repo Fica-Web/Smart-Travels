@@ -15,9 +15,9 @@ const SingleBlog = ({ isHomePage, firstBlog, remainingBlogs }) => {
     <>
       {/* Featured Blog on Homepage */}
       {isHomePage && firstBlog && (
-        <div className="flex flex-col md:flex-row overflow-hidden  mt-1 md:mt-11 pt-5 group h-auto md:h-[350px]">
+        <div className="flex flex-col md:flex-row justify-between overflow-hidden  mt-1 md:mt-11 pt-5 group h-auto md:h-[350px] ">
           {/* Image */}
-          <div className="w-full h-[400px] sm:w-full sm:h-80 md:w-[790px] md:h-full overflow-hidden  mx-auto">
+          <div className="w-full h-[400px] sm:w-full sm:h-80 md:w-[790px] md:h-full overflow-hidden  md:mr-19 mx-auto ">
             <Link to={`/blog/${firstBlog._id}`}>
               <img
                 src={firstBlog.coverImage}
@@ -28,15 +28,15 @@ const SingleBlog = ({ isHomePage, firstBlog, remainingBlogs }) => {
           </div>
 
           {/* Text */}
-          <div className="w-full md:w-[490px] h-full p-6 md:p-10 space-y-5 flex flex-col justify-center bg-white rounded-xl">
+          <div className="w-full md:w-[490px] h-full p-6 md:p-1 space-y-5 md:mr-3 flex flex-col justify-center bg-white rounded-3xl">
             <div className="flex-col justify-between">
               <Link to={`/blog/${firstBlog._id}`}>
-                <h3 className="text-3xl md:text-4xl font-semibold text-gray-800 leading-snug pb-5 break-words max-w-xl hover:text-blue-600 transition">
+                <h3 className="text-3xl md:text-4xl font-semibold text-secondary-blue leading-snug pb-5 break-words max-w-xl transition">
                   {firstBlog.title}
                 </h3>
               </Link>
               {firstBlog.description && (
-                <p className="text-gray-700 text-sm line-clamp-3 mb-4">
+                <p className="text-sm sm:text-base text-secondary-blue/80 max-w-2xl text-justify line-clamp-4 mb-4">
                   {firstBlog.description}
                 </p>
               )}

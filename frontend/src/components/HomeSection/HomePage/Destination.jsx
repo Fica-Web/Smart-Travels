@@ -22,14 +22,14 @@ const Destination = () => {
       {destinations.slice(0, 2).map((item, index) => (
         <div
           key={index}
-          className="relative rounded-2xl overflow-hidden shadow-lg group transition-transform duration-300 hover:scale-105"
+          className="relative rounded-3xl overflow-hidden shadow-lg group transition-transform duration-300 hover:scale-105"
         >
           <img
             src={item.imageUrl}
             alt={item.title}
             className="w-full h-[400px] object-cover group-hover:scale-110 transition-transform duration-300"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent p-4 flex flex-col justify-end">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent p-4 flex flex-col justify-end">
             <h3 className="text-white text-xl font-bold">{item.title}</h3>
             <p className="text-white text-sm">{item.description}</p>
           </div>
@@ -44,13 +44,13 @@ const Destination = () => {
    {/* Column 1 */}
 <div className="flex flex-col gap-6 w-full md:w-1/3">
 
-      <div className="relative rounded-2xl overflow-hidden shadow-lg group transition-transform duration-300 hover:scale-105">
+      <div className="relative rounded-3xl overflow-hidden shadow-lg group transition-transform duration-300 hover:scale-105">
         <img
           src={destinations[2].imageUrl}
           alt={destinations[2].title}
           className="w-full h-[500px] object-cover group-hover:scale-110 transition-transform duration-300"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent p-4 flex flex-col justify-end">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent p-4 flex flex-col justify-end">
           <h3 className="text-white text-xl font-bold">{destinations[2].title}</h3>
           <p className="text-white text-sm">{destinations[2].description}</p>
         </div>
@@ -80,14 +80,14 @@ const Destination = () => {
       {destinations.slice(4, 6).map((item, index) => (
         <div
           key={index}
-          className="relative rounded-2xl overflow-hidden shadow-lg group transition-transform duration-300 hover:scale-105"
+          className="relative rounded-3xl overflow-hidden shadow-lg group transition-transform duration-300 hover:scale-105"
         >
           <img
             src={item.imageUrl}
             alt={item.title}
             className="w-full h-[400px] object-cover group-hover:scale-110 transition-transform duration-300"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent p-4 flex flex-col justify-end">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent p-4 flex flex-col justify-end">
             <h3 className="text-white text-xl font-bold">{item.title}</h3>
             <p className="text-white text-sm">{item.description}</p>
           </div>
