@@ -379,24 +379,27 @@ const fetchAllUsers = async (req, res) => {
 
         const query = {
             $or: [
-                { name: new RegExp(search, "i") },
+                { fullName: new RegExp(search, "i") },
+                { username: new RegExp(search, "i") },
                 { email: new RegExp(search, "i") },
+                { phone: new RegExp(search, "i") },
             ],
         };
 
         const total = await User.countDocuments(query);
+
         const users = await User.find(query)
             .sort({ [sortBy]: order })
             .skip(page * limit)
-            .limit(limit);
+            .limit(limit)
+            .select(
+                "fullName username email phone isVerified nationality createdAt"
+            );
 
-        res.json({
-            users,
-            total,
-        });
+        res.json({ users, total });
     } catch (error) {
         console.error("Error fetching all users:", error);
-        res.status(500).json({ message: "Internal server error", error: error.message });        
+        res.status(500).json({ message: "Internal server error", error: error.message });
     }
 }
 

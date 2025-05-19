@@ -55,10 +55,6 @@ const userSchema = new mongoose.Schema(
                 ref: 'Booking' 
             }
         ],
-        walletBalance: { 
-            type: Number, 
-            default: 0 
-        },
         resetPasswordToken: { 
             type: String 
         },
