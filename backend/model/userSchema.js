@@ -29,12 +29,6 @@ const userSchema = new mongoose.Schema(
         dob: { 
             type: Date 
         },
-        passportNumber: { 
-            type: String 
-        },
-        passportExpiry: { 
-            type: Date 
-        },
         nationality: { 
             type: String 
         },
