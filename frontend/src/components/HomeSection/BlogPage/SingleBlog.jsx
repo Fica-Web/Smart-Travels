@@ -42,19 +42,23 @@ const SingleBlog = ({ isHomePage, firstBlog, remainingBlogs }) => {
               )}
             </div>
 
-            <div className="flex justify-between items-center text-sm text-gray-500 pt-6 border-gray-200">
-              <span className="flex items-center space-x-1 text-sm text-gray-500">
+            <div className="flex justify-between items-center text-sm sm:text-base text-secondary-blue/80  pt-6 border-gray-200">
+              <span className="flex items-center space-x-1 text-sm ">
                 <span>
-                  <strong>Date:</strong>{' '}
-                  {firstBlog.createdAt ? new Date(firstBlog.createdAt).toLocaleDateString() : 'N/A'}
+                  <strong className='' >Date:</strong>{' '}
+                    {new Date(firstBlog.createdAt).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
                 </span>
-                <BsDot className="text-black text-2xl" />
-                <span>{firstBlog.author}</span>
+                <BsDot className="text-2xl text-secondary-blue " />
+                <span><strong className='' >{firstBlog.author}</strong></span>
               </span>
 
               <Link
                 to={`/blog/${firstBlog._id}`}
-                className="bg-gray-100 hover:bg-gray-200 text-black rounded-full p-2 transition inline-block"
+                className="bg-gray-100 hover:bg-gray-200 text-secondary-blue rounded-full p-2 transition inline-block"
               >
                 <ArrowUpRight size={18} />
               </Link>
