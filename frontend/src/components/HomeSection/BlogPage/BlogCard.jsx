@@ -25,18 +25,22 @@ const BlogCard = ({ blog, isHomepage }) => {
 
         {/* Conditionally render description */}
         {!isHomepage && (
-          <p className="text-gray-600 text-lg line-clamp-3 leading-relaxed">
+          <p className="text-sm sm:text-base text-secondary-blue/80 line-clamp-3 leading-relaxed">
             {blog.description}
           </p>
         )}
 
-        <div className="flex justify-between items-center text-sm text-gray-500 pt-2 border-gray-200">
-          <span className="flex items-center space-x-1 text-sm text-gray-500">
+        <div className="flex justify-between items-center text-sm sm:text-base text-secondary-blue/80 pt-2 border-gray-200">
+          <span className="flex items-center space-x-1 text-sm sm:text-base text-secondary-blue/80">
             <span>
               <strong>Date:</strong>{' '}
-              {blog.createdAt ? new Date(blog.createdAt).toLocaleDateString() : 'N/A'}
+                {new Date(blog.createdAt).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
             </span>
-            <BsDot className="text-black text-2xl" />
+            <BsDot className=" text-2xl text-secondary-blue" />
             <span>{blog.author}</span>
           </span>
 
