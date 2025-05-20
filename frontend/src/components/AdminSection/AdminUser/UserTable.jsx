@@ -30,17 +30,27 @@ const UserTable = () => {
     const [pageSize, setPageSize] = useState(10);
     const [sortModel, setSortModel] = useState([]);
     const [search, setSearch] = useState("");
+    const [searchDebounce, setSearchDebounce] = useState("");
+
+    // Debounce search input
+    useEffect(() => {
+        const delay = setTimeout(() => setSearchDebounce(search), 400);
+        return () => clearTimeout(delay);
+    }, [search]);
 
     const fetchUsers = async () => {
         const sort = sortModel[0] || {};
+
         const params = {
             page,
             limit: pageSize,
-            search,
-            sortBy: sort.field,
-            order: sort.sort,
-        }
-        
+            search: searchDebounce,
+            sortBy: sort.field || "createdAt",
+            order: sort.sort || "desc", 
+        };
+
+        console.log("Sending params to API:", params);
+
         const response = await getAllUsersApi(params);
         if (response.success) {
             setUsers(response.data.users);
@@ -52,7 +62,7 @@ const UserTable = () => {
 
     useEffect(() => {
         fetchUsers();
-    }, [page, pageSize, sortModel, search]);
+    }, [page, pageSize, sortModel, searchDebounce]);
 
     return (
         <div style={{ height: 600, width: "100%" }}>
