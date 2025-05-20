@@ -8,7 +8,7 @@ import { MdOutlineFlightTakeoff } from 'react-icons/md';
 
 const ChooseUs = () => {
     return (
-        <div className="px-6 md:px-20  ">
+        <div className="px-4 md:px-20  ">
             <SectionHeading
                 backgroundText="CHOOSE US"
                 heading="Your Trusted Travel Partner"
@@ -16,7 +16,7 @@ const ChooseUs = () => {
             />
 
             {/* Responsive Wrapper */}
-            <div className="w-full flex flex-col md:grid md:grid-cols-[auto_auto_auto] gap-8 px-4  p-0 md:p-5 items-center justify-center ">
+            <div className="w-full flex flex-col md:grid md:grid-cols-[auto_auto_auto] gap-8 md:px-4  p-0 md:p-5 items-center justify-center ">
 
                 {/* Left Column */}
                 {/* <div className="hidden sm:block w-full md:w-[400px] h-[300px] bg-gray-100 rounded-xl overflow-hidden mx-auto">

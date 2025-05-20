@@ -29,7 +29,7 @@ const SectionHeading = ({ backgroundText, heading, subtext }) => {
 
 
         {/* Foreground heading */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-[55%] z-10">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-[15%] md:translate-y-[55%] z-10">
           <h2 className="inline whitespace-nowrap text-base sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-secondary-blue">
             {heading}
           </h2>
