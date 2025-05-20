@@ -11,7 +11,9 @@ import {
     forgotPassword,
     resetPassword,
     getUserProfile,
+    fetchAllUsers,
 } from '../controllers/userController.js';
+import verifyAdmin from '../middlewares/adminAuth.js';
 import verifyUser from '../middlewares/verifyUser.js';
 
 router.post('/signup', userSignup);
@@ -24,6 +26,8 @@ router.post('/forgot-password', forgotPassword);
 router.post('/reset-password', resetPassword); // Reset password route
 
 router.post('/submit-message', submitMessage);
+
+router.get('/all-users', verifyAdmin, fetchAllUsers); // Fetch all users (admin only)
 
 router.use(verifyUser); // Protect all routes below this middleware
 
