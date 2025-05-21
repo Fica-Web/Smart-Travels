@@ -86,7 +86,7 @@ const CoverImageUpload = ({
   };
 
   return (
-    <div className="space-y-4">
+    <div className="mb-1">
       <label className="block text-gray-700 font-medium">{label}</label>
       <input
         type="file"

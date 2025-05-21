@@ -13,6 +13,7 @@ const dayPlanSchema = new mongoose.Schema({
 
 const destinationSchema = new mongoose.Schema({
     title: { type: String, required: true }, // e.g., "5 Days in Bali"
+    overview: { type: String, required: true }, // Short description of the package
     destination: { type: String, required: true }, // e.g., "Bali, Indonesia"
     slug: { type: String, unique: true, required: true }, // For SEO-friendly URLs
 
