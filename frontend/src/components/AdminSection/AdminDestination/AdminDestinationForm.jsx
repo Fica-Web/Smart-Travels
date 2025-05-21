@@ -139,6 +139,7 @@ const AdminDestinationForm = ({ destinationId }) => {
         const validationErrors = validateForm();
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
+            toast.error('Please fill in all required fields');
             setLoading(false);
             return;
         }
@@ -245,13 +246,15 @@ const AdminDestinationForm = ({ destinationId }) => {
                             onChange={(e) => handleInclusionChange(index, e.target.value)}
                             className="border border-gray-300 rounded-md px-4 py-2 w-full"
                         />
-                        <button
-                            type="button"
-                            onClick={() => removeInclusion(index)}
-                            className="text-red-500 font-bold"
-                        >
-                            ×
-                        </button>
+                        {index > 0 && (
+                            <button
+                                type="button"
+                                onClick={() => removeInclusion(index)}
+                                className="text-red-500 font-bold text-lg hover:scale-105 cursor-pointer"
+                            >
+                                ×
+                            </button>
+                        )}
                     </div>
                 ))}
                 <button
