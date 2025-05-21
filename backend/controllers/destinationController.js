@@ -101,6 +101,7 @@ export const createDestination = async (req, res) => {
         const {
             title,
             destination,
+            overview,
             duration,
             pricePerPerson,
             country,
@@ -130,8 +131,8 @@ export const createDestination = async (req, res) => {
         console.log('Request body:', req.body);
 
         // Validate required fields
-        if (!title || !destination || !duration || !req.file || !days || days.length === 0) {
-            return res.status(400).json({ message: 'Title, destination, duration, cover image, and at least one day plan are required.' });
+        if (!title || !destination || !duration || !overview || !req.file || !days || days.length === 0) {
+            return res.status(400).json({ message: 'Title, destination, overview, duration, cover image, and at least one day plan are required.' });
         }
 
         // Generate slug
@@ -154,6 +155,7 @@ export const createDestination = async (req, res) => {
         const newDestination = new Destination({
             title,
             destination,
+            overview,
             slug: generatedSlug,
             duration,
             pricePerPerson,
