@@ -128,6 +128,11 @@ const AdminDestinationForm = ({ destinationId }) => {
         if (!formData.duration) newErrors.duration = 'Duration is required';
         if (!formData.coverImage && !isEditMode) newErrors.coverImage = 'Cover image is required';
         if (formData.days.length === 0) newErrors.days = 'At least one day plan is required';
+
+        formData.days.forEach((item, index) => {
+            if (!item.title.trim()) newErrors[`title${index}`] = "Day title is required";
+            if (!item.description.trim()) newErrors[`description${index}`] = "Day plan description is required";
+        });
         return newErrors;
     };
 
@@ -260,7 +265,7 @@ const AdminDestinationForm = ({ destinationId }) => {
                 <button
                     type="button"
                     onClick={addInclusion}
-                    className="text-blue-600 mt-2"
+                    className="text-blue-600 mt-2 cursor-pointer"
                 >
                     + Add Inclusion
                 </button>
