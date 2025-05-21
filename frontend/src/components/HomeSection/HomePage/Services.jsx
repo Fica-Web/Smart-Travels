@@ -11,7 +11,7 @@ const Services = () => {
         heading="What We Offer"
         subtext="From the moment you start planning to the moment you board your flight, we take care of every little detail to ensure a smooth, stress-free, and unforgettable travel experience."
       />
-      <div className="flex flex-col md:flex-row w-full gap-6 mt-1 md:mt-11 pt-5  md:p-0">
+      <div className="flex flex-col md:flex-row w-full gap-6 mt-1 md:mt-5 pt-5  md:p-0">
 
    {/* Column 1 */}
 <div className="flex flex-col gap-6 w-full md:w-1/3">

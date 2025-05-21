@@ -3,6 +3,7 @@ import AboutUs from '../../components/HomeSection/AboutPage/AboutUs'
 import ReusableHero from '../../components/reusable/ReusableHero'
 import ChooseUs from '../../components/HomeSection/HomePage/ChooseUs'
 import img from '../../assets/image/about/about-hero.jpg'
+import Services from '../../components/HomeSection/HomePage/Services'
 
 const AboutPage = () => {
   return (
@@ -12,6 +13,7 @@ const AboutPage = () => {
                 bgImage={img}
             />
         <AboutUs />
+        <Services />
         <ChooseUs />
     </div>
   )

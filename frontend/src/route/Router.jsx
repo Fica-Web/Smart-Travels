@@ -19,7 +19,7 @@ const ForgotPasswordPage = lazy(() => import('../pages/user/ForgotPasswordPage')
 const resetPasswordPage = lazy(() => import('../pages/user/ResetPasswordPage'));
 const AboutPage = lazy(() => import('../pages/user/AboutPage'));
 const BlogPage = lazy(() => import('../pages/user/BlogPage'));
-const ContactPage = lazy(() => import('../pages/user/Contactpage'));
+const ContactPage = lazy(() => import('../pages/user/ContactPage'));
 const BlogDetails = lazy(() => import('../pages/user/BlogDetailsPage'));
 const UserProfilePage = lazy(() => import('../pages/user/UserProfilePage'));
 const AdminDashboardPage = lazy(() => import('../pages/admin/AdminDashboardPage'));
@@ -32,6 +32,7 @@ const AdminBlogFormPage = lazy(() => import('../pages/admin/AdminBlogFormPage'))
 const AdminBlogEditPage = lazy(() => import('../pages/admin/AdminBlogEditPage'));
 const AdminDestinationPage = lazy(() => import('../pages/admin/AdminDestinationPage'));
 const AdminDestinationFormPage = lazy(() => import('../pages/admin/AdminDestinationFormPage'));
+const BookingPage = lazy(() => import('../pages/user/BookingPage'));
 // const NotFoundPage = lazy(() => import('../pages/shared/NotFoundPage'));
 
 // Suspense wrapper
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
             element: withSuspense(BlogDetails),
           },
         ],
+      },
+       {
+        path: 'booking',
+        element: withSuspense(BookingPage),
       },
       {
         path: 'contact',
