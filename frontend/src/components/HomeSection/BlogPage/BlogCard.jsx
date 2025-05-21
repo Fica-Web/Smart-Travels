@@ -7,7 +7,7 @@ const BlogCard = ({ blog, isHomepage }) => {
   return (
     <div className="transition duration-300 overflow-hidden group relative">
       <Link to={`/blog/${blog._id}`}>
-        <div className="overflow-hidden rounded-xl">
+        <div className="overflow-hidden rounded-3xl">
           <img
             src={blog.coverImage}
             alt={blog.title}
@@ -18,7 +18,7 @@ const BlogCard = ({ blog, isHomepage }) => {
 
       <div className="pt-5 space-y-3">
         <Link to={`/blog/${blog._id}`}>
-          <h3 className="text-xl font-semibold text-secondary-blue group-hover:text-blue-600 transition">
+          <h3 className="text-xl font-semibold text-secondary-blue ">
             {blog.title}
           </h3>
         </Link>
