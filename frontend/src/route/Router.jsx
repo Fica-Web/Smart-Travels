@@ -19,7 +19,7 @@ const ForgotPasswordPage = lazy(() => import('../pages/user/ForgotPasswordPage')
 const resetPasswordPage = lazy(() => import('../pages/user/ResetPasswordPage'));
 const AboutPage = lazy(() => import('../pages/user/AboutPage'));
 const BlogPage = lazy(() => import('../pages/user/BlogPage'));
-const ContactPage = lazy(() => import('../pages/user/Contactpage'));
+const ContactPage = lazy(() => import('../pages/user/ContactPage'));
 const BlogDetails = lazy(() => import('../pages/user/BlogDetailsPage'));
 const UserProfilePage = lazy(() => import('../pages/user/UserProfilePage'));
 const AdminDashboardPage = lazy(() => import('../pages/admin/AdminDashboardPage'));
