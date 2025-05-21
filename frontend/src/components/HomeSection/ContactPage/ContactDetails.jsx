@@ -29,7 +29,7 @@ const ContactDetails = () => {
             <p>
                 Whether you need assistance or have a query, we’re just a message or call away. Our team is committed to providing you with the best support.
             </p>
-            <div className='flex flex-col gap-4'>
+            <div className='flex flex-col gap-4 w-max'>
                 {contactData.map((item, index) => (
                     <ContactBox
                         key={item.title}
@@ -47,8 +47,8 @@ export default ContactDetails;
 
 const ContactBox = ({ icon: Icon, title, description }) => {
     return (
-        <div className='flex gap-3 py-3 items-center'>
-            <div className='bg-secondary-blue p-4 rounded-full'>
+        <div className='flex gap-3 py-3 items-center border-b border-secondary-blue last:border-b-0 w-full'>
+            <div className='bg-secondary-blue p-3 rounded-full'>
                 <Icon className='text-2xl text-white' />
             </div>
             <div>

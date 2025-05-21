@@ -107,7 +107,7 @@ const InputField = ({ label, name, type, placeholder, value, onChange, error }) 
                 placeholder={placeholder}
                 value={value}
                 onChange={onChange}
-                className={`border rounded-md p-2 ${error ? 'border-red-500' : 'border-secondary-blue border-2'}`}
+                className={`border rounded-md p-3 ${error ? 'border-red-500' : 'border-secondary-blue focus:border-none focus:outline-none focus:ring-1 focus:ring-blue-500'}`}
             />
             {error && <p className='text-red-500 text-sm'>{error}</p>}
         </div>
