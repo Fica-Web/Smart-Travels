@@ -12,12 +12,12 @@ const Hero = () => {
             <img
                 src={img}
                 alt="Decorative Layer"
-                className="absolute top-0 left-0 w-full object-cover z-30"
+                className="absolute top-0 left-0 w-full object-cover z-10 "
                 style={{ height: '100vh' }} // Adjust height as needed
             />
 
             {/* Text on top */}
-            <div className="absolute inset-0 z-20 flex justify-center items-center">
+            <div className="absolute inset-0 flex justify-center items-center">
                 <div className="flex flex-col">
                     <h2 className="text-center text-white leading-none">
                         <span className="uppercase md:text-2xl text-xl md:tracking-[10px] tracking-[3px]">

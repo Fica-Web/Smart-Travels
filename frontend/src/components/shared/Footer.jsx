@@ -3,33 +3,80 @@ import { Link } from 'react-router-dom';
 import navOptions from '../../data/navOptions';
 import logo from '../../assets/image/logo/logo.png';
 import { AiOutlineCopyright } from "react-icons/ai";
+import { FaInstagram } from "react-icons/fa";
+import { SlSocialFacebook } from "react-icons/sl";
+import { PiTiktokLogoLight } from "react-icons/pi";
+import { MdLocalPhone } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
+import { IoLocationSharp } from "react-icons/io5";
+
+
 
 const Footer = () => {
   return (
-    <footer className="relative w-full text-white py-12 px-6 sm:px-12 bg-gradient-to-b from-sky-700 via-sky-800 to-sky-900">
+    <footer className="relative w-full h-auto  py-10 px-6 sm:px-20 bg-[#4A94D0]/40
+">
 
       {/* Top Section */}
-      <div className="pb-12 border-b border-gray-700 flex flex-col md:flex-row justify-between gap-8">
+      <div className="pb-12 border-b border-gray-700 flex flex-col md:flex-row justify-items-center gap-30">
         {/* Left Section */}
-        <div className="md:w-1/2 space-y-4">
-          <img src={logo} alt="Logo" className="h-14 w-auto" />
-          <p className="text-white font-semibold text-sm">
-            Discover the best destinations, tips, and experiences with us.
-          </p>
+        <div className=" space-y-6 ">
+          <div className='space-y-2'>
+            <img src={logo} alt="Logo" className="h-14 w-auto" />
+            <p className="text-secondary-blue/80 font-semibold text-sm">
+              Your trusted partner in exploring the world <br />with curated travel experiences.
+            </p>
+          </div>
+          <div className='flex justify-start items-center gap-6'>
+            <div>
+              <a
+                href="https://www.instagram.com/your_username"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-8 h-8 bg-secondary-blue rounded-full text-white transform transition-transform duration-300 hover:scale-110"
+              >
+                <FaInstagram size={20} />
+              </a>
+            </div>
+            <div>
+              <a
+                href="https://www.facebook.com/your_username"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-8 h-8 bg-secondary-blue  rounded-full text-white transform transition-transform duration-300 hover:scale-110"
+              >
+                <SlSocialFacebook size={20} />
+              </a>
+            </div>
+            <div>
+              <a
+                href="https://www.tiktok.com/@your_username"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-8 h-8 bg-secondary-blue  rounded-full text-white transform transition-transform duration-300 hover:scale-110"
+              >
+                <PiTiktokLogoLight size={20} />
+              </a>
+            </div>
+
+          </div>
+
+
         </div>
 
+
         {/* Right Section */}
-        <div className="flex flex-wrap gap-8 md:w-1/2 justify-between">
+        <div className="flex flex-wrap justify-between gap-x-35 gap-y-4 px-4 text-secondary-blue">
           {/* Quick Links */}
           <div>
             <h4 className="font-semibold mb-3">Quick Links</h4>
-            <ul className="space-y-2 text-gray-400 text-sm">
+            <ul className="space-y-2  text-md">
               {navOptions.map((item, index) => (
                 <li key={index}>
                   <Link
                     to={item.path}
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    className="hover:text-white transition"
+                    className="hover:text-[#005BF0] transition"
                   >
                     {item.name}
                   </Link>
@@ -40,25 +87,58 @@ const Footer = () => {
           </div>
 
           {/* Destinations */}
-          <div>
+          <div className='text-secondary-blue'>
             <h4 className="font-semibold mb-3">Destinations</h4>
-            <ul className="space-y-2 text-gray-400 text-sm">
-              <li><Link to="" className="hover:text-white transition">Paris</Link></li>
-              <li><Link to="" className="hover:text-white transition">fchgvh</Link></li>
-              <li><Link to="" className="hover:text-white transition">bnmnkml</Link></li>
-              <li><Link to="" className="hover:text-white transition">New York</Link></li>
+            <ul className="space-y-2 text-secondary-blue text-md">
+              <li><Link to="" className="hover:text-[#005BF0] transition">Paris</Link></li>
+              <li><Link to="" className="hover:text-[#005BF0] transition">fchgvh</Link></li>
+              <li><Link to="" className="hover:text-[#005BF0] transition">bnmnkml</Link></li>
+              <li><Link to="" className="hover:text-[#005BF0] transition">New York</Link></li>
+              <li><Link to="" className="hover:text-[#005BF0] transition">bnmnkml</Link></li>
             </ul>
           </div>
 
           {/* Support */}
-          <div>
-            <h4 className="font-semibold mb-3">Support</h4>
-            <ul className="space-y-2 text-gray-400 text-sm">
-              <li><Link to="" className="hover:text-white transition">Help Center</Link></li>
-              <li><Link to="" className="hover:text-white transition">Contact Us</Link></li>
-              <li><Link to="" className="hover:text-white transition">Privacy Policy</Link></li>
-              <li><Link to="" className="hover:text-white transition">FAQ</Link></li>
-            </ul>
+          <div className='text-secondary-blue '>
+            <h4 className="font-semibold  mb-3">Contact Us</h4>
+            <p className='text-md'>Have questions? We’re here to help with your travel plans.</p>
+            <div className="flex items-center gap-2 mt-2 text-md text-secondary-blue">
+              <MdLocalPhone size={20} />
+
+              <div className="flex flex-col sm:flex-row gap-2">
+                <a
+                  href="tel:+045707023"
+                  className="hover:text-[#005BF0] transition"
+                >
+                  045707023
+                </a>,
+                <a
+                  href="tel:+971527418272"
+                  className="hover:text-[#005BF0] transition"
+                >
+                  +971 52 741 8272
+                </a>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 mt-2 text-md text-secondary-blue">
+              <MdEmail size={20} />
+              <a
+                href="mailto:Info@rukntravels.com"
+                className="hover:text-[#005BF0] transition"
+              >
+                Info@rukntravels.com
+              </a>
+            </div>
+            <div className="flex items-center gap-2 mt-2 text-md text-secondary-blue">
+              <IoLocationSharp size={20} />
+            <p>Opp Al Futtim Masjid Al Murara,Deira,Dubai - UAE</p>
+            </div>
+
+
+
+
+
+
           </div>
         </div>
       </div>
@@ -66,21 +146,30 @@ const Footer = () => {
       {/* Bottom Section */}
       <div className="mt-8 space-y-8">
         {/* Copyright */}
-        <div className="flex justify-center items-center text-sm text-white">
-          <p className="flex items-center flex-wrap justify-center gap-1 text-center">
-            Copyright <AiOutlineCopyright className="text-amber-50" /> 2025
-            <span>
-              <Link
-                to="https://www.ficaads.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition mx-1"
-              >
-                ficaads
-              </Link>
-            </span>
-            , All Rights Reserved
+        <div className="flex justify-between items-center text-sm text-secondary-blue">
+       
+            <div>
+              <p className="flex items-center flex-wrap justify-center gap-1 text-center">
+            Copyright <AiOutlineCopyright className="text-secondary-blue" /> 2025,Rukn Travels. All Rights Reserved
           </p>
+            </div>
+
+           <div className="flex items-center space-x-1">
+  <p>Created By</p>
+  <span>
+    <Link
+      to="https://www.ficaads.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:text-white transition"
+    >
+      Ficaads
+    </Link>
+  </span>
+</div>
+
+
+          
         </div>
 
         {/* Adventure Text */}
