@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { userSignupApi } from '../../services/api/userApi';
 import PasswordInput from '../reusable/PasswordInput';
 import ReusableSubmitButton from '../reusable/ReusableSubmitButton';
+import MobileInput from '../reusable/MobileInput';
 import { toast } from 'react-toastify';
 
 const UserSignupForm = ({ onOTPSent }) => {
@@ -87,6 +88,8 @@ const UserSignupForm = ({ onOTPSent }) => {
                 />
                 {formErrors.email && <small className="text-red-500">{formErrors.email}</small>}
             </div>
+
+            <MobileInput />
 
             <PasswordInput
                 value={formData.password}

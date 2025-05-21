@@ -18,6 +18,7 @@ const AdminDestinationForm = ({ destinationId }) => {
     const initialState = {
         title: '',
         destination: '',
+        overview: '',
         duration: '',
         pricePerPerson: '',
         coverImage: '',
@@ -123,9 +124,15 @@ const AdminDestinationForm = ({ destinationId }) => {
         const newErrors = {};
         if (!formData.title) newErrors.title = 'Title is required';
         if (!formData.destination) newErrors.destination = 'Destination is required';
+        if (!formData.overview) newErrors.overview = 'Overview is required';
         if (!formData.duration) newErrors.duration = 'Duration is required';
         if (!formData.coverImage && !isEditMode) newErrors.coverImage = 'Cover image is required';
         if (formData.days.length === 0) newErrors.days = 'At least one day plan is required';
+
+        formData.days.forEach((item, index) => {
+            if (!item.title.trim()) newErrors[`title${index}`] = "Day title is required";
+            if (!item.description.trim()) newErrors[`description${index}`] = "Day plan description is required";
+        });
         return newErrors;
     };
 
@@ -137,6 +144,7 @@ const AdminDestinationForm = ({ destinationId }) => {
         const validationErrors = validateForm();
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
+            toast.error('Please fill in all required fields');
             setLoading(false);
             return;
         }
@@ -177,43 +185,60 @@ const AdminDestinationForm = ({ destinationId }) => {
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input
-                    type="text"
-                    placeholder="Title (e.g., 5 Days in Bali)"
-                    value={formData.title}
-                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                    className="border border-gray-300 rounded-md px-4 py-2 w-full"
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="Destination (e.g., Bali, Indonesia)"
-                    value={formData.destination}
-                    onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
-                    className="border border-gray-300 rounded-md px-4 py-2 w-full"
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="Duration (e.g., 5 Days / 4 Nights)"
-                    value={formData.duration}
-                    onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
-                    className="border border-gray-300 rounded-md px-4 py-2 w-full"
-                    required
-                />
+                <div>
+                    <input
+                        type="text"
+                        placeholder="Title (e.g., 5 Days in Bali)"
+                        value={formData.title}
+                        onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                        className="border border-gray-300 rounded-md px-4 py-2 w-full"
+                    />
+                    {errors.title && <p className="text-red-500 text-sm">{errors.title}</p>}
+                </div>
+                <div>
+                    <input
+                        type="text"
+                        placeholder="Destination (e.g., Bali, Indonesia)"
+                        value={formData.destination}
+                        onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
+                        className="border border-gray-300 rounded-md px-4 py-2 w-full"
+                    />
+                    {errors.destination && <p className="text-red-500 text-sm">{errors.destination}</p>}
+                </div>
+                <div>
+                    <input
+                        type="text"
+                        placeholder="Overview (short descritption about the package)"
+                        value={formData.overview}
+                        onChange={(e) => setFormData({ ...formData, overview: e.target.value })}
+                        className="border border-gray-300 rounded-md px-4 py-2 w-full"
+                    />
+                    {errors.overview && <p className="text-red-500 text-sm">{errors.overview}</p>}
+                </div>
+                <div>
+                    <input
+                        type="text"
+                        placeholder="Duration (e.g., 5 Days / 4 Nights)"
+                        value={formData.duration}
+                        onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
+                        className="border border-gray-300 rounded-md px-4 py-2 w-full"
+                    />
+                    {errors.duration && <p className="text-red-500 text-sm">{errors.duration}</p>}
+                </div>
+            </div>
 
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 items-start'>
+                <CoverImageUpload
+                    onImageChange={handleImageChange}
+                    onCroppedImage={handleCroppedImage}
+                    coverImagePreview={formData.coverImagePreview}
+                    error={errors.coverImage}
+                />
                 <CountrySelect
                     value={formData.country}
                     onChange={(val) => setFormData({ ...formData, country: val })}
                 />
             </div>
-
-            <CoverImageUpload
-                onImageChange={handleImageChange}
-                onCroppedImage={handleCroppedImage}
-                coverImagePreview={formData.coverImagePreview}
-                error={errors.coverImage}
-            />
 
             <div>
                 <label className="font-medium">Inclusions</label>
@@ -226,19 +251,21 @@ const AdminDestinationForm = ({ destinationId }) => {
                             onChange={(e) => handleInclusionChange(index, e.target.value)}
                             className="border border-gray-300 rounded-md px-4 py-2 w-full"
                         />
-                        <button
-                            type="button"
-                            onClick={() => removeInclusion(index)}
-                            className="text-red-500 font-bold"
-                        >
-                            ×
-                        </button>
+                        {index > 0 && (
+                            <button
+                                type="button"
+                                onClick={() => removeInclusion(index)}
+                                className="text-red-500 font-bold text-lg hover:scale-105 cursor-pointer"
+                            >
+                                ×
+                            </button>
+                        )}
                     </div>
                 ))}
                 <button
                     type="button"
                     onClick={addInclusion}
-                    className="text-blue-600 mt-2"
+                    className="text-blue-600 mt-2 cursor-pointer"
                 >
                     + Add Inclusion
                 </button>

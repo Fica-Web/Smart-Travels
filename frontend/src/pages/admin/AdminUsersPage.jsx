@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import UserTable from '../../components/AdminSection/AdminUser/UserTable';
 
 const AdminUsersPage = () => {
   return (
-    <div className='text-3xl text-amber-950'>AdminUsersPage</div>
+    <>
+      <UserTable />
+    </>
   )
 }
 

@@ -55,7 +55,7 @@ const DynamicContentSections = ({
             <button
                 type="button"
                 onClick={onAdd}
-                className="text-blue-600 hover:text-blue-800"
+                className="text-blue-600 hover:text-blue-800 cursor-pointer"
             >
                 {addButtonLabel}
             </button>

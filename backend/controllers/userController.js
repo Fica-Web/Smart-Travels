@@ -369,6 +369,40 @@ const getUserProfile = async (req, res) => {
     }
 }
 
+const fetchAllUsers = async (req, res) => {
+    try {
+        const page = parseInt(req.query.page) || 0;
+        const limit = parseInt(req.query.limit) || 10;
+        const search = req.query.search || "";
+        const sortBy = req.query.sortBy || "createdAt";
+        const order = req.query.order === "asc" ? 1 : -1;
+
+        const query = {
+            $or: [
+                { fullName: new RegExp(search, "i") },
+                { username: new RegExp(search, "i") },
+                { email: new RegExp(search, "i") },
+                { phone: new RegExp(search, "i") },
+            ],
+        };
+
+        const total = await User.countDocuments(query);
+
+        const users = await User.find(query)
+            .sort({ [sortBy]: order })
+            .skip(page * limit)
+            .limit(limit)
+            .select(
+                "fullName username email phone isVerified nationality createdAt"
+            );
+
+        res.json({ users, total });
+    } catch (error) {
+        console.error("Error fetching all users:", error);
+        res.status(500).json({ message: "Internal server error", error: error.message });
+    }
+}
+
 export {
     userSignup,
     verifyOtp,
@@ -380,4 +414,5 @@ export {
     forgotPassword,
     resetPassword,
     getUserProfile,
+    fetchAllUsers,
 };

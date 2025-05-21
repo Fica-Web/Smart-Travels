@@ -29,12 +29,6 @@ const userSchema = new mongoose.Schema(
         dob: { 
             type: Date 
         },
-        passportNumber: { 
-            type: String 
-        },
-        passportExpiry: { 
-            type: Date 
-        },
         nationality: { 
             type: String 
         },
@@ -61,10 +55,6 @@ const userSchema = new mongoose.Schema(
                 ref: 'Booking' 
             }
         ],
-        walletBalance: { 
-            type: Number, 
-            default: 0 
-        },
         resetPasswordToken: { 
             type: String 
         },
