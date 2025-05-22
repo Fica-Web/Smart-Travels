@@ -73,6 +73,16 @@ export const resetPasswordApi = async (data) => {
     }
 };
 
+export const submitMessageApi = async (data) => {
+    try {
+        const response = await userInstance.post('/submit-message', data);
+        return { success: true, data: response.data };
+    } catch (error) {
+        console.error('Submit Message API Error:', error.response?.data);
+        return { success: false, error: error.response?.data?.message || 'Message submission failed' };
+    }
+}
+
 export const userLogoutApi = async () => {
     try {
         const response = await userInstance.post('/logout');
