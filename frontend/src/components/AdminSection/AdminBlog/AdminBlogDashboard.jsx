@@ -4,6 +4,7 @@ import blogsInstance from '../../../services/axios_instances/blogsInstance';
 import AdminHero from '../../reusable/AdminHero';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import AdminSingleBlog from './AdminSingleBlog';
 
 const AdminBlogDashboard = () => {
   const [blogs, setBlogs] = useState([]);
@@ -70,50 +71,13 @@ const AdminBlogDashboard = () => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {blogs.map((blog) => (
-            <div
+            <AdminSingleBlog
               key={blog._id}
-              className="bg-white rounded-xl shadow-sm hover:shadow-md transition duration-200 overflow-hidden flex flex-col"
-            >
-              {blog.coverImage && (
-                <img
-                  src={blog.coverImage}
-                  alt={blog.title}
-                  className="w-full h-48 object-cover"
-                />
-              )}
-              <div className="p-5 flex flex-col flex-1">
-                <h3 className="text-xl font-semibold text-gray-800 mb-1">{blog.title}</h3>
-                <p className="text-sm text-gray-500 mb-1">
-                  <strong>Author:</strong> {blog.author || 'Unknown'}
-                </p>
-                <p className="text-sm text-gray-500 mb-1">
-                  <strong>Category:</strong> {blog.category || 'Uncategorized'}
-                </p>
-                <p className="text-sm text-gray-500 mb-2">
-                  <strong>Date:</strong>{' '}
-                  {blog.createdAt ? new Date(blog.createdAt).toLocaleDateString() : 'N/A'}
-                </p>
-                <p className="text-gray-700 text-sm line-clamp-3 mb-4">
-                  {blog.description}
-                </p>
-
-                <div className="flex justify-between gap-2 mt-auto">
-                  <button
-                    onClick={() => handleEdit(blog)}
-                    className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition cursor-pointer"
-                  >
-                    Edit Blog
-                  </button>
-                  <button
-                    onClick={() => handleDelete(blog._id)}
-                    disabled={loading} // Disable button while loading
-                    className={`bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition cursor-pointer ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
-                  >
-                    {loading ? 'Deleting...' : 'Delete Blog'} {/* Show loading text */}
-                  </button>
-                </div>
-              </div>
-            </div>
+              blog={blog}
+              handleEdit={handleEdit}
+              handleDelete={handleDelete}
+              loading={loading} // Pass loading state to AdminSingleBlog
+            />
           ))}
         </div>
       )}
