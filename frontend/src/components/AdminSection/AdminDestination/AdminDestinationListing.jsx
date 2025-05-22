@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import AdminSingleDestination from "./AdminSingleDestination";
 import { getAllDestinationsApi } from "../../../services/api/destinationApi";
 import Loading from "../../reusable/Loading";
+import PaginationControls from "../../reusable/PaginationControls";
 
 const AdminDestinationListing = () => {
     const [destinations, setDestinations] = useState([]);
@@ -48,26 +49,11 @@ const AdminDestinationListing = () => {
                 </div>
             )}
 
-            {/* pagination */}
-            <div className="flex justify-center mt-8 gap-4">
-                <button
-                    className="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50"
-                    onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-                    disabled={page === 1}
-                >
-                    Previous
-                </button>
-                <span className="text-lg font-semibold">
-                    Page {page} of {totalPages}
-                </span>
-                <button
-                    className="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50"
-                    onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
-                    disabled={page === totalPages}
-                >
-                    Next
-                </button>
-            </div>
+            <PaginationControls
+                page={page}
+                totalPages={totalPages}
+                onPageChange={(newPage) => setPage(newPage)}
+            />
 
         </div>
     );
