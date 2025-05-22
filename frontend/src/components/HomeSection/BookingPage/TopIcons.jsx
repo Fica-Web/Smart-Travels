@@ -7,11 +7,11 @@ const TopIcons = () => {
   const [active, setActive] = useState('Flights'); // Default active title
 
   return (
-   <div className="flex flex-row items-center md:px-14 bg-[#FFFFFF] md:mx-45 md:h-[71px] rounded-3xl text-secondary-blue overflow-x-auto">
+<div className="flex flex-row items-center justify-center px-4 md:px-5 lg:px-9 bg-[#FFFFFF] mx-1 md:mx-9 lg:mx-50 md:h-[71px] rounded-3xl shadow text-secondary-blue overflow-x-auto mb-20">
   {travelOptions.map((item, index) => (
     <div key={index} className="flex flex-col items-center w-auto  md:flex-row md:items-center md:w-auto">
       <div
-        className="flex flex-col items-center md:flex-row md:items-center cursor-pointer px-5"
+        className="flex flex-col items-center md:flex-row md:items-center cursor-pointer px-2 md:px-2 lg:px-5"
         onClick={() => setActive(item.title)}
       >
         <img src={item.icon} alt={`${item.title} Icon`} className="w-[23px] h-[23px]" />
@@ -27,7 +27,7 @@ const TopIcons = () => {
 
       {/* Divider: hidden on mobile */}
       {index !== travelOptions.length - 1 && (
-        <div className="hidden md:block w-[1px] h-6 bg-black mx-5" />
+        <div className="hidden md:block w-[1px] h-6 bg-black md:mx-2 lg:mx-5" />
       )}
     </div>
   ))}
