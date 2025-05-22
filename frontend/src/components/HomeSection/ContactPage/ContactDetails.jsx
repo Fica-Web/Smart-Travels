@@ -29,7 +29,7 @@ const ContactDetails = () => {
             <p>
                 Whether you need assistance or have a query, we’re just a message or call away. Our team is committed to providing you with the best support.
             </p>
-            <div className='flex flex-col gap-4 w-max'>
+            <div className='flex flex-col gap-4 w-fit'>
                 {contactData.map((item, index) => (
                     <ContactBox
                         key={item.title}
