@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { submitMessageApi } from '../../../services/api/userApi';
+import { toast } from 'react-toastify';
 import ReusableSubmitButton from '../../reusable/ReusableSubmitButton';
 
 const ContactForm = () => {
@@ -11,6 +13,7 @@ const ContactForm = () => {
 
     const [formData, setFormData] = useState(initialState);
     const [errors, setErrors] = useState({});
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -27,19 +30,31 @@ const ContactForm = () => {
         return newErrors;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
+        setErrors({});
+
         const validationErrors = validate();
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
+            setLoading(false);
             return;
         }
 
         // Placeholder: send formData to backend or email API
         console.log('Submitted Data:', formData);
+        const response = await submitMessageApi(formData);
 
-        setFormData(initialState);
+        if (response.success) {
+            toast.success(response.data.message || 'Message sent successfully!');
+            setFormData(initialState);
+        } else {
+            toast.error(response.error || 'Failed to send message');
+        }
+
         setErrors({});
+        setLoading(false);
     };
 
     return (
@@ -89,7 +104,7 @@ const ContactForm = () => {
             <ReusableSubmitButton
                 text='Submit'
                 loadingText='Submitting...'
-                loading={false}
+                loading={loading}
             />
         </form>
     );
@@ -109,9 +124,8 @@ const InputField = ({ label, name, type, placeholder, value, onChange, error }) 
                     value={value}
                     onChange={onChange}
                     rows={4}
-                    className={`border rounded-md p-3 resize-none mb-4 ${
-                        error ? 'border-red-500' : 'border-secondary-blue focus:border-none focus:outline-none focus:ring-1 focus:ring-blue-500'
-                    }`}
+                    className={`border rounded-md p-3 resize-none mb-4 ${error ? 'border-red-500' : 'border-secondary-blue focus:border-none focus:outline-none focus:ring-1 focus:ring-blue-500'
+                        }`}
                 />
             ) : (
                 <input
@@ -120,9 +134,8 @@ const InputField = ({ label, name, type, placeholder, value, onChange, error }) 
                     placeholder={placeholder}
                     value={value}
                     onChange={onChange}
-                    className={`border rounded-md p-3 ${
-                        error ? 'border-red-500' : 'border-secondary-blue focus:border-none focus:outline-none focus:ring-1 focus:ring-blue-500'
-                    }`}
+                    className={`border rounded-md p-3 ${error ? 'border-red-500' : 'border-secondary-blue focus:border-none focus:outline-none focus:ring-1 focus:ring-blue-500'
+                        }`}
                 />
             )}
             {error && <p className='text-red-500 text-sm'>{error}</p>}
