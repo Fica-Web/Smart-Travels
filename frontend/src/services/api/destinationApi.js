@@ -1,6 +1,6 @@
 import destinationInstance from "../axios_instances/destinationInstance";
 
-export const getAllDestinationsApi = async (page, limit) => {
+export const getAllDestinationsApi = async (page = 1, limit = 9) => {
     try {
         const response = await destinationInstance.get("/", {
             params: {
