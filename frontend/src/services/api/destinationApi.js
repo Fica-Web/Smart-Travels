@@ -1,5 +1,18 @@
 import destinationInstance from "../axios_instances/destinationInstance";
 
+export const getPublishedDestinationsApi = async () => {
+    try {
+        const response = await destinationInstance.get("/is-published");
+        return { success: true, data: response.data };
+    } catch (error) {
+        console.error("Error fetching published destinations:", error);
+        return {
+            success: false,
+            message: error.response?.data?.message || error.message || "Unknown error",
+        };
+    }
+}
+
 export const getAllDestinationsApi = async (page = 1, limit = 9) => {
     try {
         const response = await destinationInstance.get("/", {
