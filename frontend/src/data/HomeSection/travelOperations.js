@@ -13,5 +13,3 @@ export const travelOptions = [
   { icon: img4, title: 'Trips', route: '/bookings/trips' },
   { icon: img6, title: 'Travel Insurance', mobileTitle: 'Insurance', route: '/bookings/insurance' },
 ];
-
-

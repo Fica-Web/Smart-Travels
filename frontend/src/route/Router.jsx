@@ -84,6 +84,10 @@ const router = createBrowserRouter([
         element: withSuspense(BookingPage), // This can be a layout or overview
         children: [
           {
+            index: true, // This makes FlightsBookingPage the default
+            element: withSuspense(FlightsBookingPage),
+          },
+          {
             path: 'flights',
             element: withSuspense(FlightsBookingPage),
           },

@@ -19,7 +19,7 @@ const TopIcons = () => {
   };
 
   return (
-    <div className="flex flex-row items-center justify-center px-4 md:px-5 lg:px-9 bg-[#FFFFFF] mx-1 md:mx-9 lg:mx-50 md:h-[71px] rounded-3xl shadow text-secondary-blue overflow-x-auto mb-20">
+    <div className="flex flex-row items-center justify-center px-4 md:px-5 lg:px-9 bg-[#FFFFFF] mx-1 md:mx-9 lg:mx-50 md:h-[71px] sm:rounded-3xl sm:shadow text-secondary-blue overflow-x-auto mb-20">
       {travelOptions.map((item, index) => (
         <div key={index} className="flex flex-col items-center w-auto md:flex-row md:items-center md:w-auto">
           <div
