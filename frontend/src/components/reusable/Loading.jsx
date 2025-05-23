@@ -1,12 +1,21 @@
 import React from 'react';
+import { CircularProgress, Typography, Box } from '@mui/material';
 
-const Loading = () => {
+const Loading = ({ text = "Loading..." }) => {
     return (
-        <div className='flex items-center justify-center h-screen bg-gray-100'>
-            <h2>
-                Loading...
-            </h2>
-        </div>
+        <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            minHeight="60vh"
+            gap={2}
+        >
+            <CircularProgress size={48} thickness={4} color="primary" />
+            <Typography variant="h6" color="text.secondary">
+                {text}
+            </Typography>
+        </Box>
     );
 };
 

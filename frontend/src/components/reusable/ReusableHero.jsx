@@ -6,7 +6,7 @@ const ReusableHero = ({ title ,bgImage}) => {
                 <div className="flex flex-col ">
                     <h2 className="text-center text-white leading-none">
                         {/* <span className="uppercase md:text-2xl text-xl md:tracking-[10px] tracking-[3px]">Discover Your Next</span><br /> */}
-                        <span className="text-8xl md:text-[12vw] font-coastal-clean tracking-wide ">{ title }</span>
+                        <span className="text-6xl md:text-[8vw] font-coastal-clean tracking-wide ">{ title }</span>
                     </h2>
                 </div>
             </div>
