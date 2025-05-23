@@ -1,4 +1,3 @@
-import React from 'react';
 import ReusableHero from '../../components/reusable/ReusableHero';
 import contactBg from '../../assets/image/hero/contactHero.jpg';
 import ContactDetails from '../../components/HomeSection/ContactPage/ContactDetails';

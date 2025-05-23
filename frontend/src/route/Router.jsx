@@ -19,6 +19,13 @@ const ForgotPasswordPage = lazy(() => import('../pages/user/ForgotPasswordPage')
 const resetPasswordPage = lazy(() => import('../pages/user/ResetPasswordPage'));
 const AboutPage = lazy(() => import('../pages/user/AboutPage'));
 const BlogPage = lazy(() => import('../pages/user/BlogPage'));
+const BookingPage = lazy(() => import('../pages/user/BookingPage'));
+const FlightsBookingPage = lazy(() => import('../pages/user/FlightsBookingPage'));
+const HotelsBookingPage = lazy(() => import('../pages/user/HotelsBookingPage'));
+const VisaBookingPage = lazy(() => import('../pages/user/VisaBookingPage'));
+const UmrahBookingPage = lazy(() => import('../pages/user/UmrahBookingpage'));
+const TripsBookingPage = lazy(() => import('../pages/user/TripsBookingPage'));
+const InsuranceBookingPage = lazy(() => import('../pages/user/InsuranceBookingPage'));
 const ContactPage = lazy(() => import('../pages/user/ContactPage'));
 const BlogDetails = lazy(() => import('../pages/user/BlogDetailsPage'));
 const UserProfilePage = lazy(() => import('../pages/user/UserProfilePage'));
@@ -32,7 +39,7 @@ const AdminBlogFormPage = lazy(() => import('../pages/admin/AdminBlogFormPage'))
 const AdminBlogEditPage = lazy(() => import('../pages/admin/AdminBlogEditPage'));
 const AdminDestinationPage = lazy(() => import('../pages/admin/AdminDestinationPage'));
 const AdminDestinationFormPage = lazy(() => import('../pages/admin/AdminDestinationFormPage'));
-const BookingPage = lazy(() => import('../pages/user/BookingPage'));
+
 // const NotFoundPage = lazy(() => import('../pages/shared/NotFoundPage'));
 
 // Suspense wrapper
@@ -72,9 +79,35 @@ const router = createBrowserRouter([
           },
         ],
       },
-       {
-        path: 'booking',
-        element: withSuspense(BookingPage),
+      {
+        path: 'bookings',
+        element: withSuspense(BookingPage), // This can be a layout or overview
+        children: [
+          {
+            path: 'flights',
+            element: withSuspense(FlightsBookingPage),
+          },
+          {
+            path: 'hotels',
+            element: withSuspense(HotelsBookingPage)
+          },
+          {
+            path: 'visa',
+            element: withSuspense(VisaBookingPage)
+          },
+          {
+            path: 'umrah',
+            element: withSuspense(UmrahBookingPage)
+          },
+          {
+            path: 'trips',
+            element: withSuspense(TripsBookingPage)
+          },
+          {
+            path: 'insurance',
+            element: withSuspense(InsuranceBookingPage)
+          },
+        ]
       },
       {
         path: 'contact',
