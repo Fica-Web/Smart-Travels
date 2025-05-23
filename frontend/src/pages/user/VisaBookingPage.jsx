@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import VisaListing from '../../components/HomeSection/BookingPage/VisaListing';
 
 const VisaBookingPage = () => {
   return (
-    <div>VisaBookingPage</div>
+    <div>
+      <VisaListing />
+    </div>
   )
 }
 
