@@ -16,7 +16,7 @@ const SingleDestination = ({ dest }) => {
             )}
 
             {/* Bottom content */}
-            <div className="flex justify-between items-center p-4 border border-t-0 border-secondary-blue rounded-b-3xl">
+            <div className="flex justify-between items-center p-4 border border-t-0 border-secondary-blue/70 rounded-b-3xl">
 
                 {/* Left */}
                 <div>
@@ -39,7 +39,7 @@ const SingleDestination = ({ dest }) => {
                     >
                         <FaWhatsapp size={22} className="text-secondary-blue" />
                     </a>
-                    <button className="w-[119px] h-[30px] rounded-[8px] px-[20px] py-[10px] text-sm bg-[#4A94D0] text-white hover:bg-blue-700 transition flex items-center justify-center">
+                    <button className="w-[119px] h-[30px] rounded-[8px] px-[20px] py-[10px] text-sm bg-[#4A94D0] text-white hover:bg-blue-600 transition flex items-center justify-center">
                         Send Query
                     </button>
                 </div>

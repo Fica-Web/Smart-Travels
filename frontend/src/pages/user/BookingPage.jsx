@@ -13,7 +13,9 @@ const BookingPage = () => {
         <TopIcons />
       </div>
       {/* Render the child route component here */}
-      <Outlet />
+      <div className='py-10 px-6 md:px-20'>
+        <Outlet />
+      </div>
     </div>
   );
 };

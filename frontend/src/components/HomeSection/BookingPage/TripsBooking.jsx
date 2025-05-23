@@ -23,7 +23,7 @@ const TripsBooking = () => {
   }, []);
 
   return (
-    <div className="p-6 md:px-20">
+    <div className="">
       
       {loading ? (
         <p>Loading destinations...</p>
