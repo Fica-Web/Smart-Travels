@@ -19,12 +19,13 @@ const ForgotPasswordPage = lazy(() => import('../pages/user/ForgotPasswordPage')
 const resetPasswordPage = lazy(() => import('../pages/user/ResetPasswordPage'));
 const AboutPage = lazy(() => import('../pages/user/AboutPage'));
 const BlogPage = lazy(() => import('../pages/user/BlogPage'));
-const BookingPage = lazy(() => import('../pages/user/BookingPage'));
+const BookingPage = lazy(() => import('../pages/user/BookingsPage'));
 const FlightsBookingPage = lazy(() => import('../pages/user/FlightsBookingPage'));
 const HotelsBookingPage = lazy(() => import('../pages/user/HotelsBookingPage'));
 const VisaBookingPage = lazy(() => import('../pages/user/VisaBookingPage'));
 const UmrahBookingPage = lazy(() => import('../pages/user/UmrahBookingpage'));
 const TripsBookingPage = lazy(() => import('../pages/user/TripsBookingPage'));
+const DestinationDetailsPage = lazy(() => import('../pages/user/DestinationDetailsPage'));
 const InsuranceBookingPage = lazy(() => import('../pages/user/InsuranceBookingPage'));
 const ContactPage = lazy(() => import('../pages/user/ContactPage'));
 const BlogDetails = lazy(() => import('../pages/user/BlogDetailsPage'));
@@ -105,7 +106,16 @@ const router = createBrowserRouter([
           },
           {
             path: 'trips',
-            element: withSuspense(TripsBookingPage)
+            children: [
+               {
+            index: true,
+            element: withSuspense(TripsBookingPage),
+          },
+          {
+            path: ':id',
+            element: withSuspense(DestinationDetailsPage),
+          },
+            ]
           },
           {
             path: 'insurance',

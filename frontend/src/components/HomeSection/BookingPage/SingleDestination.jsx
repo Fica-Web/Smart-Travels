@@ -1,11 +1,18 @@
-
 import { FaWhatsapp } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { ArrowUpRight } from 'lucide-react';
 
 const SingleDestination = ({ dest }) => {
     return (
         <div
-            className="bg-white shadow rounded-3xl overflow-hidden border border-t-0 border-gray-300 flex flex-col"
+            className="bg-white shadow rounded-3xl overflow-hidden border border-t-0 border-gray-300 flex flex-col relative"
         >
+            <Link
+                to={`/bookings/trips/${dest._id}`}
+                className="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-black rounded-full p-2 transition z-10"
+            >
+                <ArrowUpRight size={18} taxt />
+            </Link>
             {/* Image */}
             {dest.coverImage && (
                 <img

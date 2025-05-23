@@ -12,7 +12,7 @@ const TripsBooking = () => {
       const response = await getPublishedDestinationsApi();
       console.log('Destinations:', response.data);
       if (response.success) {
-        setDestinations(response.data.destinations);
+        setDestinations(response.data.data);
       } else {
         console.error('Error fetching destinations:', response.message);
       }
@@ -27,7 +27,7 @@ const TripsBooking = () => {
       
       {loading ? (
         <p>Loading destinations...</p>
-      ) : destinations.length > 0 ? (
+      ) : destinations?.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {destinations.map((dest) => (
             <SingleDestination key={dest._id} dest={dest} />
