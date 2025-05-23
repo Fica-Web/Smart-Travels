@@ -25,7 +25,7 @@ const AdminDestinationListing = () => {
 
     return (
         <div className="p-6">
-            <h1 className="text-2xl font-bold mb-4">All Destinations</h1>
+            <h2 className="text-2xl font-bold mb-4">All Destinations</h2>
 
             {loading ? (
                 <Loading />

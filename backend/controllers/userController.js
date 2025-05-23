@@ -245,19 +245,32 @@ const logoutUser = (req, res) => {
 
 const submitMessage = async (req, res) => {
     try {
-        const { name, email, message } = req.body;
+        const { name, email, phone, message } = req.body;
 
-        if (!name || !email || !message) {
+        if (!name || !email || !message || !phone) {
             return res.status(400).json({ error: "All fields are required" });
         }
 
-        const emailResponse = await sendEmail(name, email, message);
+        const to = 'keralasummit@gmail.com';
+        const subject = "New message from SmartTravels contact form";
+
+        const html = `
+            <h3>New Contact Form Message</h3>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Phone:</strong> ${phone}</p>
+            <p><strong>Message:</strong><br/>${message}</p>
+        `;
+
+        // Assuming sendEmail is a utility function you've implemented
+        const emailResponse = await sendEmail({ to, subject, html });
 
         if (emailResponse.success) {
             res.status(200).json({ success: true, message: "Message sent successfully!" });
         } else {
             res.status(500).json({ error: "Failed to send message." });
         }
+
     } catch (error) {
         console.error("Error processing request:", error);
         res.status(500).json({ error: "Something went wrong. Try again later." });
