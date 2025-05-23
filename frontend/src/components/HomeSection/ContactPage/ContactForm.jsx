@@ -60,7 +60,7 @@ const ContactForm = () => {
     return (
         <form
             onSubmit={handleSubmit}
-            className='flex flex-col gap-4 text-title-blue bg-light-blue p-6 lg:p-10 rounded-xl shadow-md lg:max-w-lg w-full'
+            className='flex flex-col gap-4 text-title-blue bg-light-blue p-6 lg:p-10 rounded-3xl shadow-md lg:max-w-lg w-full'
         >
             <h2 className='text-3xl font-semibold text-center'>Get In Touch</h2>
 
@@ -124,7 +124,7 @@ const InputField = ({ label, name, type, placeholder, value, onChange, error }) 
                     value={value}
                     onChange={onChange}
                     rows={4}
-                    className={`border rounded-md p-3 resize-none mb-4 ${error ? 'border-red-500' : 'border-secondary-blue focus:border-none focus:outline-none focus:ring-1 focus:ring-blue-500'
+                    className={`border rounded-xl p-3 resize-none mb-4 ${error ? 'border-red-500' : 'border-secondary-blue focus:border-none focus:outline-none focus:ring-1 focus:ring-blue-500'
                         }`}
                 />
             ) : (
@@ -134,7 +134,7 @@ const InputField = ({ label, name, type, placeholder, value, onChange, error }) 
                     placeholder={placeholder}
                     value={value}
                     onChange={onChange}
-                    className={`border rounded-md p-3 ${error ? 'border-red-500' : 'border-secondary-blue focus:border-none focus:outline-none focus:ring-1 focus:ring-blue-500'
+                    className={`border rounded-xl p-3 ${error ? 'border-red-500' : 'border-secondary-blue focus:border-none focus:outline-none focus:ring-1 focus:ring-blue-500'
                         }`}
                 />
             )}
