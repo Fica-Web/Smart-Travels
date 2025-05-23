@@ -5,20 +5,17 @@ import TopIcons from '../../components/HomeSection/BookingPage/TopIcons';
 import img from '../../assets/image/booking/booking-hero.jpg';
 
 const BookingPage = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    navigate('/bookings/flights');  // default sub-page
-  }, [navigate]);
 
   return (
     <div>
       <ReusableHero title="Start Your Journey – Book Now" bgImage={img} />
-      <div className="relative md:-mt-8 md:z-10">
+      <div className="relative md:-mt-8 mt-5 md:z-10">
         <TopIcons />
       </div>
       {/* Render the child route component here */}
-      <Outlet />
+      <div className='py-10 px-6 md:px-20'>
+        <Outlet />
+      </div>
     </div>
   );
 };

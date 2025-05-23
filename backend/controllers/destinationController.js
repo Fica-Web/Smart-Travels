@@ -53,7 +53,7 @@ export const getPublishedDestinations = async (req, res) => {
         // Respond with the fetched data and pagination metadata
         res.status(200).json({
             success: true,
-            data: destinations, // The paginated destination list
+            destinations, // The paginated destination list
             meta: {
                 total,                         // Total published destinations
                 page: parseInt(page),          // Current page

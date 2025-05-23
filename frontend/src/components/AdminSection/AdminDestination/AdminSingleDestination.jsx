@@ -1,5 +1,16 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import {
+    Card,
+    CardMedia,
+    CardContent,
+    CardActions,
+    Typography,
+    Button,
+    Box,
+    Chip,
+    Divider,
+} from "@mui/material";
 import { toast } from "react-toastify";
 import { deleteDestinationApi } from "../../../services/api/destinationApi";
 
@@ -35,57 +46,89 @@ const SingleDestination = ({ destination, setDestinations }) => {
     };
 
     return (
-        <div className="bg-white rounded-xl shadow-sm hover:shadow-lg transition duration-300 border border-gray-200 overflow-hidden">
-            {/* Image Section */}
+        <Card
+            elevation={3}
+            sx={{
+                borderRadius: 3,
+                transition: "0.3s",
+                "&:hover": {
+                    boxShadow: 6,
+                },
+            }}
+        >
             {coverImage && (
-                <div className="relative group">
-                    <img
-                        src={coverImage}
+                <Box sx={{ position: "relative" }}>
+                    <CardMedia
+                        component="img"
+                        height="200"
+                        image={coverImage}
                         alt={title}
-                        className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                        sx={{
+                            objectFit: "cover",
+                            transition: "transform 0.3s",
+                            "&:hover": { transform: "scale(1.03)" },
+                        }}
                     />
-                    <div className="absolute top-4 right-3 bg-white bg-opacity-80 px-3 py-1 rounded-full text-xs font-semibold text-gray-800 shadow-sm">
-                        {country}
-                    </div>
-                </div>
+                    <Chip
+                        label={country}
+                        size="small"
+                        sx={{
+                            position: "absolute",
+                            top: 10,
+                            right: 10,
+                            bgcolor: "rgba(255, 255, 255, 0.9)",
+                            fontWeight: 500,
+                        }}
+                    />
+                </Box>
             )}
 
-            {/* Content */}
-            <div className="p-5 space-y-3">
-                <div className="flex justify-between items-center">
-                    <h2 className="text-lg font-semibold text-gray-800 truncate">{title}</h2>
-                    <span className={`px-2 py-1 text-xs rounded-full font-medium ${isPublished ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-                        {isPublished ? 'Published' : 'Unpublished'}
-                    </span>
-                </div>
+            <CardContent>
+                <Box display="flex" justifyContent="space-between" alignItems="center">
+                    <Typography variant="h6" noWrap fontWeight={600}>
+                        {title}
+                    </Typography>
+                    <Chip
+                        label={isPublished ? "Published" : "Unpublished"}
+                        color={isPublished ? "success" : "error"}
+                        size="small"
+                        variant="outlined"
+                    />
+                </Box>
 
-                <div className="text-sm text-gray-600 space-y-1">
-                    <p><span className="font-medium">Duration:</span> {duration}</p>
-                    {pricePerPerson && (
-                        <p><span className="font-medium">Price:</span> ₹{pricePerPerson.toLocaleString()}</p>
-                    )}
-                </div>
+                <Typography variant="body2" color="text.secondary" mt={1}>
+                    <strong>Duration:</strong> {duration}
+                </Typography>
+                {pricePerPerson && (
+                    <Typography variant="body2" color="text.secondary">
+                        <strong>Price:</strong> ₹{pricePerPerson.toLocaleString()}
+                    </Typography>
+                )}
+            </CardContent>
 
-                {/* Action Buttons */}
-                <div className="flex justify-end gap-2 pt-3 border-t border-gray-100">
-                    <Link
-                        to={`edit/${_id}`}
-                        className="inline-flex items-center gap-1 bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded-md transition"
-                    >
-                        ✏️ Edit
-                    </Link>
-                    <button
-                        onClick={handleDelete}
-                        disabled={loading}
-                        className={`inline-flex items-center gap-1 bg-red-500 hover:bg-red-600 text-white text-sm px-4 py-2 rounded-md transition ${
-                            loading ? "opacity-50 cursor-not-allowed" : ""
-                        }`}
-                    >
-                        {loading ? "Deleting..." : "🗑 Delete"}
-                    </button>
-                </div>
-            </div>
-        </div>
+            <Divider />
+
+            <CardActions sx={{ justifyContent: "flex-end", px: 2, pb: 2 }}>
+                <Button
+                    variant="outlined"
+                    color="primary"
+                    size="small"
+                    component={Link}
+                    to={`edit/${_id}`}
+                >
+                    ✏️ Edit
+                </Button>
+                <Button
+                    variant="contained"
+                    color="error"
+                    size="small"
+                    onClick={handleDelete}
+                    disabled={loading}
+                >
+                    {loading ? "Deleting..." : "🗑 Delete"}
+                </Button>
+            </CardActions>
+        </Card>
     );
 };
 
