@@ -122,7 +122,7 @@ const OtpVerificationForm = ({ email, onVerified }) => {
                     className={`${
                         resendTimer > 0 || resending
                             ? 'text-gray-400 cursor-not-allowed'
-                            : 'text-primary-blue hover:underline cursor-pointer'
+                            : 'text-secondary-blue hover:underline cursor-pointer'
                     }`}
                 >
                     {resending
