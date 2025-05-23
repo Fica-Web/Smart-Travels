@@ -47,9 +47,9 @@ export default ContactDetails;
 
 const ContactBox = ({ icon: Icon, title, description }) => {
     return (
-        <div className='flex gap-3 py-3 items-center border-b border-secondary-blue last:border-b-0 w-full'>
+        <div className='flex gap-3 py-3 items-center border-b-[0.2px] border-secondary-blue/80 last:border-b-0 w-full'>
             <div className='bg-secondary-blue p-3 rounded-full'>
-                <Icon className='text-2xl text-white' />
+                <Icon className='text-xl text-white' />
             </div>
             <div>
                 <h4 className='text-xl font-semibold'>

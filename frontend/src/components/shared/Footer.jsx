@@ -14,17 +14,16 @@ import { IoLocationSharp } from "react-icons/io5";
 
 const Footer = () => {
   return (
-    <footer className="relative w-full h-auto  py-10 px-6 sm:px-20 bg-[#4A94D0]/40
-">
+    <footer className="relative w-full h-auto  py-10 px-5 sm:px-20 bg-[#4A94D0]/40">
 
       {/* Top Section */}
-      <div className="pb-12 border-b border-gray-700 flex flex-col md:flex-row justify-items-center gap-30">
+      <div className="pb-5 md:pb-12 border-b border-gray-700 flex flex-col md:flex-row justify-items-center gap-10 md:gap-5 lg:gap-30  ">
         {/* Left Section */}
-        <div className=" space-y-6 ">
-          <div className='space-y-2'>
+        <div className="space-y-3 md:space-y-6 ">
+          <div className='space-y-1 md:space-y-2'>
             <img src={logo} alt="Logo" className="h-14 w-auto" />
             <p className="text-secondary-blue/80 font-semibold text-sm">
-              Your trusted partner in exploring the world <br />with curated travel experiences.
+              Your trusted partner in exploring the world with curated travel experiences.
             </p>
           </div>
           <div className='flex justify-start items-center gap-6'>
@@ -66,28 +65,30 @@ const Footer = () => {
 
 
         {/* Right Section */}
-        <div className="flex flex-wrap justify-between gap-x-35 gap-y-4 px-4 text-secondary-blue">
+        <div className="flex flex-col md:flex-row justify-between md:items-start w-full gap-x-3 md:gap-x-6 lg:gap-x-1 gap-y-4 px-0 md:px-4 text-secondary-blue ">
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-3">Quick Links</h4>
-            <ul className="space-y-2  text-md">
+            <h4 className="font-semibold mb-3 whitespace-nowrap">Quick Links</h4>
+            <ul className="space-y-2 text-md">
               {navOptions.map((item, index) => (
                 <li key={index}>
                   <Link
                     to={item.path}
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    className="hover:text-[#005BF0] transition"
+                    className="inline hover:text-[#005BF0] transition whitespace-nowrap"
                   >
                     {item.name}
                   </Link>
-
                 </li>
               ))}
             </ul>
           </div>
 
+
+          <div className="block md:hidden border-t border-secondary-blue/30 my-2 w-full"></div>
+
           {/* Destinations */}
-          <div className='text-secondary-blue'>
+          <div className='text-secondary-blue  '>
             <h4 className="font-semibold mb-3">Destinations</h4>
             <ul className="space-y-2 text-secondary-blue text-md">
               <li><Link to="" className="hover:text-[#005BF0] transition">Paris</Link></li>
@@ -98,6 +99,8 @@ const Footer = () => {
             </ul>
           </div>
 
+          <div className="block md:hidden border-t border-secondary-blue/30 my-2 w-full"></div>
+
           {/* Support */}
           <div className='text-secondary-blue '>
             <h4 className="font-semibold  mb-3">Contact Us</h4>
@@ -105,13 +108,14 @@ const Footer = () => {
             <div className="flex items-center gap-2 mt-2 text-md text-secondary-blue">
               <MdLocalPhone size={20} />
 
-              <div className="flex flex-col sm:flex-row gap-2">
+              <div className="flex flex-row gap-3">
                 <a
                   href="tel:+045707023"
                   className="hover:text-[#005BF0] transition"
                 >
                   045707023
-                </a>,
+                </a>
+                <span>,</span>
                 <a
                   href="tel:+971527418272"
                   className="hover:text-[#005BF0] transition"
@@ -119,6 +123,7 @@ const Footer = () => {
                   +971 52 741 8272
                 </a>
               </div>
+
             </div>
             <div className="flex items-center gap-2 mt-2 text-md text-secondary-blue">
               <MdEmail size={20} />
@@ -129,47 +134,42 @@ const Footer = () => {
                 Info@rukntravels.com
               </a>
             </div>
-            <div className="flex items-center gap-2 mt-2 text-md text-secondary-blue">
-              <IoLocationSharp size={20} />
-            <p>Opp Al Futtim Masjid Al Murara,Deira,Dubai - UAE</p>
+            <div className="flex flex-row  items-start gap-2 mt-2 text-md text-secondary-blue">
+              <IoLocationSharp size={21} className='' />
+              <p className="">Opp Al Futtim Masjid Al Murara,Deira,Dubai - UAE</p>
             </div>
-
-
-
-
-
-
           </div>
+
+
         </div>
       </div>
 
       {/* Bottom Section */}
       <div className="mt-8 space-y-8">
         {/* Copyright */}
-        <div className="flex justify-between items-center text-sm text-secondary-blue">
-       
-            <div>
-              <p className="flex items-center flex-wrap justify-center gap-1 text-center">
-            Copyright <AiOutlineCopyright className="text-secondary-blue" /> 2025,Rukn Travels. All Rights Reserved
-          </p>
-            </div>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full text-sm text-secondary-blue">
+          <div>
+            <p className="flex items-center flex-wrap justify-center gap-1 text-center">
+              Copyright <AiOutlineCopyright className="text-secondary-blue" /> 2025,Rukn Travels. All Rights Reserved
+            </p>
+          </div>
 
-           <div className="flex items-center space-x-1">
-  <p>Created By</p>
-  <span>
-    <Link
-      to="https://www.ficaads.com/"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="hover:text-white transition"
-    >
-      Ficaads
-    </Link>
-  </span>
-</div>
+          <div className="flex items-center space-x-1">
+            <p>Created By</p>
+            <span>
+              <Link
+                to="https://www.ficaads.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition"
+              >
+                Ficaads
+              </Link>
+            </span>
+          </div>
 
 
-          
+
         </div>
 
         {/* Adventure Text */}

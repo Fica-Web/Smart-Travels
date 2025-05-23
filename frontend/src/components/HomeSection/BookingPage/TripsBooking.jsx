@@ -48,7 +48,7 @@ const TripsBooking = () => {
                 <img
                   src={dest.coverImage}
                   alt={dest.title || dest.country || 'Destination'}
-                  className="w-full h-48 object-cover"
+                  className="w-full  object-cover"
                 />
               )}
 

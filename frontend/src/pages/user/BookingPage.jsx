@@ -5,12 +5,7 @@ import TopIcons from '../../components/HomeSection/BookingPage/TopIcons';
 import img from '../../assets/image/booking/booking-hero.jpg';
 
 const BookingPage = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    navigate('/bookings/flights');  // default sub-page
-  }, [navigate]);
-
+  
   return (
     <div>
       <ReusableHero title="Start Your Journey – Book Now" bgImage={img} />
