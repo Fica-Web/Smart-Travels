@@ -189,6 +189,7 @@ export const updateDestination = async (req, res) => {
         const {
             title,
             destination,
+            overview,
             duration,
             pricePerPerson,
             country,
@@ -216,8 +217,8 @@ export const updateDestination = async (req, res) => {
         }
 
         // Validate required fields
-        if (!title || !destination || !duration || !Array.isArray(days) || days.length === 0) {
-            return res.status(400).json({ message: 'Title, destination, duration, and at least one day plan are required.' });
+        if (!title || !destination || !overview || !duration || !Array.isArray(days) || days.length === 0) {
+            return res.status(400).json({ message: 'Title, destination, Overview, duration, and at least one day plan are required.' });
         }
 
         // Find the existing destination
@@ -262,6 +263,7 @@ export const updateDestination = async (req, res) => {
             {
                 title,
                 destination,
+                overview,
                 slug: generatedSlug,
                 duration,
                 pricePerPerson,

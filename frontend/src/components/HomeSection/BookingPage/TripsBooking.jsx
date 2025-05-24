@@ -12,7 +12,7 @@ const TripsBooking = () => {
       const response = await getPublishedDestinationsApi();
       console.log('Destinations:', response.data);
       if (response.success) {
-        setDestinations(response.data.data);
+        setDestinations(response.data.destinations);
       } else {
         console.error('Error fetching destinations:', response.message);
       }
