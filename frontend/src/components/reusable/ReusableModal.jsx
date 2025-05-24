@@ -1,13 +1,13 @@
 import { Modal, Box, IconButton } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
+import { IoCloseSharp } from "react-icons/io5";
 
-const ReusableModal = (
+const ReusableModal = ({
     open,
     onClose,
     children,
     width = 'w-full max-w-lg',
     title = '',
-) => {
+}) => {
     return (
         <Modal
             open={open}
@@ -27,7 +27,7 @@ const ReusableModal = (
                         {title}
                     </h2>
                     <IconButton onClick={onClose} className="text-gray-500 hover:text-gray-700">
-                        <CloseIcon />
+                        <IoCloseSharp />
                     </IconButton>
                 </div>
                 <div id="modal-description">{children}</div>
