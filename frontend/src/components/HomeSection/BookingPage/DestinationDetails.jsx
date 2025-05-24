@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getDestinationByIdApi } from '../../../services/api/destinationApi';
 import { IoFlagSharp } from "react-icons/io5";
 import TripDetails from './TripDetails';
+import ContactSection from './ContactSection';
 
 const DestinationDetails = () => {
     const { id } = useParams();
@@ -34,7 +35,7 @@ const DestinationDetails = () => {
     if (!destination) return <p>Destination not found.</p>;
 
     return (
-        <div className='px-0 md:px-20  '>
+        <div className='  '>
             <div className="pt-3 md:pt-6 text-secondary-blue">
                 <img
                     src={destination.coverImage}
@@ -56,9 +57,13 @@ const DestinationDetails = () => {
                 </div>
                 <p className='text-sm sm:text-base text-secondary-blue/80 mt-4 md:mt-6 text-justify '>{destination.overview}</p>
             </div>
-            <div className='w-full flex flex-col lg:flex '>
-                <div className='md:w-1/2'>
+            <div className='w-full flex flex-col lg:flex-row  gap-10 space-x-25'>
+                <div className='w-full md:w-1/2'>
                     <TripDetails destination={destination} />
+
+                </div>
+                <div className='w-full md:w-[500px]'>
+                    <ContactSection />
 
                 </div>
             </div>

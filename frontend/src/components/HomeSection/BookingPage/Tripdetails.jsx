@@ -10,8 +10,6 @@ const TripDetails = ({ destination }) => {
     <div className='flex flex-col gap-4 ' >
       <ItinerarySection destination={destination} />
       <Inclusions destination={destination} />
-
-
     </div>
   )
 }
@@ -42,12 +40,11 @@ const ItinerarySection = ({ destination }) => {
                 <h2 className="text-lg font-semibold">
                   Day {index + 1}: {day.title}
                 </h2>
-                <p className="text-sm sm:text-base text-secondary-blue/80 max-w-2xl text-justify ">{day.description}</p>
+                <p className="text-sm sm:text-base text-secondary-blue/80 max-w-1xl text-justify ">{day.description}</p>
               </div>
             </div>
           ))}
         </div>
-
       </div>
     </div>
   )
@@ -58,22 +55,20 @@ const ItinerarySection = ({ destination }) => {
 
 
 const Inclusions = ({ destination }) => {
-  console.log("Inclusions array:", destination.inclusions); 
+  console.log("Inclusions array:", destination.inclusions);
 
   return (
     <div className="p-4 text-secondary-blue md:max-w-[337.6px]">
-  <h2 className="text-lg font-bold mb-2">Inclusions</h2>
-  <div className="grid grid-cols-2 gap-x-0 gap-y-1">
-    {destination.inclusions?.map((inclusion, index) => (
-      <div key={index} className="flex items-center gap-1">
-        <IoMdCheckmark size={16} className="shrink-0" />
-        <p className="text-sm">{inclusion}</p>
+      <h2 className="text-lg font-bold mb-2">Inclusions</h2>
+      <div className="grid grid-cols-2 gap-x-0 gap-y-1">
+        {destination.inclusions?.map((inclusion, index) => (
+          <div key={index} className="flex items-center gap-1">
+            <IoMdCheckmark size={16} className="shrink-0" />
+            <p className="text-sm">{inclusion}</p>
+          </div>
+        ))}
       </div>
-    ))}
-  </div>
-</div>
-
-
+    </div>
   );
 };
 
