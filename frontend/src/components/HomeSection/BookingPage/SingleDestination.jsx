@@ -1,8 +1,14 @@
+import { useState } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
+import ReusableModal from '../../reusable/ReusableModal';
 
 const SingleDestination = ({ dest }) => {
+    const [open, setOpen] = useState(false);
+
+    const openModal = () => setOpen(true);
+    const closeModal = () => setOpen(false);
     return (
         <div
             className="bg-white shadow rounded-3xl overflow-hidden border border-t-0 border-gray-300 flex flex-col relative"
@@ -46,9 +52,17 @@ const SingleDestination = ({ dest }) => {
                     >
                         <FaWhatsapp size={22} className="text-secondary-blue" />
                     </a>
-                    <button className="w-[119px] h-[30px] rounded-[8px] px-[20px] py-[10px] text-sm bg-[#4A94D0] text-white hover:bg-blue-600 transition flex items-center justify-center">
+                    <button
+                        onClick={openModal}
+                        className="w-[119px] h-[30px] rounded-[8px] px-[20px] py-[10px] text-sm bg-[#4A94D0] text-white hover:bg-blue-600 transition flex items-center justify-center"
+                    >
                         Send Query
                     </button>
+
+                    {/* Modal for sending query */}
+                    <ReusableModal open={open} onClose={closeModal} title="Send Your Query">
+                        <p>This is where your query form or content will go.</p>
+                    </ReusableModal>
                 </div>
             </div>
         </div>
