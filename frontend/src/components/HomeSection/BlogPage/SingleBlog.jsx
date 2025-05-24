@@ -15,7 +15,7 @@ const SingleBlog = ({ isHomePage, firstBlog, remainingBlogs }) => {
     <>
       {/* Featured Blog on Homepage */}
       {isHomePage && firstBlog && (
-        <div className="flex flex-col md:flex-row justify-between overflow-hidden  mt-1 md:mt-11 pt-5 group h-auto md:h-[350px] ">
+        <div className="flex flex-col md:flex-row justify-between overflow-hidden  mt-1 pt-5 group h-auto md:h-[350px] ">
           {/* Image */}
           <div className="w-full h-[400px] sm:w-full sm:h-80 md:w-[790px] md:h-full overflow-hidden mr-0 md:mr-19 mx-auto ">
             <Link to={`/blog/${firstBlog._id}`}>

@@ -42,7 +42,7 @@ const DestinationDetails = () => {
                     alt={destination.title}
                     className="w-full h-auto md:max-h-[575px] rounded-3xl object-cover"
                 />
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center text-secondary-blue gap-3 mt-4">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center text-secondary-blue gap-3 mt-8">
                     {/* Title */}
                     <h1 className="text-2xl font-bold">{destination.title}</h1>
 
