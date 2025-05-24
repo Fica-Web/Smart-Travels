@@ -15,7 +15,6 @@ const DestinationDetails = () => {
 
             const response = await getDestinationByIdApi(id);
 
-
             console.log('API response:', response); 
 
             if (response.success) {
