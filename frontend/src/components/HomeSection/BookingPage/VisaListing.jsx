@@ -6,7 +6,7 @@ const VisaListing = () => {
             <h2 className="text-2xl font-bold mb-6 text-center pb-3">
                 Trusted Visa Services for These Popular Destinations
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 {visaData.map((visa, index) => (
                     <VisaCard key={index} {...visa} />
                 ))}
