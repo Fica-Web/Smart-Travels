@@ -6,21 +6,27 @@ const TripsBooking = () => {
   const [destinations, setDestinations] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchDestinations = async () => {
-      setLoading(true);
+useEffect(() => {
+  const fetchDestinations = async () => {
+    setLoading(true);
+    try {
       const response = await getPublishedDestinationsApi();
       console.log('Destinations:', response.data);
-      if (response.success) {
-        setDestinations(response.data.data);
-      } else {
-        console.error('Error fetching destinations:', response.message);
-      }
-      setLoading(false);
-    };
 
-    fetchDestinations();
-  }, []);
+      if (response.data.success) {
+        setDestinations(response.data.destinations);
+      } else {
+        console.error('Error fetching destinations:', response.data.message);
+      }
+    } catch (error) {
+      console.error('Error fetching destinations:', error);
+    }
+    setLoading(false);
+  };
+
+  fetchDestinations();
+}, []);
+
 
   return (
     <div className="">
