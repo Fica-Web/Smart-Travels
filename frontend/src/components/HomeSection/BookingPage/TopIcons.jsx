@@ -10,10 +10,10 @@ const TopIcons = () => {
   const [active, setActive] = useState(location.pathname || '/bookings/flights');
 
   useEffect(() => {
-  // Treat "/bookings" as "/bookings/flights"
-  const normalizedPath = location.pathname === '/bookings' ? '/bookings/flights' : location.pathname;
-  setActive(normalizedPath);
-}, [location.pathname]);
+    // Treat "/bookings" as "/bookings/flights"
+    const normalizedPath = location.pathname === '/bookings' ? '/bookings/flights' : location.pathname;
+    setActive(normalizedPath);
+  }, [location.pathname]);
 
   const handleNavigate = (route) => {
     setActive(route);
@@ -28,11 +28,15 @@ const TopIcons = () => {
             className="flex flex-col items-center md:flex-row md:items-center cursor-pointer px-2 md:px-2 lg:px-5"
             onClick={() => handleNavigate(item.route)}
           >
-            <img src={item.icon} alt={`${item.title} Icon`} className="w-[23px] h-[23px]" />
+            <img
+              src={active === item.route ? item.activeIcon : item.icon}
+              alt={`${item.title} Icon`}
+              className="w-[23px] h-[23px]"
+            />
+
             <p
-              className={`mt-1 text-sm md:mt-0 md:ml-2 md:text-lg font-semibold whitespace-nowrap ${
-                active === item.route ? 'text-blue-600' : 'text-secondary-blue'
-              }`}
+              className={`mt-1 text-sm md:mt-0 md:ml-2 md:text-lg font-semibold whitespace-nowrap ${active === item.route ? 'text-blue-600' : 'text-secondary-blue'
+                }`}
             >
               <span className="block md:hidden">{item.mobileTitle || item.title}</span>
               <span className="hidden md:block">{item.title}</span>
