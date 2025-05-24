@@ -3,7 +3,7 @@ import DestinationDetails from '../../components/HomeSection/BookingPage/Destina
 
 const DestinationDetailsPage = () => {
   return (
-    <div>
+    <div className=''>
       <DestinationDetails />
     </div>
   )
