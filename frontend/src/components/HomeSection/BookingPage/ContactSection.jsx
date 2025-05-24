@@ -5,7 +5,7 @@ import { MdEmail } from "react-icons/md";
 
 const ContactSection = () => {
     return (
-        <div className='flex flex-col gap-4 pt-5 md:pt-7' >
+        <div className='flex flex-col justify-between gap-8 pt-5 md:pt-7' >
             <ContactForm
                 title="Send a Query"
                 buttonText="Send Query"
@@ -16,6 +16,17 @@ const ContactSection = () => {
             <HelpBox />
 
         </div>
+//         <div className='flex flex-col justify-between gap-8 pt-5 md:pt-7 h-full'>
+//   <ContactForm
+//     title="Send a Query"
+//     buttonText="Send Query"
+//     messageFieldName="location"
+//     messageLabel="Location"
+//     messagePlaceholder="Enter your preferred location"
+//   />
+//   <HelpBox />
+// </div>
+
     )
 }
 

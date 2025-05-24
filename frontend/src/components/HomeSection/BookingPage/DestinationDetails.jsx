@@ -57,16 +57,15 @@ const DestinationDetails = () => {
                 </div>
                 <p className='text-sm sm:text-base text-secondary-blue/80 mt-4 md:mt-6 text-justify '>{destination.overview}</p>
             </div>
-            <div className='w-full flex flex-col lg:flex-row  gap-10 space-x-25'>
-                <div className='w-full md:w-1/2'>
+            <div className='w-full flex flex-col lg:flex-row gap-25 items-stretch'>
+                <div className='w-full md:w-1/2 flex flex-col '>
                     <TripDetails destination={destination} />
-
                 </div>
-                <div className='w-full md:w-[500px]'>
+                <div className='w-full md:w-[500px] flex flex-col '>
                     <ContactSection />
-
                 </div>
             </div>
+
 
         </div>
     );

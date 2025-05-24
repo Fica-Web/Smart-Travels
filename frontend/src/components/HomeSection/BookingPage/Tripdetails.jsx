@@ -40,7 +40,7 @@ const ItinerarySection = ({ destination }) => {
                 <h2 className="text-lg font-semibold">
                   Day {index + 1}: {day.title}
                 </h2>
-                <p className="text-sm sm:text-base text-secondary-blue/80 max-w-1xl text-justify ">{day.description}</p>
+                <p className="text-sm sm:text-base text-secondary-blue/80 max-w-1xl text-justify  ">{day.description}</p>
               </div>
             </div>
           ))}
@@ -64,7 +64,7 @@ const Inclusions = ({ destination }) => {
         {destination.inclusions?.map((inclusion, index) => (
           <div key={index} className="flex items-center gap-1">
             <IoMdCheckmark size={16} className="shrink-0" />
-            <p className="text-sm">{inclusion}</p>
+            <p className="text-base">{inclusion}</p>
           </div>
         ))}
       </div>
