@@ -1,14 +1,20 @@
 import { useState } from 'react';
-import { submitMessageApi } from '../../../services/api/userApi';
+import { submitMessageApi } from '../../services/api/userApi';
 import { toast } from 'react-toastify';
-import ReusableSubmitButton from '../../reusable/ReusableSubmitButton';
+import ReusableSubmitButton from './ReusableSubmitButton';
 
-const ContactForm = () => {
+const ContactForm = ({
+    title = 'Get In Touch',
+    buttonText = 'Submit',
+    messageFieldName = 'message',
+    messageLabel = 'Message',
+    messagePlaceholder = 'Your message',
+}) => {
     const initialState = {
         name: '',
         email: '',
         phone: '',
-        message: '',
+        [messageFieldName]: '',
     };
 
     const [formData, setFormData] = useState(initialState);
@@ -26,7 +32,7 @@ const ContactForm = () => {
         if (!formData.email.trim()) newErrors.email = 'Email is required';
         if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
         if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
-        if (!formData.message.trim()) newErrors.message = 'message is required';
+        if (!formData[messageFieldName].trim()) newErrors[messageFieldName] = `${messageLabel} is required`;
         return newErrors;
     };
 
@@ -42,8 +48,6 @@ const ContactForm = () => {
             return;
         }
 
-        // Placeholder: send formData to backend or email API
-        console.log('Submitted Data:', formData);
         const response = await submitMessageApi(formData);
 
         if (response.success) {
@@ -53,7 +57,6 @@ const ContactForm = () => {
             toast.error(response.error || 'Failed to send message');
         }
 
-        setErrors({});
         setLoading(false);
     };
 
@@ -62,58 +65,28 @@ const ContactForm = () => {
             onSubmit={handleSubmit}
             className='flex flex-col gap-4 text-title-blue bg-light-blue p-6 lg:p-10 rounded-3xl shadow-md lg:max-w-lg w-full'
         >
-            <h2 className='text-3xl font-semibold text-center'>Get In Touch</h2>
+            <h2 className='text-3xl font-semibold text-center'>{title}</h2>
 
-            <InputField
-                label='Name'
-                name='name'
-                type='text'
-                placeholder='Enter your name'
-                value={formData.name}
-                onChange={handleChange}
-                error={errors.name}
-            />
-            <InputField
-                label='Email'
-                name='email'
-                type='email'
-                placeholder='Enter your email'
-                value={formData.email}
-                onChange={handleChange}
-                error={errors.email}
-            />
-            <InputField
-                label='Phone'
-                name='phone'
-                type='tel'
-                placeholder='Enter your phone number'
-                value={formData.phone}
-                onChange={handleChange}
-                error={errors.phone}
-            />
-            <InputField
-                label='Message'
-                name='message'
-                type='textarea'
-                placeholder='Your message'
-                value={formData.message}
-                onChange={handleChange}
-                error={errors.message}
-            />
+            <InputField label='Name' name='name' type='text' placeholder='Enter your name' value={formData.name} onChange={handleChange} error={errors.name} />
+            <InputField label='Email' name='email' type='email' placeholder='Enter your email' value={formData.email} onChange={handleChange} error={errors.email} />
+            <InputField label='Phone Number' name='phone' type='tel' placeholder='Enter your phone number' value={formData.phone} onChange={handleChange} error={errors.phone} />
+            <InputField label={messageLabel} name={messageFieldName} type='textarea' placeholder={messagePlaceholder} value={formData[messageFieldName]} onChange={handleChange} error={errors[messageFieldName]} height='small' />
 
-            <ReusableSubmitButton
-                text='Submit'
-                loadingText='Submitting...'
-                loading={loading}
-            />
+            <ReusableSubmitButton text={buttonText} loadingText='Submitting...' loading={loading} />
         </form>
     );
 };
 
+    
+
 export default ContactForm;
 
 // Reusable Input Component
-const InputField = ({ label, name, type, placeholder, value, onChange, error }) => {
+const InputField = ({ label, name, type, placeholder, value, onChange, error, height = 'normal' }) => {
+    const baseClass = `border rounded-xl px-3 ${error ? 'border-red-500' : 'border-secondary-blue focus:outline-none focus:ring-1 focus:ring-blue-500'}`;
+    const inputClass = `${baseClass} py-2`; // reduced height
+    const textareaClass = `${baseClass} py-2 resize-none`;
+
     return (
         <div className='flex flex-col gap-1'>
             <label className='text-secondary-blue'>{label}</label>
@@ -123,9 +96,8 @@ const InputField = ({ label, name, type, placeholder, value, onChange, error }) 
                     placeholder={placeholder}
                     value={value}
                     onChange={onChange}
-                    rows={4}
-                    className={`border rounded-xl p-3 resize-none mb-4 ${error ? 'border-red-500' : 'border-secondary-blue focus:border-none focus:outline-none focus:ring-1 focus:ring-blue-500'
-                        }`}
+                    rows={height === 'small' ? 2 : 4}
+                    className={textareaClass}
                 />
             ) : (
                 <input
@@ -134,8 +106,7 @@ const InputField = ({ label, name, type, placeholder, value, onChange, error }) 
                     placeholder={placeholder}
                     value={value}
                     onChange={onChange}
-                    className={`border rounded-xl p-3 ${error ? 'border-red-500' : 'border-secondary-blue focus:border-none focus:outline-none focus:ring-1 focus:ring-blue-500'
-                        }`}
+                    className={inputClass}
                 />
             )}
             {error && <p className='text-red-500 text-sm'>{error}</p>}
