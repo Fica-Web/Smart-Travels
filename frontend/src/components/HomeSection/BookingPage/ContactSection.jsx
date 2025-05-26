@@ -3,7 +3,7 @@ import ContactForm from '../../reusable/ContactForm'
 import { MdLocalPhone } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
 
-const ContactSection = () => {
+const ContactSection = ( {destination}) => {
     return (
         <div className='flex flex-col justify-between gap-8 pt-5 md:pt-7' >
             <ContactForm
@@ -12,6 +12,7 @@ const ContactSection = () => {
                 messageFieldName="location"
                 messageLabel="Location"
                 messagePlaceholder="Enter your preferred location"
+                destination={destination}
             />
             <HelpBox />
 

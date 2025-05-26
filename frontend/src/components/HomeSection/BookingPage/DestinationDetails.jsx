@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getDestinationByIdApi } from '../../../services/api/destinationApi';
+import { getDestinationBySlugApi } from '../../../services/api/destinationApi';
 import { IoFlagSharp } from "react-icons/io5";
 import TripDetails from './TripDetails';
 import ContactSection from './ContactSection';
 
 const DestinationDetails = () => {
-    const { id } = useParams();
+    const { slug } = useParams();
     const [destination, setDestination] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchDestination = async () => {
-            console.log('Fetching destination with ID:', id);
+            console.log('Fetching destination with Slug:',slug);
 
-            const response = await getDestinationByIdApi(id);
+            const response = await getDestinationBySlugApi(slug);
 
             console.log('API response:', response);
 
@@ -29,7 +29,7 @@ const DestinationDetails = () => {
         };
 
         fetchDestination();
-    }, [id]);
+    }, [slug]);
 
     if (loading) return <p>Loading destination...</p>;
     if (!destination) return <p>Destination not found.</p>;
@@ -62,7 +62,7 @@ const DestinationDetails = () => {
                     <TripDetails destination={destination} />
                 </div>
                 <div className='w-full md:w-[500px] flex flex-col '>
-                    <ContactSection />
+                    <ContactSection  destination={destination}/>
                 </div>
             </div>
 

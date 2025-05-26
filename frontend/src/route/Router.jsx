@@ -112,7 +112,7 @@ const router = createBrowserRouter([
             element: withSuspense(TripsBookingPage),
           },
           {
-            path: ':id',
+            path: ':slug',
             element: withSuspense(DestinationDetailsPage),
           },
             ]

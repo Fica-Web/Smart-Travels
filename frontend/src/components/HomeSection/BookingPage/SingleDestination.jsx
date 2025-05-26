@@ -3,18 +3,20 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import ReusableModal from '../../reusable/ReusableModal';
+import ContactForm from '../../reusable/ContactForm';
 
 const SingleDestination = ({ dest }) => {
     const [open, setOpen] = useState(false);
 
     const openModal = () => setOpen(true);
     const closeModal = () => setOpen(false);
+    console.log('destination',dest)
     return (
         <div
             className="bg-white shadow rounded-3xl overflow-hidden border border-t-0 border-gray-300 flex flex-col relative"
         >
             <Link
-                to={`/bookings/trips/${dest._id}`}
+                to={`/bookings/trips/${dest.slug}`}
                 className="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-black rounded-full p-2 transition z-10"
             >
                 <ArrowUpRight size={18} taxt />
@@ -61,7 +63,14 @@ const SingleDestination = ({ dest }) => {
 
                     {/* Modal for sending query */}
                     <ReusableModal open={open} onClose={closeModal} title="Send Your Query">
-                        <p>This is where your query form or content will go.</p>
+                   <ContactForm
+        title="Send a Query"
+        buttonText="Send Query"
+        messageFieldName="location"
+        messageLabel="Location"
+        messagePlaceholder="Enter your preferred location"
+        destination={dest} // ✅ Pass the dest here
+    />
                     </ReusableModal>
                 </div>
             </div>
