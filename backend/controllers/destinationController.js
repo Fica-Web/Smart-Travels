@@ -73,11 +73,11 @@ export const getPublishedDestinations = async (req, res) => {
     }
 };
 
-export const getDestinationById = async (req, res) => {
+export const getDestinationDetails = async (req, res) => {
     try {
-        const { id } = req.params; // Extract the destination ID from the request parameters
+        const { slug } = req.params; // Extract the destination ID from the request parameters
 
-        const destination = await Destination.findById(id); // Find the destination by ID
+        const destination = await Destination.findOne({ slug }); // Find the destination by ID
 
         if (!destination) {
             return res.status(404).json({ message: 'Destination not found' }); // If not found, return 404
