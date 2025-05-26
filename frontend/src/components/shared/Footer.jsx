@@ -106,24 +106,24 @@ const Footer = () => {
             <h4 className="font-semibold  mb-3">Contact Us</h4>
             <p className='text-md'>Have questions? We’re here to help with your travel plans.</p>
             <div className="flex items-center gap-2 mt-2 text-md text-secondary-blue whitespace-nowrap">
-  <MdLocalPhone size={20} />
+              <MdLocalPhone size={20} />
 
-  <div className="flex flex-row gap-3">
-    <a
-      href="tel:+045707023"
-      className="hover:text-[#005BF0] transition"
-    >
-      045707023
-    </a>
-    <span>,</span>
-    <a
-      href="tel:+971527418272"
-      className="hover:text-[#005BF0] transition"
-    >
-      +971 52 741 8272
-    </a>
-  </div>
-</div>
+              <div className="flex flex-row gap-3">
+                <a
+                  href="tel:+045707023"
+                  className="hover:text-[#005BF0] transition"
+                >
+                  045707023
+                </a>
+                <span>,</span>
+                <a
+                  href="tel:+971527418272"
+                  className="hover:text-[#005BF0] transition"
+                >
+                  +971 52 741 8272
+                </a>
+              </div>
+            </div>
 
             <div className="flex items-center gap-2 mt-2 text-md text-secondary-blue">
               <MdEmail size={20} />
