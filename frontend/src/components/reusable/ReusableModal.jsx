@@ -18,15 +18,15 @@ const ReusableModal = ({
             <Box
                 className={`
           absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
-          bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg
+          bg-white backdrop-blur-2xl p-6 rounded-lg shadow-lg
           ${width}
         `}
             >
                 <div className="flex justify-between items-center mb-4">
-                    <h2 id="modal-title" className="text-lg font-semibold text-gray-900 dark:text-white">
+                    <h2 id="modal-title" className="text-lg font-semibold text-secondary-blue ">
                         {title}
                     </h2>
-                    <IconButton onClick={onClose} className="text-gray-500 hover:text-gray-700">
+                    <IconButton onClick={onClose} className="text-gray-500 hover:text-secondary-blue">
                         <IoCloseSharp />
                     </IconButton>
                 </div>
