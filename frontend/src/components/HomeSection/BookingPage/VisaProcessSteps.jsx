@@ -3,7 +3,7 @@ import { visaProcessStepsData } from '../../../data/HomeSection/visaProcessSteps
 
 const VisaProcessSteps = () => {
   return (
-    <div className='px-4 py-8'>
+    <div className='px-4 py-13'>
       <h2 className="text-2xl font-bold mb-8 text-center pb-6">
         Smart, Simple, Secured. Visa Booking with Rukn Travels
       </h2>
