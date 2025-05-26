@@ -3,7 +3,7 @@ import visaData from '../../../data/visaData';
 const VisaListing = () => {
     return (
         <div className="px-4 py-8">
-            <h2 className="text-2xl font-bold mb-6 text-center pb-3">
+            <h2 className="text-2xl font-bold mb-8 text-center pb-6 ">
                 Trusted Visa Services for These Popular Destinations
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">

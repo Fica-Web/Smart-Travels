@@ -1,10 +1,10 @@
 import React from 'react'
-import img from '../../../assets/image/booking/visa.png'
-import ReusableSubmitButton from '../../reusable/ReusableSubmitButton'
+import img from '../../../assets/image/booking/visa/visa.png'
+
 
 const ImageBox = () => {
     return (
-        <div className="relative w-full inline-block mt-8">
+        <div className="relative w-full inline-block mt-10">
             {/* Small box above */}
             <div className="absolute p-7 px-14 bottom-6 right-9 rounded-[20px] border border-white/25 bg-white/25 backdrop-blur-3xl shadow-inner inset 0px 2px 6px 0px rgba(0, 0, 0, 0.1)
    text-title-blue text-white">
