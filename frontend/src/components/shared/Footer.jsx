@@ -145,10 +145,10 @@ const Footer = () => {
       </div>
 
       {/* Bottom Section */}
-      <div className="mt-8 space-y-8">
+      <div className="mt-8 space-y-8 bg-amber-700">
         {/* Copyright */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full text-sm text-secondary-blue">
-          <div>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full text-sm text-secondary-blue bg-red-200">
+          <div className='bg-black'>
             <p className="flex items-center flex-wrap justify-center gap-1 text-center">
               Copyright <AiOutlineCopyright className="text-secondary-blue" /> 2025,Rukn Travels. All Rights Reserved
             </p>
