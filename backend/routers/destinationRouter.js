@@ -4,7 +4,7 @@ import verifyAdmin from '../middlewares/adminAuth.js';
 import upload from '../middlewares/multer.js';
 import {
     getAllDestinations,
-    getDestinationById,
+    getDestinationDetails,
     createDestination,
     updateDestination,
     deleteDestination,
@@ -12,7 +12,7 @@ import {
 } from '../controllers/destinationController.js';
 
 router.get('/is-published', getPublishedDestinations);
-router.get('/:id', getDestinationById);
+router.get('/:slug', getDestinationDetails);
 
 router.use(verifyAdmin); // Ensure admin authentication for the following routes
 
