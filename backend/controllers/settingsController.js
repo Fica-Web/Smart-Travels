@@ -1,4 +1,5 @@
-import Settings from "../model/settingsSchema";
+import e from "express";
+import Settings from "../model/settingsSchema.js";
 
 export const getSettings = async (req, res) => {
     try {
@@ -37,7 +38,7 @@ export const createSettings = async (req, res) => {
             facebookUrl,
         } = req.body;
 
-        const newSettings = new Setting({
+        const newSettings = new Settings({
             contactNumber,
             email,
             location,
@@ -58,6 +59,53 @@ export const createSettings = async (req, res) => {
         res.status(500).json({
             success: false,
             message: 'Server error while creating settings',
+            error: error.message,
+        });
+    }
+};
+
+export const updateSettings = async (req, res) => {
+    try {
+        const {
+            contactNumber,
+            email,
+            location,
+            instagramUrl,
+            tiktokUrl,
+            facebookUrl,
+        } = req.body;
+
+        const updatedSettings = await Settings.findOneAndUpdate(
+            {}, // empty filter to match the first (and only) document
+            {
+                contactNumber,
+                email,
+                location,
+                instagramUrl,
+                tiktokUrl,
+                facebookUrl,
+            },
+            { new: true, runValidators: true } // return updated doc
+        );
+
+        if (!updatedSettings) {
+            return res.status(404).json({
+                success: false,
+                message: 'Settings not found to update',
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: 'Settings updated successfully',
+            data: updatedSettings,
+        });
+    } catch (error) {
+        console.error('Error updating settings:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Server error while updating settings',
+            error: error.message,
         });
     }
 };
