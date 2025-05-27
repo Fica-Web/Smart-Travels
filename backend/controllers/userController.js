@@ -3,6 +3,7 @@ import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 import User from "../model/userSchema.js";
 import { sendEmail } from '../config/emailService.js';
+import { error } from 'console';
 
 const userSignup = async (req, res) => {
     try {
@@ -245,21 +246,28 @@ const logoutUser = (req, res) => {
 
 const submitMessage = async (req, res) => {
     try {
-        const { name, email, phone, message } = req.body;
+        const { name, email, phone, message, location } = req.body;
 
-        if (!name || !email || !message || !phone) {
-            return res.status(400).json({ error: "All fields are required" });
+        if (!name || !phone) {
+            return res.status(400).json({ error: "Name and phone are required" });
         }
 
         const to = 'keralasummit@gmail.com';
-        const subject = "New message from SmartTravels contact form";
+        let subject;
+        if (location) {
+            subject = `New travel enquiry for `
+        } else {
+            subject = "New message from SmartTravels contact form";
+        }
 
+        // Dynamically generate content
         const html = `
-            <h3>New Contact Form Message</h3>
+            <h3>New Form Submission</h3>
             <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
+            ${email ? `<p><strong>Email:</strong> ${email}</p>` : ''}
             <p><strong>Phone:</strong> ${phone}</p>
-            <p><strong>Message:</strong><br/>${message}</p>
+            ${message ? `<p><strong>Message:</strong><br/>${message}</p>` : ''}
+            ${location ? `<p><strong>Location:</strong> ${location}</p>` : ''}
         `;
 
         // Assuming sendEmail is a utility function you've implemented
@@ -268,7 +276,7 @@ const submitMessage = async (req, res) => {
         if (emailResponse.success) {
             res.status(200).json({ success: true, message: "Message sent successfully!" });
         } else {
-            res.status(500).json({ error: "Failed to send message." });
+            res.status(500).json({ message: "Failed to send message.", error: emailResponse.error });
         }
 
     } catch (error) {
