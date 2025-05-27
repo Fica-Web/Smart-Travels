@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { getSettings, updateSettings } from '../../services/api/settingsApi';
 import { toast } from 'react-toastify';
 
-
 const AdminSettingsDashboard = () => {
   const [settings, setSettings] = useState(null);
   const [editingField, setEditingField] = useState(null);

@@ -1,25 +1,23 @@
+// src/api/settingsApi.js
 import settingsInstance from "../axios_instances/settingsInstance";
 
-// 🔍 Get settings (Public access)
 export const getSettings = async () => {
- try {
+  try {
     const response = await settingsInstance.get(''); // ← FIXED
     return response;
   } catch (error) {
-    console.log('Error fetching blogs:', error.response?.data || error.message);
+    console.log('Error fetching settings:', error.response?.data || error.message);
     throw error;
   }
 };
 
-// 🛠 Update settings (Admin access with cookies)
 export const updateSettings = async (data) => {
   try {
-    console.log('➡️ Updating settings with:', data);
-    const res = await settingsInstance.patch('/settings', data);
-    console.log('✅ Settings updated:', res.data);
-    return res.data;
+    const response = await settingsInstance.patch('/', data); // ✅ correct path
+    console.log('✅ Settings updated:', response.data);
+    return response.data;
   } catch (error) {
-    console.error('❌ Error updating settings:', error);
+    console.error('❌ Error updating settings:', error.response?.data || error.message);
     throw error;
   }
 };
