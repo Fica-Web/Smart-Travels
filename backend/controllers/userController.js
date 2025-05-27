@@ -246,22 +246,19 @@ const logoutUser = (req, res) => {
 
 const submitMessage = async (req, res) => {
     try {
-        const { name, email, phone, message, location } = req.body;
+        const { name, email, phone, message, location, destination } = req.body;
 
         if (!name || !phone) {
             return res.status(400).json({ error: "Name and phone are required" });
         }
 
         const to = 'keralasummit@gmail.com';
-        let subject;
-        if (location) {
-            subject = `New travel enquiry for `
-        } else {
-            subject = "New message from SmartTravels contact form";
-        }
+        const subject = destination
+            ? `New travel enquiry for ${destination.title || destination.country}`
+            : "New message from SmartTravels contact form";
 
-        // Dynamically generate content
-        const html = `
+        // Dynamically build email body
+        let html = `
             <h3>New Form Submission</h3>
             <p><strong>Name:</strong> ${name}</p>
             ${email ? `<p><strong>Email:</strong> ${email}</p>` : ''}
@@ -270,18 +267,30 @@ const submitMessage = async (req, res) => {
             ${location ? `<p><strong>Location:</strong> ${location}</p>` : ''}
         `;
 
-        // Assuming sendEmail is a utility function you've implemented
+        if (destination) {
+            html += `
+                <hr/>
+                <h4>Destination Enquiry Details:</h4>
+                <p><strong>Title:</strong> ${destination.title}</p>
+                <p><strong>Country:</strong> ${destination.country}</p>
+                <p><strong>Duration:</strong> ${destination.duration}</p>
+                <p><strong>Date:</strong> ${new Date(destination.date).toLocaleDateString()}</p>
+                <p><strong>Slug:</strong> ${destination.slug}</p>
+                <p><strong>Image:</strong> <a href="${destination.image}" target="_blank">View Image</a></p>
+            `;
+        }
+
         const emailResponse = await sendEmail({ to, subject, html });
 
         if (emailResponse.success) {
-            res.status(200).json({ success: true, message: "Message sent successfully!" });
+            return res.status(200).json({ success: true, message: "Message sent successfully!" });
         } else {
-            res.status(500).json({ message: "Failed to send message.", error: emailResponse.error });
+            return res.status(500).json({ message: "Failed to send message.", error: emailResponse.error });
         }
 
     } catch (error) {
         console.error("Error processing request:", error);
-        res.status(500).json({ error: "Something went wrong. Try again later." });
+        return res.status(500).json({ error: "Something went wrong. Try again later." });
     }
 };
 
