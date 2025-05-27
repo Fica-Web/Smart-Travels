@@ -105,7 +105,7 @@ const Footer = () => {
           <div className='text-secondary-blue '>
             <h4 className="font-semibold  mb-3">Contact Us</h4>
             <p className='text-md'>Have questions? We’re here to help with your travel plans.</p>
-            <div className="flex items-center gap-2 mt-2 text-md text-secondary-blue">
+            <div className="flex items-center gap-2 mt-2 text-md text-secondary-blue whitespace-nowrap">
               <MdLocalPhone size={20} />
 
               <div className="flex flex-row gap-3">
@@ -123,8 +123,8 @@ const Footer = () => {
                   +971 52 741 8272
                 </a>
               </div>
-
             </div>
+
             <div className="flex items-center gap-2 mt-2 text-md text-secondary-blue">
               <MdEmail size={20} />
               <a
@@ -145,16 +145,16 @@ const Footer = () => {
       </div>
 
       {/* Bottom Section */}
-      <div className="mt-8 space-y-8">
+      <div className="mt-8 space-y-8 bg-amber-700">
         {/* Copyright */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full text-sm text-secondary-blue">
           <div>
-            <p className="flex items-center flex-wrap justify-center gap-1 text-center">
+            <p className="flex items-center flex-wrap justify-center gap-1 text-center whitespace-nowrap">
               Copyright <AiOutlineCopyright className="text-secondary-blue" /> 2025,Rukn Travels. All Rights Reserved
             </p>
           </div>
 
-          <div className="flex items-center space-x-1">
+          <div className="flex items-center space-x-1 whitespace-nowrap">
             <p>Created By</p>
             <span>
               <Link

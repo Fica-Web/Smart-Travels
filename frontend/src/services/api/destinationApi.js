@@ -31,9 +31,9 @@ export const getAllDestinationsApi = async (page = 1, limit = 9) => {
     }
 }
 
-export const getDestinationByIdApi = async (id) => {
+export const getDestinationBySlugApi = async (slug) => {
     try {
-        const response = await destinationInstance.get(`/${id}`);
+        const response = await destinationInstance.get(`/${slug}`);
         return { success: true, data: response.data };
     } catch (error) {
         console.error("Error fetching destination:", error);

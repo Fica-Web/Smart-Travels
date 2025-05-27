@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { submitMessageApi } from '../../services/api/userApi';
 import { toast } from 'react-toastify';
 import ReusableSubmitButton from './ReusableSubmitButton';
+import { duration } from '@mui/material';
 
 const ContactForm = ({
     title = 'Get In Touch',
@@ -9,6 +10,7 @@ const ContactForm = ({
     messageFieldName = 'message',
     messageLabel = 'Message',
     messagePlaceholder = 'Your message',
+     destination = null, 
 }) => {
     const initialState = {
         name: '',
@@ -36,29 +38,48 @@ const ContactForm = ({
         return newErrors;
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setLoading(true);
-        setErrors({});
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setErrors({});
 
-        const validationErrors = validate();
-        if (Object.keys(validationErrors).length > 0) {
-            setErrors(validationErrors);
-            setLoading(false);
-            return;
-        }
-
-        const response = await submitMessageApi(formData);
-
-        if (response.success) {
-            toast.success(response.data.message || 'Message sent successfully!');
-            setFormData(initialState);
-        } else {
-            toast.error(response.error || 'Failed to send message');
-        }
-
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+        setErrors(validationErrors);
         setLoading(false);
+        return;
+    }
+
+    // ✅ Log the destination data
+    console.log('Form Data:', formData);
+    console.log('Destination Data:', destination); // 👈 Log dest info here
+
+    const payload = {
+        ...formData,
+        destination: destination ? {
+            id: destination._id,
+            title: destination.title,
+            country: destination.country,
+            slug: destination.slug,
+            image: destination.coverImage,
+            date: destination.createdAt,
+            duration: destination.duration
+        } : null,
     };
+
+    const response = await submitMessageApi(payload);
+
+    if (response.success) {
+        toast.success(response.data.message || 'Message sent successfully!');
+        setFormData(initialState);
+    } else {
+        toast.error(response.error || 'Failed to send message');
+    }
+
+    setLoading(false);
+};
+
+
 
     return (
         <form
