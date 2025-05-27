@@ -6,9 +6,9 @@ const ImageBox = () => {
     return (
         <div className="relative w-full inline-block mt-10 ">
             {/* Small box above */}
-            <div className="absolute p-7 px-14 bottom-8 right-19 rounded-[20px] border border-white/25 bg-white/25 backdrop-blur-3xl shadow-inner inset 0px 2px 6px 0px rgba(0, 0, 0, 0.1)
+            <div className="absolute items-center md:p-7 md:px-14 md:bottom-8 md:right-19 rounded-[20px] border border-white/25 bg-white/25 backdrop-blur-3xl shadow-inner inset 0px 2px 6px 0px rgba(0, 0, 0, 0.1)
    text-title-blue text-white">
-                <p className="text-md sm:text-base text-secondary-blue pb-4 text-center">
+                <p className="text-md sm:text-base text-secondary-blue  pb-1 md:pb-4 text-center">
                     Choose your visa type, duration,<br /> and destination - all in one place
                 </p>
 

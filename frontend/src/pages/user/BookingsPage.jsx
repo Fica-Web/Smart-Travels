@@ -6,7 +6,7 @@ import img from '../../assets/image/booking/booking-hero.jpg';
 const BookingPage = () => {
   return (
     <div>
-      <ReusableHero title="Start Your Journey – Book Now" bgImage={img} />
+      <ReusableHero title="Start Your Journey" bgImage={img} />
       <div className="relative md:-mt-8 mt-5 md:z-10">
         <TopIcons />
       </div>
