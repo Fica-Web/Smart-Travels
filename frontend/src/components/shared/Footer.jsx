@@ -1,6 +1,8 @@
 import React from 'react';
+import { useState ,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import navOptions from '../../data/navOptions';
+import { getSettings } from '../../services/api/settingsApi';
 import logo from '../../assets/image/logo/logo.png';
 import { AiOutlineCopyright } from "react-icons/ai";
 import { FaInstagram } from "react-icons/fa";
@@ -9,10 +11,36 @@ import { PiTiktokLogoLight } from "react-icons/pi";
 import { MdLocalPhone } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
+import { toast } from 'react-toastify';
 
 
 
 const Footer = () => {
+  const [settings, setSettings] = useState({
+    email: '',
+    contactNumber: '',
+    location: '',
+    instagram: '',
+    facebook: '',
+    tiktok: ''
+  });
+
+ useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const res = await getSettings();
+        setSettings(res.data.data);
+        
+      } catch (err) {
+        toast.error('Failed to load settings');
+      }
+    };
+    fetchSettings();
+  }, []);
+
+
+
+
   return (
     <footer className="relative w-full h-auto  py-10 px-5 sm:px-20 bg-[#4A94D0]/40">
 
@@ -29,7 +57,7 @@ const Footer = () => {
           <div className='flex justify-start items-center gap-6'>
             <div>
               <a
-                href="https://www.instagram.com/your_username"
+                href={settings.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-8 h-8 bg-secondary-blue rounded-full text-white transform transition-transform duration-300 hover:scale-110"
@@ -39,7 +67,7 @@ const Footer = () => {
             </div>
             <div>
               <a
-                href="https://www.facebook.com/your_username"
+                href={settings.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-8 h-8 bg-secondary-blue  rounded-full text-white transform transition-transform duration-300 hover:scale-110"
@@ -49,7 +77,7 @@ const Footer = () => {
             </div>
             <div>
               <a
-                href="https://www.tiktok.com/@your_username"
+                href={settings.tiktok}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-8 h-8 bg-secondary-blue  rounded-full text-white transform transition-transform duration-300 hover:scale-110"
@@ -109,34 +137,27 @@ const Footer = () => {
               <MdLocalPhone size={20} />
 
               <div className="flex flex-row gap-3">
-                <a
-                  href="tel:+045707023"
-                  className="hover:text-[#005BF0] transition"
-                >
-                  045707023
+                <a href={`tel:${settings.contactNumber}`} className="hover:text-[#005BF0] transition">
+                  {settings.contactNumber}
                 </a>
-                <span>,</span>
-                <a
-                  href="tel:+971527418272"
-                  className="hover:text-[#005BF0] transition"
-                >
-                  +971 52 741 8272
-                </a>
+                {/* <span>,</span>
+
+                <a href={`tel:${settings.phone}`} className="hover:text-[#005BF0] transition">
+                  {settings.phone2}
+                </a> */}
               </div>
             </div>
 
             <div className="flex items-center gap-2 mt-2 text-md text-secondary-blue">
               <MdEmail size={20} />
-              <a
-                href="mailto:Info@rukntravels.com"
-                className="hover:text-[#005BF0] transition"
-              >
-                Info@rukntravels.com
+              <a href={`mailto:${settings.email}`} className="hover:text-[#005BF0] transition">
+                {settings.email}
               </a>
             </div>
             <div className="flex flex-row  items-start gap-2 mt-2 text-md text-secondary-blue">
               <IoLocationSharp size={21} className='' />
-              <p className="">Opp Al Futtim Masjid Al Murara,Deira,Dubai - UAE</p>
+              <p>{settings.location}</p>
+
             </div>
           </div>
 
@@ -147,7 +168,7 @@ const Footer = () => {
       {/* Bottom Section */}
       <div className="mt-8 space-y-8 ">
         {/* Copyright */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full text-sm text-secondary-blue bg-red-900">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full text-sm text-secondary-blue ">
           <div>
             <p className="flex items-center flex-wrap justify-center gap-1 text-center whitespace-nowrap">
               Copyright <AiOutlineCopyright className="text-secondary-blue" /> 2025,Rukn Travels. All Rights Reserved
