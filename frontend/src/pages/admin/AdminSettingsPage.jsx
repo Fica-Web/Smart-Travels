@@ -1,8 +1,11 @@
 import React from 'react'
+import AdminSettingsDashboard from '../../components/AdminSection/AdminSettingsDashboard'
 
 const AdminSettingsPage = () => {
   return (
-    <div>AdminSettingsPage</div>
+    <div>
+      <AdminSettingsDashboard />
+    </div>
   )
 }
 
