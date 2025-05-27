@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import visaData from '../../../data/visaData';
+import ReusableModal from '../../reusable/ReusableModal';
 
 const VisaListing = () => {
     return (
@@ -16,6 +18,10 @@ const VisaListing = () => {
 };
 
 const VisaCard = ({ country, flag, processingTime }) => {
+    const [open, setOpen] = useState(false);
+
+    const openModal = () => setOpen(true);
+    const closeModal = () => setOpen(false);
     return (
         <div className="border border-secondary-blue/70 rounded-2xl p-4 shadow-sm text-sm flex flex-col gap-2 text-secondary-blue">
             <div className="flex justify-between items-center">
@@ -26,10 +32,16 @@ const VisaCard = ({ country, flag, processingTime }) => {
             <div>Tourist & Transit Visas</div>
             <div>Processing Time: {processingTime}</div>
             <div className='flex justify-end'>
-                <button className="mt-auto bg-primary-blue/90 hover:bg-primary-blue text-white px-6 py-2 rounded-lg self-start">
+                <button onClick={openModal} className="mt-auto bg-primary-blue/90 hover:bg-primary-blue text-white px-6 py-2 rounded-lg self-start">
                     Apply Now
                 </button>
             </div>
+
+            <ReusableModal open={open} onClose={closeModal} title={`Apply for ${country} Visa`}>
+                <p>
+                    the content goes here.
+                </p>
+            </ReusableModal>
         </div>
     );
 };
