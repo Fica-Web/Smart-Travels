@@ -37,7 +37,7 @@ const ContactSection = ({ destination }) => {
                 buttonText="Send Query"
                 messageFieldName="location"
                 messageLabel="Location"
-                messagePlaceholder="Enter your preferred location"
+                messagePlaceholder="Enter your location"
                 destination={destination}
             />
             <HelpBox settings={settings} />

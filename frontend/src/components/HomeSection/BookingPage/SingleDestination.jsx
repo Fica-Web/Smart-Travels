@@ -64,7 +64,6 @@ const SingleDestination = ({ dest }) => {
                     {/* Modal for sending query */}
                     <ReusableModal open={open} onClose={closeModal} title="Send Your Query">
                    <ContactForm
-        title="Send a Query"
         buttonText="Send Query"
         messageFieldName="location"
         messageLabel="Location"
