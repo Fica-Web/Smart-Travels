@@ -1,10 +1,11 @@
 // src/data/adminNavOptions.js
-import { Home, Users, Briefcase, Flag, FileText, Image, Settings } from "lucide-react";
+import { Home, Users, Briefcase, Flag, FileText, Image, Settings, Mail } from "lucide-react";
+import { TbMailSearch } from "react-icons/tb";
 
 const adminNavOptions = [
   { label: "Dashboard", to: "/admin", icon: Home, end: true },
   { label: "Users", to: "/admin/users", icon: Users },
-  { label: "Services", to: "/admin/services", icon: Briefcase },
+  { label: "Inquiries", to: "/admin/inquiries", icon: TbMailSearch },
   { label: "Destinations", to: "/admin/destination", icon: Flag },
   { label: "Blog", to: "/admin/blog", icon: FileText },
   { label: "Carousel", to: "/admin/carousel", icon: Image },
