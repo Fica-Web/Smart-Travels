@@ -10,6 +10,7 @@ import blogRouter from './routers/blogsRouter.js'; // Import the blog router
 import carouselRouter from './routers/carouselRouter.js'; // Import the carousel router
 import destinationRouter from './routers/destinationRouter.js'; // Import the destination router
 import settingsRouter from './routers/settingRouter.js'; // Import the settings router
+import inquiryRouter from './routers/inquiryRouter.js'; // Import the inquiry router
 
 dotenv.config();
 
@@ -40,6 +41,7 @@ app.use('/api/blogs', blogRouter); // Use the blog router for routes starting wi
 app.use('/api/carousel', carouselRouter); // Use the carousel router for routes starting with /api/carousel
 app.use('/api/destination', destinationRouter); // Use the destination router for routes starting with /api/destination
 app.use('/api/settings', settingsRouter); // Use the settings router for routes starting with /api/settings
+app.use('/api/inquiry', inquiryRouter); // Use the inquiry router for routes starting with /api/inquiry
 
 app.get('/', (req, res) => {
     res.send('Server is running!');
