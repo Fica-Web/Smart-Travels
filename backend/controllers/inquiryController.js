@@ -76,3 +76,27 @@ export const createInquiry = async (req, res) => {
         res.status(500).json({ success: false, message: "Server error while creating inquiry", error: error.message });
     }
 };
+
+export const getAllInquiries = async (req, res) => {
+  try {
+    const inquiries = await Inquiry.find().sort({ createdAt: -1 });
+
+    res.status(200).json({ success: true, data: inquiries });
+  } catch (error) {
+    console.error("Error fetching inquiries:", error);
+    res.status(500).json({ success: false, message: "Server error while fetching inquiries", error: error.message });
+  }
+};
+
+export const getInquiryById = async (req, res) => {
+  try {
+    const inquiry = await Inquiry.findById(req.params.id);
+    if (!inquiry) {
+      return res.status(404).json({ success: false, message: "Inquiry not found" });
+    }
+    res.status(200).json({ success: true, data: inquiry });
+  } catch (error) {
+    console.error("Error fetching inquiry:", error);
+    res.status(500).json({ success: false, message: "Server error", error: error.message });
+  }
+};
