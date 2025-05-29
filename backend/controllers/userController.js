@@ -3,6 +3,7 @@ import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 import User from "../model/userSchema.js";
 import { sendEmail } from '../config/emailService.js';
+import { error } from 'console';
 
 const userSignup = async (req, res) => {
     try {
@@ -245,35 +246,51 @@ const logoutUser = (req, res) => {
 
 const submitMessage = async (req, res) => {
     try {
-        const { name, email, phone, message } = req.body;
+        const { name, email, phone, message, location, destination } = req.body;
 
-        if (!name || !email || !message || !phone) {
-            return res.status(400).json({ error: "All fields are required" });
+        if (!name || !phone) {
+            return res.status(400).json({ error: "Name and phone are required" });
         }
 
         const to = 'keralasummit@gmail.com';
-        const subject = "New message from SmartTravels contact form";
+        const subject = destination
+            ? `New travel enquiry for ${destination.title || destination.country}`
+            : "New message from SmartTravels contact form";
 
-        const html = `
-            <h3>New Contact Form Message</h3>
+        // Dynamically build email body
+        let html = `
+            <h3>New Form Submission</h3>
             <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
+            ${email ? `<p><strong>Email:</strong> ${email}</p>` : ''}
             <p><strong>Phone:</strong> ${phone}</p>
-            <p><strong>Message:</strong><br/>${message}</p>
+            ${message ? `<p><strong>Message:</strong><br/>${message}</p>` : ''}
+            ${location ? `<p><strong>Location:</strong> ${location}</p>` : ''}
         `;
 
-        // Assuming sendEmail is a utility function you've implemented
+        if (destination) {
+            html += `
+                <hr/>
+                <h4>Destination Enquiry Details:</h4>
+                <p><strong>Title:</strong> ${destination.title}</p>
+                <p><strong>Country:</strong> ${destination.country}</p>
+                <p><strong>Duration:</strong> ${destination.duration}</p>
+                <p><strong>Date:</strong> ${new Date(destination.date).toLocaleDateString()}</p>
+                <p><strong>Slug:</strong> ${destination.slug}</p>
+                <p><strong>Image:</strong> <a href="${destination.image}" target="_blank">View Image</a></p>
+            `;
+        }
+
         const emailResponse = await sendEmail({ to, subject, html });
 
         if (emailResponse.success) {
-            res.status(200).json({ success: true, message: "Message sent successfully!" });
+            return res.status(200).json({ success: true, message: "Message sent successfully!" });
         } else {
-            res.status(500).json({ error: "Failed to send message." });
+            return res.status(500).json({ message: "Failed to send message.", error: emailResponse.error });
         }
 
     } catch (error) {
         console.error("Error processing request:", error);
-        res.status(500).json({ error: "Something went wrong. Try again later." });
+        return res.status(500).json({ error: "Something went wrong. Try again later." });
     }
 };
 
