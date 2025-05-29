@@ -11,7 +11,7 @@ import { PiTiktokLogoLight } from "react-icons/pi";
 import { MdLocalPhone } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
-import { toast } from 'react-toastify';
+
 
 
 
@@ -32,7 +32,7 @@ const Footer = () => {
         setSettings(res.data.data);
         
       } catch (err) {
-        toast.error('Failed to load settings');
+        console.log('Failed to load settings');
       }
     };
     fetchSettings();

@@ -3,7 +3,6 @@ import { useState ,useEffect} from 'react';
 import { getSettings } from '../../../services/api/settingsApi';
 import { FaLocationDot, FaPhone } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
-import { toast } from 'react-toastify';
 
 
 
@@ -36,7 +35,7 @@ const ContactDetails = () => {
 
         setSettings(contactItems);
       } catch (err) {
-        toast.error('Failed to load settings');
+        console.log('Failed to load settings');
       }
     };
 
