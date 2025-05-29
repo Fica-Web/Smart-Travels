@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import img from '../../../assets/image/booking/visa/visa.png'
+import ReusableModal from '../../reusable/ReusableModal';
+import ContactForm from '../../reusable/ContactForm';
 
 
 const ImageBox = () => {
+    const [open, setOpen] = useState(false);
+
+    const openModal = () => setOpen(true);
+    const closeModal = () => setOpen(false);
     return (
         <div className="relative w-full inline-block mt-10 ">
             {/* Small box above */}
@@ -13,9 +19,21 @@ const ImageBox = () => {
                 </p>
 
                 <div className="flex justify-center ">
-                    <button className="w-auto md:w-[153px] px-4 py-2 rounded-md cursor-pointer text-white transition duration-200 bg-[#2e6bbf] hover:bg-[#4a94d0]">
+                    <button
+                        onClick={openModal}
+                        className="w-auto md:w-[153px] px-4 py-2 rounded-md cursor-pointer text-white transition duration-200 bg-[#2e6bbf] hover:bg-[#4a94d0]">
                         Apply Now
                     </button>
+                    <ReusableModal open={open} onClose={closeModal} title="Apply visa">
+                        <ContactForm
+  buttonText="Apply Now"
+  messageFieldName="location"
+  messageLabel="Location"
+  messagePlaceholder="Enter your location"
+  showCountrySelect={true} // ✅ Only here!
+/>
+                    </ReusableModal>
+
                 </div>
             </div>
 

@@ -67,7 +67,7 @@ const SingleDestination = ({ dest }) => {
                             buttonText="Send Query"
                             messageFieldName="location"
                             messageLabel="Location"
-                            messagePlaceholder="Enter your preferred location"
+                            messagePlaceholder="Enter your location"
                             destination={dest} // ✅ Pass the dest here
                         />
                     </ReusableModal>
