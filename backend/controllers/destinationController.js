@@ -96,6 +96,29 @@ export const getDestinationDetails = async (req, res) => {
     }
 }
 
+export const getDestinationById = async (req, res) => {
+    try {
+        const { id } = req.params; // Extract the destination ID from the request parameters
+
+        const destination = await Destination.findById(id); // Find the destination by ID
+
+        if (!destination) {
+            return res.status(404).json({ message: 'Destination not found' }); // If not found, return 404
+        }
+
+        res.status(200).json({
+            message: 'Destination fetched successfully',
+            destination
+        });
+    } catch (error) {
+        console.error('Error fetching destination:', error);
+        res.status(500).json({
+            message: 'Internal server error',
+            error: error.message
+        });
+    }
+}
+
 export const createDestination = async (req, res) => {
     try {
         const {
