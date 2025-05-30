@@ -16,4 +16,3 @@ export const visaProcessStepsData = [
     { icon: img5, step:'Get Visa Approval'  },
 
 ]
-export default visaProcessStepsData;

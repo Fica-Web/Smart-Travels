@@ -7,25 +7,25 @@ import img3 from '../../../../assets/image/booking/flight/imageSection/Date.png'
 
 
 const ImageSection = () => {
-    const handleQuerySubmit = ( {formData}) => {
-      console.log("Received from child:", formData);
-  
-};
+  const handleQuerySubmit = ({ formData }) => {
+    console.log("Received from child:", formData);
 
-    return (
-        <div className="relative w-full inline-block mt-10 overflow-hidden ">
-            {/* Image */}
-            <img src={Img} alt="" className="w-full h-auto rounded-3xl " />
+  };
 
-            {/* Top-left text (inside image) */}
-            {/* <div className="absolute top-30 left-10 max-w-xs text-secondary-blue font-extrabold text-[48px] leading-[60px] tracking-[0.02em] capitalize z-10">
+  return (
+    <div className="relative w-full inline-block mt-10 overflow-hidden ">
+      {/* Image */}
+      <img src={Img} alt="" className="w-full h-auto rounded-3xl " />
+
+      {/* Top-left text (inside image) */}
+      {/* <div className="absolute top-30 left-10 max-w-xs text-secondary-blue font-extrabold text-[48px] leading-[60px] tracking-[0.02em] capitalize z-10">
   Are you ready for take off
 </div> */}
-            {/* Bottom box inside image */}
-            <BottomOverlayBox onSubmit={handleQuerySubmit}/>
-        </div>
+      {/* Bottom box inside image */}
+      <BottomOverlayBox onSubmit={handleQuerySubmit} />
+    </div>
 
-    )
+  )
 }
 
 export default ImageSection
@@ -40,8 +40,8 @@ const fields = [
   { label: "Date", placeholder: "Choose your dates", icon: img3, type: "date", name: "date" },
 ];
 
-const BottomOverlayBox = ( {onSubmit}) => {
- const [formData, setFormData] = useState({
+const BottomOverlayBox = ({ onSubmit }) => {
+  const [formData, setFormData] = useState({
     from: '',
     to: '',
     date: '',
@@ -55,26 +55,26 @@ const BottomOverlayBox = ( {onSubmit}) => {
     }));
   };
 
-const handleSubmit = () => {
-  console.log("Form submitted:", formData);
+  const handleSubmit = () => {
+    console.log("Form submitted:", formData);
 
-  if (onSubmit) {
-    onSubmit(formData); // ✅ pass data to parent
-  }
+    if (onSubmit) {
+      onSubmit(formData); // ✅ pass data to parent
+    }
 
-  // Clear the form
-  setFormData({
-    from: '',
-    to: '',
-    date: '',
-  });
-};
+    // Clear the form
+    setFormData({
+      from: '',
+      to: '',
+      date: '',
+    });
+  };
 
 
 
 
   return (
-    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white/30 border border-white/20 backdrop-blur-[20px] shadow-[inset_0px_2px_6px_0px_#0000001A] py-4 rounded-2xl z-10 w-full max-w-5xl flex flex-wrap justify-center items-center gap-20">
+    <div className="absolute md:bottom-8 left-1/2 -translate-x-1/2 md:bg-white/30 border md:border-white/20 md:backdrop-blur-[20px] md:shadow-[inset_0px_2px_6px_0px_#0000001A] py-4 rounded-2xl z-10 w-full max-w-5xl flex flex-wrap justify-center items-center md:gap-20">
       {fields.map(({ label, placeholder, icon, type, name }) => (
         <div
           key={name}
