@@ -17,6 +17,7 @@ import {
     Chip,
 } from "@mui/material";
 import axios from "axios";
+import ReusableModal from "../../components/reusable/ReusableModal";
 
 function InquiriesPage() {
     const [inquiries, setInquiries] = useState([]);
@@ -30,8 +31,9 @@ function InquiriesPage() {
 
     const fetchInquiries = async () => {
         try {
-            const res = await axios.get("http://localhost:8080/api/inquiries");
-            setInquiries(res.data);
+            const res = await axios.get("http://localhost:8080/api/inquiry");
+            console.log("Fetched inquiries:", res.data);
+            setInquiries(res.data.inquiries);
         } catch (err) {
             console.error("Failed to fetch inquiries", err);
         }
@@ -101,8 +103,11 @@ function InquiriesPage() {
                 </CardContent>
             </Card>
 
-            <Dialog open={dialogOpen} onClose={() => setDialogOpen(false)} maxWidth="sm" fullWidth>
-                <DialogTitle>Inquiry Details</DialogTitle>
+            <ReusableModal
+                open={dialogOpen}
+                onClose={() => setDialogOpen(false)}
+                title="Inquiry Details"
+            >
                 <DialogContent dividers>
                     {selected && (
                         <div>
@@ -145,7 +150,7 @@ function InquiriesPage() {
                         </div>
                     )}
                 </DialogContent>
-            </Dialog>
+            </ReusableModal>
         </div>
     );
 }
