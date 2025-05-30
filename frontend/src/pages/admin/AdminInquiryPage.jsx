@@ -17,6 +17,7 @@ import {
     Chip,
 } from "@mui/material";
 import axios from "axios";
+import { fetchInquiriesApi } from "../../services/api/inquiryApi";
 import ReusableModal from "../../components/reusable/ReusableModal";
 
 function InquiriesPage() {
@@ -30,12 +31,12 @@ function InquiriesPage() {
     }, []);
 
     const fetchInquiries = async () => {
-        try {
-            const res = await axios.get("http://localhost:8080/api/inquiry");
-            console.log("Fetched inquiries:", res.data);
-            setInquiries(res.data.inquiries);
-        } catch (err) {
-            console.error("Failed to fetch inquiries", err);
+        const response = await fetchInquiriesApi();
+            console.log("Fetched inquiries:", response);
+        if (response.success) {
+            setInquiries(response.data.inquiries);
+        } else {
+            console.error("Error fetching inquiries:", response.message);
         }
     };
 
