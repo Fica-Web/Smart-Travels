@@ -81,7 +81,7 @@ export const getAllInquiries = async (req, res) => {
   try {
     const inquiries = await Inquiry.find().sort({ createdAt: -1 });
 
-    res.status(200).json({ success: true, data: inquiries });
+    res.status(200).json({ success: true, inquiries });
   } catch (error) {
     console.error("Error fetching inquiries:", error);
     res.status(500).json({ success: false, message: "Server error while fetching inquiries", error: error.message });
