@@ -10,7 +10,6 @@ const SingleDestination = ({ dest }) => {
 
     const openModal = () => setOpen(true);
     const closeModal = () => setOpen(false);
-    console.log('destination',dest)
     return (
         <div
             className="bg-white shadow rounded-3xl overflow-hidden border border-t-0 border-gray-300 flex flex-col relative"
@@ -63,13 +62,14 @@ const SingleDestination = ({ dest }) => {
 
                     {/* Modal for sending query */}
                     <ReusableModal open={open} onClose={closeModal} title="Send Your Query">
-                   <ContactForm
-        buttonText="Send Query"
-        messageFieldName="location"
-        messageLabel="Location"
-        messagePlaceholder="Enter your preferred location"
-        destination={dest} // ✅ Pass the dest here
-    />
+                        <ContactForm
+                            title="Send a Query"
+                            buttonText="Send Query"
+                            messageFieldName="location"
+                            messageLabel="Location"
+                            messagePlaceholder="Enter your location"
+                            destination={dest} // ✅ Pass the dest here
+                        />
                     </ReusableModal>
                 </div>
             </div>
