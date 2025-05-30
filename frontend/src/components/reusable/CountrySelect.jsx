@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import fallbackCountries from '../../data/fallbackCoutries';
 
-const CountrySelect = ({ value, onChange }) => {
+const CountrySelect = ({ value, onChange ,variant, placeholder = "Select a country..."}) => {
     const [options, setOptions] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -61,6 +61,8 @@ const CountrySelect = ({ value, onChange }) => {
         </div>
     );
 
+    
+
     const customOption = (props) => {
         const { data, innerRef, innerProps } = props;
         return (
@@ -73,16 +75,66 @@ const CountrySelect = ({ value, onChange }) => {
         );
     };
 
+     const customStyles = {
+  control: (provided, state) => ({
+    ...provided,
+    backgroundColor: 'bg-light-blue',
+    color: 'text-title-blue',
+    borderRadius: '0.75rem',
+    borderColor: state.isFocused ? '#3B82F6' : '#000',
+    boxShadow: state.isFocused ? '0 0 0 1px #3B82F6' : 'none',
+    minHeight: '2.5rem',
+    height: '2.5rem',
+    padding: '0 0.5rem',
+    '&:hover': {
+      borderColor: '#3B82F6',
+    },
+  }),
+  valueContainer: (provided) => ({
+    ...provided,
+    padding: '0',
+    height: '2.5rem',
+    display: 'flex',
+    alignItems: 'center',
+  }),
+  indicatorsContainer: (provided) => ({
+    ...provided,
+    height: '2.5rem',
+  }),
+  input: (provided) => ({
+    ...provided,
+    margin: 0,
+    padding: 0,
+  }),
+  placeholder: (provided) => ({
+    ...provided,
+    color: '#6B7280',
+    fontSize: '0.875rem',
+  }),
+  singleValue: (provided) => ({
+    ...provided,
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+  }),
+  menu: (provided) => ({
+    ...provided,
+    zIndex: 20,
+  }),
+};
+
+
     return (
         <div className="w-full">
-            <label className="block text-sm font-medium mb-1">Country</label>
+            <label className="block text-secondary-blue mb-1">Country</label>
             <Select
                 isLoading={loading}
                 options={options}
                 value={options.find(option => option.value === value) || null}
                 onChange={(selected) => onChange(selected.value)}
-                placeholder="Select a country..."
+                placeholder={placeholder}
                 components={{ SingleValue: customSingleValue, Option: customOption }}
+                styles={variant === 'visa' ? customStyles : undefined}
             />
         </div>
     );

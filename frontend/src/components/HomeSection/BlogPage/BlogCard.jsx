@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BsDot } from 'react-icons/bs';
 import { ArrowUpRight } from 'lucide-react';
+import { FiCalendar, FiUser } from 'react-icons/fi';
 
 const BlogCard = ({ blog, isHomepage }) => {
   return (
@@ -39,20 +40,27 @@ const BlogCard = ({ blog, isHomepage }) => {
       </p>
     )}
 
-    <div className="flex items-center text-sm sm:text-base text-secondary-blue/80 pt-2">
-      <span className="flex items-center space-x-1">
-        <span>
-          <strong>Date:</strong>{' '}
-          {new Date(blog.createdAt).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}
-        </span>
-        <BsDot className="text-2xl text-secondary-blue" />
-        <span>{blog.author}</span>
+ <div className="flex items-center text-sm sm:text-base text-secondary-blue/80 pt-2">
+  <span className="flex items-center space-x-1">
+    <span className="flex items-center gap-x-2">
+      <FiCalendar className="text-base " />
+      <span >
+        {new Date(blog.createdAt).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })}
       </span>
-    </div>
+    </span>
+
+    <BsDot className="text-2xl text-secondary-blue" />
+
+    <span className="flex items-center gap-x-2">
+      <FiUser className="text-base" />
+      <span>{blog.author}</span>
+    </span>
+  </span>
+</div>
   </div>
 </div>
 
