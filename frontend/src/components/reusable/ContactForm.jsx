@@ -101,19 +101,19 @@ const ContactForm = ({
     return (
         <form
             onSubmit={handleSubmit}
-            className='flex flex-col gap-4 text-title-blue bg-light-blue p-6 lg:p-10 rounded-3xl shadow-md lg:max-w-lg w-full'
+            className='flex flex-col gap-4 text-title-blue bg-light-blue p-6 lg:p-10 rounded-3xl  lg:max-w-lg w-full'
         >
 
 
             <InputField label='Name' name='name' type='text' placeholder='Enter your name' value={formData.name} onChange={handleChange} error={errors.name} />
             <InputField label='Email' name='email' type='email' placeholder='Enter your email' value={formData.email} onChange={handleChange} error={errors.email} />
             <InputField label='Phone Number' name='phone' type='tel' placeholder='Enter your phone number' value={formData.phone} onChange={handleChange} error={errors.phone} />
-            <InputField label={messageLabel} name={messageFieldName} type='textarea' placeholder={messagePlaceholder} value={formData[messageFieldName]} onChange={handleChange} error={errors[messageFieldName]} height='small' />
-            {showCountrySelect && (
+              {showCountrySelect && (
                 <div>
-                    <CountrySelect value={selectedCountry} onChange={setSelectedCountry} />
+                    <CountrySelect value={selectedCountry} onChange={setSelectedCountry} variant="visa" placeholder="Enter your preferred location"/>
                 </div>
             )}
+            <InputField label={messageLabel} name={messageFieldName}  placeholder={messagePlaceholder} value={formData[messageFieldName]} type={messageFieldName === 'location' ? 'text' : 'textarea'} onChange={handleChange} error={errors[messageFieldName]} height='small' />
 
             <ReusableSubmitButton text={buttonText} loadingText='Submitting...' loading={loading} />
         </form>

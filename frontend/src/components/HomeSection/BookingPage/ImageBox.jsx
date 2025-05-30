@@ -24,14 +24,14 @@ const ImageBox = () => {
                         className="w-auto md:w-[153px] px-4 py-2 rounded-md cursor-pointer text-white transition duration-200 bg-[#2e6bbf] hover:bg-[#4a94d0]">
                         Apply Now
                     </button>
-                    <ReusableModal open={open} onClose={closeModal} title="Apply visa">
+                    <ReusableModal open={open} onClose={closeModal} title="Apply for Visa">
                         <ContactForm
-  buttonText="Apply Now"
-  messageFieldName="location"
-  messageLabel="Location"
-  messagePlaceholder="Enter your location"
-  showCountrySelect={true} // ✅ Only here!
-/>
+                            buttonText="Apply Now"
+                            messageFieldName="location"
+                            messageLabel="Location"
+                            messagePlaceholder="Enter your location"
+                            showCountrySelect={true} // ✅ Only here!
+                        />
                     </ReusableModal>
 
                 </div>

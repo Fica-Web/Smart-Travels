@@ -20,7 +20,7 @@ const BlogDetailsHero = ({ blog }) => {
             </h1>
             </div>
             
-            <div className='gap-y-1'>
+            <div className='flex justify-start gap-x-5'>
                <span className="flex items-center space-x-1">
               <span className="flex items-center gap-x-2 text-white">
                 <FiCalendar className="text-base" />
