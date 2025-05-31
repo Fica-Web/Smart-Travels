@@ -1,9 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 
-
-
-const BottomOverlayBox = ({ onSubmit, fields }) => {
+const BottomOverlayBox = ({ onSubmit, fields,maxWidth }) => {
   const initialFormData = fields.reduce((acc, field) => {
     acc[field.name] = '';
     return acc;
@@ -18,19 +16,22 @@ const BottomOverlayBox = ({ onSubmit, fields }) => {
 
   const handleSubmit = () => {
     console.log("Form submitted:", formData);
-    onSubmit?.(formData);
+    onSubmit?.({formData});
     setFormData(initialFormData);
   };
 
   return (
-    <div className="w-full md:max-w-2xl lg:max-w-5xl 
-      grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 md:items-center md:justify-items-center lg:flex 
-      justify-center items-center gap-4 md:gap-x-4 md:gap-y-3 lg:gap-4 
-      py-4 md:py-2 lg:py-4 rounded-2xl z-10 
-      md:absolute md:bottom-1 lg:bottom-10 md:left-1/2 md:-translate-x-1/2 
-      md:bg-white/30 md:border md:border-white/20 md:backdrop-blur-[20px] md:shadow-[inset_0px_2px_6px_0px_#0000001A] 
-      bg-white"
-    >
+ <div
+  className={`w-full ${maxWidth ?? 'md:max-w-2xl lg:max-w-5xl'} 
+    grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 md:items-center md:justify-items-center lg:flex 
+    justify-center items-center gap-4 md:gap-x-4 md:gap-y-3 lg:gap-4 
+    py-4 md:py-2 lg:py-4 rounded-2xl z-10 
+    md:absolute md:bottom-1 lg:bottom-10 md:left-1/2 md:-translate-x-1/2 
+    md:bg-white/30 md:border md:border-white/20 md:backdrop-blur-[20px] md:shadow-[inset_0px_2px_6px_0px_#0000001A] 
+    bg-white`}
+>
+
+
       {fields.map(({ label, placeholder, icon, type, name }, index) => (
         <div
           key={name}

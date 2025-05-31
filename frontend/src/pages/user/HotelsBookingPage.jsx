@@ -1,8 +1,12 @@
 import React from 'react'
+import ImageSection from '../../components/HomeSection/BookingPage/Hotelpage/ImageSection'
 
 const HotelsBookingPage = () => {
   return (
-    <div>HotelsBookingPage</div>
+    <div>
+      <ImageSection />
+
+    </div>
   )
 }
 
