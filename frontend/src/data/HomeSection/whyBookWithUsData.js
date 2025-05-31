@@ -9,7 +9,7 @@ import img4 from '../../assets/image/booking/flight/whybookwithus/icon4.png'
 
 
 export const whyBookWithUsData = [
-    { icon: img1, step:'Best Airfare Deal'  },
+    { icon: img1, step:'Best Airfare\nDeal'  },
     { icon: img2, step:'24/7 Customer Support'  },
     { icon: img3, step:'Flexible Booking Options '  },
     { icon: img4, step:'Trusted by Thousands'  },
