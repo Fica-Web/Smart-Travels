@@ -3,7 +3,8 @@ const router = express.Router();
 import {
     createInquiry,
     getAllInquiries,
-    getInquiryById
+    getInquiryById,
+    updateEnquiryStatus,
 } from '../controllers/inquiryController.js';
 import verifyAdmin from '../middlewares/adminAuth.js';
 
@@ -13,5 +14,6 @@ router.use(verifyAdmin); // Apply admin verification middleware to all routes be
 
 router.get('/', getAllInquiries);
 router.get('/:id', getInquiryById);
+router.put('/:id', updateEnquiryStatus);
 
 export default router;

@@ -130,3 +130,29 @@ export const getInquiryById = async (req, res) => {
         res.status(500).json({ success: false, message: "Server error", error: error.message });
     }
 };
+
+export const updateEnquiryStatus = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { status } = req.body;
+
+        if (!status) {
+            return res.status(400).json({ success: false, message: "Status is required" });
+        }
+
+        const updatedInquiry = await Inquiry.findByIdAndUpdate(
+            id,
+            { status },
+            { new: true }
+        );
+
+        if (!updatedInquiry) {
+            return res.status(404).json({ success: false, message: "Inquiry not found" });
+        }
+
+        res.status(200).json({ success: true, data: updatedInquiry, message: "Inquiry status updated successfully" });
+    } catch (error) {
+        console.error("Error updating inquiry status:", error);
+        res.status(500).json({ success: false, message: "Server error", error: error.message });
+    }
+}
