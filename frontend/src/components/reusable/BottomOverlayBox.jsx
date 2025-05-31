@@ -27,7 +27,7 @@ const BottomOverlayBox = ({ onSubmit, fields }) => {
       grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 md:items-center md:justify-items-center lg:flex 
       justify-center items-center gap-4 md:gap-x-4 md:gap-y-3 lg:gap-4 
       py-4 md:py-2 lg:py-4 rounded-2xl z-10 
-      md:absolute md:bottom-1 lg:bottom-8 md:left-1/2 md:-translate-x-1/2 
+      md:absolute md:bottom-1 lg:bottom-10 md:left-1/2 md:-translate-x-1/2 
       md:bg-white/30 md:border md:border-white/20 md:backdrop-blur-[20px] md:shadow-[inset_0px_2px_6px_0px_#0000001A] 
       bg-white"
     >
