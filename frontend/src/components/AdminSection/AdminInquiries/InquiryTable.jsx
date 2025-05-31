@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { fetchInquiriesApi } from "../../../services/api/inquiryApi";
 import ReusableTag from "../../reusable/ReusableTag";
+import StatusDropdown from "./StatusDropdown";
 import ActionButton from "../../reusable/ActionButton";
 
 const InquiryTable = ({ onSelect }) => {
@@ -61,6 +62,19 @@ const InquiryTable = ({ onSelect }) => {
             valueGetter: (params) => {
                 return new Date(params).toLocaleDateString("en-IN");
             }
+        },
+        {
+            field: "status",
+            headerName: "Status",
+            width: 140,
+            // sortable: false,
+            // filterable: false,
+            renderCell: (params) => (
+                <StatusDropdown
+                    value={params.row.status}
+                    onChange={(newStatus) => onStatusChange(params.row._id, newStatus)}
+                />
+            ),
         },
         {
             field: "action",
