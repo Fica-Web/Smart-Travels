@@ -78,25 +78,55 @@ export const createInquiry = async (req, res) => {
 };
 
 export const getAllInquiries = async (req, res) => {
-  try {
-    const inquiries = await Inquiry.find().sort({ createdAt: -1 });
+    try {
+        const page = parseInt(req.query.page) || 0;
+        const limit = parseInt(req.query.limit) || 10;
+        const search = req.query.search || "";
+        const sortBy = req.query.sortBy || "createdAt";
+        const order = req.query.order === "asc" ? 1 : -1;
 
-    res.status(200).json({ success: true, inquiries });
-  } catch (error) {
-    console.error("Error fetching inquiries:", error);
-    res.status(500).json({ success: false, message: "Server error while fetching inquiries", error: error.message });
-  }
+        const query = {
+            $or: [
+                { name: { $regex: search, $options: "i" } },
+                { phone: { $regex: search, $options: "i" } },
+                { email: { $regex: search, $options: "i" } },
+                { serviceType: { $regex: search, $options: "i" } },
+            ],
+        };
+
+        const totalCount = await Inquiry.countDocuments(query);
+
+        const inquiries = await Inquiry.find(query)
+            .sort({ [sortBy]: order })
+            .skip(page * limit)
+            .limit(limit);
+
+        res.status(200).json({
+            success: true,
+            inquiries,
+            totalCount,
+            currentPage: page,
+            totalPages: Math.ceil(totalCount / limit),
+        });
+    } catch (error) {
+        console.error("Error fetching inquiries:", error);
+        res.status(500).json({
+            success: false,
+            message: "Server error while fetching inquiries",
+            error: error.message,
+        });
+    }
 };
 
 export const getInquiryById = async (req, res) => {
-  try {
-    const inquiry = await Inquiry.findById(req.params.id);
-    if (!inquiry) {
-      return res.status(404).json({ success: false, message: "Inquiry not found" });
+    try {
+        const inquiry = await Inquiry.findById(req.params.id);
+        if (!inquiry) {
+            return res.status(404).json({ success: false, message: "Inquiry not found" });
+        }
+        res.status(200).json({ success: true, data: inquiry });
+    } catch (error) {
+        console.error("Error fetching inquiry:", error);
+        res.status(500).json({ success: false, message: "Server error", error: error.message });
     }
-    res.status(200).json({ success: true, data: inquiry });
-  } catch (error) {
-    console.error("Error fetching inquiry:", error);
-    res.status(500).json({ success: false, message: "Server error", error: error.message });
-  }
 };
