@@ -13,6 +13,6 @@ export const visaProcessStepsData = [
     { icon: img2, step:'Get Contacted by Our Visa Expert'  },
     { icon: img3, step:'Submit Required Documents'  },
     { icon: img4, step:'Verifying Documents & Visa Processing'  },
-    { icon: img5, step:'Get Visa Approval'  },
+    { icon: img5, step:'Get Visa\nApproval'  },
 
 ]
