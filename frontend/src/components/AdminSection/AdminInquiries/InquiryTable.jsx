@@ -45,33 +45,34 @@ const InquiryTable = ({ onSelect }) => {
     }, [page, pageSize, sortModel, searchDebounce]);
 
     const columns = [
-    { field: "name", headerName: "Name", flex: 1 },
-    { field: "email", headerName: "Email", flex: 1.3 },
-    { field: "phone", headerName: "Phone", width: 150 },
-    {
-        field: "serviceType",
-        headerName: "Service",
-        width: 140,
-        renderCell: (params) => <ReusableTag label={params.value} />,
-    },
-    {
-        field: "createdAt",
-        headerName: "Date",
-        width: 160,
-        valueGetter: (params) =>
-            new Date(params.value).toLocaleDateString("en-IN"),
-    },
-    {
-        field: "action",
-        headerName: "Action",
-        width: 120,
-        sortable: false,
-        filterable: false,
-        renderCell: (params) => (
-            <ActionButton onClick={() => handleView(params.row)} />
-        ),
-    },
-];
+        { field: "name", headerName: "Name", flex: 0.9 },
+        { field: "email", headerName: "Email", flex: 1.3 },
+        { field: "phone", headerName: "Phone", flex: 0.8 },
+        {
+            field: "serviceType",
+            headerName: "Service",
+            width: 140,
+            renderCell: (params) => <ReusableTag label={params.value} />,
+        },
+        {
+            field: "createdAt",
+            headerName: "Date",
+            width: 160,
+            valueGetter: (params) => {
+                return new Date(params).toLocaleDateString("en-IN");
+            }
+        },
+        {
+            field: "action",
+            headerName: "Action",
+            width: 120,
+            sortable: false,
+            filterable: false,
+            renderCell: (params) => (
+                <ActionButton onClick={() => onSelect(params.row)} />
+            ),
+        },
+    ];
 
     return (
         <div style={{ height: 600, width: "100%" }}>
