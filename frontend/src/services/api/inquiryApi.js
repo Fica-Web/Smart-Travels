@@ -1,8 +1,16 @@
 import inquiryInstance from "../axios_instances/inquiryInstance";
 
-export const fetchInquiriesApi = async () => {
+export const fetchInquiriesApi = async ({
+    page = 0,
+    limit = 10,
+    search = "",
+    sortBy = "createdAt",
+    order = "desc",
+} = {}) => {
     try {
-        const response = await inquiryInstance.get("/");
+        const response = await inquiryInstance.get("/", {
+            params: { page, limit, search, sortBy, order },
+        });
         return { success: true, data: response.data };
     } catch (error) {
         console.error("Error fetching inquiries:", error);
@@ -11,4 +19,4 @@ export const fetchInquiriesApi = async () => {
             message: error.response?.data?.message || error.message || "Unknown error",
         };
     }
-}
+};
