@@ -9,7 +9,7 @@ const tagColors = {
 
 const ReusableTag = ({ label }) => {
     const colorClass = tagColors[label] || tagColors["Other"];
-    console.log(`Tag color for ${label}: ${colorClass}`);
+    
     return (
         <span className={`px-3 py-1 text-sm rounded-full font-medium ${colorClass}`}>
             {label}

@@ -13,8 +13,8 @@ import {
 } from '../controllers/destinationController.js';
 
 router.get('/is-published', getPublishedDestinations);
-router.get('/:id', getDestinationById); // Fetch by ID
-router.get('/:slug', getDestinationDetails); // Fetch by slug
+router.get('/id/:id', getDestinationById); // Fetch by ID
+router.get('/slug/:slug', getDestinationDetails); // Fetch by slug
 
 router.use(verifyAdmin); // Ensure admin authentication for the following routes
 
