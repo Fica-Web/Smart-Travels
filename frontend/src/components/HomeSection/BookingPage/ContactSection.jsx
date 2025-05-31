@@ -1,10 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { getSettings } from '../../../services/api/settingsApi';
-import ContactForm from '../../reusable/ContactForm'
-import { MdLocalPhone } from "react-icons/md";
-import { MdEmail } from "react-icons/md";
 import { toast } from 'react-toastify';
+import ContactForm from '../../reusable/ContactForm'
 import HelpBox from '../../reusable/HelpBox';
 
 
