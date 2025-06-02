@@ -101,7 +101,7 @@ const ContactForm = ({
     return (
         <form
             onSubmit={handleSubmit}
-            className='flex flex-col gap-4 text-title-blue bg-light-blue p-6 lg:p-10 rounded-3xl  lg:max-w-lg w-full'
+            className='flex flex-col gap-4 text-title-blue bg-light-blue p-6 lg:p-13 rounded-3xl  lg:max-w-lg w-full'
         >
 
 
@@ -113,9 +113,12 @@ const ContactForm = ({
                     <CountrySelect value={selectedCountry} onChange={setSelectedCountry} variant="visa" placeholder="Enter your preferred location"/>
                 </div>
             )}
-            <InputField label={messageLabel} name={messageFieldName}  placeholder={messagePlaceholder} value={formData[messageFieldName]} type={messageFieldName === 'location' ? 'text' : 'textarea'} onChange={handleChange} error={errors[messageFieldName]} height='small' />
+            <InputField label={messageLabel} name={messageFieldName}  placeholder={messagePlaceholder} value={formData[messageFieldName]} type={messageFieldName === 'location' || messageFieldName === 'policyType' ? 'text' : 'textarea'} onChange={handleChange} error={errors[messageFieldName]} height='small' />
 
-            <ReusableSubmitButton text={buttonText} loadingText='Submitting...' loading={loading} />
+            <div className="mt-4">
+  <ReusableSubmitButton text={buttonText} loadingText='Submitting...' loading={loading} />
+</div>
+
         </form>
     );
 };
