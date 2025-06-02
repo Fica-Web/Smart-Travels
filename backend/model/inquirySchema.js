@@ -27,8 +27,8 @@ const inquirySchema = new mongoose.Schema(
             from: String,
             to: String,
             departureDate: Date,
-            returnDate: Date,
-            passengers: Number,
+            // returnDate: Date,
+            // passengers: Number,
         },
         hotelDetails: {
             location: String,
@@ -39,7 +39,7 @@ const inquirySchema = new mongoose.Schema(
         visaDetails: {
             nationality: String,
             destinationCountry: String,
-            travelDate: Date,
+            // travelDate: Date,
         },
         destinationDetails: {
             id: {

@@ -84,7 +84,7 @@ const InquiryTable = ({ onSelect }) => {
         {
             field: "status",
             headerName: "Status",
-            width: 140,
+            width: 150,
             // sortable: false,
             // filterable: false,
             renderCell: (params) => (
