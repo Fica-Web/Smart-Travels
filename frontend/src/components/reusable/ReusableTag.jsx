@@ -1,9 +1,9 @@
 const tagColors = {
     "visa": "bg-blue-100 text-blue-700",
-    "Flight": "bg-green-100 text-green-700",
-    "Hotel": "bg-yellow-100 text-yellow-800",
-    "Insurance": "bg-purple-100 text-purple-700",
-    "Package": "bg-pink-100 text-pink-700",
+    "flight": "bg-green-100 text-green-700",
+    "hotel": "bg-yellow-100 text-yellow-800",
+    "insurance": "bg-purple-100 text-purple-700",
+    "package": "bg-pink-100 text-pink-700",
     "Other": "bg-gray-100 text-gray-700",
 };
 

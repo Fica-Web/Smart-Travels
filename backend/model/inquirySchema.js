@@ -31,6 +31,7 @@ const inquirySchema = new mongoose.Schema(
             // passengers: Number,
         },
         hotelDetails: {
+            country: String,
             location: String,
             checkInDate: Date,
             checkOutDate: Date,
