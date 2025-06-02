@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { fetchInquiriesApi } from "../../../services/api/inquiryApi";
+import { fetchInquiriesApi, updateInquiryStatusApi } from "../../../services/api/inquiryApi";
 import ReusableTag from "../../reusable/ReusableTag";
+import StatusDropdown from "./StatusDropdown";
 import ActionButton from "../../reusable/ActionButton";
 
 const InquiryTable = ({ onSelect }) => {
@@ -44,6 +45,24 @@ const InquiryTable = ({ onSelect }) => {
         fetchInquiries();
     }, [page, pageSize, sortModel, searchDebounce]);
 
+    const onStatusChange = async (inquiryId, newStatus) => {
+        try {
+            const response = await updateInquiryStatusApi(inquiryId, newStatus);
+            if (response.success) {
+                // Update the local state to reflect new status
+                setInquiries((prev) =>
+                    prev.map((item) =>
+                        item._id === inquiryId ? { ...item, status: newStatus } : item
+                    )
+                );
+            } else {
+                console.error("Error updating status:", response.message);
+            }
+        } catch (error) {
+            console.error("Error updating status:", error);
+        }
+    };
+
     const columns = [
         { field: "name", headerName: "Name", flex: 0.9 },
         { field: "email", headerName: "Email", flex: 1.3 },
@@ -61,6 +80,19 @@ const InquiryTable = ({ onSelect }) => {
             valueGetter: (params) => {
                 return new Date(params).toLocaleDateString("en-IN");
             }
+        },
+        {
+            field: "status",
+            headerName: "Status",
+            width: 140,
+            // sortable: false,
+            // filterable: false,
+            renderCell: (params) => (
+                <StatusDropdown
+                    value={params.row.status}
+                    onChange={(newStatus) => onStatusChange(params.row._id, newStatus)}
+                />
+            ),
         },
         {
             field: "action",

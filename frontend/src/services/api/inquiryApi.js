@@ -33,3 +33,16 @@ export const createInquiryApi = async (inquiryData) => {
         };
     }
 }
+
+export const updateInquiryStatusApi = async (inquiryId, status) => {
+    try {
+        const response = await inquiryInstance.put(`/${inquiryId}`, { status });
+        return { success: true, data: response.data };
+    } catch (error) {
+        console.error("Error updating inquiry status:", error);
+        return {
+            success: false,
+            message: error.response?.data?.message || error.message || "Unknown error",
+        };
+    }
+}
