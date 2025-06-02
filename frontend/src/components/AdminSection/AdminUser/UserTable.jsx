@@ -3,10 +3,9 @@ import { DataGrid } from "@mui/x-data-grid";
 import { getAllUsersApi } from "../../../services/api/userApi";
 
 const columns = [
-    { field: "fullName", headerName: "Full Name", flex: 1 },
     { field: "username", headerName: "Username", flex: 1 },
     { field: "email", headerName: "Email", flex: 1.5 },
-    { field: "phone", headerName: "Phone", width: 130 },
+    { field: "phone", headerName: "Phone", flex: 1 },
     {
         field: "isVerified",
         headerName: "Verified",
@@ -91,6 +90,7 @@ const UserTable = () => {
                 onPageSizeChange={(newSize) => setPageSize(newSize)}
                 onSortModelChange={(model) => setSortModel(model)}
                 getRowId={(row) => row._id}
+                pageSizeOptions={[10, 25, 50, 100]}
             />
         </div>
     );
