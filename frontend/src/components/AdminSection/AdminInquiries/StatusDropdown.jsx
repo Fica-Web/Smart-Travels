@@ -3,6 +3,8 @@ import { MenuItem, Select } from "@mui/material";
 const statusOptions = ['new', 'contacted', 'converted', 'ignored'];
 
 const StatusDropdown = ({ value, onChange }) => {
+    
+
     return (
         <Select
             size="small"
