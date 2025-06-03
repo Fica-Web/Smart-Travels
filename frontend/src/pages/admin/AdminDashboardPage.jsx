@@ -1,16 +1,8 @@
-import {
-  Box,
-  Typography,
-  Grid,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-} from '@mui/material';
+import { useState, useEffect } from 'react';
+import { Box, Typography, Grid } from '@mui/material';
 import { MdBarChart, MdMap, MdArticle } from "react-icons/md";
 import StatCard from '../../components/AdminSection/AdminDashboard/StatCard';
+import InquiriesTable from '../../components/AdminSection/AdminDashboard/LatestInquiries';
 import ChartPlaceholder from '../../components/AdminSection/AdminDashboard/ChartPlaceholder';
 import QuickActions from '../../components/AdminSection/AdminDashboard/QuickActions';
 
@@ -41,31 +33,7 @@ const AdminDashboardPage = () => {
       </Grid>
 
       {/* Recent Inquiries */}
-      {/* <Box mb={4}>
-        <Typography variant="h6" gutterBottom color="secondary">Recent Inquiries</Typography>
-        <Paper elevation={2}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell><strong>Name</strong></TableCell>
-                <TableCell><strong>Email</strong></TableCell>
-                <TableCell><strong>Date</strong></TableCell>
-                <TableCell><strong>Message</strong></TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {recentInquiries.map((inq, idx) => (
-                <TableRow key={idx}>
-                  <TableCell>{inq.name}</TableCell>
-                  <TableCell>{inq.email}</TableCell>
-                  <TableCell>{inq.date}</TableCell>
-                  <TableCell>{inq.message}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </Paper>
-      </Box> */}
+      <InquiriesTable inquiries={recentInquiries} />
 
       {/* Chart Placeholder */}
       <ChartPlaceholder />
