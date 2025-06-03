@@ -23,13 +23,7 @@ const userSchema = new mongoose.Schema(
             type: Boolean, 
             default: false 
         },
-        fullName: { 
-            type: String 
-        },
-        dob: { 
-            type: Date 
-        },
-        nationality: { 
+        country: { 
             type: String 
         },
         address: {

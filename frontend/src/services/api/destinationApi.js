@@ -31,9 +31,22 @@ export const getAllDestinationsApi = async (page = 1, limit = 9) => {
     }
 }
 
+export const getDestinationByIdApi = async (id) => {
+    try {
+        const response = await destinationInstance.get(`/id/${id}`);
+        return { success: true, data: response.data };
+    } catch (error) {
+        console.error("Error fetching destination:", error);
+        return {
+            success: false,
+            message: error.response?.data?.message || error.message || "Unknown error",
+        };
+    }
+}
+
 export const getDestinationBySlugApi = async (slug) => {
     try {
-        const response = await destinationInstance.get(`/${slug}`);
+        const response = await destinationInstance.get(`/slug/${slug}`);
         return { success: true, data: response.data };
     } catch (error) {
         console.error("Error fetching destination:", error);

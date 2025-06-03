@@ -32,9 +32,8 @@ const BlogDetails = lazy(() => import('../pages/user/BlogDetailsPage'));
 const UserProfilePage = lazy(() => import('../pages/user/UserProfilePage'));
 const AdminDashboardPage = lazy(() => import('../pages/admin/AdminDashboardPage'));
 const AdminUsersPage = lazy(() => import('../pages/admin/AdminUsersPage'));
-const AdminServices = lazy(() => import('../pages/admin/AdminServices'));
+const AdminInquiryPage = lazy(() => import('../pages/admin/AdminInquiryPage'));
 const AdminBlogPage = lazy(() => import('../pages/admin/AdminBlogPage'));
-const AdminCarouselPage = lazy(() => import('../pages/admin/AdminCarouselPage'));
 const AdminSettingsPage = lazy(() => import('../pages/admin/AdminSettingsPage'));
 const AdminBlogFormPage = lazy(() => import('../pages/admin/AdminBlogFormPage'));
 const AdminBlogEditPage = lazy(() => import('../pages/admin/AdminBlogEditPage'));
@@ -190,8 +189,8 @@ const router = createBrowserRouter([
             element: withSuspense(AdminUsersPage),
           },
           {
-            path: 'services',
-            element: withSuspense(AdminServices),
+            path: 'inquiries',
+            element: withSuspense(AdminInquiryPage),
           },
           {
             path: 'destination',
@@ -226,10 +225,6 @@ const router = createBrowserRouter([
                 element: withSuspense(AdminBlogEditPage), // edit blog
               },
             ],
-          },
-          {
-            path: 'carousel',
-            element: withSuspense(AdminCarouselPage),
           },
           {
             path: 'settings',

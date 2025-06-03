@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import AdminDashboard from '../../components/AdminSection/AdminDashboard/AdminDashboard';
 
 const AdminDashboardPage = () => {
   return (
-    <div className='text-amber-900 text-end '>AdminDashboardPage</div>
+    <div>
+      <AdminDashboard />
+    </div>
   )
 }
 

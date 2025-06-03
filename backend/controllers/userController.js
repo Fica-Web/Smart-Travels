@@ -3,7 +3,6 @@ import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 import User from "../model/userSchema.js";
 import { sendEmail } from '../config/emailService.js';
-import { error } from 'console';
 
 const userSignup = async (req, res) => {
     try {
@@ -252,7 +251,7 @@ const submitMessage = async (req, res) => {
             return res.status(400).json({ error: "Name and phone are required" });
         }
 
-        const to = 'keralasummit@gmail.com';
+        const to = process.env.RECEIVER_EMAIL;
         const subject = destination
             ? `New travel enquiry for ${destination.title || destination.country}`
             : "New message from SmartTravels contact form";
