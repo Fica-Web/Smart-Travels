@@ -30,10 +30,10 @@ const adminLogoutApi = async () => {
     }
 }
 
-fetchDashboardDataApi = async () => {
+const fetchDashboardDataApi = async () => {
     try {
         const response = await adminInstance.get('/dashboard');
-        return { success: true, data: response.data };
+        return { success: true, data: response.data.dashboardData };
     } catch (error) {
         console.error("Error fetching dashboard Data:", error);
         return {
@@ -42,8 +42,10 @@ fetchDashboardDataApi = async () => {
         };
     }
 }
+
 export {
     adminLoginApi,
     isAdminProtectedApi,
     adminLogoutApi,
+    fetchDashboardDataApi,
 }

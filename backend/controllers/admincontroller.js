@@ -125,17 +125,32 @@ const fetchAdminDashboardData = async (req, res) => {
         const inquiriesCount = await Inquiry.countDocuments();
         const destinationsCount = await Destination.countDocuments();
         const blogsCount = await Blog.countDocuments();
-        const recentInquiries = await Inquiry.find().sort({ createdAt: -1 }).limit(5);
 
+        const recentInquiries = await Inquiry.find()
+            .sort({ createdAt: -1 })
+            .limit(5)
+            .select('name email message createdAt'); // only return necessary fields
+
+        res.status(200).json({
+            success: true,
+            dashboardData: {
+                stats: {
+                    inquiries: inquiriesCount,
+                    destinations: destinationsCount,
+                    blogs: blogsCount,
+                },
+                recentInquiries,
+            },
+        });
     } catch (error) {
         console.error('Error fetching admin dashboard data:', error);
         res.status(500).json({
+            success: false,
             message: 'Internal server error',
             error: error.message,
         });
-        
     }
-}
+};
 
 export {
     adminSignup,
