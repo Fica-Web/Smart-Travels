@@ -20,16 +20,13 @@ const VisaListing = () => {
 
 const VisaCard = ({ country, flag, processingTime }) => {
     const [open, setOpen] = useState(false);
-    const [visaMessage, setVisaMessage] = useState('');
 
     const openModal = () => {
-        setVisaMessage(`${country} - Processing Time: ${processingTime}`);
         setOpen(true);
     };
 
     const closeModal = () => {
         setOpen(false);
-        setVisaMessage('');
     };
 
     return (
@@ -57,7 +54,12 @@ const VisaCard = ({ country, flag, processingTime }) => {
                     messageFieldName="location"
                     messageLabel="Location"
                     messagePlaceholder="Enter your location"
-                    defaultMessage={visaMessage}
+                    defaultMessage={`${country} - Processing Time: ${processingTime}`}
+                    destination={{
+                        serviceType: 'visa',
+                        country: country,
+                        processingTime: processingTime
+                    }}
                 />
             </ReusableModal>
         </div>

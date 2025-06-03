@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { submitMessageApi } from '../../services/api/userApi'
+// import { submitMessageApi } from '../../services/api/userApi'
 import { createInquiryApi } from '../../services/api/inquiryApi'
 import { toast } from 'react-toastify';
 import ReusableSubmitButton from './ReusableSubmitButton';
@@ -70,20 +70,68 @@ const handleSubmit = async (e) => {
       return;
     }
 
+    // Base payload
     const payload = {
       name: formData.name,
       phone: formData.phone,
-      mail: formData.email,
-      serviceType: destination?.serviceType || '',
-      flightDetails: {
-        from: destination?.flyingFrom || '',
-        to: destination?.destination || '',
-        departureDate: destination?.date || '',
-      },
+      serviceType: destination?.serviceType || '', // or pass serviceType as prop
     };
 
-    // if (formData.email) payload.email = formData.email;
+    // Add common email if available
+    if (formData.email) payload.email = formData.email;
     if (showCountrySelect) payload.country = selectedCountry;
+
+    // Add service-type-specific data
+    switch (payload.serviceType) {
+      case 'flight':
+        payload.flightDetails = {
+          from: destination?.flyingFrom || '',
+          to: destination?.destination || '',
+          departureDate: destination?.date || '',
+        };
+        break;
+
+      case 'hotel':
+        payload.hotelDetails = {
+          location: destination?.location || '',
+          checkInDate: destination?.checkIn || '',
+          checkOutDate: destination?.checkOut || '',
+          guests: destination?.guests || '',
+        };
+        break;
+
+      case 'visa':
+  payload.visaDetails = {
+    nationality: selectedCountry || '',
+    destinationCountry: destination?.country || '',
+    processingTime: destination?.processingTime || '',
+    // intendedTravelDate can be added later if collected from form
+  };
+  break;
+
+
+      case 'destination':
+        payload.destinationDetails = {
+          location: destination?.location || '',
+          travelDate: destination?.travelDate || '',
+        };
+        break;
+
+      case 'insurance':
+        payload.insuranceDetails = {
+          type: destination?.insuranceType || '',
+          coverageStartDate: destination?.coverageStartDate || '',
+          coverageEndDate: destination?.coverageEndDate || '',
+        };
+        break;
+
+      default:
+        // fallback or generic message
+        if (!hideMessageField) {
+          payload.message = formData[messageFieldName];
+        }
+        break;
+    }
 
     console.log('Inquiry Payload:', payload);
 
@@ -103,6 +151,7 @@ const handleSubmit = async (e) => {
 
   setLoading(false);
 };
+
 
 
 
@@ -132,8 +181,7 @@ const handleSubmit = async (e) => {
 
             {/* <InputField label='Phone Number' name='phone' type='tel' placeholder='Enter your phone number' value={formData.phone} onChange={handleChange} error={errors.phone} /> */}
 
-            {showCountrySelect && (
-                <div>
+            
                     {showCountrySelect && (
                         <div>
                             <CountrySelect
@@ -145,8 +193,8 @@ const handleSubmit = async (e) => {
                         </div>
                     )}
 
-                </div>
-            )}
+                
+           
             {!hideMessageField && (
                 <InputField
                     label={messageLabel}
