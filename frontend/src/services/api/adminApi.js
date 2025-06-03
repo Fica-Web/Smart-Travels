@@ -30,7 +30,18 @@ const adminLogoutApi = async () => {
     }
 }
 
-
+fetchDashboardDataApi = async () => {
+    try {
+        const response = await adminInstance.get('/dashboard');
+        return { success: true, data: response.data };
+    } catch (error) {
+        console.error("Error fetching dashboard Data:", error);
+        return {
+            success: false,
+            message: error.response?.data?.message || error.message || "Unknown error",
+        };
+    }
+}
 export {
     adminLoginApi,
     isAdminProtectedApi,
