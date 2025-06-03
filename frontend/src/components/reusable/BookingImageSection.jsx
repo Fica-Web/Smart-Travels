@@ -2,7 +2,7 @@
 import React from 'react'
 import BottomOverlayBox from '../../components/reusable/BottomOverlayBox'
 
-const BookingImageSection = ({ backgroundImage, fields, onSubmit, maxWidth}) => {
+const BookingImageSection = ({ backgroundImage, fields, maxWidth}) => {
   return (
     <div className="relative w-full inline-block mt-10 overflow-hidden">
       {/* Background Image */}
@@ -10,7 +10,7 @@ const BookingImageSection = ({ backgroundImage, fields, onSubmit, maxWidth}) => 
 
       {/* Bottom Overlay Form */}
       <BottomOverlayBox
-        onSubmit={onSubmit}
+        
         fields={fields}
         maxWidth={maxWidth}
       />

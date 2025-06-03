@@ -26,6 +26,7 @@ export const createInquiryApi = async (inquiryData) => {
         const response = await inquiryInstance.post("/", inquiryData);
         return { success: true, data: response.data };
     } catch (error) {
+        console.error("Error creating inquiry:", error.response || error.message || error);
         console.error("Error creating inquiry:", error);
         return {
             success: false,

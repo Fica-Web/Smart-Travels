@@ -13,15 +13,12 @@ const ImageSection = () => {
     { label: "Date", placeholder: "Choose your dates", icon: img3, type: "date", name: "date" },
   ];
 
-  const handleQuerySubmit = ({ formData }) => {
-    console.log("Flight form data:", formData);
-  };
+  
 
   return (
     <BookingImageSection
       backgroundImage={Img}
       fields={flightFields}
-      onSubmit={handleQuerySubmit}
       maxWidth="max-w-5xl"
     />
   );

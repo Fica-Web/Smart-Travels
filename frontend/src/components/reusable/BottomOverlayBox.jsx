@@ -1,7 +1,13 @@
 import React from 'react'
 import { useState } from 'react';
+import ContactForm from './ContactForm';
+import ReusableModal from '../../components/reusable/ReusableModal';
 
-const BottomOverlayBox = ({ onSubmit, fields,maxWidth }) => {
+const BottomOverlayBox = ({  fields,maxWidth }) => {
+  const [open, setOpen] = useState(false);
+
+    const openModal = () => setOpen(true);
+    const closeModal = () => setOpen(false);
   const initialFormData = fields.reduce((acc, field) => {
     acc[field.name] = '';
     return acc;
@@ -14,11 +20,7 @@ const BottomOverlayBox = ({ onSubmit, fields,maxWidth }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = () => {
-    console.log("Form submitted:", formData);
-    onSubmit?.({formData});
-    setFormData(initialFormData);
-  };
+ console.log('form data',formData)
 
   return (
  <div
@@ -58,11 +60,27 @@ const BottomOverlayBox = ({ onSubmit, fields,maxWidth }) => {
       ))}
 
       <button
-        onClick={handleSubmit}
+        onClick={openModal}
         className="bg-[#4A94D0] text-white font-semibold px-9 md:px-5 lg:px-9 py-2 rounded-xl hover:bg-[#3B7DB1] transition w-full md:w-[190px] lg:w-auto"
       >
         Send Query
       </button>
+
+       <ReusableModal open={open} onClose={closeModal} title={`Apply for fight`}>
+                <ContactForm
+                    buttonText="Send Query"
+                   showCountrySelect = {true}
+                   countrySelectPlaceholder="Select your nationality"
+           hideMessageField={true}
+           
+                    destination={{
+      serviceType: 'flight',
+      flyingFrom: formData.from,
+      destination: formData.to,
+      date: formData.date,
+    }}
+                />
+            </ReusableModal>
     </div>
   );
 };

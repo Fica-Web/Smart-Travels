@@ -16,6 +16,14 @@ const MobileInput = ({ value, onChange, countryCode, onCountryCodeChange }) => {
                     }))
                     .sort((a, b) => a.name.localeCompare(b.name));
                 setCountries(countryData);
+
+                // ✅ Set default to +91 if not already set
+                if (!countryCode) {
+                    const india = countryData.find(c => c.code === '+91');
+                    if (india) {
+                        onCountryCodeChange(india.code);
+                    }
+                }
             } catch (error) {
                 console.error('Failed to fetch country codes:', error);
             }
@@ -24,11 +32,12 @@ const MobileInput = ({ value, onChange, countryCode, onCountryCodeChange }) => {
         fetchCountries();
     }, []);
 
+
     return (
         <div className="flex gap-2 items-center">
             {/* Country code selector */}
             <select
-                className="w-1/3 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-1/3 px-3 py-2 border border-secondary-blue rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={countryCode}
                 onChange={(e) => onCountryCodeChange(e.target.value)}
             >
@@ -43,7 +52,7 @@ const MobileInput = ({ value, onChange, countryCode, onCountryCodeChange }) => {
             <input
                 type="tel"
                 placeholder="Phone number"
-                className="w-2/3 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-2/3 px-4 py-2 border border-secondary-blue rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
             />
