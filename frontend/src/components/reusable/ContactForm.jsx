@@ -115,20 +115,24 @@ const handleSubmit = async (e) => {
   break;
 
 
-      case 'destination':
-        payload.destinationDetails = {
-          location: destination?.location || '',
-          travelDate: destination?.travelDate || '',
-        };
-        break;
+   case 'destination':
+    // ✅ Put your log here
+    console.log('destination?.destination?.id:', destination?.destination?.id);
+
+    payload.destinationDetails = {
+      destinationId: destination?.destination?._id || '',
+    };
+    break;
+
+  
+
+      
 
       case 'insurance':
-        payload.insuranceDetails = {
-          type: destination?.insuranceType || '',
-          coverageStartDate: destination?.coverageStartDate || '',
-          coverageEndDate: destination?.coverageEndDate || '',
-        };
-        break;
+  payload.insuranceDetails = {
+    type: formData.policyType || '',  // <-- use policyType from the form
+  };
+  break;
 
       default:
         // fallback or generic message
@@ -219,20 +223,19 @@ const handleSubmit = async (e) => {
                 
            
             {!hideMessageField && (
-                <InputField
-                    label={messageLabel}
-                    name={messageFieldName}
-                    placeholder={messagePlaceholder}
-                    value={formData[messageFieldName]}
-                    type={
-                        messageFieldName === 'location' || messageFieldName === 'policyType'
-                            ? 'text'
-                            : 'textarea'
-                    }
-                    onChange={handleChange}
-                    error={errors[messageFieldName]}
-                    height="small"
-                />
+            <InputField
+  label={messageLabel}
+  name={messageFieldName}  // might be 'policyType'
+  placeholder={messagePlaceholder}
+  value={formData[messageFieldName]}
+  type={
+    messageFieldName === 'location' || messageFieldName === 'policyType' ? 'text' : 'textarea'
+  }
+  onChange={handleChange}
+  error={errors[messageFieldName]}
+  height="small"
+/>
+
             )}
 
             <div className="mt-4">
