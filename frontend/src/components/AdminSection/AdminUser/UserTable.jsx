@@ -25,8 +25,7 @@ const columns = [
 const UserTable = () => {
     const [users, setUsers] = useState([]);
     const [rowCount, setRowCount] = useState(0);
-    const [page, setPage] = useState(0);
-    const [pageSize, setPageSize] = useState(10);
+    const [paginationModel, setPaginationModel] = useState({ page: 0, pageSize: 10 });
     const [sortModel, setSortModel] = useState([]);
     const [search, setSearch] = useState("");
     const [searchDebounce, setSearchDebounce] = useState("");
@@ -37,31 +36,29 @@ const UserTable = () => {
         return () => clearTimeout(delay);
     }, [search]);
 
-    const fetchUsers = async () => {
-        const sort = sortModel[0] || {};
+    useEffect(() => {
+        const fetchUsers = async () => {
+            const sort = sortModel[0] || {};
 
-        const params = {
-            page,
-            limit: pageSize,
-            search: searchDebounce,
-            sortBy: sort.field || "createdAt",
-            order: sort.sort || "desc",
+            const params = {
+                page: paginationModel.page,
+                limit: paginationModel.pageSize,
+                search: searchDebounce,
+                sortBy: sort.field || "createdAt",
+                order: sort.sort || "desc",
+            };
+
+            const response = await getAllUsersApi(params);
+            if (response.success) {
+                setUsers(response.data.users);
+                setRowCount(response.data.totalCount);
+            } else {
+                console.error("Error fetching users:", response.error);
+            }
         };
 
-        console.log("Sending params to API:", params);
-
-        const response = await getAllUsersApi(params);
-        if (response.success) {
-            setUsers(response.data.users);
-            setRowCount(response.data.totalCount);
-        } else {
-            console.error("Error fetching users:", response.error);
-        }
-    };
-
-    useEffect(() => {
         fetchUsers();
-    }, [page, pageSize, sortModel, searchDebounce]);
+    }, [paginationModel, sortModel, searchDebounce]);
 
     return (
         <div style={{ height: 600, width: "100%" }}>
@@ -82,12 +79,10 @@ const UserTable = () => {
                 rows={users}
                 columns={columns}
                 rowCount={rowCount}
-                page={page}
-                pageSize={pageSize}
                 paginationMode="server"
                 sortingMode="server"
-                onPageChange={(newPage) => setPage(newPage)}
-                onPageSizeChange={(newSize) => setPageSize(newSize)}
+                paginationModel={paginationModel}
+                onPaginationModelChange={setPaginationModel}
                 onSortModelChange={(model) => setSortModel(model)}
                 getRowId={(row) => row._id}
                 pageSizeOptions={[10, 25, 50, 100]}
