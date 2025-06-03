@@ -72,7 +72,6 @@ const BottomOverlayBox = ({  fields,maxWidth }) => {
                    showCountrySelect = {true}
                    countrySelectPlaceholder="Select your nationality"
            hideMessageField={true}
-           
                     destination={{
       serviceType: 'flight',
       flyingFrom: formData.from,

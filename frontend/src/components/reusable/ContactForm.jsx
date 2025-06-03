@@ -15,6 +15,7 @@ const ContactForm = ({
     hideMessageField = false,
     defaultMessage = '',
     showCountrySelect = false,
+    showLocationSelect = false,
     destination = null,
 }) => {
     const initialState = {
@@ -29,6 +30,7 @@ const ContactForm = ({
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
     const [selectedCountry, setSelectedCountry] = useState('');
+    const [locationCountry, setLocationCountry] = useState('');
 
 
 
@@ -53,7 +55,9 @@ const ContactForm = ({
         if (!hideMessageField && !formData[messageFieldName].trim()) {
         newErrors[messageFieldName] = `${messageLabel} is required`;
     }
-        if (showCountrySelect && !selectedCountry) newErrors.selectedCountry = 'Country is required';
+        if (showCountrySelect && !selectedCountry) newErrors.selectedCountry = 'Nationality is required';
+if (showLocationSelect && !locationCountry) newErrors.locationCountry = 'Location is required'; // ✅ new
+
         return newErrors;
     }
 
@@ -80,6 +84,7 @@ const handleSubmit = async (e) => {
     // Add common email if available
     if (formData.email) payload.email = formData.email;
     if (showCountrySelect) payload.country = selectedCountry;
+    if (showLocationSelect) payload.location = locationCountry;
 
     // Add service-type-specific data
     switch (payload.serviceType) {
@@ -103,8 +108,8 @@ const handleSubmit = async (e) => {
       case 'visa':
   payload.visaDetails = {
     nationality: selectedCountry || '',
-    destinationCountry: destination?.country || '',
-    processingTime: destination?.processingTime || '',
+    destinationCountry: locationCountry || '',
+   
     // intendedTravelDate can be added later if collected from form
   };
   break;
@@ -182,16 +187,34 @@ const handleSubmit = async (e) => {
             {/* <InputField label='Phone Number' name='phone' type='tel' placeholder='Enter your phone number' value={formData.phone} onChange={handleChange} error={errors.phone} /> */}
 
             
-                    {showCountrySelect && (
-                        <div>
-                            <CountrySelect
-                                value={selectedCountry}
-                                onChange={setSelectedCountry}
-                                variant="visa"
-                                placeholder={countrySelectPlaceholder || "Enter your preferred location"}
-                            />
-                        </div>
-                    )}
+{showCountrySelect && (
+  <div>
+    {/* <label className="text-secondary-blue">Nationality</label> */}
+    <CountrySelect
+      value={selectedCountry}
+      onChange={setSelectedCountry}
+      variant="visa"
+      placeholder={countrySelectPlaceholder || "Select your nationality"}
+      label='Nationality'
+    />
+    {errors.selectedCountry && <p className="text-red-500 text-sm">{errors.selectedCountry}</p>}
+  </div>
+)}
+
+{showLocationSelect && (
+  <div>
+    <CountrySelect
+      value={locationCountry}
+      onChange={setLocationCountry}
+      variant="visa"
+      placeholder="Select your location"
+      label='Location'
+    />
+    {errors.locationCountry && <p className="text-red-500 text-sm">{errors.locationCountry}</p>}
+  </div>
+)}
+
+
 
                 
            
