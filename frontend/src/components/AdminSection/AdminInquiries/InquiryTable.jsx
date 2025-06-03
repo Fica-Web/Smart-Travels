@@ -125,14 +125,16 @@ const InquiryTable = ({ onSelect }) => {
                 rows={inquiries}
                 columns={columns}
                 rowCount={rowCount}
-                page={page}
-                pageSize={pageSize}
                 paginationMode="server"
                 sortingMode="server"
-                onPageChange={(newPage) => setPage(newPage)}
-                onPageSizeChange={(newSize) => setPageSize(newSize)}
+                paginationModel={{ page, pageSize }}
+                onPaginationModelChange={({ page, pageSize }) => {
+                    setPage(page);
+                    setPageSize(pageSize);
+                }}
                 onSortModelChange={(model) => setSortModel(model)}
                 getRowId={(row) => row._id}
+                pageSizeOptions={[10, 25, 50, 100]}
             />
         </div>
     );
