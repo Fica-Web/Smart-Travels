@@ -13,7 +13,7 @@ export const createInquiry = async (req, res) => {
             visaDetails,
             destinationDetails,
             insuranceDetails,
-            location,
+            nationality,
             message,
         } = req.body;
 
@@ -27,7 +27,7 @@ export const createInquiry = async (req, res) => {
             phone,
             email,
             serviceType,
-            location,
+            nationality,
             message,
         };
 
@@ -96,8 +96,8 @@ export const createInquiry = async (req, res) => {
                     <td style="padding: 8px; text-transform: capitalize;">${serviceType}</td>
                 </tr>
                 <tr>
-                    <td style="padding: 8px; font-weight: bold;">Location:</td>
-                    <td style="padding: 8px;">${location || "Not provided"}</td>
+                    <td style="padding: 8px; font-weight: bold;">Nationality:</td>
+                    <td style="padding: 8px;">${nationality || "Not provided"}</td>
                 </tr>
                 <tr>
                     <td style="padding: 8px; font-weight: bold;">Message:</td>

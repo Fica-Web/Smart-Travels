@@ -38,7 +38,6 @@ const inquirySchema = new mongoose.Schema(
             guests: Number,
         },
         visaDetails: {
-            nationality: String,
             destinationCountry: String,
             // travelDate: Date,
         },
@@ -55,7 +54,7 @@ const inquirySchema = new mongoose.Schema(
             coverageType: String,
         },
 
-        location: {
+        nationality: {
             type: String,
         },
         message: {
