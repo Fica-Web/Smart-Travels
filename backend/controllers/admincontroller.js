@@ -129,7 +129,7 @@ const fetchAdminDashboardData = async (req, res) => {
         const recentInquiries = await Inquiry.find()
             .sort({ createdAt: -1 })
             .limit(5)
-            .select('name email message createdAt'); // only return necessary fields
+            .select('name email phone message createdAt serviceType status'); // only return necessary fields
 
         res.status(200).json({
             success: true,

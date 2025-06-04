@@ -19,7 +19,7 @@ const AdminDashboardPage = () => {
   useEffect(() => {
     const fetchDashboardData = async () => {
       const response = await fetchDashboardDataApi();
-      console.log("Dashboard Data Response:", response.data);
+      
       if (response.success) {
         setDashboardData(response.data);
       } else {
@@ -44,7 +44,7 @@ const AdminDashboardPage = () => {
       </Grid>
 
       {/* Recent Inquiries */}
-      <InquiriesTable inquiries={recentInquiries} />
+      <InquiriesTable inquiries={dashboardData?.recentInquiries || [] } />
 
       {/* Chart Placeholder */}
       <ChartPlaceholder />
