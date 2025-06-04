@@ -27,10 +27,12 @@ const ImageBox = () => {
                     <ReusableModal open={open} onClose={closeModal} title="Apply for Visa">
                         <ContactForm
                             buttonText="Apply Now"
-                            messageFieldName="location"
-                            messageLabel="Location"
-                            messagePlaceholder="Enter your location"
                             showCountrySelect={true} // ✅ Only here!
+                            showLocationSelect={true}
+                            hideMessageField={true}
+                             destination={{
+                        serviceType: 'visa',
+                    }}
                         />
                     </ReusableModal>
 
