@@ -122,17 +122,21 @@ const adminLogout = async (req, res) => {
 
 const fetchAdminDashboardData = async (req, res) => {
   try {
-    const inquiriesCount = await Inquiry.countDocuments();
+    const { serviceType } = req.query;
+    const filter = serviceType ? { serviceType } : {};
+
+    const inquiriesCount = await Inquiry.countDocuments(filter);
     const destinationsCount = await Destination.countDocuments();
     const blogsCount = await Blog.countDocuments();
 
-    const recentInquiries = await Inquiry.find()
+    const recentInquiries = await Inquiry.find(filter)
       .sort({ createdAt: -1 })
       .limit(5)
       .select('name email phone message createdAt serviceType status');
 
     // 📊 Monthly Inquiry Chart Data
     const monthlyStats = await Inquiry.aggregate([
+      { $match: filter }, // filter by serviceType
       {
         $group: {
           _id: { $month: '$createdAt' },
@@ -142,10 +146,8 @@ const fetchAdminDashboardData = async (req, res) => {
       { $sort: { _id: 1 } },
     ]);
 
-    const months = [
-      '', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
-    ];
+    const months = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     const inquiriesChart = monthlyStats.map((d) => ({
       month: months[d._id],
@@ -161,7 +163,7 @@ const fetchAdminDashboardData = async (req, res) => {
           blogs: blogsCount,
         },
         recentInquiries,
-        inquiriesChart, // include this
+        inquiriesChart,
       },
     });
   } catch (error) {

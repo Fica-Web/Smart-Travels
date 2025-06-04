@@ -1,60 +1,116 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
-  Box, Typography, Paper, ToggleButton, ToggleButtonGroup
+    Box, Typography, Paper, ToggleButton, ToggleButtonGroup,
+    FormControl, InputLabel, Select, MenuItem, CircularProgress
 } from '@mui/material';
 import {
-  BarChart, Bar, LineChart, Line, XAxis, YAxis, Tooltip,
-  ResponsiveContainer, CartesianGrid
+    BarChart, Bar, LineChart, Line, XAxis, YAxis, Tooltip,
+    ResponsiveContainer, CartesianGrid
 } from 'recharts';
 
-const ChartPlaceholder = ({ chartData }) => {
-  const [chartType, setChartType] = useState('bar');
+const ChartPlaceholder = ({ initialData = [], fetchFilteredChartData }) => {
+    const [chartType, setChartType] = useState('bar');
+    const [chartData, setChartData] = useState([]);
+    const [serviceType, setServiceType] = useState('');
+    const [loading, setLoading] = useState(true); // start in loading state
 
-  const handleChartTypeChange = (event, newType) => {
-    if (newType !== null) {
-      setChartType(newType);
-    }
-  };
+    // Update chartData when initialData arrives
+    useEffect(() => {
+        if (initialData.length > 0) {
+            setChartData(initialData);
+            setLoading(false);
+        }
+    }, [initialData]);
 
-  return (
-    <Box mb={8}>
-      <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
-        <Typography variant="h6" color="secondary">Inquiries Over Time</Typography>
-        <ToggleButtonGroup
-          value={chartType}
-          exclusive
-          onChange={handleChartTypeChange}
-          size="small"
-          color="primary"
-        >
-          <ToggleButton value="bar">Bar</ToggleButton>
-          <ToggleButton value="line">Line</ToggleButton>
-        </ToggleButtonGroup>
-      </Box>
+    const handleChartTypeChange = (_, newType) => {
+        if (newType) setChartType(newType);
+    };
 
-      <Paper elevation={2} sx={{ height: 350, p: 3 }}>
-        <ResponsiveContainer width="100%" height="100%">
-          {chartType === 'bar' ? (
-            <BarChart data={chartData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey="inquiries" fill="#1976d2" />
-            </BarChart>
-          ) : (
-            <LineChart data={chartData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis />
-              <Tooltip />
-              <Line type="monotone" dataKey="inquiries" stroke="#1976d2" strokeWidth={2} />
-            </LineChart>
-          )}
-        </ResponsiveContainer>
-      </Paper>
-    </Box>
-  );
+    const handleServiceTypeChange = async (e) => {
+        const selected = e.target.value;
+        setServiceType(selected);
+
+        if (!selected) {
+            setChartData(initialData); // Reset to initial data
+            return;
+        }
+
+        setLoading(true);
+        try {
+            const response = await fetchFilteredChartData(selected);
+            if (response.success) {
+                setChartData(response.data.inquiriesChart || []);
+            }
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <Box mb={8}>
+            <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+                <Typography variant="h6" color="secondary">Inquiries Over Time</Typography>
+                <Box display="flex" gap={2}>
+                    <FormControl size="small">
+                        <InputLabel>Service Type</InputLabel>
+                        <Select
+                            value={serviceType}
+                            onChange={handleServiceTypeChange}
+                            label="Service Type"
+                        >
+                            <MenuItem value="">All</MenuItem>
+                            <MenuItem value="flight">Flight</MenuItem>
+                            <MenuItem value="hotel">Hotel</MenuItem>
+                            <MenuItem value="visa">Visa</MenuItem>
+                            <MenuItem value="destination">Destination</MenuItem>
+                            <MenuItem value="insurance">Insurance</MenuItem>
+                        </Select>
+                    </FormControl>
+
+                    <ToggleButtonGroup
+                        value={chartType}
+                        exclusive
+                        onChange={handleChartTypeChange}
+                        size="small"
+                        color="primary"
+                    >
+                        <ToggleButton value="bar">Bar</ToggleButton>
+                        <ToggleButton value="line">Line</ToggleButton>
+                    </ToggleButtonGroup>
+                </Box>
+            </Box>
+
+            <Paper elevation={2} sx={{ height: 350, p: 3 }}>
+                {loading ? (
+                    <Box display="flex" alignItems="center" justifyContent="center" height="100%">
+                        <CircularProgress />
+                    </Box>
+                ) : (
+                    <ResponsiveContainer width="100%" height="100%">
+                        {chartType === 'bar' ? (
+                            <BarChart data={chartData}>
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis dataKey="month" />
+                                <YAxis />
+                                <Tooltip />
+                                <Bar dataKey="inquiries" fill="#1976d2" />
+                            </BarChart>
+                        ) : (
+                            <LineChart data={chartData}>
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis dataKey="month" />
+                                <YAxis />
+                                <Tooltip />
+                                <Line type="monotone" dataKey="inquiries" stroke="#1976d2" strokeWidth={2} />
+                            </LineChart>
+                        )}
+                    </ResponsiveContainer>
+                )}
+            </Paper>
+        </Box>
+    );
 };
 
 export default ChartPlaceholder;
