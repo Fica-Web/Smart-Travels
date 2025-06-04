@@ -121,35 +121,57 @@ const adminLogout = async (req, res) => {
 }
 
 const fetchAdminDashboardData = async (req, res) => {
-    try {
-        const inquiriesCount = await Inquiry.countDocuments();
-        const destinationsCount = await Destination.countDocuments();
-        const blogsCount = await Blog.countDocuments();
+  try {
+    const inquiriesCount = await Inquiry.countDocuments();
+    const destinationsCount = await Destination.countDocuments();
+    const blogsCount = await Blog.countDocuments();
 
-        const recentInquiries = await Inquiry.find()
-            .sort({ createdAt: -1 })
-            .limit(5)
-            .select('name email phone message createdAt serviceType status'); // only return necessary fields
+    const recentInquiries = await Inquiry.find()
+      .sort({ createdAt: -1 })
+      .limit(5)
+      .select('name email phone message createdAt serviceType status');
 
-        res.status(200).json({
-            success: true,
-            dashboardData: {
-                stats: {
-                    inquiries: inquiriesCount,
-                    destinations: destinationsCount,
-                    blogs: blogsCount,
-                },
-                recentInquiries,
-            },
-        });
-    } catch (error) {
-        console.error('Error fetching admin dashboard data:', error);
-        res.status(500).json({
-            success: false,
-            message: 'Internal server error',
-            error: error.message,
-        });
-    }
+    // 📊 Monthly Inquiry Chart Data
+    const monthlyStats = await Inquiry.aggregate([
+      {
+        $group: {
+          _id: { $month: '$createdAt' },
+          count: { $sum: 1 },
+        },
+      },
+      { $sort: { _id: 1 } },
+    ]);
+
+    const months = [
+      '', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+    ];
+
+    const inquiriesChart = monthlyStats.map((d) => ({
+      month: months[d._id],
+      inquiries: d.count,
+    }));
+
+    res.status(200).json({
+      success: true,
+      dashboardData: {
+        stats: {
+          inquiries: inquiriesCount,
+          destinations: destinationsCount,
+          blogs: blogsCount,
+        },
+        recentInquiries,
+        inquiriesChart, // include this
+      },
+    });
+  } catch (error) {
+    console.error('Error fetching admin dashboard data:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Internal server error',
+      error: error.message,
+    });
+  }
 };
 
 export {

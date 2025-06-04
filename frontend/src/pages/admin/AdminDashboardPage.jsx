@@ -47,7 +47,7 @@ const AdminDashboardPage = () => {
       <InquiriesTable inquiries={dashboardData?.recentInquiries || [] } />
 
       {/* Chart Placeholder */}
-      <ChartPlaceholder />
+      <ChartPlaceholder chartData={dashboardData?.inquiriesChart || [] } />
 
       {/* Quick Actions */}
       <QuickActions />
