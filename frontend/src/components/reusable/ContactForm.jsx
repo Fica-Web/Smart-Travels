@@ -1,22 +1,28 @@
 import { useState, useEffect } from 'react';
-import { submitMessageApi } from '../../services/api/userApi';
+// import { submitMessageApi } from '../../services/api/userApi'
+import { createInquiryApi } from '../../services/api/inquiryApi'
 import { toast } from 'react-toastify';
 import ReusableSubmitButton from './ReusableSubmitButton';
 import CountrySelect from './CountrySelect';
+import MobileInput from './MobileInput';
 
 const ContactForm = ({
     buttonText = 'Submit',
     messageFieldName = 'message',
     messageLabel = 'Message',
     messagePlaceholder = 'Your message',
+    countrySelectPlaceholder = 'Enter your preferred location',
+    hideMessageField = false,
     defaultMessage = '',
     showCountrySelect = false,
+    showLocationSelect = false,
     destination = null,
 }) => {
     const initialState = {
         name: '',
         email: '',
         phone: '',
+        countryCode: '',
         [messageFieldName]: defaultMessage,
     };
 
@@ -24,6 +30,7 @@ const ContactForm = ({
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
     const [selectedCountry, setSelectedCountry] = useState('');
+    const [locationCountry, setLocationCountry] = useState('');
 
 
 
@@ -45,55 +52,118 @@ const ContactForm = ({
         if (!formData.email.trim()) newErrors.email = 'Email is required';
         if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
         if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
-        if (!formData[messageFieldName].trim()) newErrors[messageFieldName] = `${messageLabel} is required`;
-        if (showCountrySelect && !selectedCountry) newErrors.selectedCountry = 'Country is required';
+        if (!hideMessageField && !formData[messageFieldName].trim()) {
+        newErrors[messageFieldName] = `${messageLabel} is required`;
+    }
+        if (showCountrySelect && !selectedCountry) newErrors.selectedCountry = 'Nationality is required';
+if (showLocationSelect && !locationCountry) newErrors.locationCountry = 'Location is required'; // ✅ new
+
         return newErrors;
+    }
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setErrors({});
+
+  try {
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      setLoading(false);
+      return;
+    }
+
+    // Base payload
+    const payload = {
+      name: formData.name,
+      phone: formData.phone,
+      serviceType: destination?.serviceType || '', // or pass serviceType as prop
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setLoading(true);
-        setErrors({});
+    // Add common email if available
+    if (formData.email) payload.email = formData.email;
+    if (showCountrySelect) payload.country = selectedCountry;
+    if (showLocationSelect) payload.location = locationCountry;
 
-        const validationErrors = validate();
-        if (Object.keys(validationErrors).length > 0) {
-            setErrors(validationErrors);
-            setLoading(false);
-            return;
-        }
-
-        // ✅ Log the destination data
-        console.log('Form Data:', formData);
-        console.log('Destination Data:', destination);
-        // 👈 Log dest info here
-
-        const payload = {
-            ...formData,
-            country: showCountrySelect ? selectedCountry : undefined, // ✅ Use 'country' to match backend expectations
-            destination: destination
-                ? {
-                    id: destination._id,
-                    title: destination.title,
-                    country: destination.country,
-                    slug: destination.slug,
-                    image: destination.coverImage,
-                    date: destination.createdAt,
-                    duration: destination.duration,
-                }
-                : null,
+    // Add service-type-specific data
+    switch (payload.serviceType) {
+      case 'flight':
+        payload.flightDetails = {
+          from: destination?.flyingFrom || '',
+          to: destination?.destination || '',
+          departureDate: destination?.date || '',
         };
-        console.log('Form Payload:', payload);
-        const response = await submitMessageApi(payload);
+        break;
 
-        if (response.success) {
-            toast.success(response.data.message || 'Message sent successfully!');
-            setFormData(initialState);
-        } else {
-            toast.error(response.error || 'Failed to send message');
-        }
+      case 'hotel':
+        payload.hotelDetails = {
+          location: destination?.location || '',
+          checkInDate: destination?.checkIn || '',
+          checkOutDate: destination?.checkOut || '',
+          guests: destination?.guests || '',
+        };
+        break;
 
-        setLoading(false);
+      case 'visa':
+  payload.visaDetails = {
+    nationality: selectedCountry || '',
+    destinationCountry: locationCountry || '',
+   
+    // intendedTravelDate can be added later if collected from form
+  };
+  break;
+
+
+   case 'destination':
+    // ✅ Put your log here
+    console.log('destination?.destination?.id:', destination?.destination?.id);
+
+    payload.destinationDetails = {
+      destinationId: destination?.destination?._id || '',
     };
+    break;
+
+  
+
+      
+
+      case 'insurance':
+  payload.insuranceDetails = {
+    type: formData.policyType || '',  // <-- use policyType from the form
+  };
+  break;
+
+      default:
+        // fallback or generic message
+        if (!hideMessageField) {
+          payload.message = formData[messageFieldName];
+        }
+        break;
+    }
+
+    console.log('Inquiry Payload:', payload);
+
+    const response = await createInquiryApi(payload);
+
+    if (response.success) {
+      toast.success(response.data.message || 'Inquiry sent successfully!');
+      setFormData(initialState);
+      setSelectedCountry('');
+    } else {
+      toast.error(response.message || 'Failed to send inquiry');
+    }
+  } catch (error) {
+    toast.error('Unexpected error occurred.');
+    console.error(error);
+  }
+
+  setLoading(false);
+};
+
+
+
+
 
 
 
@@ -106,17 +176,71 @@ const ContactForm = ({
 
             <InputField label='Name' name='name' type='text' placeholder='Enter your name' value={formData.name} onChange={handleChange} error={errors.name} />
             <InputField label='Email' name='email' type='email' placeholder='Enter your email' value={formData.email} onChange={handleChange} error={errors.email} />
-            <InputField label='Phone Number' name='phone' type='tel' placeholder='Enter your phone number' value={formData.phone} onChange={handleChange} error={errors.phone} />
-              {showCountrySelect && (
-                <div>
-                    <CountrySelect value={selectedCountry} onChange={setSelectedCountry} variant="visa" placeholder="Enter your preferred location"/>
-                </div>
+            <div className="flex flex-col gap-1">
+                <label className="text-secondary-blue">Phone Number</label>
+                <MobileInput
+                    value={formData.phone}
+                    onChange={(value) => handleChange({ target: { name: 'phone', value } })}
+                    countryCode={formData.countryCode}
+                    onCountryCodeChange={(value) => handleChange({ target: { name: 'countryCode', value } })}
+                />
+                {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
+            </div>
+
+
+            {/* <InputField label='Phone Number' name='phone' type='tel' placeholder='Enter your phone number' value={formData.phone} onChange={handleChange} error={errors.phone} /> */}
+
+            
+{showCountrySelect && (
+  <div>
+    {/* <label className="text-secondary-blue">Nationality</label> */}
+    <CountrySelect
+      value={selectedCountry}
+      onChange={setSelectedCountry}
+      variant="visa"
+      placeholder={countrySelectPlaceholder || "Select your nationality"}
+      label='Nationality'
+    />
+    {errors.selectedCountry && <p className="text-red-500 text-sm">{errors.selectedCountry}</p>}
+  </div>
+)}
+
+{showLocationSelect && (
+  <div>
+    <CountrySelect
+      value={locationCountry}
+      onChange={setLocationCountry}
+      variant="visa"
+      placeholder="Select your location"
+      label='Location'
+    />
+    {errors.locationCountry && <p className="text-red-500 text-sm">{errors.locationCountry}</p>}
+  </div>
+)}
+
+
+
+                
+           
+            {!hideMessageField && (
+            <InputField
+  label={messageLabel}
+  name={messageFieldName}  // might be 'policyType'
+  placeholder={messagePlaceholder}
+  value={formData[messageFieldName]}
+  type={
+    messageFieldName === 'location' || messageFieldName === 'policyType' ? 'text' : 'textarea'
+  }
+  onChange={handleChange}
+  error={errors[messageFieldName]}
+  height="small"
+/>
+
             )}
-            <InputField label={messageLabel} name={messageFieldName}  placeholder={messagePlaceholder} value={formData[messageFieldName]} type={messageFieldName === 'location' || messageFieldName === 'policyType' ? 'text' : 'textarea'} onChange={handleChange} error={errors[messageFieldName]} height='small' />
 
             <div className="mt-4">
-  <ReusableSubmitButton text={buttonText} loadingText='Submitting...' loading={loading} />
-</div>
+                <ReusableSubmitButton text={buttonText} loadingText='Submitting...' loading={loading} />
+            </div>
 
         </form>
     );
@@ -157,4 +281,4 @@ const InputField = ({ label, name, type, placeholder, value, onChange, error, he
             {error && <p className='text-red-500 text-sm'>{error}</p>}
         </div>
     );
-};
+}; 

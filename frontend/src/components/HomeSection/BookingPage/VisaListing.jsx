@@ -20,16 +20,13 @@ const VisaListing = () => {
 
 const VisaCard = ({ country, flag, processingTime }) => {
     const [open, setOpen] = useState(false);
-    const [visaMessage, setVisaMessage] = useState('');
 
     const openModal = () => {
-        setVisaMessage(`${country} - Processing Time: ${processingTime}`);
         setOpen(true);
     };
 
     const closeModal = () => {
         setOpen(false);
-        setVisaMessage('');
     };
 
     return (
@@ -54,10 +51,15 @@ const VisaCard = ({ country, flag, processingTime }) => {
             <ReusableModal open={open} onClose={closeModal} title={`Apply for ${country} Visa`}>
                 <ContactForm
                     buttonText="Apply Now"
-                    messageFieldName="location"
-                    messageLabel="Location"
-                    messagePlaceholder="Enter your location"
-                    defaultMessage={visaMessage}
+                    defaultMessage={`${country} - Processing Time: ${processingTime}`}
+                    showCountrySelect = {true}
+                    countrySelectPlaceholder = "Select your nationality"
+                    hideMessageField={true}
+                    destination={{
+                        serviceType: 'visa',
+                        country: country,
+                        processingTime: processingTime
+                    }}
                 />
             </ReusableModal>
         </div>

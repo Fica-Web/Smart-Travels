@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import fallbackCountries from '../../data/fallbackCoutries';
 
-const CountrySelect = ({ value, onChange ,variant, placeholder = "Select a country..."}) => {
+const CountrySelect = ({ value, onChange ,variant, placeholder = "Select a country...", label = 'Country'}) => {
     const [options, setOptions] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -126,7 +126,7 @@ const CountrySelect = ({ value, onChange ,variant, placeholder = "Select a count
 
     return (
         <div className="w-full">
-            <label className="block text-secondary-blue mb-1">Country</label>
+            <label className="block text-secondary-blue mb-1">{label}</label>
             <Select
                 isLoading={loading}
                 options={options}

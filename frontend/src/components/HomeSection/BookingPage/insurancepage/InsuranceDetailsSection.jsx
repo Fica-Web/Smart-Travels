@@ -14,7 +14,11 @@ const InsuranceDetailsSection = () => {
   messageLabel="Policy Type"
   messagePlaceholder="Enter your policy type"
   defaultMessage=""
+  isInputInsteadOfTextarea={true}
   buttonText="Send Query"
+       destination={{
+                        serviceType: 'insurance',
+                    }}
   
 />
 

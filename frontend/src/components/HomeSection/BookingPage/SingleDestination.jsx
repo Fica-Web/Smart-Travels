@@ -10,6 +10,14 @@ const SingleDestination = ({ dest }) => {
 
     const openModal = () => setOpen(true);
     const closeModal = () => setOpen(false);
+   
+
+    const destination = {
+    serviceType:  'destination',
+    destination: dest,
+  };
+
+
     return (
         <div
             className="bg-white shadow rounded-3xl overflow-hidden border border-t-0 border-gray-300 flex flex-col relative"
@@ -68,7 +76,8 @@ const SingleDestination = ({ dest }) => {
                             messageFieldName="location"
                             messageLabel="Location"
                             messagePlaceholder="Enter your location"
-                            destination={dest} // ✅ Pass the dest here
+                     destination={destination} 
+
                         />
                     </ReusableModal>
                 </div>
