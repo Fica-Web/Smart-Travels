@@ -118,9 +118,14 @@ const handleSubmit = async (e) => {
    case 'destination':
     // ✅ Put your log here
     console.log('destination?.destination?.id:', destination?.destination?.id);
+        console.log('destination?.destination?.title:', destination?.destination?.title);
+
 
     payload.destinationDetails = {
-      destinationId: destination?.destination?._id || '',
+      id: destination?.destination?._id || '',
+      title: destination?.destination?.title || '',
+      country: destination?.destination?.country || '',
+
     };
     break;
 
