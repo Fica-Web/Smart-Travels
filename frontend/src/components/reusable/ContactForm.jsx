@@ -88,31 +88,34 @@ const handleSubmit = async (e) => {
 
     // Add service-type-specific data
     switch (payload.serviceType) {
+
       case 'flight':
+        console.log('destination?.title:', destination.flightDetails);
         payload.flightDetails = {
-          from: destination?.flyingFrom || '',
-          to: destination?.destination || '',
-          departureDate: destination?.date || '',
+          from: destination?.flightDetails?.from || '',
+          to: destination?.flightDetails?.to || '',
+          departureDate: destination?.flightDetails?.departureDate || '',
         };
         break;
 
       case 'hotel':
+        console.log('destination?.title:', destination.hotelDetails);
         payload.hotelDetails = {
-          location: destination?.location || '',
-          checkInDate: destination?.checkIn || '',
-          checkOutDate: destination?.checkOut || '',
-          guests: destination?.guests || '',
+                    country: destination?.hotelDetails?.country || '',
+          location: destination?.hotelDetails?.location || '',
+          checkInDate: destination?.hotelDetails?.checkInDate || '',
+          checkOutDate: destination?.hotelDetails?.checkOutDate || '',
         };
         break;
 
-      case 'visa':
+   case 'visa':
   payload.visaDetails = {
     nationality: selectedCountry || '',
-    destinationCountry: locationCountry || '',
-   
-    // intendedTravelDate can be added later if collected from form
+    destinationCountry:
+      destination?.country || locationCountry || '',
   };
   break;
+
 
 
    case 'destination':
