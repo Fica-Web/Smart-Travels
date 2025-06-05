@@ -32,7 +32,7 @@ const serviceColorMap = {
 
 function InquiryDetailsDialog({ open, onClose, inquiry }) {
     if (!inquiry) return null;
-    // console.log("Inquiry Details:", inquiry);
+    console.log("Inquiry Details:", inquiry);
 
     const {
         name,
@@ -113,7 +113,7 @@ function InquiryDetailsDialog({ open, onClose, inquiry }) {
                         >
                             {Object.entries(details).map(([key, value]) => (
                                 <Typography key={key} variant="body2" sx={{ mb: 1 }}>
-                                    <strong>{formatKey(key)}:</strong> {String(value)}
+                                    <strong>{formatKey(key)}:</strong> {formatValue(value)}
                                 </Typography>
                             ))}
                         </Paper>
@@ -151,6 +151,21 @@ function formatDate(date) {
         dateStyle: "medium",
         timeStyle: "short",
     });
+}
+
+function formatValue(value) {
+    const date = new Date(value);
+    const isDate = !isNaN(date) && typeof value === "string" && value.includes("T");
+
+    if (isDate) {
+        return date.toLocaleDateString("en-IN", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+        });
+    }
+
+    return String(value);
 }
 
 const statusColors = {
