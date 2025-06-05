@@ -1,10 +1,11 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState,  useRef } from 'react';
 import ContactForm from './ContactForm';
 import ReusableModal from '../../components/reusable/ReusableModal';
 
 const BottomOverlayBox = ({  fields,maxWidth ,serviceType,modalTitle}) => {
   const [open, setOpen] = useState(false);
+  const inputRefs = useRef({});
 
     const openModal = () => setOpen(true);
     const closeModal = () => setOpen(false);
@@ -17,6 +18,19 @@ const BottomOverlayBox = ({  fields,maxWidth ,serviceType,modalTitle}) => {
 
 
   const [formData, setFormData] = useState(initialFormData);
+
+
+const handleIconClick = (name) => {
+  const ref = inputRefs.current[name];
+  if (ref) {
+    // ref.input is the actual input DOM node inside DatePicker
+    if (ref.input && typeof ref.input.focus === 'function') {
+      ref.input.focus();
+    } else if (ref.focus) {
+      ref.focus(); // fallback
+    }
+  }
+};
 
 
 
@@ -84,7 +98,7 @@ const BottomOverlayBox = ({  fields,maxWidth ,serviceType,modalTitle}) => {
         ${index === 2 ? 'md:col-start-1' : ''} 
         rounded-xl`}
     >
-      <div className="min-w-[44px] min-h-[44px] md:min-w-[40px] md:min-h-[40px] lg:min-w-[44px] lg:min-h-[44px] flex items-center justify-center rounded-full bg-[#4A94D0]">
+      <div onClick={() => handleIconClick(name)} className="min-w-[44px] min-h-[44px] md:min-w-[40px] md:min-h-[40px] lg:min-w-[44px] lg:min-h-[44px] flex items-center justify-center rounded-full bg-[#4A94D0]">
         <img src={icon} alt={label} className="w-6 h-6 object-contain" />
       </div>
 
@@ -100,6 +114,7 @@ const BottomOverlayBox = ({  fields,maxWidth ,serviceType,modalTitle}) => {
             setFormData((prev) => ({ ...prev, [name]: value }))
           }
           name={name}
+          ref={(el) => (inputRefs.current[name] = el)}
         />
 
 
@@ -115,9 +130,9 @@ const BottomOverlayBox = ({  fields,maxWidth ,serviceType,modalTitle}) => {
    className="text-sm bg-transparent outline-none placeholder:text-secondary-blue text-secondary-blue autofill:bg-transparent"
   style={{
     backgroundColor: 'transparent',
-    WebkitBoxShadow: '0 0 0px 1000px transparent inset', // fix autofill background
- // fallback for autofill text color (adjust to match text-secondary-blue)
+    WebkitBoxShadow: '0 0 0px 1000px transparent inset', // fix autofill background 
   }}
+  ref={(el) => (inputRefs.current[name] = el)} // Attach ref here
   />
         )}
       </div>
