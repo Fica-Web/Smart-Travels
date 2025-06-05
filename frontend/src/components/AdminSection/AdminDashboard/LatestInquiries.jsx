@@ -28,7 +28,7 @@ const formatDate = (isoDate) => {
 };
 
 const LatestInquiries = ({ inquiries = [] }) => (
-    <Box mb={4}>
+    <Box mb={8}>
         <Typography variant="h6" gutterBottom color="secondary">Recent Inquiries</Typography>
         <Paper elevation={2}>
             <Table>

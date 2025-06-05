@@ -29,7 +29,7 @@ const adminSignup = async (req, res) => {
 
         // remove password from the response
         newAdmin.password = undefined;
-        
+
         res.status(201).json({
             message: 'Admin created successfully',
             admin: newAdmin,
@@ -122,14 +122,37 @@ const adminLogout = async (req, res) => {
 
 const fetchAdminDashboardData = async (req, res) => {
     try {
-        const inquiriesCount = await Inquiry.countDocuments();
+        const { serviceType } = req.query;
+        const filter = serviceType ? { serviceType } : {};
+
+        const inquiriesCount = await Inquiry.countDocuments(filter);
         const destinationsCount = await Destination.countDocuments();
         const blogsCount = await Blog.countDocuments();
 
-        const recentInquiries = await Inquiry.find()
+        const recentInquiries = await Inquiry.find(filter)
             .sort({ createdAt: -1 })
             .limit(5)
-            .select('name email phone message createdAt serviceType status'); // only return necessary fields
+            .select('name email phone message createdAt serviceType status');
+
+        // 📊 Monthly Inquiry Chart Data
+        const monthlyStats = await Inquiry.aggregate([
+            { $match: filter }, // filter by serviceType
+            {
+                $group: {
+                    _id: { $month: '$createdAt' },
+                    count: { $sum: 1 },
+                },
+            },
+            { $sort: { _id: 1 } },
+        ]);
+
+        const months = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        const inquiriesChart = monthlyStats.map((d) => ({
+            month: months[d._id],
+            inquiries: d.count,
+        }));
 
         res.status(200).json({
             success: true,
@@ -140,6 +163,7 @@ const fetchAdminDashboardData = async (req, res) => {
                     blogs: blogsCount,
                 },
                 recentInquiries,
+                inquiriesChart,
             },
         });
     } catch (error) {

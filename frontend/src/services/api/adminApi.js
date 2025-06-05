@@ -6,7 +6,7 @@ const adminLoginApi = async (data) => {
         const response = await adminInstance.post('/login', data);
         return response.data;
     } catch (error) {
-        console.log("error during login:",  error.response?.data || error.message);
+        console.log("error during login:", error.response?.data || error.message);
         toast.error(error.response?.data?.message || error.message || "Login failed. Please try again.");
     }
 }
@@ -30,9 +30,13 @@ const adminLogoutApi = async () => {
     }
 }
 
-const fetchDashboardDataApi = async () => {
+const fetchDashboardDataApi = async (serviceType = '') => {
     try {
-        const response = await adminInstance.get('/dashboard');
+        console.log("Fetching dashboard data with serviceType:", serviceType);
+        const response = await adminInstance.get('/dashboard', {
+            params: serviceType ? { serviceType } : {},
+        });
+        console.log("Dashboard Data:", response);
         return { success: true, data: response.data.dashboardData };
     } catch (error) {
         console.error("Error fetching dashboard Data:", error);
@@ -41,7 +45,7 @@ const fetchDashboardDataApi = async () => {
             message: error.response?.data?.message || error.message || "Unknown error",
         };
     }
-}
+};
 
 export {
     adminLoginApi,
