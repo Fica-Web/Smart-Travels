@@ -32,7 +32,7 @@ const serviceColorMap = {
 
 function InquiryDetailsDialog({ open, onClose, inquiry }) {
     if (!inquiry) return null;
-    console.log("Inquiry Details:", inquiry);
+    // console.log("Inquiry Details:", inquiry);
 
     const {
         name,
