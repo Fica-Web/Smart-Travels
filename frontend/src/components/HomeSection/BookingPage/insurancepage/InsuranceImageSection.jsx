@@ -1,5 +1,5 @@
 import React from 'react'
-import img from '../../../../assets/image/booking/insurance/insuranceimg.png'
+import img from '../../../../assets/image/booking/insurance/insuranceimg (2).png'
 
 const InsuranceImageSection = () => {
   return (
@@ -18,7 +18,7 @@ const InsuranceImageSection = () => {
    <h2 className="font-bold text-sm md:text-[34px] leading-tight md:leading-[42px]  capitalize pb-1 md:pb-3 max-w-[20ch] md:max-w-[36ch]">
          Travel Confidently with Our Insurance Plans
        </h2>
-   <p className="hidden sm:block text-2xl leading-[28px] max-w-[40ch] ">
+   <p className="hidden sm:block text-xl leading-[28px] max-w-[30ch] ">
          Get worry-free travel protection for every adventure — from family trips to solo getaways.
        </p>
      </div>

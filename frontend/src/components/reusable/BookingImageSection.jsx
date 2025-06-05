@@ -2,7 +2,7 @@
 import React from 'react'
 import BottomOverlayBox from '../../components/reusable/BottomOverlayBox'
 
-const BookingImageSection = ({ backgroundImage, fields, maxWidth}) => {
+const BookingImageSection = ({ backgroundImage, fields, maxWidth, modalTitle,serviceType}) => {
   return (
     <div className="relative w-full inline-block mt-10 overflow-hidden">
       {/* Background Image */}
@@ -13,6 +13,9 @@ const BookingImageSection = ({ backgroundImage, fields, maxWidth}) => {
         
         fields={fields}
         maxWidth={maxWidth}
+        modalTitle={modalTitle}
+  serviceType={serviceType}
+          
       />
     </div>
   );

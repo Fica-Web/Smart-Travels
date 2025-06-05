@@ -28,7 +28,7 @@ const VisaCard = ({ country, flag, processingTime }) => {
     const closeModal = () => {
         setOpen(false);
     };
-
+console.log('destination',country)
     return (
         <div className="border border-secondary-blue/70 rounded-2xl p-4 shadow-sm text-sm flex flex-col gap-2 text-secondary-blue">
             <div className="flex justify-between items-center">
@@ -58,7 +58,7 @@ const VisaCard = ({ country, flag, processingTime }) => {
                     destination={{
                         serviceType: 'visa',
                         country: country,
-                        processingTime: processingTime
+                        
                     }}
                 />
             </ReusableModal>
