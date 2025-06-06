@@ -1,7 +1,7 @@
 import { Grid, Paper, Typography, Box } from '@mui/material';
 
 const StatCard = ({ title, count, icon }) => (
-    <Grid item xs={12} sm={4}>
+    <Grid item xs={12} sm={4} mb={4}>
         <Paper
             elevation={3}
             sx={{
