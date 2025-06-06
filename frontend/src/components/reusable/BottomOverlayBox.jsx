@@ -82,53 +82,53 @@ const BottomOverlayBox = ({ fields, maxWidth, serviceType, modalTitle }) => {
         const passedProps = typeof props === 'function' ? props(formData) : props;
 
         return (
-          <div
-            key={name || index}
-            onClick={() => handleIconClick(name)}
-            className={`flex items-center gap-2 lg:gap-1 min-w-[220px] w-full sm:w-[220px] 
-              ${index === 2 ? 'md:col-start-1' : ''} 
-              rounded-xl`}
-          >
             <div
+              key={name || index}
               onClick={() => handleIconClick(name)}
-              className="min-w-[44px] min-h-[44px] md:min-w-[40px] md:min-h-[40px] lg:min-w-[44px] lg:min-h-[44px] flex items-center justify-center rounded-full bg-[#4A94D0]"
+              className={`cursor-pointer flex items-center gap-2 lg:gap-1 min-w-[220px] w-full sm:w-[220px] 
+                ${index === 2 ? 'md:col-start-1' : ''} 
+                rounded-xl`}
             >
-              <img src={icon} alt={label} className="w-6 h-6 object-contain" />
-            </div>
+              <div
+                onClick={() => handleIconClick(name)}
+                className="cursor-pointer min-w-[44px] min-h-[44px] md:min-w-[40px] md:min-h-[40px] lg:min-w-[44px] lg:min-h-[44px] flex items-center justify-center rounded-full bg-[#4A94D0]"
+              >
+                <img src={icon} alt={label} className="w-6 h-6 object-contain" />
+              </div>
 
-            <div className="flex flex-col w-full px-1 lg:px-2 text-left">
-              <label className="text-sm text-secondary-blue">{label}</label>
+              <div className="cursor-pointer flex flex-col w-full px-1 lg:px-2 text-left">
+                <label className="cursor-pointer text-sm text-secondary-blue">{label}</label>
 
-              {Component ? (
-                <Component
-                  {...passedProps}
-                  selected={formData[name]}
-                  value={formData[name]}
-                  onChange={(value) =>
-                    setFormData((prev) => ({ ...prev, [name]: value }))
-                  }
-                  name={name}
-                  ref={(el) => (inputRefs.current[name] = el)}
-                />
-              ) : (
-                <input
-                  type={type}
-                  placeholder={placeholder}
-                  name={name}
-                  value={formData[name]}
-                  onChange={(e) =>
-                    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-                  }
-                  className="text-sm bg-transparent outline-none placeholder:text-secondary-blue/50 text-secondary-blue autofill:bg-transparent"
-                  style={{
-                    backgroundColor: 'transparent',
-                    WebkitBoxShadow: '0 0 0px 1000px transparent inset',
-                  }}
-                  ref={(el) => (inputRefs.current[name] = el)}
-                />
-              )}
+                {Component ? (
+                  <Component
+                    {...passedProps}
+                    selected={formData[name]}
+                    value={formData[name]}
+                    onChange={(value) =>
+                      setFormData((prev) => ({ ...prev, [name]: value }))
+                    }
+                    name={name}
+                    ref={(el) => (inputRefs.current[name] = el)}
+                  />
+                ) : (
+                  <input
+                    type={type}
+                    placeholder={placeholder}
+                    name={name}
+                    value={formData[name]}
+                    onChange={(e) =>
+                      setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+                    }
+                    className=" cursor-pointer text-sm bg-transparent outline-none placeholder:text-secondary-blue/50 text-secondary-blue autofill:bg-transparent"
+                    style={{
+                      backgroundColor: 'transparent',
+                      WebkitBoxShadow: '0 0 0px 1000px transparent inset',
+                    }}
+                    ref={(el) => (inputRefs.current[name] = el)}
+                  />
+                )}
+              </div>
             </div>
-          </div>
         );
       })}
 

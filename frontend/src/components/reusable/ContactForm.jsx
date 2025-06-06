@@ -73,13 +73,13 @@ const handleSubmit = async (e) => {
       setLoading(false);
       return;
     }
-
+console.log('formData',formData)
     // Base payload
-    const payload = {
-      name: formData.name,
-      phone: formData.phone,
-      serviceType: destination?.serviceType || '', // or pass serviceType as prop
-    };
+    const payload = {  
+  name: formData.name,
+  phone: `${formData.countryCode} ${formData.phone}`,  // ✅ Now included in payload
+  serviceType: destination?.serviceType || '',
+};
 
     // Add common email if available
     if (formData.email) payload.email = formData.email;

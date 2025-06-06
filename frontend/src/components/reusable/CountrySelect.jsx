@@ -182,10 +182,12 @@ const CountrySelect = forwardRef(
           isLoading={loading}
           options={options}
           value={options.find(option => option.value === value) || null}
-          onChange={(selected) => {
-            onChange(selected.value);
-            setMenuOpen(false);
-          }}
+         onChange={(selected) => {
+  onChange(selected.value);
+  setTimeout(() => {
+    setMenuOpen(false);
+  }, 0); // Fix: closes the menu right after selection
+}}
           placeholder={placeholder}
           menuPortalTarget={document.body}
           styles={{
