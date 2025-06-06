@@ -20,7 +20,7 @@ const ImageSection = () => {
       name: "country",
       
       props: {
-        variant: "hotel",
+          variant: "hotel-image",
         placeholder: "Choose country",
         label: "Country",
         name: "country", // optional but useful

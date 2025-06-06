@@ -1,26 +1,32 @@
-import { useEffect, useState, forwardRef, useRef } from 'react';
+import { useEffect, useState, forwardRef, useRef, useImperativeHandle } from 'react';
 import Select from 'react-select';
 import fallbackCountries from '../../data/fallbackCoutries';
 import { components } from 'react-select';
-
-
-
 
 const CountrySelect = forwardRef(
   ({ value, onChange, variant, placeholder = "Select a country...", label = 'Country', noBorder = false, isHotel = false }, ref) => {
     const [options, setOptions] = useState([]);
     const [loading, setLoading] = useState(true);
-    
-      const [menuIsOpen, setMenuIsOpen] = useState(false);
-  const selectRef = useRef();
+    const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleWrapperClick = () => {
-    setMenuIsOpen(true);
-  };
+    const selectRef = useRef(null);
 
-  const handleBlur = () => {
-    setMenuIsOpen(false);
-  };
+    // Allow parent to call ref.current.focus() to open menu
+    useImperativeHandle(ref, () => ({
+      focus: () => {
+        setMenuOpen(true);
+        selectRef.current?.focus();
+      }
+    }));
+
+    const handleOpenSelect = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setMenuOpen(true);
+      if (ref && typeof ref?.focus === 'function') {
+        ref.focus(); // Triggers useImperativeHandle logic
+      }
+    };
 
     const fetchCountries = async () => {
       const cached = localStorage.getItem('countries');
@@ -120,7 +126,6 @@ const CountrySelect = forwardRef(
         padding: '0 4px',
         marginRight: isHotel ? '4px' : '8px',
         color: 'secondary-blue',
-
       }),
       input: (provided) => ({
         ...provided,
@@ -129,7 +134,7 @@ const CountrySelect = forwardRef(
       }),
       placeholder: (provided) => ({
         ...provided,
-        color: "#001B48",      // custom color
+        color: "#001B48",
         opacity: 0.6,
         fontSize: "0.875rem",
         whiteSpace: "nowrap",
@@ -149,20 +154,16 @@ const CountrySelect = forwardRef(
     };
 
     return (
-      <div className="w-full">
+      <div className="w-full cursor-pointer" onClick={handleOpenSelect}>
         <div className="flex items-center justify-between">
-
-
-          {/* Custom arrow only for hotel pages */}
           <div className={`flex items-center ${isHotel ? 'gap-1' : ''}`}>
             <label className="block text-sm text-secondary-blue">
               {label}
             </label>
-
             {isHotel && (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-4 h-4 text-secondary-blue mt-[2px]"  // move down 2px
+                className="w-4 h-4 text-secondary-blue mt-[2px]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -171,41 +172,36 @@ const CountrySelect = forwardRef(
               </svg>
             )}
           </div>
-
-
         </div>
 
-     <Select
-  ref={ref}
-  isLoading={loading}
-  options={options}
-  value={options.find(option => option.value === value) || null}
-  onChange={(selected) => onChange(selected.value)}
-  placeholder={placeholder}
-  menuPortalTarget={document.body} // Add this line
-  styles={{
-    ...((variant === 'visa' || variant === 'hotel') ? customStyles : {}),
-    menuPortal: (base) => ({ ...base, zIndex: 9999 }) // Ensure it's on top
-  }}
-  components={{
-    SingleValue: customSingleValue,
-    Option: customOption,
-    DropdownIndicator: isHotel ? () => null : undefined,
-    IndicatorSeparator: isHotel ? () => null : undefined,
-  }}
-/>
-
-
+        <Select
+          ref={selectRef}
+          menuIsOpen={menuOpen}
+          onMenuOpen={() => setMenuOpen(true)}
+          onMenuClose={() => setMenuOpen(false)}
+          isLoading={loading}
+          options={options}
+          value={options.find(option => option.value === value) || null}
+          onChange={(selected) => {
+            onChange(selected.value);
+            setMenuOpen(false);
+          }}
+          placeholder={placeholder}
+          menuPortalTarget={document.body}
+          styles={{
+            ...((variant === 'visa' || variant === 'hotel-image') ? customStyles : {}),
+            menuPortal: (base) => ({ ...base, zIndex: 9999 }),
+          }}
+          components={{
+            SingleValue: customSingleValue,
+            Option: customOption,
+            DropdownIndicator: variant === 'hotel-image' ? () => null : components.DropdownIndicator,
+            IndicatorSeparator: variant === 'hotel-image' ? () => null : undefined,
+          }}
+        />
       </div>
-
     );
   }
 );
 
 export default CountrySelect;
-
-
-
-
-
-
