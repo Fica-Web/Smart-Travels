@@ -16,6 +16,7 @@ const ContactForm = ({
     defaultMessage = '',
     showCountrySelect = false,
     showLocationSelect = false,
+    onSuccess,
     destination = null,
 }) => {
     const initialState = {
@@ -154,11 +155,15 @@ console.log('formData',formData)
 
     const response = await createInquiryApi(payload);
 
-    if (response.success) {
-      toast.success(response.data.message || 'Inquiry sent successfully!');
-      setFormData(initialState);
-      setSelectedCountry('');
-    } else {
+   if (response.success) {
+  toast.success(response.data.message || 'Inquiry sent successfully!');
+  setFormData(initialState);
+  setSelectedCountry('');
+  if (onSuccess) {
+    onSuccess(); // ✅ Close modal & clear fields in parent
+  }
+}
+ else {
       toast.error(response.message || 'Failed to send inquiry');
     }
   } catch (error) {

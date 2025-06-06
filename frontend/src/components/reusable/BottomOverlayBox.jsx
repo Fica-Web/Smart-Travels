@@ -9,14 +9,17 @@ const BottomOverlayBox = ({ fields, maxWidth, serviceType, modalTitle }) => {
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
 
-  const initialFormData = fields.reduce((acc, field) => {
+ const getInitialFormData = () =>
+  fields.reduce((acc, field) => {
     if (field.name) {
       acc[field.name] = '';
     }
     return acc;
   }, {});
 
-  const [formData, setFormData] = useState(initialFormData);
+
+const [formData, setFormData] = useState(getInitialFormData());
+
 
   const handleIconClick = (name) => {
     const ref = inputRefs.current[name];
@@ -32,6 +35,15 @@ const BottomOverlayBox = ({ fields, maxWidth, serviceType, modalTitle }) => {
       ref.input.focus();
     }
   };
+
+  // Add this function inside BottomOverlayBox
+const handleFormSuccess = () => {
+  setFormData(getInitialFormData());    // ✅ reset values
+  inputRefs.current = {};               // ✅ optional: reset refs
+  setOpen(false);                       // ✅ close modal
+};
+
+
 
   const getDestinationData = () => {
     let key = '';
@@ -110,6 +122,7 @@ const BottomOverlayBox = ({ fields, maxWidth, serviceType, modalTitle }) => {
 
         {Component ? (
           <Component
+          key={value || ''}
             {...passedProps}
             value={value}
             selected={value}
@@ -153,6 +166,7 @@ const BottomOverlayBox = ({ fields, maxWidth, serviceType, modalTitle }) => {
           countrySelectPlaceholder="Select your nationality"
           hideMessageField={true}
           destination={getDestinationData()}
+          onSuccess={handleFormSuccess}
         />
       </ReusableModal>
     </div>
