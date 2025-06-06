@@ -9,6 +9,7 @@ import img3 from '../../../../assets/image/booking/flight/imageSection/Date.png'
 import CountrySelect from '../../../reusable/CountrySelect'
 import { ClassNames } from '@emotion/react'
 
+
 const ImageSection = () => {
   const today = new Date();
 
@@ -17,8 +18,9 @@ const ImageSection = () => {
 
       component: CountrySelect,
       name: "country",
+      
       props: {
-        variant: "hotel",
+          variant: "hotel-image",
         placeholder: "Choose country",
         label: "Country",
         name: "country", // optional but useful
