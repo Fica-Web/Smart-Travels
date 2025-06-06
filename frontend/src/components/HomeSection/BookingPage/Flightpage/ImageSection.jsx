@@ -1,6 +1,7 @@
 // FlightPage.jsx or FlightBooking.jsx
 import React from 'react'
 import BookingImageSection from '../../../reusable/BookingImageSection'
+import AirportSelect from '../../../reusable/AirportSelect';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Img from '../../../../assets/image/booking/flight/flight1.png'
@@ -11,8 +12,27 @@ import img3 from '../../../../assets/image/booking/flight/imageSection/Date.png'
 const ImageSection = () => {
   const today = new Date();
   const flightFields = [
-    { label: "Flying From", placeholder: "Choose your location", icon: img1, type: "text", name: "from" },
-    { label: "Destination", placeholder: "Choose your destination", icon: img2, type: "text", name: "to" },
+{
+  label: "Flying From",
+  placeholder: "Choose your location",
+  icon: img1,
+  name: "from",
+  component: AirportSelect,
+  props: {
+    isSearchable: false,
+  }
+},
+{
+  label: "Destination",
+  placeholder: "Choose your destination",
+  icon: img2,
+  name: "to",
+  component: AirportSelect,
+  props: {
+    isSearchable: false,
+  }
+},
+
       {
     label: "Date",
     placeholder: "Choose your dates",
@@ -39,6 +59,7 @@ const ImageSection = () => {
       modalTitle="Apply for flight"
   serviceType="flight"
     />
+    
   );
 };
 
