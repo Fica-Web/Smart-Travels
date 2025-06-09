@@ -21,6 +21,13 @@
     "country": "Denmark"
   },
   {
+    "code": "AAM",
+    "name": "Mala Mala",
+    "city": "Mala Mala",
+    "state": "",
+    "country": "South Africa"
+  },
+  {
     "code": "AAN",
     "name": "Al Ain Airport",
     "city": "Ayn al Faydah",
@@ -539,13 +546,6 @@
     "country": "Saudi Arabia"
   },
   {
-    "code": "AHC",
-    "name": "Amedee Army Air Field",
-    "city": "Herlong",
-    "state": "California",
-    "country": "United States"
-  },
-  {
     "code": "AHE",
     "name": "Ahe Airport",
     "city": "Ahe",
@@ -833,13 +833,6 @@
     "country": "Egypt"
   },
   {
-    "code": "ALZ",
-    "name": "Alitak Seaplane Base",
-    "city": "Alitak",
-    "state": "Alaska",
-    "country": "United States"
-  },
-  {
     "code": "AMA",
     "name": "Amarillo International Airport",
     "city": "Amarillo",
@@ -1026,13 +1019,6 @@
     "name": "Amook Bay Seaplane Base",
     "city": "Amook",
     "state": "Alaska",
-    "country": "United States"
-  },
-  {
-    "code": "APA",
-    "name": "Centennial Airport",
-    "city": "Englewood",
-    "state": "Colorado",
     "country": "United States"
   },
   {
@@ -1414,13 +1400,6 @@
     "country": "French Polynesia"
   },
   {
-    "code": "AUR",
-    "name": "Aurillac Airport",
-    "city": "Aurillac",
-    "state": "Auvergne",
-    "country": "France"
-  },
-  {
     "code": "AUS",
     "name": "Austin-Bergstrom International Airport",
     "city": "Austin",
@@ -1468,13 +1447,6 @@
     "city": "Avu Avu",
     "state": "Guadalcanal",
     "country": "Solomon Islands"
-  },
-  {
-    "code": "AVV",
-    "name": "Avalon Airport",
-    "city": "Lara",
-    "state": "Victoria",
-    "country": "Australia"
   },
   {
     "code": "AWB",
@@ -2002,13 +1974,6 @@
     "country": "United States"
   },
   {
-    "code": "BGW",
-    "name": "Al Muthana Airport",
-    "city": "Baghdad",
-    "state": "Baghdad",
-    "country": "Iraq"
-  },
-  {
     "code": "BGY",
     "name": "Orio Al Serio Airport",
     "city": "Grassobbio",
@@ -2170,13 +2135,6 @@
     "country": "United States"
   },
   {
-    "code": "BIM",
-    "name": "South Bimini Airport",
-    "city": "Bailey's Town",
-    "state": "Bimini",
-    "country": "Bahamas"
-  },
-  {
     "code": "BIO",
     "name": "Bilbao Airport",
     "city": "Loiu",
@@ -2310,13 +2268,6 @@
     "country": "Thailand"
   },
   {
-    "code": "BKL",
-    "name": "Burke Lakefront Airport",
-    "city": "Cleveland",
-    "state": "Ohio",
-    "country": "United States"
-  },
-  {
     "code": "BKM",
     "name": "Malaysia",
     "city": "Bakalalan",
@@ -2420,13 +2371,6 @@
     "city": "Baralaba",
     "state": "Queensland",
     "country": "Australia"
-  },
-  {
-    "code": "BLV",
-    "name": "Belleville",
-    "city": "Belleville",
-    "state": "Illinois",
-    "country": "United States"
   },
   {
     "code": "BLZ",
@@ -2751,13 +2695,6 @@
     "country": "Germany"
   },
   {
-    "code": "BRF",
-    "name": "United Kingdom",
-    "city": "Bradford",
-    "state": null,
-    "country": "United Kingdom"
-  },
-  {
     "code": "BRI",
     "name": "Palese Macchie Airport",
     "city": "Bari",
@@ -2877,13 +2814,6 @@
     "country": "Equatorial Guinea"
   },
   {
-    "code": "BSH",
-    "name": "Brighton Airport",
-    "city": "Brighton",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
     "code": "BSK",
     "name": "Biskra Airport",
     "city": "Biskra",
@@ -2903,13 +2833,6 @@
     "city": "Basco",
     "state": "Cagayan Valley",
     "country": "Philippines"
-  },
-  {
-    "code": "BSR",
-    "name": "Basrah International Airport",
-    "city": "Gawad",
-    "state": "Al Basrah",
-    "country": "Iraq"
   },
   {
     "code": "BSX",
@@ -2996,13 +2919,6 @@
     "country": "United States"
   },
   {
-    "code": "BTZ",
-    "name": "Bursa Airport",
-    "city": "Bursa",
-    "state": "Bursa",
-    "country": "Turkey"
-  },
-  {
     "code": "BUA",
     "name": "Buka",
     "city": "Buka",
@@ -3087,13 +3003,6 @@
     "country": "Iran"
   },
   {
-    "code": "BVA",
-    "name": "Beauvais-Tille Airport",
-    "city": "Beauvais",
-    "state": "Picardie",
-    "country": "France"
-  },
-  {
     "code": "BVB",
     "name": "Boa Vista International Airport",
     "city": "Boa Vista",
@@ -3108,25 +3017,11 @@
     "country": "Cape Verde"
   },
   {
-    "code": "BVE",
-    "name": "La Roche Airport",
-    "city": "Brive-la-Gaillarde",
-    "state": "Limousin",
-    "country": "France"
-  },
-  {
     "code": "BVG",
     "name": "Berlevag Airport",
     "city": "Berlevaag",
     "state": "Finnmark Fylke",
     "country": "Norway"
-  },
-  {
-    "code": "BVH",
-    "name": "Brigadeiro Camarao Airport",
-    "city": "Vilhena",
-    "state": "Rondonia",
-    "country": "Brazil"
   },
   {
     "code": "BVI",
@@ -3141,13 +3036,6 @@
     "city": "Bhairawa",
     "state": "West",
     "country": "Nepal"
-  },
-  {
-    "code": "BWE",
-    "name": "Braunschweig Airport",
-    "city": "Braunschweig",
-    "state": "Lower Saxony",
-    "country": "Germany"
   },
   {
     "code": "BWF",
@@ -3274,13 +3162,6 @@
     "city": "Brazzaville",
     "state": "Brazzaville",
     "country": "Congo"
-  },
-  {
-    "code": "BZZ",
-    "name": "Brize Norton Airport",
-    "city": "Carterton",
-    "state": "England",
-    "country": "United Kingdom"
   },
   {
     "code": "CAB",
@@ -3430,13 +3311,6 @@
     "country": "Cuba"
   },
   {
-    "code": "CCF",
-    "name": "Salvaza Airport",
-    "city": "Carcassonne",
-    "state": "Languedoc-Roussillon",
-    "country": "France"
-  },
-  {
     "code": "CCJ",
     "name": "Kozhikode Airport",
     "city": "Karipur",
@@ -3525,13 +3399,6 @@
     "name": "Merle K Mudhole Smith Airport",
     "city": "Cordova",
     "state": "Alaska",
-    "country": "United States"
-  },
-  {
-    "code": "CDW",
-    "name": "Essex County Airport",
-    "city": "Fairfield",
-    "state": "New Jersey",
     "country": "United States"
   },
   {
@@ -3773,13 +3640,6 @@
     "country": "Greece"
   },
   {
-    "code": "CHS",
-    "name": "Charleston International Airport",
-    "city": "North Charleston",
-    "state": "South Carolina",
-    "country": "United States"
-  },
-  {
     "code": "CHT",
     "name": "Karewa",
     "city": "Chatham Island",
@@ -3904,13 +3764,6 @@
     "city": "Calama",
     "state": "Antofagasta",
     "country": "Chile"
-  },
-  {
-    "code": "CJJ",
-    "name": "Cheongju International Airport",
-    "city": "Naesu-Eup",
-    "state": "Chungcheongbuk-Do",
-    "country": "South Korea"
   },
   {
     "code": "CJL",
@@ -4368,20 +4221,6 @@
     "country": "Bahamas"
   },
   {
-    "code": "CRK",
-    "name": "Clark Field Airport",
-    "city": "Mabalacat",
-    "state": "Central Luzon",
-    "country": "Philippines"
-  },
-  {
-    "code": "CRL",
-    "name": "Gosselies Airport",
-    "city": "Charleroi",
-    "state": "Hainault",
-    "country": "Belgium"
-  },
-  {
     "code": "CRM",
     "name": "Catarman Airport",
     "city": "Catarman",
@@ -4681,13 +4520,6 @@
     "city": "Cayman Brac Is",
     "state": "Cayman Brac",
     "country": "Cayman Islands"
-  },
-  {
-    "code": "CYF",
-    "name": "Chefornak Airport",
-    "city": "Chefornak",
-    "state": "Alaska",
-    "country": "United States"
   },
   {
     "code": "CYI",
@@ -4996,13 +4828,6 @@
     "city": "Apple Tree Flat",
     "state": "New South Wales",
     "country": "Australia"
-  },
-  {
-    "code": "DGM",
-    "name": "Dongguan",
-    "city": "Dongguan",
-    "state": "贵州省",
-    "country": "China"
   },
   {
     "code": "DGO",
@@ -5439,13 +5264,6 @@
     "country": "United States"
   },
   {
-    "code": "DUQ",
-    "name": "Duncan-Quamichan Lake Airport",
-    "city": "Duncan",
-    "state": "British Columbia",
-    "country": "Canada"
-  },
-  {
     "code": "DUR",
     "name": "Louis Botha Airport",
     "city": "Durban",
@@ -5684,13 +5502,6 @@
     "country": "Greece"
   },
   {
-    "code": "EGC",
-    "name": "Bergerac-Roumaniere Airport",
-    "city": "Bergerac",
-    "state": "Aquitaine",
-    "country": "France"
-  },
-  {
     "code": "EGE",
     "name": "Eagle County Regional Airport",
     "city": "Gypsum",
@@ -5731,13 +5542,6 @@
     "city": "Egegik",
     "state": "Alaska",
     "country": "United States"
-  },
-  {
-    "code": "EIB",
-    "name": "Haina Airport",
-    "city": "Eisenach",
-    "state": "Rhineland-Palatinate",
-    "country": "Germany"
   },
   {
     "code": "EIE",
@@ -5787,13 +5591,6 @@
     "city": "Elko",
     "state": "Nevada",
     "country": "United States"
-  },
-  {
-    "code": "EKS",
-    "name": "Ennis Big Sky Airport",
-    "city": "",
-    "state": "",
-    "country": ""
   },
   {
     "code": "ELC",
@@ -5866,13 +5663,6 @@
     "country": "Algeria"
   },
   {
-    "code": "ELV",
-    "name": "Elfin Cove Airport",
-    "city": "Elfin Cove",
-    "state": "Alaska",
-    "country": "United States"
-  },
-  {
     "code": "ELY",
     "name": "Yelland Field Airport",
     "city": "Ely",
@@ -5941,13 +5731,6 @@
     "city": "El Nido",
     "state": "Western Visayas",
     "country": "Philippines"
-  },
-  {
-    "code": "ENS",
-    "name": "Enschede Twente",
-    "city": "Enschede",
-    "state": "Overijssel",
-    "country": "Netherlands"
   },
   {
     "code": "ENU",
@@ -6538,13 +6321,6 @@
     "country": "North Korea"
   },
   {
-    "code": "FNL",
-    "name": "Fort Collins Loveland Municipal Airport",
-    "city": "Loveland",
-    "state": "Colorado",
-    "country": "United States"
-  },
-  {
     "code": "FNT",
     "name": "Bishop International Airport",
     "city": "Flint",
@@ -6746,13 +6522,6 @@
     "city": "Fort Wayne",
     "state": "Indiana",
     "country": "United States"
-  },
-  {
-    "code": "FWM",
-    "name": "Fort William Heliport",
-    "city": "Fort William",
-    "state": "Scotland",
-    "country": "United Kingdom"
   },
   {
     "code": "FYU",
@@ -7161,13 +6930,6 @@
     "country": "Morocco"
   },
   {
-    "code": "GLO",
-    "name": "Gloucestershire Airport",
-    "city": "Cheltenham",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
     "code": "GLT",
     "name": "Gladstone Airport",
     "city": "Gladstone",
@@ -7329,13 +7091,6 @@
     "country": "Colombia"
   },
   {
-    "code": "GPS",
-    "name": "Seymour Airport",
-    "city": "Puerto Ayora",
-    "state": "Galapagos",
-    "country": "Ecuador"
-  },
-  {
     "code": "GPT",
     "name": "Gulfport Biloxi Regional Airport",
     "city": "Gulfport",
@@ -7355,13 +7110,6 @@
     "city": "George",
     "state": "Western Cape",
     "country": "South Africa"
-  },
-  {
-    "code": "GRK",
-    "name": "Killeen-Fort Hood Regional Airport",
-    "city": "Killeen",
-    "state": "Texas",
-    "country": "United States"
   },
   {
     "code": "GRO",
@@ -7777,13 +7525,6 @@
     "country": "India"
   },
   {
-    "code": "HCN",
-    "name": "Hengchun Airport",
-    "city": "Hengchun",
-    "state": "Taiwan Province",
-    "country": "Taiwan"
-  },
-  {
     "code": "HCR",
     "name": "Alaska",
     "city": "Holy Cross",
@@ -7796,13 +7537,6 @@
     "city": "Heidelberg",
     "state": "Baden-Wurttemberg",
     "country": "Germany"
-  },
-  {
-    "code": "HDD",
-    "name": "Hyderabad Airport",
-    "city": "Hyderabad",
-    "state": "Sindh",
-    "country": "Pakistan"
   },
   {
     "code": "HDF",
@@ -8092,13 +7826,6 @@
     "country": "Thailand"
   },
   {
-    "code": "HLA",
-    "name": "Lanseria Airport",
-    "city": "Johannesburg",
-    "state": "Gauteng",
-    "country": "South Africa"
-  },
-  {
     "code": "HLD",
     "name": "Hailar",
     "city": "Hailar",
@@ -8120,25 +7847,11 @@
     "country": "United States"
   },
   {
-    "code": "HLY",
-    "name": "Holyhead Airport",
-    "city": "Holyhead",
-    "state": "Wales",
-    "country": "United Kingdom"
-  },
-  {
     "code": "HLZ",
     "name": "Hamilton Airport",
     "city": "Hamilton",
     "state": "Waikato",
     "country": "New Zealand"
-  },
-  {
-    "code": "HMA",
-    "name": "Khanty-Nansiysk",
-    "city": "Khanty-Mansiysk",
-    "state": "Khanty-Mansiyskiy Avtonomnyy Okr",
-    "country": "Russian Federation"
   },
   {
     "code": "HME",
@@ -8603,13 +8316,6 @@
     "country": "United States"
   },
   {
-    "code": "IAG",
-    "name": "Niagara Falls International Airport",
-    "city": "Niagara Falls",
-    "state": "New York",
-    "country": "United States"
-  },
-  {
     "code": "IAH",
     "name": "George Bush Intercontinental Airport",
     "city": "Houston",
@@ -8806,13 +8512,6 @@
     "country": "Iran"
   },
   {
-    "code": "IKO",
-    "name": "Nikolski",
-    "city": "Nikolski",
-    "state": "Alaska",
-    "country": "United States"
-  },
-  {
     "code": "IKS",
     "name": "Tiksi Airport",
     "city": "Tiksi",
@@ -8825,13 +8524,6 @@
     "city": "Irkutsk",
     "state": "Irkutskaya Oblast",
     "country": "Russia"
-  },
-  {
-    "code": "ILF",
-    "name": "Ilford Airport",
-    "city": "Nelson House",
-    "state": "Manitoba",
-    "country": "Canada"
   },
   {
     "code": "ILI",
@@ -8937,13 +8629,6 @@
     "city": "Inhambane",
     "state": "Inhambane",
     "country": "Mozambique"
-  },
-  {
-    "code": "INI",
-    "name": "Nis Airport",
-    "city": "Nis",
-    "state": "Nishava",
-    "country": "Serbia"
   },
   {
     "code": "INL",
@@ -9063,13 +8748,6 @@
     "city": "Montoursville",
     "state": "Pennsylvania",
     "country": "United States"
-  },
-  {
-    "code": "IPW",
-    "name": "Ipswich Airport",
-    "city": "Ipswich",
-    "state": "England",
-    "country": "United Kingdom"
   },
   {
     "code": "IQM",
@@ -9436,13 +9114,6 @@
     "country": "Australia"
   },
   {
-    "code": "JCU",
-    "name": "Ceuta Heliport",
-    "city": "Ceuta",
-    "state": "Ciudad Autónoma de Ceuta",
-    "country": "Spain"
-  },
-  {
     "code": "JDF",
     "name": "Francisco de Assis Airport",
     "city": "Juiz de Fora",
@@ -9476,13 +9147,6 @@
     "city": "Jeddah",
     "state": "Makka",
     "country": "Saudi Arabia"
-  },
-  {
-    "code": "JEF",
-    "name": "Jefferson City Memorial Airport",
-    "city": "Holts Summit",
-    "state": "Missouri",
-    "country": "United States"
   },
   {
     "code": "JEG",
@@ -9525,13 +9189,6 @@
     "city": "Jamnagar",
     "state": "Gujarat",
     "country": "India"
-  },
-  {
-    "code": "JGC",
-    "name": "Grand Canyon Heliport",
-    "city": "Williams",
-    "state": "Arizona",
-    "country": "United States"
   },
   {
     "code": "JGN",
@@ -9618,25 +9275,11 @@
     "country": "Ethiopia"
   },
   {
-    "code": "JIU",
-    "name": "",
-    "city": "Jiujiang",
-    "state": "Jiangxi",
-    "country": "China"
-  },
-  {
     "code": "JJN",
     "name": "Jinjiang",
     "city": "Jinjiang",
     "state": "Fujian",
     "country": "China"
-  },
-  {
-    "code": "JJU",
-    "name": "Julianehab Heliport",
-    "city": "Qaqortoq",
-    "state": "Vestgronland",
-    "country": "Greenland"
   },
   {
     "code": "JKG",
@@ -9658,13 +9301,6 @@
     "city": "Jackson",
     "state": "Kentucky",
     "country": "United States"
-  },
-  {
-    "code": "JLD",
-    "name": "Landskrona Heliport",
-    "city": "Landskrona",
-    "state": "Skane",
-    "country": "Sweden"
   },
   {
     "code": "JLN",
@@ -9712,13 +9348,6 @@
     "code": "JNN",
     "name": "Nanortalik Airport",
     "city": "Nanortalik",
-    "state": "Vestgronland",
-    "country": "Greenland"
-  },
-  {
-    "code": "JNS",
-    "name": "Narsaq Heliport",
-    "city": "Narsaq",
     "state": "Vestgronland",
     "country": "Greenland"
   },
@@ -9793,13 +9422,6 @@
     "country": "Greenland"
   },
   {
-    "code": "JRB",
-    "name": "Downtown Manhattan Heliport",
-    "city": "New York",
-    "state": "New York",
-    "country": "United States"
-  },
-  {
     "code": "JRH",
     "name": "Jorhat Airport",
     "city": "Senchoa Gaon",
@@ -9849,13 +9471,6 @@
     "country": "United States"
   },
   {
-    "code": "JSU",
-    "name": "Maniitsoq Heliport",
-    "city": "Maitsoq",
-    "state": "Vestgronland",
-    "country": "Greenland"
-  },
-  {
     "code": "JSY",
     "name": "Syros Island Airport",
     "city": "Ano Siros",
@@ -9903,13 +9518,6 @@
     "city": "Jumla",
     "state": "Midwest",
     "country": "Nepal"
-  },
-  {
-    "code": "JUV",
-    "name": "Upernavik Heliport",
-    "city": "Upernavik",
-    "state": "Vestgronland",
-    "country": "Greenland"
   },
   {
     "code": "JUZ",
@@ -10479,13 +10087,6 @@
     "country": "United States"
   },
   {
-    "code": "KKB",
-    "name": "Kitoi Seaplane Base",
-    "city": "Kitoi Bay",
-    "state": "Alaska",
-    "country": "United States"
-  },
-  {
     "code": "KKC",
     "name": "Khon Kaen Airport",
     "city": "Khon Kaen",
@@ -10510,13 +10111,6 @@
     "code": "KKH",
     "name": "Alaska",
     "city": "Kongiganak",
-    "state": "Alaska",
-    "country": "United States"
-  },
-  {
-    "code": "KKI",
-    "name": "Akiachak",
-    "city": "Akiachak",
     "state": "Alaska",
     "country": "United States"
   },
@@ -10566,13 +10160,6 @@
     "code": "KLL",
     "name": "Levelock",
     "city": "Levelock",
-    "state": "Alaska",
-    "country": "United States"
-  },
-  {
-    "code": "KLN",
-    "name": "Larsen Bay",
-    "city": "Larsen Bay",
     "state": "Alaska",
     "country": "United States"
   },
@@ -10836,37 +10423,9 @@
     "country": "China"
   },
   {
-    "code": "KOY",
-    "name": "Olga Bay",
-    "city": "Olga Bay",
-    "state": "Alaska",
-    "country": "United States"
-  },
-  {
-    "code": "KOZ",
-    "name": "Alaska",
-    "city": "Ouzinkie",
-    "state": "Alaska",
-    "country": "United States"
-  },
-  {
     "code": "KPB",
     "name": "Point Baker Seaplane Base",
     "city": "Point Baker",
-    "state": "Alaska",
-    "country": "United States"
-  },
-  {
-    "code": "KPC",
-    "name": "Port Clarence Coast Guard Station",
-    "city": "Brevig Mission",
-    "state": "Alaska",
-    "country": "United States"
-  },
-  {
-    "code": "KPN",
-    "name": "Kipnuk",
-    "city": "Kipnuk",
     "state": "Alaska",
     "country": "United States"
   },
@@ -10878,23 +10437,9 @@
     "country": "South Korea"
   },
   {
-    "code": "KPR",
-    "name": "Port Williams",
-    "city": "Port Williams",
-    "state": "Alaska",
-    "country": "United States"
-  },
-  {
     "code": "KPV",
     "name": "Alaska",
     "city": "Perryville",
-    "state": "Alaska",
-    "country": "United States"
-  },
-  {
-    "code": "KPY",
-    "name": "Alaska",
-    "city": "Port Bailey",
     "state": "Alaska",
     "country": "United States"
   },
@@ -11088,13 +10633,6 @@
     "country": "United States"
   },
   {
-    "code": "KTE",
-    "name": "Kerteh Airport",
-    "city": "Kerteh",
-    "state": "Terengganu",
-    "country": "Malaysia"
-  },
-  {
     "code": "KTM",
     "name": "Tribhuvan International Airport",
     "city": "Kathmandu",
@@ -11205,20 +10743,6 @@
     "city": "Kutaisi",
     "state": "K´ut´aisi",
     "country": "Georgia"
-  },
-  {
-    "code": "KUU",
-    "name": "Bhuntar Airport",
-    "city": "Bhuntar",
-    "state": "Himachal Pradesh",
-    "country": "India"
-  },
-  {
-    "code": "KUV",
-    "name": "Gunsan Airport",
-    "city": "Gunsan-Si",
-    "state": "Jeollabuk-Do",
-    "country": "South Korea"
   },
   {
     "code": "KVA",
@@ -11333,13 +10857,6 @@
     "country": "United States"
   },
   {
-    "code": "KWP",
-    "name": "Village Seaplane Base-West Point",
-    "city": "West Point",
-    "state": "Alaska",
-    "country": "United States"
-  },
-  {
     "code": "KWT",
     "name": "Kwethluk Airport",
     "city": "Kwethluk",
@@ -11396,13 +10913,6 @@
     "country": "United States"
   },
   {
-    "code": "KYN",
-    "name": "England",
-    "city": "Milton Keynes",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
     "code": "KYP",
     "name": "Kyaukpyu Airport",
     "city": "Kyaukpyu",
@@ -11429,13 +10939,6 @@
     "city": "Kyzyl",
     "state": "Tyva",
     "country": "Russia"
-  },
-  {
-    "code": "KZB",
-    "name": "Zachar Bay",
-    "city": "Zachar Bay",
-    "state": "Alaska",
-    "country": "United States"
   },
   {
     "code": "KZI",
@@ -11485,13 +10988,6 @@
     "city": "Lannion",
     "state": "Brittany",
     "country": "France"
-  },
-  {
-    "code": "LAJ",
-    "name": "Lajes Airport",
-    "city": "Lages",
-    "state": "Santa Catarina",
-    "country": "Brazil"
   },
   {
     "code": "LAK",
@@ -11998,13 +11494,6 @@
     "country": "Italy"
   },
   {
-    "code": "LIO",
-    "name": "Limon International Airport",
-    "city": "Pto. Limon",
-    "state": "Limon",
-    "country": "Costa Rica"
-  },
-  {
     "code": "LIR",
     "name": "Tomas Guardia International Airport",
     "city": "Liberia",
@@ -12108,13 +11597,6 @@
     "city": "Lulea",
     "state": "Norrbotten",
     "country": "Sweden"
-  },
-  {
-    "code": "LLF",
-    "name": "Lingling Airport",
-    "city": "LingLing",
-    "state": "Hunan",
-    "country": "China"
   },
   {
     "code": "LLI",
@@ -12348,20 +11830,6 @@
     "country": "United States"
   },
   {
-    "code": "LPT",
-    "name": "Lampang Airport",
-    "city": "Lampang",
-    "state": "Lampang",
-    "country": "Thailand"
-  },
-  {
-    "code": "LPX",
-    "name": "Liepaja East Airport",
-    "city": "Liepaya",
-    "state": "Liepajas Rajons",
-    "country": "Latvia"
-  },
-  {
     "code": "LPY",
     "name": "Loudes Airport",
     "city": "Le Puy",
@@ -12551,13 +12019,6 @@
     "country": "Namibia"
   },
   {
-    "code": "LUF",
-    "name": "Luke Air Force Base",
-    "city": "Webb",
-    "state": "Arizona",
-    "country": "United States"
-  },
-  {
     "code": "LUG",
     "name": "Lugano Airport",
     "city": "Agno",
@@ -12598,13 +12059,6 @@
     "city": "Villa General Roca",
     "state": "San Luis",
     "country": "Argentina"
-  },
-  {
-    "code": "LUR",
-    "name": "Cape Lisburne Long-Range Radar Station",
-    "city": "Point Hope",
-    "state": "Alaska",
-    "country": "United States"
   },
   {
     "code": "LUV",
@@ -12717,13 +12171,6 @@
     "city": "Luoyang",
     "state": "Henan",
     "country": "China"
-  },
-  {
-    "code": "LYB",
-    "name": "Boddenfield Airport",
-    "city": "Little Cayman",
-    "state": "Little Cayman",
-    "country": "Cayman Islands"
   },
   {
     "code": "LYC",
@@ -12913,13 +12360,6 @@
     "city": "Mombasa",
     "state": "Coast",
     "country": "Kenya"
-  },
-  {
-    "code": "MBD",
-    "name": "Mmabatho International Airport",
-    "city": "Mmabatho",
-    "state": "North-west",
-    "country": "South Africa"
   },
   {
     "code": "MBE",
@@ -13146,20 +12586,6 @@
     "country": "Argentina"
   },
   {
-    "code": "MEA",
-    "name": "Macae Airport",
-    "city": "Macae",
-    "state": "Rio de Janeiro",
-    "country": "Brazil"
-  },
-  {
-    "code": "MEC",
-    "name": "Eloy Alfaro Airport",
-    "city": "Manta",
-    "state": "Manabi",
-    "country": "Ecuador"
-  },
-  {
     "code": "MED",
     "name": "Madinah International Airport",
     "city": "Al Madinah",
@@ -13242,13 +12668,6 @@
     "city": "Moala",
     "state": "Eastern",
     "country": "Fiji"
-  },
-  {
-    "code": "MFK",
-    "name": "Taiwan",
-    "city": "Matsu",
-    "state": null,
-    "country": "Taiwan"
   },
   {
     "code": "MFM",
@@ -13384,13 +12803,6 @@
     "country": "Finland"
   },
   {
-    "code": "MHR",
-    "name": "Mather Airport",
-    "city": "Mather",
-    "state": "California",
-    "country": "United States"
-  },
-  {
     "code": "MHT",
     "name": "Manchester-Boston Regional Airport",
     "city": "Manchester",
@@ -13522,13 +12934,6 @@
     "city": "Mirnyj",
     "state": "Sakha",
     "country": "Russia"
-  },
-  {
-    "code": "MKC",
-    "name": "Kansas City Downtown Airport",
-    "city": "Kansas City",
-    "state": "Missouri",
-    "country": "United States"
   },
   {
     "code": "MKE",
@@ -13718,13 +13123,6 @@
     "city": "Mount Magnet",
     "state": "Western Australia",
     "country": "Australia"
-  },
-  {
-    "code": "MMH",
-    "name": "Mammoth June Lakes Airport",
-    "city": "Mammoth Lakes",
-    "state": "California",
-    "country": "United States"
   },
   {
     "code": "MMK",
@@ -14357,13 +13755,6 @@
     "country": "Madagascar"
   },
   {
-    "code": "MXN",
-    "name": "Ploujean Airport",
-    "city": "Morlaix",
-    "state": "Brittany",
-    "country": "France"
-  },
-  {
     "code": "MXP",
     "name": "Malpensa International Airport",
     "city": "Cardano al Campo",
@@ -14441,20 +13832,6 @@
     "country": "Japan"
   },
   {
-    "code": "MYL",
-    "name": "Mccall Airport",
-    "city": "Mccall",
-    "state": "Idaho",
-    "country": "United States"
-  },
-  {
-    "code": "MYR",
-    "name": "Myrtle Beach International Airport",
-    "city": "Myrtle Beach",
-    "state": "South Carolina",
-    "country": "United States"
-  },
-  {
     "code": "MYT",
     "name": "Myitkyina Airport",
     "city": "Myitkyina",
@@ -14488,13 +13865,6 @@
     "city": "Makung City",
     "state": "Taiwan Province",
     "country": "Taiwan"
-  },
-  {
-    "code": "MZH",
-    "name": "Merzifon",
-    "city": "Merzifon",
-    "state": "",
-    "country": "Turkey"
   },
   {
     "code": "MZI",
@@ -14616,13 +13986,6 @@
     "country": "French Polynesia"
   },
   {
-    "code": "NAV",
-    "name": "",
-    "city": "Nevsehir",
-    "state": "Nevşehir",
-    "country": "Turkey"
-  },
-  {
     "code": "NAW",
     "name": "Narathiwat Airport",
     "city": "Narathiwat",
@@ -14630,25 +13993,11 @@
     "country": "Thailand"
   },
   {
-    "code": "NBC",
-    "name": "Russia",
-    "city": "Naberevnye Chelny",
-    "state": "",
-    "country": "Russia"
-  },
-  {
     "code": "NBO",
     "name": "Jomo Kenyatta International Airport",
     "city": "Nairobi",
     "state": "Nairobi Area",
     "country": "Kenya"
-  },
-  {
-    "code": "NBW",
-    "name": "Guantanamo Bay Naval Air Station",
-    "city": "Caimanera",
-    "state": "Guantanamo",
-    "country": "Cuba"
   },
   {
     "code": "NBX",
@@ -14812,13 +14161,6 @@
     "country": "Niger"
   },
   {
-    "code": "NIP",
-    "name": "Jacksonville Naval Air Station",
-    "city": "Jacksonville",
-    "state": "Florida",
-    "country": "United States"
-  },
-  {
     "code": "NIU",
     "name": "Honolulu International Airport",
     "city": "Honolulu",
@@ -14852,13 +14194,6 @@
     "city": "Naukiti",
     "state": "Alaska",
     "country": "United States"
-  },
-  {
-    "code": "NKM",
-    "name": "Nagoya Airport",
-    "city": "Toyoyama-cho",
-    "state": "Aichi Prefecture",
-    "country": "Japan"
   },
   {
     "code": "NLA",
@@ -15043,13 +14378,6 @@
     "country": "United Kingdom"
   },
   {
-    "code": "NRA",
-    "name": "Narrandera Leeton Aerodrome",
-    "city": "Narrandera",
-    "state": "New South Wales",
-    "country": "Australia"
-  },
-  {
     "code": "NRK",
     "name": "Kungsangen Airport",
     "city": "Norrkoping",
@@ -15076,13 +14404,6 @@
     "city": "Now Shahr",
     "state": "Mazandaran",
     "country": "Iran"
-  },
-  {
-    "code": "NSI",
-    "name": "Nsimalen Airport",
-    "city": "Yaounde",
-    "state": "Centre",
-    "country": "Cameroon"
   },
   {
     "code": "NSK",
@@ -15309,13 +14630,6 @@
     "country": "United States"
   },
   {
-    "code": "OAM",
-    "name": "Oamaru Airport",
-    "city": "Oamaru",
-    "state": "Canterbury",
-    "country": "New Zealand"
-  },
-  {
     "code": "OAX",
     "name": "Xoxocotlan Airport",
     "city": "San Bernardo Mixtepec",
@@ -15533,13 +14847,6 @@
     "country": "United States"
   },
   {
-    "code": "OLH",
-    "name": "Alaska",
-    "city": "Old Harbor",
-    "state": "Alaska",
-    "country": "United States"
-  },
-  {
     "code": "OLJ",
     "name": "Malampa",
     "city": "Olpoi",
@@ -15666,13 +14973,6 @@
     "country": "Australia"
   },
   {
-    "code": "OPF",
-    "name": "Opa Locka Airport",
-    "city": "Opa-Locka",
-    "state": "Florida",
-    "country": "United States"
-  },
-  {
     "code": "OPO",
     "name": "Porto Airport",
     "city": "Maia",
@@ -15722,13 +15022,6 @@
     "country": "United States"
   },
   {
-    "code": "ORI",
-    "name": "",
-    "city": "Port Lions",
-    "state": "Alaska",
-    "country": "United States"
-  },
-  {
     "code": "ORJ",
     "name": "Orinduik Airport",
     "city": "Rera",
@@ -15741,13 +15034,6 @@
     "city": "Fivemilebridge",
     "state": "",
     "country": "Ireland"
-  },
-  {
-    "code": "ORM",
-    "name": "Sywell Airport",
-    "city": "Northampton",
-    "state": "England",
-    "country": "United Kingdom"
   },
   {
     "code": "ORN",
@@ -16051,13 +15337,6 @@
     "country": "India"
   },
   {
-    "code": "PBG",
-    "name": "Plattsburgh Air Force Base",
-    "city": "Plattsburgh",
-    "state": "New York",
-    "country": "United States"
-  },
-  {
     "code": "PBH",
     "name": "Paro Airport",
     "city": "Paro",
@@ -16191,13 +15470,6 @@
     "country": "United States"
   },
   {
-    "code": "PED",
-    "name": "Pardubice",
-    "city": "Pardubice",
-    "state": "Pardubicky Kraj",
-    "country": "Czech Republic"
-  },
-  {
     "code": "PEE",
     "name": "Bolshesavino Airport",
     "city": "Perm'",
@@ -16280,13 +15552,6 @@
     "city": "Ukhta",
     "state": "Komi",
     "country": "Russia"
-  },
-  {
-    "code": "PEZ",
-    "name": "Penza",
-    "city": "Penza",
-    "state": "Privolzhskiy",
-    "country": "Russian Federation"
   },
   {
     "code": "PFB",
@@ -16513,13 +15778,6 @@
     "country": "Peru"
   },
   {
-    "code": "PIW",
-    "name": "Pikwitonei Airport",
-    "city": "Nelson House",
-    "state": "Manitoba",
-    "country": "Canada"
-  },
-  {
     "code": "PIX",
     "name": "Pico Airport",
     "city": "Madalena",
@@ -16730,20 +15988,6 @@
     "country": "Chile"
   },
   {
-    "code": "PMD",
-    "name": "Air Force Plant Nr 42 Palmdale",
-    "city": "Palmdale",
-    "state": "California",
-    "country": "United States"
-  },
-  {
-    "code": "PME",
-    "name": "Portsmouth Airport",
-    "city": "Portsmouth",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
     "code": "PMF",
     "name": "Parma Airport",
     "city": "Parma",
@@ -16756,13 +16000,6 @@
     "city": "Palma",
     "state": "Balearic Islands",
     "country": "Spain"
-  },
-  {
-    "code": "PML",
-    "name": "",
-    "city": "Port Moller",
-    "state": "Alaska",
-    "country": "United States"
   },
   {
     "code": "PMO",
@@ -16947,13 +16184,6 @@
     "country": "Brazil"
   },
   {
-    "code": "PPE",
-    "name": "Punta Penasco Airport",
-    "city": "Pto. Penasco",
-    "state": "Sonora",
-    "country": "Mexico"
-  },
-  {
     "code": "PPG",
     "name": "Pago Pago International Airport",
     "city": "Pago Pago",
@@ -16966,13 +16196,6 @@
     "city": "Petropavlovsk",
     "state": "Soltustik Qazaqstan",
     "country": "Kazakhstan"
-  },
-  {
-    "code": "PPL",
-    "name": "Nepal",
-    "city": "Phaplu",
-    "state": "",
-    "country": "Nepal"
   },
   {
     "code": "PPN",
@@ -17402,46 +16625,11 @@
     "country": "United Kingdom"
   },
   {
-    "code": "QDU",
-    "name": "Germany",
-    "city": "Dusseldorf",
-    "state": "North-Rhine-Westphalia",
-    "country": "Germany"
-  },
-  {
-    "code": "QFB",
-    "name": "Freiburg Hauptbahnhof",
-    "city": "Freiburg",
-    "state": "Baden-Württemberg",
-    "country": "Germany"
-  },
-  {
-    "code": "QFZ",
-    "name": "Saarbruecken Rail Station",
-    "city": "Sarrebruck",
-    "state": "Saar",
-    "country": "Germany"
-  },
-  {
     "code": "QJY",
     "name": "Cheju International Airport",
     "city": "Jeju-Si",
     "state": "Jaeju-Do",
     "country": "South Korea"
-  },
-  {
-    "code": "QJZ",
-    "name": "France",
-    "city": "Nantes",
-    "state": null,
-    "country": "France"
-  },
-  {
-    "code": "QKL",
-    "name": "Koeln Hauptbahnhof",
-    "city": "Cologne",
-    "state": "North-Rhine-Westphalia",
-    "country": "Germany"
   },
   {
     "code": "QOW",
@@ -17456,83 +16644,6 @@
     "city": "Dover",
     "state": "England",
     "country": "United Kingdom"
-  },
-  {
-    "code": "QQH",
-    "name": "Harwich Rail Station",
-    "city": "Harwich",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "QQK",
-    "name": "England",
-    "city": "London",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "QQM",
-    "name": "Manchester International Airport",
-    "city": "Manchester",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "QQN",
-    "name": "Birmingham International Airport",
-    "city": "Birmingham",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "QQP",
-    "name": "Paddington Station",
-    "city": "London",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "QQS",
-    "name": "St Pancras International",
-    "city": "Britrail Rail Zone S",
-    "state": "",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "QQU",
-    "name": "Birmingham International Airport",
-    "city": "London",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "QQW",
-    "name": "Waterloo Railway Station",
-    "city": "London",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "QQX",
-    "name": "Bath Rail Service",
-    "city": "Bath",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "QQY",
-    "name": "Birmingham International Airport",
-    "city": "York",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "QRH",
-    "name": "Rotterdam Airport",
-    "city": "Rotterdam",
-    "state": "",
-    "country": "Netherlands"
   },
   {
     "code": "QRO",
@@ -17575,27 +16686,6 @@
     "city": "Aix-les-milles",
     "state": "Provence-alpes-cote d'Azur",
     "country": "France"
-  },
-  {
-    "code": "QXG",
-    "name": "Pays de la Loire",
-    "city": "Angers",
-    "state": "Pays de la Loire",
-    "country": "France"
-  },
-  {
-    "code": "QYU",
-    "name": "Gavleborg",
-    "city": "Gefle",
-    "state": "Gavleborg",
-    "country": "Sweden"
-  },
-  {
-    "code": "QYX",
-    "name": "Uppsala Station",
-    "city": "Uppsala",
-    "state": "",
-    "country": "Sweden"
   },
   {
     "code": "RAB",
@@ -17948,25 +17038,11 @@
     "country": "United States"
   },
   {
-    "code": "RIG",
-    "name": "Rio Grande Airport",
-    "city": "Rio Grande",
-    "state": "Rio Grande do Sul",
-    "country": "Brazil"
-  },
-  {
     "code": "RIS",
     "name": "Rishiri Airport",
     "city": "Rishirifuji-cho",
     "state": "Hokkaido Prefecture",
     "country": "Japan"
-  },
-  {
-    "code": "RIV",
-    "name": "March Air Force Base",
-    "city": "Alessandro",
-    "state": "California",
-    "country": "United States"
   },
   {
     "code": "RIW",
@@ -18179,13 +17255,6 @@
     "country": "Australia"
   },
   {
-    "code": "ROO",
-    "name": "Rondonopolis Airport",
-    "city": "Rondonópolis",
-    "state": "Mato Grosso",
-    "country": "Brazil"
-  },
-  {
     "code": "ROP",
     "name": "Rota International Airport",
     "city": "Rota",
@@ -18261,13 +17330,6 @@
     "city": "Rock Sound",
     "state": "South Eleuthera",
     "country": "Bahamas"
-  },
-  {
-    "code": "RSH",
-    "name": "Russian",
-    "city": "Russian Mission",
-    "state": "Alaska",
-    "country": "United States"
   },
   {
     "code": "RSJ",
@@ -18634,13 +17696,6 @@
     "country": "Chile"
   },
   {
-    "code": "SCM",
-    "name": "Scammon Bay",
-    "city": "Scammon Bay",
-    "state": "Alaska",
-    "country": "United States"
-  },
-  {
     "code": "SCN",
     "name": "Saarbrucken Airport",
     "city": "Sarrebruck",
@@ -18695,13 +17750,6 @@
     "city": "Salina Cruz",
     "state": "",
     "country": "Mexico"
-  },
-  {
-    "code": "SCY",
-    "name": "San Cristobal Airport",
-    "city": "Puerto Baquerizo Moreno",
-    "state": "Galapagos",
-    "country": "Ecuador"
   },
   {
     "code": "SCZ",
@@ -19306,13 +18354,6 @@
     "country": "Macedonia"
   },
   {
-    "code": "SKT",
-    "name": "Sialkot",
-    "city": "Sialkot",
-    "state": "Punjab",
-    "country": "Pakistan"
-  },
-  {
     "code": "SKU",
     "name": "Skiros Airport",
     "city": "Skiros",
@@ -19353,13 +18394,6 @@
     "city": "Sola",
     "state": "Torba",
     "country": "Vanuatu"
-  },
-  {
-    "code": "SLI",
-    "name": "",
-    "city": "Solwezi",
-    "state": "North-Western",
-    "country": "Zambia"
   },
   {
     "code": "SLK",
@@ -19409,13 +18443,6 @@
     "city": "St Lucia",
     "state": "Castries",
     "country": "St. Lucia"
-  },
-  {
-    "code": "SLV",
-    "name": "Simla Airport",
-    "city": "Jutogh",
-    "state": "Himachal Pradesh",
-    "country": "India"
   },
   {
     "code": "SLW",
@@ -19551,32 +18578,11 @@
     "country": "United States"
   },
   {
-    "code": "SNR",
-    "name": "Montoir Airport",
-    "city": "Montoir-de-Bretagne",
-    "state": "Pays de la Loire",
-    "country": "France"
-  },
-  {
-    "code": "SNU",
-    "name": "Santa Clara Airport",
-    "city": "Esperanza",
-    "state": "Villa Clara",
-    "country": "Cuba"
-  },
-  {
     "code": "SNW",
     "name": "Myanmar",
     "city": "Thandwe",
     "state": "Rakhine State",
     "country": "Myanmar"
-  },
-  {
-    "code": "SOB",
-    "name": "Sarmellek Airport",
-    "city": "Zalavár",
-    "state": "Zala",
-    "country": "Hungary"
   },
   {
     "code": "SOC",
@@ -19649,13 +18655,6 @@
     "country": "United States"
   },
   {
-    "code": "SOW",
-    "name": "Show Low Municipal Airport",
-    "city": "Show Low",
-    "state": "Arizona",
-    "country": "United States"
-  },
-  {
     "code": "SPB",
     "name": "St Thomas Seaplane Base",
     "city": "Charlotte Amalie",
@@ -19710,13 +18709,6 @@
     "city": "San Pedro",
     "state": "Belize",
     "country": "Belize"
-  },
-  {
-    "code": "SPS",
-    "name": "Sheppard Air Force Base",
-    "city": "Wichita Falls",
-    "state": "Texas",
-    "country": "United States"
   },
   {
     "code": "SPU",
@@ -20116,20 +19108,6 @@
     "city": "South West Bay",
     "state": "Malampa",
     "country": "Vanuatu"
-  },
-  {
-    "code": "SWK",
-    "name": "Segrate Airport",
-    "city": "Trezzano sul Naviglio",
-    "state": "Lombardy",
-    "country": "Italy"
-  },
-  {
-    "code": "SWO",
-    "name": "Stillwater Municipal Airport",
-    "city": "Stillwater",
-    "state": "Oklahoma",
-    "country": "United States"
   },
   {
     "code": "SWQ",
@@ -20874,13 +19852,6 @@
     "country": "Indonesia"
   },
   {
-    "code": "TKE",
-    "name": "Tenakee Springs",
-    "city": "Tenakee Springs",
-    "state": "Alaska",
-    "country": "United States"
-  },
-  {
     "code": "TKG",
     "name": "Branti Airport",
     "city": "Tanjungkarang",
@@ -20976,13 +19947,6 @@
     "name": "Tallahassee Regional Airport",
     "city": "Tallahassee",
     "state": "Florida",
-    "country": "United States"
-  },
-  {
-    "code": "TLJ",
-    "name": "",
-    "city": "Tatalina",
-    "state": "Alaska",
     "country": "United States"
   },
   {
@@ -21117,13 +20081,6 @@
     "city": "Jinan",
     "state": "Shandong",
     "country": "China"
-  },
-  {
-    "code": "TNC",
-    "name": "Tin City AFS",
-    "city": "Tin City",
-    "state": "Alaska",
-    "country": "United States"
   },
   {
     "code": "TNG",
@@ -21434,25 +20391,11 @@
     "country": "China"
   },
   {
-    "code": "TSO",
-    "name": "",
-    "city": "Isles Of Scilly",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
     "code": "TSR",
     "name": "Timisoara Northeast Airport",
     "city": "",
     "state": "Timis",
     "country": "Romania"
-  },
-  {
-    "code": "TSS",
-    "name": "East 34th Street Heliport",
-    "city": "New York",
-    "state": "New York",
-    "country": "United States"
   },
   {
     "code": "TST",
@@ -21488,13 +20431,6 @@
     "city": "Tottori-shi",
     "state": "Tottori Prefecture",
     "country": "Japan"
-  },
-  {
-    "code": "TTQ",
-    "name": "Tortuquero Airport",
-    "city": "Colorado",
-    "state": "Limon",
-    "country": "Costa Rica"
   },
   {
     "code": "TTT",
@@ -21537,13 +20473,6 @@
     "city": "Tambacounda",
     "state": "Tambacounda",
     "country": "Senegal"
-  },
-  {
-    "code": "TUF",
-    "name": "St Symphorien Airport",
-    "city": "Tours",
-    "state": "Centre",
-    "country": "France"
   },
   {
     "code": "TUG",
@@ -22071,13 +21000,6 @@
     "country": "France"
   },
   {
-    "code": "URS",
-    "name": "",
-    "city": "Kursk",
-    "state": "Kurskaya Oblast",
-    "country": "Russia"
-  },
-  {
     "code": "URT",
     "name": "Surat Thani Airport",
     "city": "Phun Phin",
@@ -22341,13 +21263,6 @@
     "name": "Victoria Regional Airport",
     "city": "Victoria",
     "state": "Texas",
-    "country": "United States"
-  },
-  {
-    "code": "VCV",
-    "name": "Southern California Logistics Airport",
-    "city": "Victorville",
-    "state": "California",
     "country": "United States"
   },
   {
@@ -22636,13 +21551,6 @@
     "city": "Kamyshin",
     "state": "Volgogradskaya Oblast",
     "country": "Russia"
-  },
-  {
-    "code": "VOL",
-    "name": "Nea Anchialos Airport",
-    "city": "Almiros",
-    "state": "Thessalia",
-    "country": "Greece"
   },
   {
     "code": "VOZ",
@@ -23079,13 +21987,6 @@
     "country": "Australia"
   },
   {
-    "code": "WNS",
-    "name": "Nawabshah Airport",
-    "city": "Nawabshah",
-    "state": "Sindh",
-    "country": "Pakistan"
-  },
-  {
     "code": "WNZ",
     "name": "Wenzhou Airport",
     "city": "Wenzhou",
@@ -23105,13 +22006,6 @@
     "city": "Whangarei",
     "state": "Northland",
     "country": "New Zealand"
-  },
-  {
-    "code": "WRG",
-    "name": "Wrangell Airport",
-    "city": "Wrangell",
-    "state": "Alaska",
-    "country": "United States"
   },
   {
     "code": "WRL",
@@ -23261,39 +22155,11 @@
     "country": "United States"
   },
   {
-    "code": "XAD",
-    "name": "Churchill Rail Station",
-    "city": "Oro-Medonte",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
     "code": "XAP",
     "name": "Chapeco Airport",
     "city": "Chapeco",
     "state": "Santa Catarina",
     "country": "Brazil"
-  },
-  {
-    "code": "XAW",
-    "name": "Capreol Rail Service",
-    "city": "Capreol",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
-    "code": "XAX",
-    "name": "Dorval Rail Station",
-    "city": "Dorval",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
-    "code": "XAZ",
-    "name": "Cambellton",
-    "city": "Cambellton",
-    "state": "New Brunswick",
-    "country": "Canada"
   },
   {
     "code": "XBE",
@@ -23324,13 +22190,6 @@
     "country": "Christmas Island"
   },
   {
-    "code": "XCI",
-    "name": "Ontario",
-    "city": "Oro-Medonte",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
     "code": "XCM",
     "name": "Chatham Airport",
     "city": "Chatham",
@@ -23345,242 +22204,11 @@
     "country": "France"
   },
   {
-    "code": "XDB",
-    "name": "Lille-Europe Railway Station",
-    "city": "Lille",
-    "state": "Nord-Pas-de-Calais",
-    "country": "France"
-  },
-  {
-    "code": "XDD",
-    "name": "",
-    "city": "",
-    "state": "",
-    "country": "Canada"
-  },
-  {
-    "code": "XDG",
-    "name": "Halifax Rail Service",
-    "city": "Halifax",
-    "state": "Nova Scotia",
-    "country": "Canada"
-  },
-  {
-    "code": "XDH",
-    "name": "",
-    "city": "",
-    "state": "",
-    "country": "Canada"
-  },
-  {
-    "code": "XDM",
-    "name": "Drummondville Airport",
-    "city": "Drummondville",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
-    "code": "XDP",
-    "name": "Moncton Rail Service",
-    "city": "Moncton",
-    "state": "New Brunswick",
-    "country": "Canada"
-  },
-  {
-    "code": "XDQ",
-    "name": "London Ontario Rail Service",
-    "city": "London",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
-    "code": "XDS",
-    "name": "Ontario",
-    "city": "Oro-Medonte",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
-    "code": "XDU",
-    "name": "",
-    "city": "",
-    "state": "",
-    "country": "Canada"
-  },
-  {
-    "code": "XDV",
-    "name": "",
-    "city": "Prince George",
-    "state": "British Columbia",
-    "country": "Canada"
-  },
-  {
-    "code": "XDW",
-    "name": "Canada",
-    "city": "Prince Rupert",
-    "state": "British Columbia",
-    "country": "Canada"
-  },
-  {
-    "code": "XDX",
-    "name": "Sarina Rail Station",
-    "city": "Sarina",
-    "state": "",
-    "country": "Canada"
-  },
-  {
-    "code": "XDY",
-    "name": "",
-    "city": "Sudbury",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
-    "code": "XDZ",
-    "name": "The Pas Rail Service",
-    "city": "The Pas",
-    "state": "Manitoba",
-    "country": "Canada"
-  },
-  {
-    "code": "XEA",
-    "name": "Vancouver Rail Service",
-    "city": "Vancouver",
-    "state": "British Columbia",
-    "country": "Canada"
-  },
-  {
-    "code": "XEC",
-    "name": "Windsor Ontario Rail Service",
-    "city": "Windsor",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
-    "code": "XED",
-    "name": "Disneyland Railway Station",
-    "city": "Paris",
-    "state": "Île-de-France",
-    "country": "France"
-  },
-  {
-    "code": "XEE",
-    "name": "Lac Edouard Rail Service",
-    "city": "Lac Edouard",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
-    "code": "XEF",
-    "name": "Winnipeg Rail Service",
-    "city": "Winnipeg",
-    "state": "Manitoba",
-    "country": "Canada"
-  },
-  {
-    "code": "XEG",
-    "name": "Kingston Rail Service",
-    "city": "Kingston",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
-    "code": "XEH",
-    "name": "Ladysmith Rail Service",
-    "city": "Ladysmith",
-    "state": "British Columbia",
-    "country": "Canada"
-  },
-  {
-    "code": "XEK",
-    "name": "Saskatchewan",
-    "city": "Melville",
-    "state": "Saskatchewan",
-    "country": "Canada"
-  },
-  {
-    "code": "XEL",
-    "name": "Quebec",
-    "city": "New Carlisle",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
-    "code": "XER",
-    "name": "Strasbourg Bus Station",
-    "city": "Strasbourg",
-    "state": "Alsace",
-    "country": "France"
-  },
-  {
     "code": "XET",
     "name": "London City Airport",
     "city": "London",
     "state": "England",
     "country": "United Kingdom"
-  },
-  {
-    "code": "XEV",
-    "name": "Stockholm Central Station",
-    "city": "Stockholm",
-    "state": null,
-    "country": "Sweden"
-  },
-  {
-    "code": "XEZ",
-    "name": "Sodertalje",
-    "city": "Sodertalje",
-    "state": "Stockholm",
-    "country": "Sweden"
-  },
-  {
-    "code": "XFD",
-    "name": "Stratford",
-    "city": "Stratford",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
-    "code": "XFE",
-    "name": "Parent Rail Service",
-    "city": "Parent",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
-    "code": "XFG",
-    "name": "Perce Rail Service",
-    "city": "Perce",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
-    "code": "XFJ",
-    "name": "Eskilstuna Station",
-    "city": "Eskilstuna",
-    "state": null,
-    "country": "Sweden"
-  },
-  {
-    "code": "XFK",
-    "name": "Senneterre Rail Service",
-    "city": "Senneterre",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
-    "code": "XFL",
-    "name": "Shawinigan Rail Station",
-    "city": "Shawinigan",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
-    "code": "XFM",
-    "name": "Shawnigan Rail Service",
-    "city": "Cowichan Valley",
-    "state": "British Columbia",
-    "country": "Canada"
   },
   {
     "code": "XFN",
@@ -23590,48 +22218,6 @@
     "country": "China"
   },
   {
-    "code": "XFP",
-    "name": "Malmö Station",
-    "city": "Malmo",
-    "state": null,
-    "country": "Sweden"
-  },
-  {
-    "code": "XFQ",
-    "name": "Weymont Rail Service",
-    "city": "Weymont",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
-    "code": "XFR",
-    "name": "Malmo South Railway",
-    "city": "Malmo",
-    "state": "",
-    "country": "Sweden"
-  },
-  {
-    "code": "XFS",
-    "name": "Alexandria",
-    "city": "Alexandria",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
-    "code": "XFU",
-    "name": "Tierp Station",
-    "city": "Tierp",
-    "state": null,
-    "country": "Sweden"
-  },
-  {
-    "code": "XFV",
-    "name": "Brantford",
-    "city": "Brantford",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
     "code": "XFW",
     "name": "Finkenwerder Airport",
     "city": "Hamburg",
@@ -23639,108 +22225,10 @@
     "country": "Germany"
   },
   {
-    "code": "XFY",
-    "name": "Sainte Foy Rail Service",
-    "city": "Quebec",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
-    "code": "XFZ",
-    "name": "Charny",
-    "city": "Charny",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
-    "code": "XGC",
-    "name": "Lund",
-    "city": "Lund",
-    "state": null,
-    "country": "Sweden"
-  },
-  {
-    "code": "XGJ",
-    "name": "Cobourg Rail Station",
-    "city": "Cobourg",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
-    "code": "XGK",
-    "name": "Coteau Rail Station",
-    "city": "Coteau",
-    "state": "New Brunswick",
-    "country": "Canada"
-  },
-  {
-    "code": "XGM",
-    "name": "England",
-    "city": "Grantham",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
     "code": "XGR",
     "name": "Kangiqsualujjuaq Airport",
     "city": "Chisasibi",
     "state": "Quebec",
-    "country": "Canada"
-  },
-  {
-    "code": "XGY",
-    "name": "Ontario",
-    "city": "Grimsby",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
-    "code": "XHJ",
-    "name": "Railway Station",
-    "city": "Aix La Chapelle",
-    "state": "North-Rhine-Westphalia",
-    "country": "Germany"
-  },
-  {
-    "code": "XHK",
-    "name": "Valence Station",
-    "city": "Valence",
-    "state": "Midi-Pyrénées",
-    "country": "France"
-  },
-  {
-    "code": "XHM",
-    "name": "Georgetown Rail Station",
-    "city": "Georgetown",
-    "state": "Prince Edward Island",
-    "country": "Canada"
-  },
-  {
-    "code": "XHN",
-    "name": "Belgium",
-    "city": "Liege",
-    "state": "Wallonie",
-    "country": "Belgium"
-  },
-  {
-    "code": "XHS",
-    "name": "British Columbia",
-    "city": "Chemainus",
-    "state": "British Columbia",
-    "country": "Canada"
-  },
-  {
-    "code": "XIA",
-    "name": "Guelph Airport",
-    "city": "Guelph",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
-    "code": "XIB",
-    "name": "Ontario",
-    "city": "Ingersoll",
-    "state": "Ontario",
     "country": "Canada"
   },
   {
@@ -23751,46 +22239,11 @@
     "country": "China"
   },
   {
-    "code": "XID",
-    "name": "Maxville Rail Station",
-    "city": "Maxville",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
-    "code": "XIF",
-    "name": "Ontario",
-    "city": "Napanee",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
     "code": "XIL",
     "name": "Xilinhot Airport",
     "city": "Xilin Hot",
     "state": "Nei Mongol",
     "country": "China"
-  },
-  {
-    "code": "XIM",
-    "name": "Quebec",
-    "city": "Saint Hyacinthe",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
-    "code": "XIO",
-    "name": "St Marys Rail Station",
-    "city": "St Marys",
-    "state": "New Brunswick",
-    "country": "Canada"
-  },
-  {
-    "code": "XIP",
-    "name": "Woodstock Rail Service",
-    "city": "Woodstock",
-    "state": "Ontario",
-    "country": "Canada"
   },
   {
     "code": "XIT",
@@ -23807,20 +22260,6 @@
     "country": "China"
   },
   {
-    "code": "XJL",
-    "name": "Quebec",
-    "city": "Joliette",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
-    "code": "XJQ",
-    "name": "Jonquiere Rail Station",
-    "city": "Jonquiere",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
     "code": "XKH",
     "name": "Xieng Khouang",
     "city": "Xieng Khouang",
@@ -23828,24 +22267,10 @@
     "country": "Lao People's Democratic Republic"
   },
   {
-    "code": "XKL",
-    "name": "Kuala Lumpur Central Station",
-    "city": "Kuala Lumpur",
-    "state": "Wilayah Persekutuan",
-    "country": "Malaysia"
-  },
-  {
     "code": "XKS",
     "name": "Kasabonika Airport",
     "city": "Casummit Lake",
     "state": "Ontario",
-    "country": "Canada"
-  },
-  {
-    "code": "XKV",
-    "name": "Sackville Rail Station",
-    "city": "Sackville",
-    "state": "New Brunswick",
     "country": "Canada"
   },
   {
@@ -23856,53 +22281,11 @@
     "country": "Canada"
   },
   {
-    "code": "XLJ",
-    "name": "Quebec Stn. Rail Svce.",
-    "city": "Quebec",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
-    "code": "XLM",
-    "name": "St Lambert Rail Svce.",
-    "city": "Montreal",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
-    "code": "XLQ",
-    "name": "",
-    "city": "Guildwood",
-    "state": "",
-    "country": "Canada"
-  },
-  {
     "code": "XLS",
     "name": "Saint Louis Airport",
     "city": "",
     "state": "St-Louis",
     "country": "Senegal"
-  },
-  {
-    "code": "XLV",
-    "name": "Ontario",
-    "city": "Niagara Falls",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
-    "code": "XLY",
-    "name": "Aldershot Rail Station",
-    "city": "Aldershot",
-    "state": "",
-    "country": "Canada"
-  },
-  {
-    "code": "XLZ",
-    "name": "Nova Scotia",
-    "city": "Truro",
-    "state": "Nova Scotia",
-    "country": "Canada"
   },
   {
     "code": "XMH",
@@ -23947,32 +22330,11 @@
     "country": "Brazil"
   },
   {
-    "code": "XNM",
-    "name": "Nottingham Airport",
-    "city": "Nottingham",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
     "code": "XNN",
     "name": "Xining Airport",
     "city": "Xining",
     "state": "Qinghai",
     "country": "China"
-  },
-  {
-    "code": "XNO",
-    "name": "",
-    "city": "Northallerton",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "XNV",
-    "name": "Nuneaton Rail Station",
-    "city": "Nuneaton",
-    "state": "England",
-    "country": "United Kingdom"
   },
   {
     "code": "XNY",
@@ -23982,55 +22344,6 @@
     "country": "United States"
   },
   {
-    "code": "XOK",
-    "name": "Ontario",
-    "city": "Oakville",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
-    "code": "XOP",
-    "name": "Poitou-Charentes",
-    "city": "Poitiers",
-    "state": "Poitou-Charentes",
-    "country": "France"
-  },
-  {
-    "code": "XPB",
-    "name": "Parksville Rail Service",
-    "city": "Parksville",
-    "state": "British Columbia",
-    "country": "Canada"
-  },
-  {
-    "code": "XPF",
-    "name": "Penrith Rail Station",
-    "city": "Penrith",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "XPG",
-    "name": "Gare du Nord Rail Stn",
-    "city": "Paris",
-    "state": "Île-de-France",
-    "country": "France"
-  },
-  {
-    "code": "XPJ",
-    "name": "Montpellier Railway Station",
-    "city": "Montpellier",
-    "state": "Poitou-Charentes",
-    "country": "France"
-  },
-  {
-    "code": "XPN",
-    "name": "",
-    "city": "Brampton",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
     "code": "XPQ",
     "name": "",
     "city": "Port Klang",
@@ -24038,45 +22351,10 @@
     "country": "Malaysia"
   },
   {
-    "code": "XPT",
-    "name": "Preston Rail Station",
-    "city": "Preston",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "XPX",
-    "name": "Pointe-aux-Trembles Rail Station",
-    "city": "Pointe-aux-Trembles",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
     "code": "XQE",
     "name": "United Kingdom",
     "city": "London",
     "state": null,
-    "country": "United Kingdom"
-  },
-  {
-    "code": "XQG",
-    "name": "Berwick Station",
-    "city": "Berwick",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "XQH",
-    "name": "United Kingdom",
-    "city": "Nottingham",
-    "state": null,
-    "country": "United Kingdom"
-  },
-  {
-    "code": "XQL",
-    "name": "Lancaster Rail Station",
-    "city": "Lancaster",
-    "state": "England",
     "country": "United Kingdom"
   },
   {
@@ -24094,34 +22372,6 @@
     "country": "Canada"
   },
   {
-    "code": "XRC",
-    "name": "Runcorn Rail Station",
-    "city": "Runcorn",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "XRF",
-    "name": "Marseille Railway",
-    "city": "Marseille",
-    "state": "Centre",
-    "country": "France"
-  },
-  {
-    "code": "XRP",
-    "name": "Pine Ridge Rail Station",
-    "city": "Pine Ridge",
-    "state": "New Brunswick",
-    "country": "Canada"
-  },
-  {
-    "code": "XRU",
-    "name": "Rugby Rail Station",
-    "city": "Rugby",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
     "code": "XRY",
     "name": "Jerez Airport",
     "city": "Jerez",
@@ -24134,13 +22384,6 @@
     "city": "Cockburn Harbour",
     "state": "South and East Caicos",
     "country": "Turks And Caicos Islands"
-  },
-  {
-    "code": "XSH",
-    "name": "Centre",
-    "city": "Tours",
-    "state": "Centre",
-    "country": "France"
   },
   {
     "code": "XSI",
@@ -24157,13 +22400,6 @@
     "country": "Singapore"
   },
   {
-    "code": "XSR",
-    "name": "England",
-    "city": "Salisbury",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
     "code": "XTG",
     "name": "Thargomindah Aerodrome",
     "city": "Thargomindah",
@@ -24171,24 +22407,10 @@
     "country": "Australia"
   },
   {
-    "code": "XTK",
-    "name": "England",
-    "city": "Thirsk",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
     "code": "XTL",
     "name": "Tadoule Lake Airport",
     "city": "Nelson House",
     "state": "Manitoba",
-    "country": "Canada"
-  },
-  {
-    "code": "XTY",
-    "name": "Strathroy Rail Station",
-    "city": "Strathroy",
-    "state": "Ontario",
     "country": "Canada"
   },
   {
@@ -24199,27 +22421,6 @@
     "country": "China"
   },
   {
-    "code": "XVA",
-    "name": "England",
-    "city": "Stockport",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "XVB",
-    "name": "England",
-    "city": "Stafford",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "XVC",
-    "name": "United Kingdom",
-    "city": "Crewe",
-    "state": null,
-    "country": "United Kingdom"
-  },
-  {
     "code": "XVG",
     "name": "Longville Municipal Airport",
     "city": "Longville",
@@ -24227,123 +22428,11 @@
     "country": "United States"
   },
   {
-    "code": "XVH",
-    "name": "United Kingdom",
-    "city": "Peterborough",
-    "state": null,
-    "country": "United Kingdom"
-  },
-  {
-    "code": "XVJ",
-    "name": "Stevenage Rail Station",
-    "city": "Stevenage",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "XVU",
-    "name": "Durham Rail Station",
-    "city": "Durham",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "XVV",
-    "name": "Belleville Rail Service",
-    "city": "Belleville",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
-    "code": "XVW",
-    "name": "",
-    "city": "Belleville",
-    "state": "Scotland",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "XWD",
-    "name": "Wakefield Westgate Rail Station",
-    "city": "Wakefield Westgate",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "XWH",
-    "name": "Stroke on Trent Rail Station",
-    "city": "Stroke on Trent",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "XWK",
-    "name": "Karlskrona Rail Svc.",
-    "city": "Karlskrona",
-    "state": null,
-    "country": "Sweden"
-  },
-  {
-    "code": "XWL",
-    "name": "Gothenburg",
-    "city": "Gothenburg",
-    "state": "",
-    "country": "Sweden"
-  },
-  {
-    "code": "XWM",
-    "name": "Hallsberg Rail Station",
-    "city": "Hallsberg",
-    "state": "",
-    "country": "Sweden"
-  },
-  {
-    "code": "XWN",
-    "name": "England",
-    "city": "Warrington",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "XWP",
-    "name": "Sweden",
-    "city": "Hassleholm",
-    "state": null,
-    "country": "Sweden"
-  },
-  {
     "code": "XWQ",
     "name": "Sweden",
     "city": "Enkoping",
     "state": null,
     "country": "Sweden"
-  },
-  {
-    "code": "XWR",
-    "name": "Orebro Railway Station",
-    "city": "Orebro",
-    "state": "Orebro",
-    "country": "Sweden"
-  },
-  {
-    "code": "XWS",
-    "name": "United Kingdom",
-    "city": "Swindon",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "XWV",
-    "name": "Varberg Rail Station",
-    "city": "Varberg",
-    "state": "",
-    "country": "Sweden"
-  },
-  {
-    "code": "XWY",
-    "name": "Wyoming Rail Station",
-    "city": "Wyoming",
-    "state": "Ontario",
-    "country": "Canada"
   },
   {
     "code": "XWZ",
@@ -24360,24 +22449,10 @@
     "country": "Sweden"
   },
   {
-    "code": "XXD",
-    "name": "Degerfors Rail Station",
-    "city": "Degerfors",
-    "state": "",
-    "country": "Sweden"
-  },
-  {
     "code": "XXK",
     "name": "Katrineholm",
     "city": "Katrineholm",
     "state": "",
-    "country": "Sweden"
-  },
-  {
-    "code": "XXM",
-    "name": "",
-    "city": "Mjolby",
-    "state": "Ostergotland",
     "country": "Sweden"
   },
   {
@@ -24388,32 +22463,11 @@
     "country": "Saudi Arabia"
   },
   {
-    "code": "XXO",
-    "name": "Leksand Rail Station",
-    "city": "Leksand",
-    "state": "",
-    "country": "Sweden"
-  },
-  {
     "code": "XXT",
     "name": "Sophia Antipolis Heliport",
     "city": "Valbonne",
     "state": "Provence-alpes-cote d'Azur",
     "country": "France"
-  },
-  {
-    "code": "XXU",
-    "name": "Sweden",
-    "city": "Hedemora",
-    "state": "",
-    "country": "Sweden"
-  },
-  {
-    "code": "XXZ",
-    "name": "Sundsvall Railway Station",
-    "city": "Sundsvall",
-    "state": "",
-    "country": "Sweden"
   },
   {
     "code": "XYA",
@@ -24423,109 +22477,11 @@
     "country": "Solomon Islands"
   },
   {
-    "code": "XYB",
-    "name": "Borlange",
-    "city": "Borlänge",
-    "state": null,
-    "country": "Sweden"
-  },
-  {
-    "code": "XYC",
-    "name": "Sweden",
-    "city": "Herrljunga",
-    "state": "",
-    "country": "Sweden"
-  },
-  {
-    "code": "XYD",
-    "name": "Lyon Part-Dieu Railway Station",
-    "city": "Lyon",
-    "state": "Rhone-Alpes",
-    "country": "France"
-  },
-  {
-    "code": "XYF",
-    "name": "Falkoping Rail Station",
-    "city": "Falkoping",
-    "state": "Vastra Gotaland",
-    "country": "Sweden"
-  },
-  {
-    "code": "XYH",
-    "name": "Helsingborg Railway",
-    "city": "Helsingborg",
-    "state": "",
-    "country": "Sweden"
-  },
-  {
     "code": "XYI",
     "name": "Sweden",
     "city": "Flen",
     "state": "",
     "country": "Sweden"
-  },
-  {
-    "code": "XYK",
-    "name": "Norrkoping Railway Service",
-    "city": "Norrkoping",
-    "state": "Ostergotland",
-    "country": "Sweden"
-  },
-  {
-    "code": "XYN",
-    "name": "Kristinehamn",
-    "city": "Kristinehamn",
-    "state": "",
-    "country": "Sweden"
-  },
-  {
-    "code": "XYP",
-    "name": "Kyrlbo",
-    "city": "Avesta Krylbo",
-    "state": "Dalarna",
-    "country": "Sweden"
-  },
-  {
-    "code": "XYQ",
-    "name": "Angelholm Railway Svc.",
-    "city": "Angelholm/Helsingborg",
-    "state": null,
-    "country": "Sweden"
-  },
-  {
-    "code": "XYX",
-    "name": "Sala",
-    "city": "Sala",
-    "state": "",
-    "country": "Sweden"
-  },
-  {
-    "code": "XYY",
-    "name": "Arvika Airport",
-    "city": "Arvika",
-    "state": "",
-    "country": "Sweden"
-  },
-  {
-    "code": "XYZ",
-    "name": "Harnosand Rail Station",
-    "city": "Harnosand",
-    "state": "Vasternorrland",
-    "country": "Sweden"
-  },
-  {
-    "code": "XZB",
-    "name": "Casselman Rail Station",
-    "city": "Casselman",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
-    "code": "XZC",
-    "name": "",
-    "city": "Glencoe",
-    "state": "Ontario",
-    "country": "Canada"
   },
   {
     "code": "XZJ",
@@ -24535,39 +22491,11 @@
     "country": "Japan"
   },
   {
-    "code": "XZL",
-    "name": "Edmonton International Airport",
-    "city": "Edmonton",
-    "state": "Alberta",
-    "country": "Canada"
-  },
-  {
     "code": "XZM",
     "name": "Macau Ferry",
     "city": "Macau",
     "state": "Amazonas",
     "country": "Macao"
-  },
-  {
-    "code": "XZN",
-    "name": "Avignon",
-    "city": "Avignon",
-    "state": "Provence-alpes-cote d'Azur",
-    "country": "France"
-  },
-  {
-    "code": "XZO",
-    "name": "Oslo Central Station",
-    "city": "Oslo",
-    "state": "",
-    "country": "Norway"
-  },
-  {
-    "code": "XZU",
-    "name": "Off line Point",
-    "city": "Rail (Generic)",
-    "state": "Missouri",
-    "country": "United States"
   },
   {
     "code": "XZV",
@@ -24610,13 +22538,6 @@
     "city": "Sault Ste. Marie",
     "state": "Ontario",
     "country": "Canada"
-  },
-  {
-    "code": "YAO",
-    "name": "Yaounde Airport",
-    "city": "Yaounde",
-    "state": "Centre",
-    "country": "Cameroon"
   },
   {
     "code": "YAP",
@@ -24703,13 +22624,6 @@
     "country": "China"
   },
   {
-    "code": "YBR",
-    "name": "Brandon Airport",
-    "city": "Killarney",
-    "state": "Manitoba",
-    "country": "Canada"
-  },
-  {
     "code": "YBT",
     "name": "Brochet",
     "city": "Brochet",
@@ -24724,31 +22638,10 @@
     "country": "Canada"
   },
   {
-    "code": "YBW",
-    "name": "",
-    "city": "Bedwell Harbor",
-    "state": "",
-    "country": "Canada"
-  },
-  {
     "code": "YBX",
     "name": "Lourdes-De-Blanc-Sablon Airport",
     "city": "Havre-St-Pierre",
     "state": "Quebec",
-    "country": "Canada"
-  },
-  {
-    "code": "YBZ",
-    "name": "Toronto Downtown Airport",
-    "city": "Toronto",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
-    "code": "YCA",
-    "name": "Courtenay Airport",
-    "city": "Courtenay",
-    "state": "British Columbia",
     "country": "Canada"
   },
   {
@@ -24784,13 +22677,6 @@
     "name": "Colville Lake Airport",
     "city": "Hay River",
     "state": "Northwest Territories",
-    "country": "Canada"
-  },
-  {
-    "code": "YCM",
-    "name": "St Catharines Airport",
-    "city": "Fonthill",
-    "state": "Ontario",
     "country": "Canada"
   },
   {
@@ -24843,13 +22729,6 @@
     "country": "Canada"
   },
   {
-    "code": "YDN",
-    "name": "Dauphin Airport",
-    "city": "Dauphin",
-    "state": "Manitoba",
-    "country": "Canada"
-  },
-  {
     "code": "YDP",
     "name": "Nain Airport",
     "city": "Happy Valley-Goose Bay",
@@ -24869,13 +22748,6 @@
     "city": "Leduc",
     "state": "Alberta",
     "country": "Canada"
-  },
-  {
-    "code": "YEI",
-    "name": "",
-    "city": "Bursa",
-    "state": "Bursa",
-    "country": "Turkey"
   },
   {
     "code": "YEK",
@@ -24955,23 +22827,9 @@
     "country": "Canada"
   },
   {
-    "code": "YFX",
-    "name": "Fox Harbour Aerodrome",
-    "city": "St. Anthony",
-    "state": "Newfoundland and Labrador",
-    "country": "Canada"
-  },
-  {
     "code": "YGB",
     "name": "Gillies Bay Airport",
     "city": "Gibsons",
-    "state": "British Columbia",
-    "country": "Canada"
-  },
-  {
-    "code": "YGG",
-    "name": "Ganges Harbor Airport",
-    "city": "Saltspring Island",
     "state": "British Columbia",
     "country": "Canada"
   },
@@ -25032,24 +22890,10 @@
     "country": "Canada"
   },
   {
-    "code": "YGV",
-    "name": "Harve-St-Pierre Airport",
-    "city": "Havre St Pierre",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
     "code": "YGW",
     "name": "Kuujjuarapik Airport",
     "city": "Chisasibi",
     "state": "Quebec",
-    "country": "Canada"
-  },
-  {
-    "code": "YGX",
-    "name": "Gillam Airport",
-    "city": "Nelson House",
-    "state": "Manitoba",
     "country": "Canada"
   },
   {
@@ -25064,13 +22908,6 @@
     "name": "Port Hope Simpson Aerodrome",
     "city": "St. Anthony",
     "state": "Newfoundland and Labrador",
-    "country": "Canada"
-  },
-  {
-    "code": "YHB",
-    "name": "Hudson Bay Airport",
-    "city": "Melfort",
-    "state": "Saskatchewan",
     "country": "Canada"
   },
   {
@@ -25137,13 +22974,6 @@
     "country": "Canada"
   },
   {
-    "code": "YHU",
-    "name": "Montreal St Hubert Airport",
-    "city": "St-Hubert",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
     "code": "YHY",
     "name": "Hay River Airport",
     "city": "Hay River",
@@ -25191,13 +23021,6 @@
     "city": "Iqaluit",
     "state": "Nunavut",
     "country": "Canada"
-  },
-  {
-    "code": "YIP",
-    "name": "Willow Run Airport",
-    "city": "Ypsilanti",
-    "state": "Michigan",
-    "country": "United States"
   },
   {
     "code": "YIV",
@@ -25312,13 +23135,6 @@
     "country": "Canada"
   },
   {
-    "code": "YLQ",
-    "name": "La Tuque Airport",
-    "city": "La Tuque",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
     "code": "YLW",
     "name": "Kelowna International Airport",
     "city": "Kelowna",
@@ -25368,13 +23184,6 @@
     "country": "Canada"
   },
   {
-    "code": "YMY",
-    "name": "Downtown Rail Station",
-    "city": "Montreal",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
     "code": "YNA",
     "name": "Natashquan Airport",
     "city": "Havre-St-Pierre",
@@ -25393,13 +23202,6 @@
     "name": "Wemindji Airport",
     "city": "Chisasibi",
     "state": "Quebec",
-    "country": "Canada"
-  },
-  {
-    "code": "YND",
-    "name": "Ottawa Gatineau Airport",
-    "city": "Gatineau",
-    "state": "Ontario",
     "country": "Canada"
   },
   {
@@ -25592,13 +23394,6 @@
     "country": "Canada"
   },
   {
-    "code": "YPZ",
-    "name": "Burns Lake Airport",
-    "city": "Smithers",
-    "state": "British Columbia",
-    "country": "Canada"
-  },
-  {
     "code": "YQB",
     "name": "Quebec Airport",
     "city": "Ste-Foy",
@@ -25617,13 +23412,6 @@
     "name": "The Pas Airport",
     "city": "The Pas",
     "state": "Manitoba",
-    "country": "Canada"
-  },
-  {
-    "code": "YQF",
-    "name": "Red Deer Regional Airport",
-    "city": "Sylvan Lake",
-    "state": "Alberta",
     "country": "Canada"
   },
   {
@@ -25652,13 +23440,6 @@
     "name": "Greater Moncton International Airport",
     "city": "Moncton",
     "state": "New Brunswick",
-    "country": "Canada"
-  },
-  {
-    "code": "YQN",
-    "name": "Nakina Airport",
-    "city": "Marathon",
-    "state": "Ontario",
     "country": "Canada"
   },
   {
@@ -25781,13 +23562,6 @@
     "country": "Canada"
   },
   {
-    "code": "YSH",
-    "name": "Smiths Falls Montague Township Russ Beach Airpor",
-    "city": "Smiths Falls",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
     "code": "YSJ",
     "name": "Saint John Airport",
     "city": "St. John",
@@ -25834,13 +23608,6 @@
     "name": "Sachs Harbour Airport",
     "city": "Hay River",
     "state": "Nunavut",
-    "country": "Canada"
-  },
-  {
-    "code": "YTD",
-    "name": "Thicket Portage Airport",
-    "city": "Nelson House",
-    "state": "Manitoba",
     "country": "Canada"
   },
   {
@@ -25949,13 +23716,6 @@
     "country": "Canada"
   },
   {
-    "code": "YVA",
-    "name": "Moroni Iconi Airport",
-    "city": "Moroni",
-    "state": "Grande Comore",
-    "country": "Comoros"
-  },
-  {
     "code": "YVB",
     "name": "Bonaventure Airport",
     "city": "Percé",
@@ -26047,24 +23807,10 @@
     "country": "Canada"
   },
   {
-    "code": "YWM",
-    "name": "Williams Harbour Airport",
-    "city": "St. Anthony",
-    "state": "Newfoundland and Labrador",
-    "country": "Canada"
-  },
-  {
     "code": "YWP",
     "name": "Webequie Airport",
     "city": "Marathon",
     "state": "Ontario",
-    "country": "Canada"
-  },
-  {
-    "code": "YWS",
-    "name": "Green Lake Water Aerodrome",
-    "city": "Gibsons",
-    "state": "British Columbia",
     "country": "Canada"
   },
   {
@@ -26093,13 +23839,6 @@
     "name": "North Peace Airport",
     "city": "Fort St. John",
     "state": "British Columbia",
-    "country": "Canada"
-  },
-  {
-    "code": "YXK",
-    "name": "Rimouski Airport",
-    "city": "Rimouski",
-    "state": "Quebec",
     "country": "Canada"
   },
   {
@@ -26212,13 +23951,6 @@
     "name": "Victoria International Airport",
     "city": "Sidney",
     "state": "British Columbia",
-    "country": "Canada"
-  },
-  {
-    "code": "YYL",
-    "name": "Lynn Lake Airport",
-    "city": "Nelson House",
-    "state": "Manitoba",
     "country": "Canada"
   },
   {
@@ -26362,13 +24094,6 @@
     "country": "Philippines"
   },
   {
-    "code": "ZAQ",
-    "name": "Bavaria",
-    "city": "Nuremberg",
-    "state": "Bavaria",
-    "country": "Germany"
-  },
-  {
     "code": "ZAT",
     "name": "Zhaotong",
     "city": "Zhaotong",
@@ -26376,39 +24101,11 @@
     "country": "China"
   },
   {
-    "code": "ZAZ",
-    "name": "Zaragoza Air Base",
-    "city": "Zaragoza",
-    "state": "Aragon",
-    "country": "Spain"
-  },
-  {
-    "code": "ZBA",
-    "name": "Switzerland",
-    "city": "Basel",
-    "state": "Canton of Basel-City",
-    "country": "Switzerland"
-  },
-  {
     "code": "ZBF",
     "name": "Bathurst Airport",
     "city": "Bathurst",
     "state": "New Brunswick",
     "country": "Canada"
-  },
-  {
-    "code": "ZBL",
-    "name": "Australia",
-    "city": "Biloela",
-    "state": "Queensland",
-    "country": "Australia"
-  },
-  {
-    "code": "ZBP",
-    "name": "",
-    "city": "Baltimore",
-    "state": "Maryland",
-    "country": "United States"
   },
   {
     "code": "ZBR",
@@ -26439,25 +24136,11 @@
     "country": "Chile"
   },
   {
-    "code": "ZDH",
-    "name": "Basel SBB station",
-    "city": "Basel",
-    "state": "Basel-Stadt",
-    "country": "Switzerland"
-  },
-  {
     "code": "ZDN",
     "name": "Kingsford Smith Airport",
     "city": "Sydney",
     "state": "New South Wales",
     "country": "Australia"
-  },
-  {
-    "code": "ZDU",
-    "name": "London City Airport",
-    "city": "London",
-    "state": "England",
-    "country": "United Kingdom"
   },
   {
     "code": "ZEE",
@@ -26495,32 +24178,11 @@
     "country": "Canada"
   },
   {
-    "code": "ZEP",
-    "name": "",
-    "city": "London",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
     "code": "ZEU",
     "name": "",
     "city": "Zeu",
     "state": "Nebbi",
     "country": "Uganda"
-  },
-  {
-    "code": "ZFI",
-    "name": "England",
-    "city": "Chesterfield",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "ZFJ",
-    "name": "France",
-    "city": "Rennes",
-    "state": null,
-    "country": "France"
   },
   {
     "code": "ZFM",
@@ -26537,46 +24199,11 @@
     "country": "Canada"
   },
   {
-    "code": "ZFQ",
-    "name": "France",
-    "city": "Bordeaux",
-    "state": null,
-    "country": "France"
-  },
-  {
-    "code": "ZFV",
-    "name": "Philadelphia Rail",
-    "city": "Philadelphia",
-    "state": "Pennsylvania",
-    "country": "United States"
-  },
-  {
     "code": "ZFZ",
     "name": "New York",
     "city": "Buffalo",
     "state": "New York",
     "country": "United States"
-  },
-  {
-    "code": "ZGD",
-    "name": "New London",
-    "city": "Groton",
-    "state": "Connecticut",
-    "country": "United States"
-  },
-  {
-    "code": "ZGG",
-    "name": "United Kingdom",
-    "city": "Glasgow",
-    "state": "Scotland",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "ZGH",
-    "name": "Copenhagen Main Station",
-    "city": "Copenhagen",
-    "state": "",
-    "country": "Denmark"
   },
   {
     "code": "ZGI",
@@ -26591,13 +24218,6 @@
     "city": "Zhongshan",
     "state": "Guangdong",
     "country": "China"
-  },
-  {
-    "code": "ZGO",
-    "name": "Gotha",
-    "city": "Gotha",
-    "state": "Thuringia",
-    "country": "Germany"
   },
   {
     "code": "ZGS",
@@ -26621,20 +24241,6 @@
     "country": "China"
   },
   {
-    "code": "ZHO",
-    "name": "Bus Station",
-    "city": "Houston",
-    "state": "Texas",
-    "country": "United States"
-  },
-  {
-    "code": "ZIF",
-    "name": "Fallowfield Railway",
-    "city": "Ottawa",
-    "state": "Ontario",
-    "country": "Canada"
-  },
-  {
     "code": "ZIG",
     "name": "Ziguinchor Airport",
     "city": "Ziguinchor",
@@ -26647,13 +24253,6 @@
     "city": "Petatlán",
     "state": "Guerrero",
     "country": "Mexico"
-  },
-  {
-    "code": "ZIV",
-    "name": "Inverness Rail Station",
-    "city": "Inverness",
-    "state": "Scotland",
-    "country": "United Kingdom"
   },
   {
     "code": "ZJT",
@@ -26677,53 +24276,11 @@
     "country": "Canada"
   },
   {
-    "code": "ZLN",
-    "name": "Le Mans",
-    "city": "Le Mans",
-    "state": "Pays de la Loire",
-    "country": "France"
-  },
-  {
     "code": "ZLO",
     "name": "Playa de Oro International Airport",
     "city": "Manzanillo",
     "state": "Jalisco",
     "country": "Mexico"
-  },
-  {
-    "code": "ZLS",
-    "name": "England",
-    "city": "London",
-    "state": "England",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "ZLT",
-    "name": "La Tabatiere Airport",
-    "city": "Havre-St-Pierre",
-    "state": "Quebec",
-    "country": "Canada"
-  },
-  {
-    "code": "ZLY",
-    "name": "Albany International Airport",
-    "city": "Albany",
-    "state": "New York",
-    "country": "United States"
-  },
-  {
-    "code": "ZMB",
-    "name": "Hamburg Hauptbahnhof",
-    "city": "Hamburg",
-    "state": "Hamburg",
-    "country": "Germany"
-  },
-  {
-    "code": "ZME",
-    "name": "New Jersey",
-    "city": "Newark",
-    "state": "New Jersey",
-    "country": "United States"
   },
   {
     "code": "ZML",
@@ -26738,20 +24295,6 @@
     "city": "Masset",
     "state": "British Columbia",
     "country": "Canada"
-  },
-  {
-    "code": "ZMU",
-    "name": "Bavaria",
-    "city": "Munich",
-    "state": "Bavaria",
-    "country": "Germany"
-  },
-  {
-    "code": "ZMY",
-    "name": "Huangpu Harbour",
-    "city": "Huangpu",
-    "state": "Shanghai",
-    "country": "China"
   },
   {
     "code": "ZNA",
@@ -26817,20 +24360,6 @@
     "country": "Germany"
   },
   {
-    "code": "ZRB",
-    "name": "Frankfurt International Airport",
-    "city": "Frankfurt",
-    "state": "Hesse",
-    "country": "Germany"
-  },
-  {
-    "code": "ZRD",
-    "name": "Richmond",
-    "city": "Richmond",
-    "state": "Virginia",
-    "country": "United States"
-  },
-  {
     "code": "ZRH",
     "name": "Zurich International Airport",
     "city": "Kloten",
@@ -26845,41 +24374,6 @@
     "country": "Canada"
   },
   {
-    "code": "ZRL",
-    "name": "Lancaster",
-    "city": "Lancaster",
-    "state": "Pennsylvania",
-    "country": "United States"
-  },
-  {
-    "code": "ZRP",
-    "name": "Pennsylvania Station",
-    "city": "Newark",
-    "state": "New Jersey",
-    "country": "United States"
-  },
-  {
-    "code": "ZRT",
-    "name": "Hartford",
-    "city": "Hartford",
-    "state": "Connecticut",
-    "country": "United States"
-  },
-  {
-    "code": "ZRU",
-    "name": "",
-    "city": "Boston",
-    "state": "Massachusetts",
-    "country": "United States"
-  },
-  {
-    "code": "ZRV",
-    "name": "Providence",
-    "city": "Providence",
-    "state": "Rhode Island",
-    "country": "United States"
-  },
-  {
     "code": "ZSA",
     "name": "San Salvador Airport",
     "city": "Cockburn Town",
@@ -26892,13 +24386,6 @@
     "city": "St Pierre dela Reunion",
     "state": "St-Denis",
     "country": "Reunion"
-  },
-  {
-    "code": "ZSF",
-    "name": "Springfield MA RR",
-    "city": "Springfield",
-    "state": "Massachusetts",
-    "country": "United States"
   },
   {
     "code": "ZSJ",
@@ -26929,27 +24416,6 @@
     "country": "Canada"
   },
   {
-    "code": "ZTD",
-    "name": "",
-    "city": "Schenectady",
-    "state": "New York",
-    "country": "United States"
-  },
-  {
-    "code": "ZTE",
-    "name": "",
-    "city": "Rochester",
-    "state": "New York",
-    "country": "United States"
-  },
-  {
-    "code": "ZTF",
-    "name": "",
-    "city": "Stamford",
-    "state": "Connecticut",
-    "country": "United States"
-  },
-  {
     "code": "ZTH",
     "name": "Zakinthos Airport",
     "city": "Zante",
@@ -26964,13 +24430,6 @@
     "country": "China"
   },
   {
-    "code": "ZTJ",
-    "name": "New Jersey",
-    "city": "Princeton",
-    "state": "New Jersey",
-    "country": "United States"
-  },
-  {
     "code": "ZTM",
     "name": "Shamattawa Airport",
     "city": "Nelson House",
@@ -26978,45 +24437,10 @@
     "country": "Canada"
   },
   {
-    "code": "ZTN",
-    "name": "",
-    "city": "Philadelphia",
-    "state": "New Jersey",
-    "country": "United States"
-  },
-  {
-    "code": "ZTO",
-    "name": "",
-    "city": "Boston",
-    "state": "Massachusetts",
-    "country": "United States"
-  },
-  {
     "code": "ZTV",
     "name": "Louisville International Airport",
     "city": "Louisville",
     "state": "Kentucky",
-    "country": "United States"
-  },
-  {
-    "code": "ZTY",
-    "name": "",
-    "city": "Boston",
-    "state": "Massachusetts",
-    "country": "United States"
-  },
-  {
-    "code": "ZUA",
-    "name": "Utica",
-    "city": "Utica",
-    "state": "New York",
-    "country": "United States"
-  },
-  {
-    "code": "ZUG",
-    "name": "",
-    "city": "Harrisburg",
-    "state": "Pennsylvania",
     "country": "United States"
   },
   {
@@ -27041,32 +24465,11 @@
     "country": "United States"
   },
   {
-    "code": "ZVE",
-    "name": "New Haven",
-    "city": "New Haven",
-    "state": "Connecticut",
-    "country": "United States"
-  },
-  {
     "code": "ZVK",
     "name": "Savannakhet Airport",
     "city": "Savannakhet",
     "state": "Savannahkhet",
     "country": "Laos"
-  },
-  {
-    "code": "ZVR",
-    "name": "Hannover Hauptbahnhof",
-    "city": "Hanover",
-    "state": "Lower-Saxony",
-    "country": "Germany"
-  },
-  {
-    "code": "ZWB",
-    "name": "Williamsburg Rail",
-    "city": "Hampton",
-    "state": "Virginia",
-    "country": "United States"
   },
   {
     "code": "ZWE",
@@ -27076,60 +24479,11 @@
     "country": "Zimbabwe"
   },
   {
-    "code": "ZWI",
-    "name": "Wilmington Rail",
-    "city": "Wilmington",
-    "state": "Pennsylvania",
-    "country": "United States"
-  },
-  {
-    "code": "ZWS",
-    "name": "Stuttgart Hauptbahnhof",
-    "city": "Stuttgart",
-    "state": "Baden-Württemberg",
-    "country": "Germany"
-  },
-  {
-    "code": "ZWU",
-    "name": "Union Station",
-    "city": "Washington",
-    "state": "Virginia",
-    "country": "United States"
-  },
-  {
     "code": "ZWV",
     "name": "Illinois",
     "city": "Glenview",
     "state": "Illinois",
     "country": "United States"
-  },
-  {
-    "code": "ZWW",
-    "name": "Newport News",
-    "city": "Hampton",
-    "state": "Virginia",
-    "country": "United States"
-  },
-  {
-    "code": "ZXA",
-    "name": "Aberdeen railway station",
-    "city": "Aberdeen",
-    "state": "Scotland",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "ZXE",
-    "name": "Waverley station",
-    "city": "Edinburgh",
-    "state": "Scotland",
-    "country": "United Kingdom"
-  },
-  {
-    "code": "ZYA",
-    "name": "Amsterdam Central Station",
-    "city": "Amsterdam",
-    "state": "",
-    "country": "Netherlands"
   },
   {
     "code": "ZYK",
@@ -27146,38 +24500,10 @@
     "country": "Bangladesh"
   },
   {
-    "code": "ZYN",
-    "name": "Nimes Rail Station",
-    "city": "Nimes",
-    "state": "Languedoc-Roussillon",
-    "country": "France"
-  },
-  {
-    "code": "ZYP",
-    "name": "Penn Station",
-    "city": "New York",
-    "state": "New York",
-    "country": "United States"
-  },
-  {
-    "code": "ZYQ",
-    "name": "Syracuse",
-    "city": "Syracuse",
-    "state": "New York",
-    "country": "United States"
-  },
-  {
-    "code": "ZYR",
-    "name": "Brussels Midi Railway Station",
-    "city": "Brussels",
-    "state": "Vlaams Brabant",
-    "country": "Belgium"
-  },
-  {
-    "code": "ZYZ",
-    "name": "Berchem Railway Stn.",
-    "city": "Antwerp",
-    "state": "Flanders",
-    "country": "Belgium"
+    "code": "TNM",
+    "name": "Teniente R. Marsh Airport",
+    "city": "Teniente R. Marsh",
+    "state": "",
+    "country": "Antarctica"
   }
 ]
