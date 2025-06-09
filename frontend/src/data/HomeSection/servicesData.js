@@ -12,30 +12,35 @@ export const servicesData =[
         title: "Airline Ticket Booking Services",
         description: "Fly smart, safe, and easy",
         imageUrl: img2,
+        path: "/bookings/flights",
     },
      {
         id: 2,
         title: "Visa Assistance & Processing Services",
         description: "Fast, easy, and secure visas",
         imageUrl: img1,
+        path: "/bookings/visa",
     },
      {
         id:3,
         title: "Inbound & Outbound Trips",
         description: "Travel made easy, anywhere",
         imageUrl: img3,
+        path: "/bookings/trips",
     },
      {
         id:4,
         title: "Travel Insurance Coverage",
         description: "Stay safe and stress-free",
         imageUrl: img6,
+        path: "/bookings/insurance",
     },
     {
         id:5,
         title: "Hotel Booking & Reservation Services",
         description: "Easy, fast hotel room reservations",
         imageUrl: img4,
+        path: "/bookings/hotels",
     },
    
     {
@@ -43,6 +48,7 @@ export const servicesData =[
         title: "Exclusive Umrah Packages",
         description: "Reliable, smooth journey arrangements",
         imageUrl: img5,
+        path: "/bookings/umrah",
     },
 
 

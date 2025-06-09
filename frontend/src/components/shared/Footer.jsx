@@ -1,7 +1,8 @@
 import React from 'react';
-import { useState ,useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import navOptions from '../../data/navOptions';
+import { servicesData } from '../../data/HomeSection/servicesData'
 import { getSettings } from '../../services/api/settingsApi';
 import logo from '../../assets/image/logo/logo.png';
 import { AiOutlineCopyright } from "react-icons/ai";
@@ -25,12 +26,12 @@ const Footer = () => {
     tiktok: ''
   });
 
- useEffect(() => {
+  useEffect(() => {
     const fetchSettings = async () => {
       try {
         const res = await getSettings();
         setSettings(res.data.data);
-        
+
       } catch (err) {
         console.log('Failed to load settings');
       }
@@ -116,16 +117,25 @@ const Footer = () => {
           <div className="block md:hidden border-t border-secondary-blue/30 my-2 w-full"></div>
 
           {/* Destinations */}
-          <div className='text-secondary-blue  '>
-            <h4 className="font-semibold mb-3">Destinations</h4>
+
+
+          <div className='text-secondary-blue'>
+            <h4 className="font-semibold mb-3">Services</h4>
             <ul className="space-y-2 text-secondary-blue text-md">
-              <li><Link to="" className="hover:text-[#005BF0] transition">Paris</Link></li>
-              <li><Link to="" className="hover:text-[#005BF0] transition">fchgvh</Link></li>
-              <li><Link to="" className="hover:text-[#005BF0] transition">bnmnkml</Link></li>
-              <li><Link to="" className="hover:text-[#005BF0] transition">New York</Link></li>
-              <li><Link to="" className="hover:text-[#005BF0] transition">bnmnkml</Link></li>
+              {servicesData.map((item, index) => (
+                <li key={index}>
+                  <Link
+                    to={item.path} // Ensure each item in servicesData has a `path` property
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    className=" hover:text-primary hover:text-[#005BF0] transition duration-200"
+                  >
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
+
 
           <div className="block md:hidden border-t border-secondary-blue/30 my-2 w-full"></div>
 
