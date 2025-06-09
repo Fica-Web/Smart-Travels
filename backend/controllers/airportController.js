@@ -46,6 +46,7 @@ export const searchAirports = async (req, res) => {
                 { code: regex }
             ]
         })
+            .limit(10)
             .select("code name city state country -_id"); // project only needed fields
 
         res.status(200).json(results);
