@@ -149,7 +149,7 @@ const CountrySelect = forwardRef(
       }),
       menu: (provided) => ({
         ...provided,
-        width: isHotel ? '200px': '',
+        width: isHotel ? '200px': 'auto',
         marginLeft: isHotel ?'-20px': '',
         zIndex: 30,
       }),

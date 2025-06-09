@@ -1,16 +1,34 @@
 import React from 'react'
-import { useRef, useState } from 'react';
+import { useRef, useState ,useEffect} from 'react';
 import SectionHeading from '../../reusable/SectionHeading'
-import { destinations } from '../../../data/HomeSection/destinationData'
+// import { destinations } from '../../../data/HomeSection/destinationData'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { getPublishedDestinationsApi } from '../../../services/api/destinationApi';
 
 const Destination = () => {
   const swiperRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [destinations, setDestinations] = useState([]);
+
+useEffect(() => {
+  const fetchDestinations = async () => {
+    const result = await getPublishedDestinationsApi();
+    console.log("Fetched destinations:", result.data);
+    if (result.success) {
+      setDestinations(result.data.destinations || []);
+
+    } else {
+      console.error('Failed to load destinations:', result.message);
+    }
+  };
+
+  fetchDestinations();
+}, []);
+
 
   return (
     <div className="px-4 md:px-20">
@@ -60,14 +78,14 @@ const Destination = () => {
           }}
           className="destinationSwiper"
         >
-          {destinations.map((destination, index) => (
+          {Array.isArray(destinations) && destinations.slice(0, 6).map((destination, index)=> (
             <SwiperSlide key={index}>
               <div
                 className="h-64 rounded-3xl overflow-hidden shadow-lg group relative bg-cover bg-center transition-transform duration-300 hover:scale-100"
-                style={{ backgroundImage: `url(${destination.imageUrl})` }}
+                style={{ backgroundImage: `url(${destination.coverImage})` }}
               >
                 <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-4">
-                  <h3 className="text-white text-xl font-semibold mb-1">{destination.title}</h3>
+                  <h3 className="text-white text-xl font-semibold mb-1">{destination.country}</h3>
                   {/* <p className="text-white text-sm">{destination.description}</p> */}
                 </div>
               </div>
