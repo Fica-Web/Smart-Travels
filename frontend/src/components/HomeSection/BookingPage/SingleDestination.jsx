@@ -10,12 +10,18 @@ const SingleDestination = ({ dest }) => {
 
     const openModal = () => setOpen(true);
     const closeModal = () => setOpen(false);
-   
+
 
     const destination = {
-    serviceType:  'destination',
-    destination: dest,
-  };
+        serviceType: 'destination',
+        destination: dest,
+    };
+
+
+    const handleFormSuccess = () => {
+        setOpen(false); // ✅ Closes modal after successful submit
+    };
+
 
 
     return (
@@ -76,7 +82,8 @@ const SingleDestination = ({ dest }) => {
                             messageFieldName="location"
                             messageLabel="Location"
                             messagePlaceholder="Enter your location"
-                     destination={destination} 
+                            destination={destination}
+                            onSuccess={handleFormSuccess}
 
                         />
                     </ReusableModal>

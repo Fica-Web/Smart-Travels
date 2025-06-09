@@ -16,6 +16,7 @@ const ContactForm = ({
     defaultMessage = '',
     showCountrySelect = false,
     showLocationSelect = false,
+    onSuccess,
     destination = null,
 }) => {
     const initialState = {
@@ -73,13 +74,13 @@ const handleSubmit = async (e) => {
       setLoading(false);
       return;
     }
-
+console.log('formData',formData)
     // Base payload
-    const payload = {
-      name: formData.name,
-      phone: formData.phone,
-      serviceType: destination?.serviceType || '', // or pass serviceType as prop
-    };
+    const payload = {  
+  name: formData.name,
+  phone: `${formData.countryCode} ${formData.phone}`,  // ✅ Now included in payload
+  serviceType: destination?.serviceType || '',
+};
 
     // Add common email if available
     if (formData.email) payload.email = formData.email;
@@ -154,11 +155,15 @@ const handleSubmit = async (e) => {
 
     const response = await createInquiryApi(payload);
 
-    if (response.success) {
-      toast.success(response.data.message || 'Inquiry sent successfully!');
-      setFormData(initialState);
-      setSelectedCountry('');
-    } else {
+   if (response.success) {
+  toast.success(response.data.message || 'Inquiry sent successfully!');
+  setFormData(initialState);
+  setSelectedCountry('');
+  if (onSuccess) {
+    onSuccess(); // ✅ Close modal & clear fields in parent
+  }
+}
+ else {
       toast.error(response.message || 'Failed to send inquiry');
     }
   } catch (error) {

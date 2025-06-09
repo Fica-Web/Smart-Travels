@@ -9,6 +9,12 @@ const ImageBox = () => {
 
     const openModal = () => setOpen(true);
     const closeModal = () => setOpen(false);
+
+    const handleFormSuccess = () => {
+        setOpen(false); // ✅ Closes modal after successful submit
+    };
+
+
     return (
         <div className="relative w-full inline-block mt-10 ">
             {/* Small box above */}
@@ -30,9 +36,10 @@ const ImageBox = () => {
                             showCountrySelect={true} // ✅ Only here!
                             showLocationSelect={true}
                             hideMessageField={true}
-                             destination={{
-                        serviceType: 'visa',
-                    }}
+                            destination={{
+                                serviceType: 'visa',
+                            }}
+                            onSuccess={ handleFormSuccess }
                         />
                     </ReusableModal>
 
