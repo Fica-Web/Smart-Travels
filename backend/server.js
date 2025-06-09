@@ -29,9 +29,8 @@ const corsOptions = {
 };
 
 // Middleware setup
-// Increase the JSON body size limit (e.g. 10MB)
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(express.json()); // Parse incoming JSON requests
+app.use(express.urlencoded({ extended: true })); // Parse URL-encoded data
 app.use(cookieParser()); // Parse cookies from incoming requests
 app.use(morgan('tiny')); // Log HTTP requests using morgan's 'tiny' format
 app.use(cors(corsOptions)); // Enable CORS using the specified options
