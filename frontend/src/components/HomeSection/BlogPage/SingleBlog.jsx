@@ -42,7 +42,7 @@ const SingleBlog = ({ isHomePage, firstBlog, remainingBlogs }) => {
               )}
             </div>
 
-            <div className="flex justify-between items-center text-sm sm:text-base text-secondary-blue/80  pt-1 border-gray-200">
+            <div className="flex justify-between items-center text-sm sm:text-base text-secondary-blue/80 border-gray-200">
               <span className="flex items-center space-x-1 text-sm ">
                 <span>
                   <strong className='' >Date:</strong>{' '}

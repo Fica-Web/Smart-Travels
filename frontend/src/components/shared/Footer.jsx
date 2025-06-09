@@ -122,14 +122,14 @@ const Footer = () => {
           <div className='text-secondary-blue'>
             <h4 className="font-semibold mb-3">Services</h4>
             <ul className="space-y-2 text-secondary-blue text-md">
-              {servicesData.map((item, index) => (
+              {servicesData.slice(0,5).map((item, index) => (
                 <li key={index}>
                   <Link
                     to={item.path} // Ensure each item in servicesData has a `path` property
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                     className=" hover:text-primary hover:text-[#005BF0] transition duration-200"
                   >
-                    {item.title}
+                    {item.footerTitle}
                   </Link>
                 </li>
               ))}
