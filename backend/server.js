@@ -11,6 +11,7 @@ import carouselRouter from './routers/carouselRouter.js'; // Import the carousel
 import destinationRouter from './routers/destinationRouter.js'; // Import the destination router
 import settingsRouter from './routers/settingRouter.js'; // Import the settings router
 import inquiryRouter from './routers/inquiryRouter.js'; // Import the inquiry router
+import airportRouter from './routers/airportRouter.js'; // Import the airport router
 
 dotenv.config();
 
@@ -28,8 +29,9 @@ const corsOptions = {
 };
 
 // Middleware setup
-app.use(express.json()); // Parse incoming JSON requests
-app.use(express.urlencoded({ extended: true })); // Parse URL-encoded data
+// Increase the JSON body size limit (e.g. 10MB)
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(cookieParser()); // Parse cookies from incoming requests
 app.use(morgan('tiny')); // Log HTTP requests using morgan's 'tiny' format
 app.use(cors(corsOptions)); // Enable CORS using the specified options
@@ -42,6 +44,7 @@ app.use('/api/carousel', carouselRouter); // Use the carousel router for routes 
 app.use('/api/destination', destinationRouter); // Use the destination router for routes starting with /api/destination
 app.use('/api/settings', settingsRouter); // Use the settings router for routes starting with /api/settings
 app.use('/api/inquiry', inquiryRouter); // Use the inquiry router for routes starting with /api/inquiry
+app.use('/api/airports', airportRouter);
 
 app.get('/', (req, res) => {
     res.send('Server is running!');
