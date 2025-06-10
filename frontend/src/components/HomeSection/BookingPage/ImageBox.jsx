@@ -16,7 +16,7 @@ const ImageBox = () => {
   // Box content as a reusable JSX block
   const BoxContent = () => (
     <div
-      className="p-2  md:p-7 px-1 md:px-10
+      className="p-2  md:p-7 px-1 md:px-15
         max-w-full sm:max-w-[400px]
         rounded-[20px] border border-white/25 sm:bg-[#4A94D0]/20 md:bg-white/25 backdrop-blur-3xl shadow-inner
         text-white bg-[#4A94D0]/20 "
@@ -58,7 +58,7 @@ const ImageBox = () => {
 
       {/* Show over image (bottom-right) on sm and above */}
       <div
-        className="hidden sm:block absolute bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-10"
+        className="hidden sm:block absolute bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-13 md:right-15"
       >
         <BoxContent />
       </div>
