@@ -1,5 +1,5 @@
 import React from 'react'
-import { useRef, useState ,useEffect} from 'react';
+import { useRef, useState, useEffect } from 'react';
 import SectionHeading from '../../reusable/SectionHeading'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
@@ -15,38 +15,38 @@ const Destination = () => {
   const swiperRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [destinations, setDestinations] = useState([]);
- const navigate = useNavigate();
- const location = useLocation();
-const isHomePage = location?.pathname === '/'; 
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isHomePage = location?.pathname === '/';
 
-useEffect(() => {
-  const fetchDestinations = async () => {
-    const result = await getPublishedDestinationsApi();
-    console.log("Fetched destinations:", result.data);
-    if (result.success) {
-      setDestinations(result.data.destinations || []);
+  useEffect(() => {
+    const fetchDestinations = async () => {
+      const result = await getPublishedDestinationsApi();
+      console.log("Fetched destinations:", result.data);
+      if (result.success) {
+        setDestinations(result.data.destinations || []);
 
-    } else {
-      console.error('Failed to load destinations:', result.message);
-    }
-  };
+      } else {
+        console.error('Failed to load destinations:', result.message);
+      }
+    };
 
-  fetchDestinations();
-}, []);
+    fetchDestinations();
+  }, []);
 
 
 
   return (
     <div className={`px-4 ${isHomePage ? "md:px-20" : "md:px-0"}`}>
       <SectionHeading
-      heading="Featured Destinations"
-      align={isHomePage ? "center" : "left"}
-      py={isHomePage ? "py-40" : "py-10"}
-       {...(isHomePage && {
-    backgroundText: "Destination",
-    subtext:
-      "Handpicked travel experiences to the most iconic, breathtaking, and exciting locations. Choose your next adventure and start making memories today.",
-  })}
+        heading="Featured Destinations"
+        align={isHomePage ? "center" : "left"}
+        py={isHomePage ? "py-40" : "py-10"}
+        {...(isHomePage && {
+          backgroundText: "Destination",
+          subtext:
+            "Handpicked travel experiences to the most iconic, breathtaking, and exciting locations. Choose your next adventure and start making memories today.",
+        })}
       />
 
       {/* Wrap swiper and nav buttons */}
@@ -89,15 +89,15 @@ useEffect(() => {
           }}
           className="destinationSwiper"
         >
-          {Array.isArray(destinations) && destinations.slice(0, 6).map((destination, index)=> (
+          {Array.isArray(destinations) && destinations.slice(0, 6).map((destination, index) => (
             <SwiperSlide key={index} >
               <div
-              onClick={() => navigate(`/bookings/trips/${destination.slug}`)}
+                onClick={() => navigate(`/bookings/trips/${destination.slug}`)}
                 className="h-64 rounded-3xl overflow-hidden shadow-lg group relative bg-cover bg-center transition-transform duration-300 hover:scale-100 cursor-pointer"
                 style={{ backgroundImage: `url(${destination.coverImage})` }}
               >
                 <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 " >
-                 {/* <Link
+                  {/* <Link
     to={`/bookings/trips/${destination.slug}`}
     className="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-black rounded-full p-2 transition z-10"
   >
