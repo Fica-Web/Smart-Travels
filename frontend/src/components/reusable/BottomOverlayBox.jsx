@@ -138,10 +138,14 @@ const handleFormSuccess = () => {
             name={name}
             value={value}
             onChange={(e) => handleChange(e.target.value)}
-            className=" cursor-pointer text-sm bg-transparent outline-none placeholder:text-secondary-blue/50 text-secondary-blue autofill:bg-transparent"
+            // className=" cursor-pointer text-sm bg-transparent outline-none placeholder:text-secondary-blue/50 text-secondary-blue/50 autofill:bg-transparent"
+            className="cursor-pointer text-sm bg-transparent outline-none text-secondary-blue placeholder:text-secondary-blue/50"
+
             style={{
               backgroundColor: 'transparent',
               WebkitBoxShadow: '0 0 0px 1000px transparent inset',
+             WebkitTextFillColor: 'inherit', // ensures autofill text color remains
+    transition: 'background-color 9999s ease-in-out 0s',
             }}
             ref={refCallback}
           />

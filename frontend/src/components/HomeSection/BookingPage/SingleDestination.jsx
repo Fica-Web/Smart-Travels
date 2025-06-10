@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaWhatsapp } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
@@ -7,26 +8,32 @@ import ContactForm from '../../reusable/ContactForm';
 
 const SingleDestination = ({ dest }) => {
     const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
 
     const openModal = () => setOpen(true);
-    const closeModal = () => setOpen(false);
+    const closeModal = () => setOpen(false)
 
+    const handleFormSuccess = () => {
+        setOpen(false);
+    };
 
     const destination = {
         serviceType: 'destination',
         destination: dest,
     };
 
-
-    const handleFormSuccess = () => {
-        setOpen(false); // ✅ Closes modal after successful submit
+    const handleCardClick = () => {
+        if (!open) {
+            navigate(`/bookings/trips/${dest.slug}`);
+        }
     };
 
 
 
     return (
         <div
-            className="bg-white shadow rounded-3xl overflow-hidden border border-t-0 border-gray-300 flex flex-col relative"
+            onClick={handleCardClick}
+            className="bg-white shadow rounded-3xl overflow-hidden border border-t-0 border-gray-300 flex flex-col relative cursor-pointer"
         >
             <Link
                 to={`/bookings/trips/${dest.slug}`}
@@ -68,24 +75,30 @@ const SingleDestination = ({ dest }) => {
                         <FaWhatsapp size={22} className="text-secondary-blue" />
                     </a>
                     <button
-                        onClick={openModal}
-                        className="w-[119px] h-[30px] rounded-[8px] px-[20px] py-[10px] text-sm bg-[#4A94D0] text-white hover:bg-blue-600 transition flex items-center justify-center"
+                        onClick={(e) => {
+                            e.stopPropagation(); // Prevents triggering the card click
+                            openModal();         // Opens the modal
+                        }}
+                        className="w-[119px] h-[30px] rounded-[8px] px-[20px] py-[10px] text-sm bg-[#4A94D0] text-white hover:bg-blue-600 transition flex items-center justify-center cursor-pointer"
                     >
                         Send Query
                     </button>
 
                     {/* Modal for sending query */}
                     <ReusableModal open={open} onClose={closeModal} title="Send Your Query">
-                        <ContactForm
-                            title="Send a Query"
-                            buttonText="Send Query"
-                            messageFieldName="location"
-                            messageLabel="Location"
-                            messagePlaceholder="Enter your location"
-                            destination={destination}
-                            onSuccess={handleFormSuccess}
+                        <div >
+                            <ContactForm
+                                title="Send a Query"
+                                buttonText="Send Query"
+                                messageFieldName="location"
+                                messageLabel="Location"
+                                messagePlaceholder="Enter your location"
+                                destination={destination}
+                                onSuccess={handleFormSuccess}
 
-                        />
+                            />
+                        </div>
+
                     </ReusableModal>
                 </div>
             </div>

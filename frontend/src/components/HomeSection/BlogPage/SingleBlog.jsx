@@ -28,7 +28,7 @@ const SingleBlog = ({ isHomePage, firstBlog, remainingBlogs }) => {
           </div>
 
           {/* Text */}
-          <div className="w-full md:w-[490px] h-full p-1 pt-4 md:pt-0 space-y-5 mr-0 md:mr-3 flex flex-col justify-center  rounded-3xl">
+          <div className="w-full md:w-[490px] h-full p-1 pt-4 md:pt-0 space-y-5 mr-0 md:mr-3 flex flex-col justify-center  rounded-3xl ">
             <div className="flex-col justify-between">
               <Link to={`/blog/${firstBlog._id}`}>
                 <h3 className="text-xl md:text-4xl font-semibold text-secondary-blue leading-snug pb-5 break-words max-w-xl transition">
@@ -42,7 +42,7 @@ const SingleBlog = ({ isHomePage, firstBlog, remainingBlogs }) => {
               )}
             </div>
 
-            <div className="flex justify-between items-center text-sm sm:text-base text-secondary-blue/80  pt-6 border-gray-200">
+            <div className="flex justify-between items-center text-sm sm:text-base text-secondary-blue/80 border-gray-200">
               <span className="flex items-center space-x-1 text-sm ">
                 <span>
                   <strong className='' >Date:</strong>{' '}

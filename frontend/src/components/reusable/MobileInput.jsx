@@ -37,7 +37,15 @@ const MobileInput = ({ value, onChange, countryCode, onCountryCodeChange }) => {
         <div className="flex gap-2 items-center">
             {/* Country code selector */}
             <select
-                className="w-1/3 px-3 py-2 border border-secondary-blue rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+         style={{
+    paddingRight: '30px',  // add space for arrow
+    backgroundImage: `url("data:image/svg+xml;utf8,<svg fill='black' height='10' viewBox='0 0 24 24' width='10' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>")`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'right 6px center',  // arrow position
+    backgroundSize: '20px 20px',
+    appearance: 'none',  // hide native arrow
+  }}
+                className="w-1/3 px-3 pr-3 py-2 border border-secondary-blue rounded-xl focus:outline-none focus:ring-2  focus:ring-blue-500 "
                 value={countryCode}
                 onChange={(e) => onCountryCodeChange(e.target.value)}
             >
