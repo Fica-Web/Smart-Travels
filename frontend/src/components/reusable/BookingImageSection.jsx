@@ -4,7 +4,7 @@ import BottomOverlayBox from '../../components/reusable/BottomOverlayBox'
 
 const BookingImageSection = ({ backgroundImage, fields, maxWidth, modalTitle,serviceType}) => {
   return (
-    <div className="relative w-full inline-block mt-10 overflow-hidden z-2">
+    <div className="relative w-full inline-block mt-10  z-2">
       {/* Background Image */}
       <img src={backgroundImage} alt="" className="w-full h-auto rounded-3xl" />
 

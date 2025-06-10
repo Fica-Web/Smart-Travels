@@ -42,16 +42,7 @@ const handleFormSuccess = () => {
   inputRefs.current = {};               // ✅ optional: reset refs
   setOpen(false);                       // ✅ close modal
 };
-  const refCallback = (el) => {
-  if (el && el.focus) {
-    inputRefs.current[name] = el;
-  } else if (el && el.select) {
-    // react-select exposes the focus on `select.select.focus`
-    inputRefs.current[name] = el.select;
-  } else {
-    inputRefs.current[name] = el;
-  }
-};
+  
 
 
 

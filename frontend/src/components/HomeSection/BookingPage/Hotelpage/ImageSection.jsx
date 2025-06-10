@@ -1,6 +1,6 @@
 import React from 'react'
 import BookingImageSection from '../../../reusable/BookingImageSection'
-import DatePicker from "react-datepicker";
+import CustomDatePicker from '../../../reusable/CustomDatePicker';
 import "react-datepicker/dist/react-datepicker.css";
 import Img from '../../../../assets/image/booking/hotel/hotel.png'
 import img1 from '../../../../assets/image/booking/hotel/imagesection/flag.png'
@@ -44,11 +44,21 @@ const ImageSection = () => {
       icon: img3,
       type: "date",
       name: "checkIn",
-      component: DatePicker, // use DatePicker as custom component
+      component: CustomDatePicker, // use DatePicker as custom component
       props: {
         dateFormat: "yyyy-MM-dd",
         placeholderText: "Choose your dates",
         minDate: today,
+        popperPlacement: "bottom-end", // 👈 calendar below input
+  popperModifiers: [
+    {
+      name: "preventOverflow",
+      options: {
+        altAxis: true,
+        tether: false,
+      },
+    },
+  ],
         className: "bg-transparent outline-none border-none focus:ring-0 shadow-none text-sm text-secondary-blue",
       },
     },
@@ -58,11 +68,21 @@ const ImageSection = () => {
       icon: img3,
       type: "date",
       name: "checkOut",
-      component: DatePicker, // use DatePicker as custom component
+      component: CustomDatePicker, // use DatePicker as custom component
      props: (formData) => ({
       dateFormat: "yyyy-MM-dd",
       placeholderText: "Choose your dates",
       minDate: formData.checkIn ? new Date(formData.checkIn) : today,
+      popperPlacement: "bottom-end", // 👈 calendar below input
+  popperModifiers: [
+    {
+      name: "preventOverflow",
+      options: {
+        altAxis: true,
+        tether: false,
+      },
+    },
+  ],
       className: "bg-transparent outline-none border-none focus:ring-0 shadow-none text-sm text-secondary-blue",
     }),
     },

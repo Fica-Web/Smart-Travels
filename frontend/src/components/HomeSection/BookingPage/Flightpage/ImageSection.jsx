@@ -2,7 +2,7 @@
 import React from 'react'
 import BookingImageSection from '../../../reusable/BookingImageSection'
 import AirportSelect from '../../../reusable/AirportSelect';
-import DatePicker from "react-datepicker";
+import CustomDatePicker from '../../../reusable/CustomDatePicker';
 import "react-datepicker/dist/react-datepicker.css";
 import Img from '../../../../assets/image/booking/flight/flight1.png'
 import img1 from '../../../../assets/image/booking/flight/imageSection/FlightTakeoff.png'
@@ -38,14 +38,24 @@ const ImageSection = () => {
     placeholder: "Choose your dates",
     icon: img3,
     name: "date",
-    component: DatePicker, // use DatePicker as custom component
+    component: CustomDatePicker, // use DatePicker as custom component
     props: {
-      dateFormat: "yyyy-MM-dd",
-      placeholderText: "Choose your dates",
-      minDate: today,
-      className: "bg-transparent outline-none border-none focus:ring-0 shadow-none text-sm text-secondary-blue",
+  dateFormat: "yyyy-MM-dd",
+  placeholderText: "Choose your dates",
+  minDate: today,
+  popperPlacement: "bottom-end", // 👈 calendar below input
+  popperModifiers: [
+    {
+      name: "preventOverflow",
+      options: {
+        altAxis: true,
+        tether: false,
+      },
     },
-    
+  ],
+  className: "outline-none border-none focus:ring-0 shadow-none text-sm text-black",
+},
+
   },
   ];
 

@@ -9,7 +9,7 @@ const AboutPage = () => {
   return (
     <div className='pb-15'>
           <ReusableHero 
-                title="About"
+                title="Get To Know us"
                 bgImage={img}
             />
         <AboutUs />
