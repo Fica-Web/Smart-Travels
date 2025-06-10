@@ -3,34 +3,43 @@ import React, { useEffect, useState } from 'react';
 const MobileInput = ({ value, onChange, countryCode, onCountryCodeChange }) => {
     const [countries, setCountries] = useState([]);
 
-    useEffect(() => {
-        const fetchCountries = async () => {
-            try {
-                const response = await fetch('https://restcountries.com/v3.1/all');
-                const data = await response.json();
-                const countryData = data
-                    .filter(country => country.idd?.root)
-                    .map(country => ({
-                        name: country.name.common,
-                        code: `${country.idd.root}${country.idd.suffixes ? country.idd.suffixes[0] : ''}`,
-                    }))
-                    .sort((a, b) => a.name.localeCompare(b.name));
-                setCountries(countryData);
+   useEffect(() => {
+  const fetchCountries = async () => {
+    try {
+      const response = await fetch('https://restcountries.com/v3.1/all?fields=name,idd');
+      const data = await response.json();
 
-                // ✅ Set default to +91 if not already set
-                if (!countryCode) {
-                    const india = countryData.find(c => c.code === '+91');
-                    if (india) {
-                        onCountryCodeChange(india.code);
-                    }
-                }
-            } catch (error) {
-                console.error('Failed to fetch country codes:', error);
-            }
-        };
+      console.log("Raw country response:", data);
 
-        fetchCountries();
-    }, []);
+      if (!Array.isArray(data)) {
+        console.error("Unexpected response format:", data);
+        return;
+      }
+
+      const countryData = data
+        .filter(country => country.idd?.root)
+        .map(country => ({
+          name: country.name.common,
+          code: `${country.idd.root}${country.idd.suffixes ? country.idd.suffixes[0] : ''}`,
+        }))
+        .sort((a, b) => a.name.localeCompare(b.name));
+
+      setCountries(countryData);
+
+      if (!countryCode) {
+        const india = countryData.find(c => c.code === '+91');
+        if (india) {
+          onCountryCodeChange(india.code);
+        }
+      }
+    } catch (error) {
+      console.error('Failed to fetch country codes:', error);
+    }
+  };
+
+  fetchCountries();
+}, []);
+
 
 
     return (

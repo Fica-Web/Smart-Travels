@@ -42,6 +42,16 @@ const handleFormSuccess = () => {
   inputRefs.current = {};               // ✅ optional: reset refs
   setOpen(false);                       // ✅ close modal
 };
+  const refCallback = (el) => {
+  if (el && el.focus) {
+    inputRefs.current[name] = el;
+  } else if (el && el.select) {
+    // react-select exposes the focus on `select.select.focus`
+    inputRefs.current[name] = el.select;
+  } else {
+    inputRefs.current[name] = el;
+  }
+};
 
 
 
@@ -98,9 +108,10 @@ const handleFormSuccess = () => {
     setFormData((prev) => ({ ...prev, [name]: newValue }));
   };
 
-  const refCallback = (el) => {
-    inputRefs.current[name] = el;
-  };
+const refCallback = (name) => (el) => {
+  inputRefs.current[name] = el;
+};
+
 
   return (
     <div
@@ -129,7 +140,7 @@ const handleFormSuccess = () => {
             onChange={handleChange}
             placeholder={field.placeholder}
             name={name}
-            ref={refCallback}
+            ref={refCallback(name)} 
           />
         ) : (
           <input
@@ -147,7 +158,7 @@ const handleFormSuccess = () => {
              WebkitTextFillColor: 'inherit', // ensures autofill text color remains
     transition: 'background-color 9999s ease-in-out 0s',
             }}
-            ref={refCallback}
+            ref={refCallback(name)}
           />
         )}
       </div>

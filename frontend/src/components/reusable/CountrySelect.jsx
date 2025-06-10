@@ -149,8 +149,8 @@ const CountrySelect = forwardRef(
       }),
       menu: (provided) => ({
         ...provided,
-        width: isHotel ? '200px': 'auto',
-        marginLeft: isHotel ?'-20px': '',
+        width: isHotel ? '200px' : 'auto',
+        marginLeft: isHotel ? '-20px' : '',
         zIndex: 30,
       }),
     };
@@ -184,12 +184,12 @@ const CountrySelect = forwardRef(
           isLoading={loading}
           options={options}
           value={options.find(option => option.value === value) || null}
-         onChange={(selected) => {
-  onChange(selected.value);
-  setTimeout(() => {
-    setMenuOpen(false);
-  }, 0); // Fix: closes the menu right after selection
-}}
+          onChange={(selected) => {
+            onChange(selected.value);
+            setTimeout(() => {
+              setMenuOpen(false);
+            }, 0); // Fix: closes the menu right after selection
+          }}
           placeholder={placeholder}
           menuPortalTarget={document.body}
           styles={{
