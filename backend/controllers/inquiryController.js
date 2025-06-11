@@ -13,9 +13,11 @@ export const createInquiry = async (req, res) => {
             visaDetails,
             destinationDetails,
             insuranceDetails,
-            nationality,
+            country,
             message,
         } = req.body;
+
+        console.log("Received inquiry data:", req.body);
 
         if (!name || !phone || !serviceType) {
             return res.status(400).json({ success: false, message: "Name, phone, and service type are required." });
@@ -27,7 +29,7 @@ export const createInquiry = async (req, res) => {
             phone,
             email,
             serviceType,
-            nationality,
+            nationality: country,
             message,
         };
 
@@ -97,7 +99,7 @@ export const createInquiry = async (req, res) => {
                 </tr>
                 <tr>
                     <td style="padding: 8px; font-weight: bold;">Nationality:</td>
-                    <td style="padding: 8px;">${nationality || "Not provided"}</td>
+                    <td style="padding: 8px;">${country || "Not provided"}</td>
                 </tr>
                 <tr>
                     <td style="padding: 8px; font-weight: bold;">Message:</td>
