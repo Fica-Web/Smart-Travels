@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef,useImperativeHandle,forwardRef  } from 'react';
 import AsyncSelect from 'react-select/async';
 import { components } from 'react-select';
 import { searchAirportsApi } from '../../services/api/airportApi';
@@ -22,9 +22,10 @@ const CustomOption = (props) => {
   );
 };
 
-const AirportSelect = ({ value, onChange, placeholder, name, ...rest }) => {
+const AirportSelect =forwardRef( ({ value, onChange, placeholder, name, ...rest },ref) => {
   const [defaultOptions, setDefaultOptions] = useState([]);
   const timeoutRef = useRef(null);
+  const selectRef = useRef();
 
   // ✅ Debounced loader function
   const debounceLoadOptions = useCallback((inputValue, callback) => {
@@ -50,6 +51,14 @@ const AirportSelect = ({ value, onChange, placeholder, name, ...rest }) => {
     }, 400); // debounce delay (ms)
   }, []);
 
+    useImperativeHandle(ref, () => ({
+    focus: () => {
+      if (selectRef.current) {
+        selectRef.current.focus();
+      }
+    }
+  }));
+
   // ✅ Load default options when menu opens (first 10 results)
   const handleMenuOpen = useCallback(async () => {
     if (defaultOptions.length === 0) {
@@ -71,11 +80,17 @@ const AirportSelect = ({ value, onChange, placeholder, name, ...rest }) => {
 
   return (
     <AsyncSelect
+    ref={selectRef}
+    value={value}
+    rest={rest}
       cacheOptions
       loadOptions={debounceLoadOptions}
       defaultOptions={defaultOptions}
       onMenuOpen={handleMenuOpen}
-      onChange={(selected) => onChange(name, selected?.value)}
+      onChange={(selected) => {
+    console.log("Selected airport:", selected);
+    onChange(selected,name);
+  }}
       placeholder={placeholder}
       isClearable
       components={{
@@ -130,6 +145,8 @@ const AirportSelect = ({ value, onChange, placeholder, name, ...rest }) => {
       menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
     />
   );
-};
+
+}
+)
 
 export default AirportSelect;

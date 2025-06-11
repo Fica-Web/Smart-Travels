@@ -6,7 +6,7 @@ const BlogPage = () => {
     return (
         <div className='pb-15'>
             <ReusableHero 
-                title="Blog"
+                title="The Travel Journal"
                 bgImage={img}
             />
             <BlogSection isHomePage={false}/>

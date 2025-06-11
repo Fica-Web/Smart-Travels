@@ -72,7 +72,7 @@ const SingleDestination = ({ dest }) => {
                         className="hover:text-green-600"
                         title="Chat on WhatsApp"
                     >
-                        <FaWhatsapp size={22} className="text-secondary-blue" />
+                        <FaWhatsapp size={30} className=" text-secondary-blue" />
                     </a>
                     <button
                         onClick={(e) => {

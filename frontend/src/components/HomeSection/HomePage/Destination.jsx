@@ -1,6 +1,8 @@
 import React from 'react'
-import { useRef, useState ,useEffect} from 'react';
+import { useRef, useState, useEffect } from 'react';
 import SectionHeading from '../../reusable/SectionHeading'
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 // import { destinations } from '../../../data/HomeSection/destinationData'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -13,33 +15,42 @@ const Destination = () => {
   const swiperRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [destinations, setDestinations] = useState([]);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isHomePage = location?.pathname === '/';
 
-useEffect(() => {
-  const fetchDestinations = async () => {
-    const result = await getPublishedDestinationsApi();
-    console.log("Fetched destinations:", result.data);
-    if (result.success) {
-      setDestinations(result.data.destinations || []);
+  useEffect(() => {
+    const fetchDestinations = async () => {
+      const result = await getPublishedDestinationsApi();
+      console.log("Fetched destinations:", result.data);
+      if (result.success) {
+        setDestinations(result.data.destinations || []);
 
-    } else {
-      console.error('Failed to load destinations:', result.message);
-    }
-  };
+      } else {
+        console.error('Failed to load destinations:', result.message);
+      }
+    };
 
-  fetchDestinations();
-}, []);
+    fetchDestinations();
+  }, []);
+
 
 
   return (
-    <div className="px-4 md:px-20">
+    <div className={`px-4 ${isHomePage ? "md:px-20" : "md:px-0"}`}>
       <SectionHeading
-        backgroundText="Destination"
         heading="Featured Destinations"
-        subtext="Handpicked travel experiences to the most iconic, breathtaking, and exciting locations. Choose your next adventure and start making memories today."
+        align={isHomePage ? "center" : "left"}
+        py={isHomePage ? "py-40" : "py-10"}
+        {...(isHomePage && {
+          backgroundText: "Destination",
+          subtext:
+            "Handpicked travel experiences to the most iconic, breathtaking, and exciting locations. Choose your next adventure and start making memories today.",
+        })}
       />
 
       {/* Wrap swiper and nav buttons */}
-      <div className="relative mt-10 ">
+      <div className="relative mt-10 "   >
 
         {/* Left nav button (conditionally shown) */}
         {activeIndex > 0 && (
@@ -78,13 +89,20 @@ useEffect(() => {
           }}
           className="destinationSwiper"
         >
-          {Array.isArray(destinations) && destinations.slice(0, 6).map((destination, index)=> (
-            <SwiperSlide key={index}>
+          {Array.isArray(destinations) && destinations.slice(0, 6).map((destination, index) => (
+            <SwiperSlide key={index} >
               <div
-                className="h-64 rounded-3xl overflow-hidden shadow-lg group relative bg-cover bg-center transition-transform duration-300 hover:scale-100"
+                onClick={() => navigate(`/bookings/trips/${destination.slug}`)}
+                className="h-64 rounded-3xl overflow-hidden shadow-lg group relative bg-cover bg-center transition-transform duration-300 hover:scale-100 cursor-pointer"
                 style={{ backgroundImage: `url(${destination.coverImage})` }}
               >
-                <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-4">
+                <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-4 " >
+                  {/* <Link
+    to={`/bookings/trips/${destination.slug}`}
+    className="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-black rounded-full p-2 transition z-10"
+  >
+    <ArrowUpRight size={25} />
+  </Link> */}
                   <h3 className="text-white text-xl font-semibold mb-1">{destination.country}</h3>
                   {/* <p className="text-white text-sm">{destination.description}</p> */}
                 </div>

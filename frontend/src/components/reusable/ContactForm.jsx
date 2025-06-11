@@ -91,10 +91,10 @@ console.log('formData',formData)
     switch (payload.serviceType) {
 
       case 'flight':
-        console.log('destination?.title:', destination.flightDetails);
+        console.log('destination?.title:', destination);
         payload.flightDetails = {
-          from: destination?.flightDetails?.from || '',
-          to: destination?.flightDetails?.to || '',
+          from: destination?.flightDetails?.from.name || '',
+          to: destination?.flightDetails?.to.name || '',
           departureDate: destination?.flightDetails?.departureDate || '',
         };
         break;
