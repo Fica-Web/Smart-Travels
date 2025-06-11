@@ -59,12 +59,12 @@ const Inclusions = ({ destination }) => {
 
   return (
     <div className="p-4 text-secondary-blue md:max-w-[337.6px]">
-      <h2 className="text-lg font-bold mb-2">Inclusions</h2>
+      <h2 className="text-lg font-bold mb-2 text-secondary-blue">Inclusions</h2>
       <div className="grid grid-cols-2 gap-x-0 gap-y-1">
         {destination.inclusions?.map((inclusion, index) => (
           <div key={index} className="flex items-center gap-1">
             <IoMdCheckmark size={16} className="shrink-0" />
-            <p className="text-base">{inclusion}</p>
+            <p className="text-base text-secondary-blue">{inclusion}</p>
           </div>
         ))}
       </div>

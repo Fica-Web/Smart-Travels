@@ -60,7 +60,7 @@ export const LeftDetails = () => {
         <h2 className="text-3xl md:text-[40px] font-bold text-secondary-blue max-w-lg ">
           Travel with Confidence – We've Got You Covered
         </h2>
-        <p className="text-lg sm:text-base text-secondary-blue/80 max-w-2xl text-justify pt-3 pb-3">
+        <p className="text-lg sm:text-base text-secondary-blue/80 max-w-2xl text-justify pt-3 pb-3 ">
 Unexpected events can disrupt even the best travel plans. With Rukn Travels’ Travel Insurance, enjoy peace of mind knowing you're protected every step of the way.        </p>
       </div>
       <div>

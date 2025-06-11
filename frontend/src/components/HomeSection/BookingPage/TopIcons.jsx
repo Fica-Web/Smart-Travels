@@ -25,7 +25,7 @@ const TopIcons = () => {
       {travelOptions.map((item, index) => (
         <div key={index} className="flex flex-col items-center w-auto md:flex-row md:items-center md:w-auto">
           <div
-            className="flex flex-col items-center md:flex-row md:items-center cursor-pointer px-2 md:px-2 lg:px-5"
+            className="flex flex-col items-center md:flex-row md:items-center cursor-pointer px-2 md:px-2 lg:px-6"
             onClick={() => handleNavigate(item.route)}
           >
             <img
@@ -44,9 +44,10 @@ const TopIcons = () => {
           </div>
 
           {/* Divider: hidden on mobile */}
-          {index !== travelOptions.length - 1 && (
-            <div className="hidden md:block w-[1px] h-6 bg-black md:mx-2 lg:mx-5" />
-          )}
+         {index !== travelOptions.length - 1 && (
+  <div className="hidden md:block w-[1px] h-6 bg-secondary-blue md:mx-2 lg:mx-5" />
+)}
+
         </div>
       ))}
     </div>

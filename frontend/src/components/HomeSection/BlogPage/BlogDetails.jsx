@@ -40,8 +40,8 @@ const BlogDetails = () => {
       <div className="w-full flex flex-col md:flex-row justify-center p-5 md:p-10 md:px-20 ">
         <div className="w-full md:w-3/4  md:pl-6">
           <div>
-            <h1 className="text-xl md:text-2xl font-bold">Description</h1>
-            <p className="text-gray-600 text-md leading-relaxed pt-3 text-justify">{blog.blog.description}</p>
+            <h1 className="text-xl md:text-2xl font-bold text-secondary-blue ">Description</h1>
+            <p className="text-secondary-blue text-md leading-relaxed pt-3 text-justify">{blog.blog.description}</p>
           </div>
 
           <div className="pt-6">
@@ -55,8 +55,8 @@ const BlogDetails = () => {
           <div>
             {blog.blog.content.map((item) => (
               <div key={item._id} className="pt-6 bg-white">
-                <h2 className="text-lg md:text-xl font-semibold">{item.contentTitle}</h2>
-                <p className="text-gray-700 pt-3 text-justify">{item.contentDescription}</p>
+                <h2 className="text-lg md:text-xl font-semibold text-secondary-blue ">{item.contentTitle}</h2>
+                <p className=" pt-3 text-justify text-secondary-blue ">{item.contentDescription}</p>
               </div>
             ))}
           </div>
