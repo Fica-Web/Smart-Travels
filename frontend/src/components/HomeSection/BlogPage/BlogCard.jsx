@@ -10,13 +10,14 @@ const BlogCard = ({ blog, isHomepage }) => {
   {/* Top Right Icon Button */}
   <Link
     to={`/blog/${blog._id}`}
-    className="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-black rounded-full p-2 transition z-10"
+    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+    className="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-secondary-blue rounded-full p-2 transition z-10"
   >
     <ArrowUpRight size={18} />
   </Link>
 
   {/* Image */}
-  <Link to={`/blog/${blog._id}`}>
+  <Link to={`/blog/${blog._id}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
     <div className="overflow-hidden rounded-t-3xl">
       <img
         src={blog.coverImage}
@@ -28,7 +29,7 @@ const BlogCard = ({ blog, isHomepage }) => {
 
   {/* Content */}
   <div className="flex flex-col justify-between h-full p-4 border-secondary-blue rounded-b-3xl space-y-1 ">
-    <Link to={`/blog/${blog._id}`}>
+    <Link to={`/blog/${blog._id}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
       <h3 className="text-xl font-semibold text-secondary-blue">
         {blog.title}
       </h3>
