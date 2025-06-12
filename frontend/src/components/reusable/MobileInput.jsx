@@ -40,7 +40,7 @@ const MobileInput = ({ value, onChange, countryCode, onCountryCodeChange }) => {
                     backgroundSize: '20px 20px',
                     appearance: 'none',
                 }}
-                className="w-1/3 px-3 pr-3 py-2 border border-secondary-blue rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-1/3 px-3 pr-3 py-2 border border-secondary-blue text-secondary-blue rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={countryCode}
                 onChange={(e) => onCountryCodeChange(e.target.value)}
             >
@@ -55,7 +55,7 @@ const MobileInput = ({ value, onChange, countryCode, onCountryCodeChange }) => {
             <input
                 type="tel"
                 placeholder="Phone number"
-                className="w-2/3 px-4 py-2 border border-secondary-blue rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-2/3 px-4 py-2 text-secondary-blue border border-secondary-blue rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
             />

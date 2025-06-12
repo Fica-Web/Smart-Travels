@@ -138,6 +138,7 @@ console.log('formData',formData)
       
 
       case 'insurance':
+        console.log('formdata:',formData );
   payload.insuranceDetails = {
     type: formData.policyType || '',  // <-- use policyType from the form
   };

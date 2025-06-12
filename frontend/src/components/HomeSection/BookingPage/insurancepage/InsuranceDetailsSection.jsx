@@ -3,7 +3,6 @@ import HelpBox from '../../../reusable/HelpBox';
 import ContactForm from '../../../reusable/ContactForm';
 import { useState, useEffect } from 'react';
 import { getSettings } from '../../../../services/api/settingsApi';
-import { toast } from 'react-toastify';
 
 const InsuranceDetailsSection = () => {
   return (
@@ -48,7 +47,7 @@ export const LeftDetails = () => {
         const res = await getSettings();
         setSettings(res.data.data);
       } catch (err) {
-        toast.error('Failed to load settings');
+        console.log('Failed to load settings');
       }
     };
     fetchSettings();

@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { getSettings } from '../../../services/api/settingsApi';
-import { toast } from 'react-toastify';
 import ContactForm from '../../reusable/ContactForm'
 import HelpBox from '../../reusable/HelpBox';
 
@@ -16,6 +15,11 @@ const ContactSection = ({ destination }) => {
         facebook: '',
         tiktok: ''
     });
+    
+     const destinationData = {
+        serviceType: 'destination',
+        destination: destination,
+    };
 
     useEffect(() => {
         const fetchSettings = async () => {
@@ -24,11 +28,12 @@ const ContactSection = ({ destination }) => {
                 setSettings(res.data.data);
 
             } catch (err) {
-                toast.error('Failed to load settings');
+                console.log('Failed to load settings');
             }
         };
         fetchSettings();
     }, []);
+
     return (
         <div className='flex flex-col justify-between gap-8 pt-5 md:pt-7' >
             <ContactForm
@@ -37,7 +42,7 @@ const ContactSection = ({ destination }) => {
                 messageFieldName="location"
                 messageLabel="Location"
                 messagePlaceholder="Enter your location"
-                destination={destination}
+                destination={destinationData}
             />
             <HelpBox settings={settings} />
 
