@@ -40,7 +40,7 @@ const AdminBlogEditPage = lazy(() => import('../pages/admin/AdminBlogEditPage'))
 const AdminDestinationPage = lazy(() => import('../pages/admin/AdminDestinationPage'));
 const AdminDestinationFormPage = lazy(() => import('../pages/admin/AdminDestinationFormPage'));
 
-// const NotFoundPage = lazy(() => import('../pages/shared/NotFoundPage'));
+const NotFoundPage = lazy(() => import('../pages/shared/NotFountPage'));
 
 // Suspense wrapper
 const withSuspense = (Component) => (
@@ -233,12 +233,11 @@ const router = createBrowserRouter([
         ],
       },
     ],
-  }
-
-  // {
-  //   path: '*',
-  //   element: withSuspense(NotFoundPage),
-  // },
+  },
+  {
+    path: '*',
+    element: withSuspense(NotFoundPage),
+  },
 ]);
 
 export default router;
