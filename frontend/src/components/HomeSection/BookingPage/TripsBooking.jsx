@@ -30,7 +30,7 @@ const TripsBooking = () => {
 
 
   return (
-    <div className="md:mt-9 md:pb-6">
+    <div className="mt-2 md:mt-9 md:pb-6">
       
       {loading ? (
         <Loading text="Loading destinations..." />

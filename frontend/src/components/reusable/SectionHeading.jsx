@@ -1,12 +1,12 @@
 import React from 'react';
 
-const SectionHeading = ({ backgroundText = '', heading, subtext = '', align = 'center', py='py-40' ,variant,top='mt-10'}) => {
+const SectionHeading = ({ backgroundText = '', heading, subtext = '', align = 'center', py='py-17 md:py-20 lg:py-40' ,variant,top='mt-10'}) => {
    const isCentered = align === 'center';
   const isHotelPage = variant === 'hotel';
 
   return (
     <section className=''>
-      <div className={`relative w-full px-4 py-17 md:py-20 lg:${py} overflow-visible mt-0 md:${top}  text-${align}`}>
+      <div className={`relative w-full px-4 ${py} overflow-visible mt-0 md:${top}  text-${align}`}>
         {/* Background large text (only if centered) */}
         {isCentered && backgroundText && (
           <h1 className="font-coastal-clean absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
@@ -32,10 +32,10 @@ const SectionHeading = ({ backgroundText = '', heading, subtext = '', align = 'c
         )}
 
         {/* Foreground heading */}
-              <div className={`${isCentered ? 'absolute  left-1/2 -translate-x-1/2 translate-y-[15%] md:translate-y-[5%] ' : ''} z-10`}>
+              <div className={`${isCentered ? 'absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-[15%] md:translate-y-[55%] ' : ''} z-10`}>
           <h2
   className={` 
-    ${isHotelPage ? 'text-2xl font-bold  text-center   text-secondary-blue ' : 'inline whitespace-nowrap overflow-hidden text-ellipsis max-w-[90vw] text-base sm:text-2xl md:text-3xl lg:text-4xl font-semibold'} 
+    ${isHotelPage ? 'inline whitespace-nowrap text-2xl font-bold  text-center   text-secondary-blue ' : 'inline whitespace-nowrap overflow-hidden text-ellipsis max-w-[90vw] text-base sm:text-2xl md:text-3xl lg:text-4xl font-semibold'} 
     text-secondary-blue ${!isCentered ? 'text-left' : ''}`}
 >
   {heading}

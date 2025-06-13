@@ -6,7 +6,7 @@ import { getSettings } from '../../../../services/api/settingsApi';
 
 const InsuranceDetailsSection = () => {
   return (
-    <div className="flex flex-col lg:flex-row justify-between items-start gap-7 lg:gap-3 pt-5 lg:px-10">
+    <div className="flex flex-col lg:flex-row justify-between items-start gap-7 lg:gap-3 pt-2 md:pt-5 lg:px-10">
       <LeftDetails />
       <ContactForm 
   messageFieldName="policyType"

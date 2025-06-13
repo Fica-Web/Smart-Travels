@@ -11,7 +11,7 @@ const ContactForm = ({
     messageFieldName = 'message',
     messageLabel = 'Message',
     messagePlaceholder = 'Your message',
-    countrySelectPlaceholder = 'Enter your preferred location',
+    countrySelectPlaceholder = 'Select your nationality',
     hideMessageField = false,
     defaultMessage = '',
     showCountrySelect = false,
@@ -225,7 +225,7 @@ console.log('formData',formData)
       value={locationCountry}
       onChange={setLocationCountry}
       variant="visa"
-      placeholder="Select your location"
+      placeholder="Select your preferred location"
       label='Location'
     />
     {errors.locationCountry && <p className="text-red-500 text-sm">{errors.locationCountry}</p>}

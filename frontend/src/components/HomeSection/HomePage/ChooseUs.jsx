@@ -2,7 +2,7 @@ import React from 'react'
 import SectionHeading from '../../reusable/SectionHeading'
 import img1 from '../../../assets/image/about/about4.jpg'
 import img2 from '../../../assets/image/about/about5.jpg'
-import img3 from '../../../assets/image/about/about6.jpg'
+import img3 from '../../../assets/image/about/chooseus.jpg'
 
 import { FaMapMarkedAlt, FaTags } from 'react-icons/fa';
 import { Ri24HoursFill } from "react-icons/ri";

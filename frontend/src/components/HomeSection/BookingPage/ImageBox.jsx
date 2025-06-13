@@ -16,10 +16,10 @@ const ImageBox = () => {
   // Box content as a reusable JSX block
   const BoxContent = () => (
     <div
-      className="p-2  md:p-7 px-1 md:px-15
-        max-w-full sm:max-w-[400px]
-        rounded-[20px] border border-white/25 sm:bg-[#4A94D0]/20 md:bg-white/25 backdrop-blur-3xl shadow-inner
-        text-white bg-[#4A94D0]/20 "
+      className="p-4 md:p-7 px-2 md:px-15 max-w-full w-[250px] md:w-auto 
+      
+        rounded-[20px] border border-white/25  bg-white/25 backdrop-blur-7xl shadow-inner
+        text-white "
     >
       <p className="text-sm sm:text-base text-secondary-blue pb-2 sm:pb-4 text-center">
         Choose your visa type, duration,<br /> and destination - all in one place
@@ -28,7 +28,7 @@ const ImageBox = () => {
       <div className="flex justify-center">
         <button
           onClick={openModal}
-          className="w-auto md:w-[153px] px-4 py-2 rounded-md cursor-pointer text-white transition duration-200 bg-[#2e6bbf] hover:bg-[#4a94d0]"
+          className="w-[95px] md:w-[153px] px-2 md:px-4 py-1 md:py-2 rounded-md cursor-pointer text-white transition duration-200 bg-[#2e6bbf] hover:bg-[#4a94d0]"
         >
           Apply Now
         </button>
@@ -47,19 +47,16 @@ const ImageBox = () => {
   );
 
   return (
-    <div className="relative w-full inline-block mt-3 md:mt-10">
+    <div className="relative w-full inline-block mt-10">
       {/* Image */}
-      <img src={img} alt="" className="w-full h-auto rounded-2xl" />
+      <img
+        src={img}
+        alt=""
+        className="w-full h-[370px] sm:h-[420px] md:h-auto rounded-3xl object-cover"
+      />
 
-      {/* Show below image on mobile */}
-      <div className="block sm:hidden mt-4">
-        <BoxContent />
-      </div>
-
-      {/* Show over image (bottom-right) on sm and above */}
-      <div
-        className="hidden sm:block absolute bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-13 md:right-15"
-      >
+      {/* BoxContent over image on all screens */}
+      <div className="absolute bottom-9 right-4  md:bottom-13 md:right-15">
         <BoxContent />
       </div>
     </div>

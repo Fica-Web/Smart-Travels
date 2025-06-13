@@ -5,8 +5,8 @@ import ContactForm from '../../reusable/ContactForm';
 
 const VisaListing = () => {
   return (
-    <div className="px-4 py-8">
-      <h2 className="text-2xl font-bold mb-8 text-center pb-6 text-secondary-blue">
+    <div className="px-4 py-0 md:py-8 ">
+      <h2 className="text-2xl font-bold mb-3 md:mb-8 text-center pb-1 md:pb-6 text-secondary-blue ">
         Trusted Visa Services for These Popular Destinations
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
