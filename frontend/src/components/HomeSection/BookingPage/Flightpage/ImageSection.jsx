@@ -54,7 +54,7 @@ const ImageSection = () => {
             },
           },
         ],
-        className: "outline-none border-none focus:ring-0 shadow-none text-sm text-black",
+        className: "outline-none border-none focus:ring-0 shadow-none text-sm text-secondary-blue",
       },
 
     },

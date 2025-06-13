@@ -19,6 +19,9 @@ const Destination = () => {
   const location = useLocation();
   const isHomePage = location?.pathname === '/';
 
+
+
+
   useEffect(() => {
     const fetchDestinations = async () => {
       const result = await getPublishedDestinationsApi();
@@ -37,21 +40,22 @@ const Destination = () => {
 
 
   return (
-    <div className={`px-4 ${isHomePage ? "md:px-20" : "md:px-0"}`}>
+    <div className={`px-4 ${isHomePage ? "md:px-20" : "md:px-0 md:mb-4 "}`}>
       <SectionHeading
         heading="Featured Destinations"
         variant={isHomePage ? "home" : "hotel"}
+        top={isHomePage ? "mt-10" : "mt-0"}
         align={isHomePage ? "center" : "center"}
-        py={isHomePage ? "py-40" : "py-15"}
+        py={isHomePage ? "py-17 md:py-20 lg:py-40" : "py-7 md:py-10"}
         {...(isHomePage && {
           backgroundText: "Destination",
           subtext:
-            "Handpicked travel experiences to the most iconic, breathtaking, and exciting locations. Choose your next adventure and start making memories today.",
+            "Explore breathtaking destinations handpicked for every kind of traveler—be it serene beaches, vibrant cities, or mountain escapes.",
         })}
       />
 
       {/* Wrap swiper and nav buttons */}
-      <div className="relative mt-5 md:mt-10 "   >
+      <div className="relative mt-8 md:mt-10 "   >
 
         {/* Left nav button (conditionally shown) */}
         {activeIndex > 0 && (
@@ -93,7 +97,10 @@ const Destination = () => {
           {Array.isArray(destinations) && destinations.slice(0, 6).map((destination, index) => (
             <SwiperSlide key={index} >
               <div
-                onClick={() => navigate(`/bookings/trips/${destination.slug}`)}
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  navigate(`/bookings/trips/${destination.slug}`);
+                }}
                 className="h-64 rounded-3xl overflow-hidden shadow-lg group relative bg-cover bg-center transition-transform duration-300 hover:scale-100 cursor-pointer"
                 style={{ backgroundImage: `url(${destination.coverImage})` }}
               >

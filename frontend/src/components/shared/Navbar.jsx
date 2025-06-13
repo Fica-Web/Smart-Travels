@@ -43,7 +43,7 @@ const Header = () => {
             onClick={() => setMobileMenuOpen(true)}
             className="p-2 bg-white rounded-full shadow hover:bg-gray-100 cursor-pointer"
           >
-            <Menu size={20} className="text-black" />
+            <Menu size={20} className="text-secondary-blue" />
           </button>
         </div>
 
@@ -64,7 +64,7 @@ const Header = () => {
       {/* Backdrop */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-20 lg:hidden"
+          className="fixed inset-0 bg-secondary-blue/50 backdrop-blur-sm z-20 lg:hidden"
           onClick={() => setMobileMenuOpen(false)}
         />
       )}

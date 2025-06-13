@@ -2,7 +2,7 @@ import React from 'react'
 import SectionHeading from '../../reusable/SectionHeading'
 import img1 from '../../../assets/image/about/about4.jpg'
 import img2 from '../../../assets/image/about/about5.jpg'
-import img3 from '../../../assets/image/about/about6.jpg'
+import img3 from '../../../assets/image/about/chooseus.jpg'
 
 import { FaMapMarkedAlt, FaTags } from 'react-icons/fa';
 import { Ri24HoursFill } from "react-icons/ri";
@@ -14,11 +14,11 @@ const ChooseUs = () => {
             <SectionHeading
                 backgroundText="CHOOSE US"
                 heading="Your Trusted Travel Partner"
-                subtext="Handpicked travel experiences to the most iconic, breathtaking, and exciting locations. Choose your next adventure and start making memories today."
+                subtext="With trusted expertise, 24/7 support, and tailored travel experiences, we’re your perfect partner in every adventure."
             />
 
             {/* Responsive Wrapper with items-stretch for equal column height */}
-            <div className="w-full flex flex-col lg:grid lg:grid-cols-[auto_auto_auto] pt-4 md:pt-0  gap-8 p-1 md:p-5 items-stretch justify-center">
+            <div className="w-full flex flex-col lg:grid lg:grid-cols-[auto_auto_auto] pt-4 md:pt-5  gap-8 p-1 md:p-5 items-stretch justify-center">
 
                 {/* Left Column */}
                 <div className="flex flex-col justify-between w-full h-full space-y-3 items-center order-1 md:order-none">

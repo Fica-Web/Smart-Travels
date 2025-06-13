@@ -3,8 +3,8 @@ import img from '../../../../assets/image/booking/insurance/insuranceimg (2).png
 
 const InsuranceImageSection = () => {
   return (
-     <div className="relative w-full my-15">
-     <img src={img} alt=" insurance" className="w-full h-auto object-cover" />
+     <div className="relative hidden sm:block w-full my-15">
+     <img src={img} alt=" insurance" className="w-full h-auto object-cover rounded-3xl" />
 
   <div className="absolute top-0 left-0 h-full w-1/4 rounded-l-[20px] pointer-events-none"
      style={{

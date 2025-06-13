@@ -29,13 +29,28 @@ const BlogDetails = () => {
     fetchBlog();
   }, [id]);
 
-  if (loading) return <p>Loading blog details...</p>;
-  if (!blog) return <p>Blog not found.</p>;
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-68">
+        <p className="text-secondary-blue text-lg">Loading blog...</p>
+      </div>
+    );
+  }
+
+
+  if (!blog) {
+    return (
+      <div className="flex justify-center items-center h-68">
+        <p className="text-secondary-blue text-lg">Blog not found.</p>
+      </div>
+    );
+  }
+
 
   return (
     <section>
-      <BlogDetailsHero blog={blog.blog}/>
-      
+      <BlogDetailsHero blog={blog.blog} />
+
 
       <div className="w-full flex flex-col md:flex-row justify-center p-5 md:p-10 md:px-20 ">
         <div className="w-full md:w-3/4  md:pl-6">
