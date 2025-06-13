@@ -19,6 +19,9 @@ const Destination = () => {
   const location = useLocation();
   const isHomePage = location?.pathname === '/';
 
+
+
+
   useEffect(() => {
     const fetchDestinations = async () => {
       const result = await getPublishedDestinationsApi();
@@ -37,12 +40,13 @@ const Destination = () => {
 
 
   return (
-    <div className={`px-4 ${isHomePage ? "md:px-20" : "md:px-0"}`}>
+    <div className={`px-4 ${isHomePage ? "md:px-20" : "md:px-0 md:mb-4 "}`}>
       <SectionHeading
         heading="Featured Destinations"
         variant={isHomePage ? "home" : "hotel"}
+        top={isHomePage ? "mt-10" : "mt-0"}
         align={isHomePage ? "center" : "center"}
-        py={isHomePage ? "py-40" : "py-15"}
+        py={isHomePage ? "py-40" : "py-0"}
         {...(isHomePage && {
           backgroundText: "Destination",
           subtext:
@@ -93,7 +97,10 @@ const Destination = () => {
           {Array.isArray(destinations) && destinations.slice(0, 6).map((destination, index) => (
             <SwiperSlide key={index} >
               <div
-                onClick={() => navigate(`/bookings/trips/${destination.slug}`)}
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  navigate(`/bookings/trips/${destination.slug}`);
+                }}
                 className="h-64 rounded-3xl overflow-hidden shadow-lg group relative bg-cover bg-center transition-transform duration-300 hover:scale-100 cursor-pointer"
                 style={{ backgroundImage: `url(${destination.coverImage})` }}
               >
