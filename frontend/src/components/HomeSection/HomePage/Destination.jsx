@@ -50,7 +50,7 @@ const Destination = () => {
         {...(isHomePage && {
           backgroundText: "Destination",
           subtext:
-            "Handpicked travel experiences to the most iconic, breathtaking, and exciting locations. Choose your next adventure and start making memories today.",
+            "Explore breathtaking destinations handpicked for every kind of traveler—be it serene beaches, vibrant cities, or mountain escapes.",
         })}
       />
 

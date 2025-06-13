@@ -46,11 +46,12 @@ const SectionHeading = ({ backgroundText = '', heading, subtext = '', align = 'c
 
       {/* Subtext */}
       {subtext && (
-        <div className={`pb-3 md:pb-10 pt-2 px-4 ${isCentered ? 'text-center' : 'text-left'}`}>
-          <p className="text-sm sm:text-base md:text-lg text-secondary-blue max-w-2xl mx-auto leading-relaxed mt-0 md:mt-10 ">
-            {subtext}
-          </p>
-        </div>
+       <div className={`pb-3 md:pb-8 pt-1 px-4 ${isCentered ? 'text-center' : 'text-left'}`}>
+  <p className="text-sm sm:text-base md:text-lg text-secondary-blue max-w-2xl mx-auto leading-relaxed mt-0 md:mt-6">
+    {subtext}
+  </p>
+</div>
+
       )}
     </section>
   );

@@ -34,7 +34,7 @@ const BlogSection = ({ isHomePage = false }) => {
         <SectionHeading
           backgroundText="TRAVEL BLOG"
           heading="Discover Travel Tips & Trends"
-          subtext="Explore travel tips, hidden gems, and expert guides to make your next adventure unforgettable!"
+          subtext="Get inspired with travel tips, guides, and real stories that help you plan smarter and travel better."
         />
       )}
 
