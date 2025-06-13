@@ -46,7 +46,7 @@ const Footer = () => {
     <footer className="relative w-full h-auto  py-10 px-5 sm:px-20 bg-[#4A94D0]/40">
 
       {/* Top Section */}
-      <div className="pb-5 md:pb-12 border-b border-gray-700 flex flex-col md:flex-row justify-items-center gap-10 md:gap-5 lg:gap-30  ">
+      <div className="pb-5 md:pb-12 border-b border-secondary-blue flex flex-col md:flex-row justify-items-center gap-10 md:gap-5 lg:gap-30  ">
         {/* Left Section */}
         <div className="space-y-3 md:space-y-6 ">
           <div className='space-y-1 md:space-y-2'>
@@ -97,14 +97,14 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between md:items-start w-full gap-x-3 md:gap-x-6 lg:gap-x-1 gap-y-4 px-0 md:px-4 text-secondary-blue ">
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-3 whitespace-nowrap">Quick Links</h4>
+            <h4 className="font-semibold mb-3 whitespace-nowrap text-secondary-blue">Quick Links</h4>
             <ul className="space-y-2 text-md">
               {navOptions.map((item, index) => (
                 <li key={index}>
                   <Link
                     to={item.path}
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    className="inline hover:text-[#005BF0] transition whitespace-nowrap"
+                    className="inline hover:text-[#005BF0] transition whitespace-nowrap text-secondary-blue"
                   >
                     {item.name}
                   </Link>
@@ -120,14 +120,14 @@ const Footer = () => {
 
 
           <div className='text-secondary-blue'>
-            <h4 className="font-semibold mb-3">Services</h4>
+            <h4 className="font-semibold mb-3 text-secondary-blue">Services</h4>
             <ul className="space-y-2 text-secondary-blue text-md">
               {servicesData.slice(0,5).map((item, index) => (
                 <li key={index}>
                   <Link
                     to={item.path} // Ensure each item in servicesData has a `path` property
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    className=" hover:text-primary hover:text-[#005BF0] transition duration-200"
+                    className=" hover:text-primary hover:text-[#005BF0] transition duration-200 text-secondary-blue"
                   >
                     {item.footerTitle}
                   </Link>
@@ -141,13 +141,13 @@ const Footer = () => {
 
           {/* Support */}
           <div className='text-secondary-blue '>
-            <h4 className="font-semibold  mb-3">Contact Us</h4>
-            <p className='text-md'>Have questions? We’re here to help with your travel plans.</p>
+            <h4 className="font-semibold  mb-3 text-secondary-blue">Contact Us</h4>
+            <p className='text-md text-secondary-blue'>Have questions? We’re here to help with your travel plans.</p>
             <div className="flex items-center gap-2 mt-2 text-md text-secondary-blue whitespace-nowrap">
               <MdLocalPhone size={20} />
 
               <div className="flex flex-row gap-3">
-                <a href={`tel:${settings.contactNumber}`} className="hover:text-[#005BF0] transition">
+                <a href={`tel:${settings.contactNumber}`} className="hover:text-[#005BF0] transition text-secondary-blue">
                   {settings.contactNumber}
                 </a>
                 {/* <span>,</span>
@@ -160,7 +160,7 @@ const Footer = () => {
 
             <div className="flex items-center gap-2 mt-2 text-md text-secondary-blue">
               <MdEmail size={20} />
-              <a href={`mailto:${settings.email}`} className="hover:text-[#005BF0] transition">
+              <a href={`mailto:${settings.email}`} className="hover:text-[#005BF0] transition text-secondary-blue">
                 {settings.email}
               </a>
             </div>
@@ -180,19 +180,19 @@ const Footer = () => {
         {/* Copyright */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full text-sm text-secondary-blue ">
           <div>
-            <p className="flex items-center flex-wrap justify-center gap-1 text-center whitespace-nowrap">
+            <p className="flex items-center flex-wrap justify-center gap-1 text-center whitespace-nowrap text-secondary-blue">
               Copyright <AiOutlineCopyright className="text-secondary-blue" /> 2025,Rukn Travels. All Rights Reserved
             </p>
           </div>
 
           <div className="flex items-center space-x-1 whitespace-nowrap">
-            <p>Created By</p>
+            <p className='text-secondary-blue'>Created By</p>
             <span>
               <Link
                 to="https://www.ficaads.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white transition"
+                className="hover:text-white transition text-secondary-blue"
               >
                 Ficaads
               </Link>

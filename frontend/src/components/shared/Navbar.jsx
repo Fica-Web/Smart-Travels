@@ -18,7 +18,7 @@ const Header = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex gap-2 bg-[#4A94D0]/10 backdrop-blur-md rounded-full p-2 space-x-1 ring-1 ring-[#4A94D0]/20">
+        <nav className="hidden lg:flex gap-2 bg-[#4A94D0]/10 backdrop-blur-md rounded-full p-2 space-x-1 mr-10 ring-1 ring-[#4A94D0]/20">
           {navOptions.map((item) => (
             <NavLink
               key={item.name}
@@ -27,7 +27,7 @@ const Header = () => {
               className={({ isActive }) =>
                 `px-5 py-1 rounded-full transition ${
                   isActive
-                    ? 'bg-white text-black shadow font-medium'
+                    ? 'bg-white text-secondary-blue shadow font-medium'
                     : 'text-white bg-[#4A94D0]/40 hover:bg-[#4A94D0]/80'
                 }`
               }
@@ -49,15 +49,15 @@ const Header = () => {
 
         {/* Icons (Desktop Only) */}
         <div className="hidden lg:flex items-center space-x-4">
-          <button className="p-3 bg-white rounded-full shadow hover:bg-gray-100">
+          {/* <button className="p-3 bg-white rounded-full shadow hover:bg-gray-100">
             <Rocket size={20} className="text-black" />
-          </button>
-          <NavLink to={'/profile'}>
+          </button> */}
+          {/* <NavLink to={'/profile'}>
             <button className="p-3 bg-white rounded-full shadow hover:bg-gray-100">
               <User size={20} className="text-black" />
             </button>
           </NavLink>
-          <UserLogoutButton />
+          <UserLogoutButton /> */}
         </div>
       </header>
 
@@ -95,7 +95,7 @@ const Header = () => {
                 className={({ isActive }) =>
                   `px-5 py-2 rounded-full text-center transition ${
                     isActive
-                      ? 'bg-white text-black font-medium shadow'
+                      ? 'bg-white text-secondary-blue font-medium shadow'
                       : 'text-white bg-white/20 hover:bg-white/30'
                   }`
                 }
@@ -106,12 +106,12 @@ const Header = () => {
           </nav>
 
           {/* Footer Icons */}
-          <div className="flex justify-around pt-6 border-t border-white/20">
-            <Rocket size={22} className="text-white" />
-            <NavLink to={'/profile'} onClick={() => setMobileMenuOpen(false)}>
+          <div className="flex justify-end pt-6 px-2 border-t border-white/20">
+            {/* <Rocket size={22} className="text-white" /> */}
+            {/* <NavLink to={'/profile'} onClick={() => setMobileMenuOpen(false)}>
               <User size={22} className="text-white" />
-            </NavLink>
-            <UserLogoutButton />
+            </NavLink> */}
+            {/* <UserLogoutButton /> */}
           </div>
         </div>
       </div>

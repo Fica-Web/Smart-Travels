@@ -44,12 +44,12 @@ const DestinationDetails = () => {
                 />
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center text-secondary-blue gap-3 mt-8">
                     {/* Title */}
-                    <h1 className="text-2xl font-bold">{destination.title}</h1>
+                    <h1 className="text-2xl font-bold text-secondary-blue">{destination.title}</h1>
 
                     {/* Duration and Country */}
-                    <div className="flex items-center  text-sm md:text-base ">
+                    <div className="flex items-center  text-sm md:text-base text-secondary-blue">
                         <span>{destination.duration}</span>
-                        <span className="flex items-center gap-1">
+                        <span className="flex items-center gap-1 text-secondary-blue">
                             ,<IoFlagSharp size={16} />
                             {destination.country}
                         </span>

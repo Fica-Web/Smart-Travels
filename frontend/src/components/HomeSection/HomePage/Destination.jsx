@@ -40,8 +40,9 @@ const Destination = () => {
     <div className={`px-4 ${isHomePage ? "md:px-20" : "md:px-0"}`}>
       <SectionHeading
         heading="Featured Destinations"
-        align={isHomePage ? "center" : "left"}
-        py={isHomePage ? "py-40" : "py-10"}
+        variant={isHomePage ? "home" : "hotel"}
+        align={isHomePage ? "center" : "center"}
+        py={isHomePage ? "py-40" : "py-15"}
         {...(isHomePage && {
           backgroundText: "Destination",
           subtext:
@@ -50,12 +51,12 @@ const Destination = () => {
       />
 
       {/* Wrap swiper and nav buttons */}
-      <div className="relative mt-10 "   >
+      <div className="relative mt-5 md:mt-10 "   >
 
         {/* Left nav button (conditionally shown) */}
         {activeIndex > 0 && (
           <button
-            className="absolute top-1/2 left-0 -translate-y-1/2 bg-white/90 hover:bg-white text-black rounded-full p-2 shadow cursor-pointer transition-transform duration-200 hover:scale-110 z-30"
+            className="absolute top-1/2 left-0 -translate-y-1/2 bg-white/90 hover:bg-white text-secondary-blue rounded-full p-2 shadow cursor-pointer transition-transform duration-200 hover:scale-110 z-30"
             onClick={() => swiperRef.current?.slidePrev()}
             aria-label="Previous Slide"
           >
@@ -65,7 +66,7 @@ const Destination = () => {
 
         {/* Right nav button */}
         <button
-          className="absolute top-1/2 right-0 -translate-y-1/2 bg-white/90 hover:bg-white text-black rounded-full p-2 shadow cursor-pointer transition-transform duration-200 hover:scale-110 z-30"
+          className="absolute top-1/2 right-0 -translate-y-1/2 bg-white/90 hover:bg-white text-secondary-blue rounded-full p-2 shadow cursor-pointer transition-transform duration-200 hover:scale-110 z-30"
           onClick={() => swiperRef.current?.slideNext()}
           aria-label="Next Slide"
         >

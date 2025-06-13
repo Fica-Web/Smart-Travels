@@ -33,13 +33,13 @@ const SingleDestination = ({ dest }) => {
     return (
         <div
             onClick={handleCardClick}
-            className="bg-white shadow rounded-3xl overflow-hidden border border-t-0 border-gray-300 flex flex-col relative cursor-pointer"
+            className="bg-white  rounded-3xl overflow-hidden border border-t-0 border-gray-300 flex flex-col relative cursor-pointer"
         >
             <Link
                 to={`/bookings/trips/${dest.slug}`}
-                className="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-black rounded-full p-2 transition z-10"
+                className="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-secondary-blue rounded-full p-2 transition z-10"
             >
-                <ArrowUpRight size={18} taxt />
+                <ArrowUpRight size={18}  />
             </Link>
             {/* Image */}
             {dest.coverImage && (
@@ -51,14 +51,14 @@ const SingleDestination = ({ dest }) => {
             )}
 
             {/* Bottom content */}
-            <div className="flex justify-between items-center p-4 border border-t-0 border-secondary-blue/70 rounded-b-3xl">
+            <div className="flex justify-between items-center p-4 border border-t-0 border-secondary-blue/70 rounded-b-3xl ">
 
                 {/* Left */}
                 <div>
-                    <p className="text-lg font-semibold">
+                    <p className="text-lg font-semibold text-secondary-blue">
                         {dest.country || dest.name || dest.title}
                     </p>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-secondary-blue">
                         {dest.duration || 'Duration not specified'}
                     </p>
                 </div>
