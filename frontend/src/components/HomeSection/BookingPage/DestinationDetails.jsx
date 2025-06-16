@@ -4,6 +4,7 @@ import { getDestinationBySlugApi } from '../../../services/api/destinationApi';
 import { IoFlagSharp } from "react-icons/io5";
 import TripDetails from './TripDetails';
 import ContactSection from './ContactSection';
+import Loading from '../../reusable/Loading';
 
 const DestinationDetails = () => {
     const { slug } = useParams();
@@ -31,7 +32,7 @@ const DestinationDetails = () => {
         fetchDestination();
     }, [slug]);
 
-    if (loading) return <p>Loading destination...</p>;
+    if (loading) return <Loading text="Loading...." />;
     if (!destination) return <p>Destination not found.</p>;
 
     return (

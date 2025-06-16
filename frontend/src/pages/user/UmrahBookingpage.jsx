@@ -2,7 +2,7 @@ import React from 'react';
 
 const UmrahBookingPage = () => {
   return (
-    <div className="flex h-[80vh] justify-center  text-center py-2 md:py-19 px-4">
+    <div className="flex h-[60vh] justify-center  text-center py-2 md:py-19 px-4">
       <div>
         <h1 className="text-4xl font-bold text-secondary-blue ">Umrah Booking - Coming Soon</h1>
         <p className="text-lg text-secondary-blue max-w-md mx-auto mt-3">
