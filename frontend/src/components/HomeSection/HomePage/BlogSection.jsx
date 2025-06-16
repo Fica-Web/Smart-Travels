@@ -40,7 +40,7 @@ const BlogSection = ({ isHomePage = false }) => {
 
       {loading ? (
         <div className="flex justify-center items-center h-68">
-          <p className="text-secondary-blue text-lg">Loading blogs...</p>
+          {/* <p className="text-secondary-blue text-lg">Loading blogs...</p> */}
         </div>
       ) : (
         <SingleBlog isHomePage={isHomePage} firstBlog={firstBlog} remainingBlogs={remainingBlogs} />
