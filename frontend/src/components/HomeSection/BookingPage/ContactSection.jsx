@@ -1,5 +1,4 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
+import React,{ useState, useEffect } from 'react';
 import { getSettings } from '../../../services/api/settingsApi';
 import ContactForm from '../../reusable/ContactForm'
 import HelpBox from '../../reusable/HelpBox';
