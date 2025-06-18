@@ -6,7 +6,7 @@ import { FiCalendar, FiUser } from 'react-icons/fi';
 
 const BlogCard = ({ blog, isHomepage }) => {
   return (
-    <div className="bg-white shadow rounded-3xl overflow-hidden border border-t-0 border-gray-300 flex flex-col transition duration-300 group relative">
+    <div className="bg-white shadow rounded-3xl overflow-hidden border border-t-0 border-gray-300 flex flex-col transition duration-300 group relative pt-4 md:pt-0 ">
   {/* Top Right Icon Button */}
   <Link
     to={`/blog/${blog._id}`}
@@ -36,7 +36,7 @@ const BlogCard = ({ blog, isHomepage }) => {
     </Link>
 
     {!isHomepage && (
-      <p className="text-sm sm:text-base text-secondary-blue/80 line-clamp-3 leading-relaxed">
+      <p className="hidden sm:block text-sm sm:text-base text-secondary-blue/80 line-clamp-3 leading-relaxed">
         {blog.description}
       </p>
     )}

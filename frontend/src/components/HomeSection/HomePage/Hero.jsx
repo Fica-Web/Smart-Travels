@@ -20,11 +20,11 @@ const Hero = () => {
             <div className="absolute inset-0 flex justify-center items-center">
                 <div className="flex flex-col">
                     <h2 className="text-center text-white leading-none">
-                        <span className="uppercase md:text-2xl text-xl md:tracking-[10px] tracking-[3px]">
+                        <span className="uppercase md:text-2xl text-lg md:tracking-[10px] tracking-[3px]">
                             Discover Your Next
                         </span>
                         <br />
-                        <span className="text-[20vw] md:text-[16vw] font-coastal-clean tracking-wide z-0">
+                        <span className="text-[23vw] md:text-[16vw] font-coastal-clean tracking-wide z-0">
                             Adventure
                         </span>
                     </h2>
