@@ -7,11 +7,9 @@ import img6 from '../../assets/icons/icon6.svg'
 import img1Active from '../../assets/icons/hoverIcon1.svg'
 import img2Active from '../../assets/icons/hoverIcon2.svg'
 import img3Active from '../../assets/icons/hoverIcon3.svg'
-import img4Active from '../../assets/icons/hoverIcon4.svg'
+import img4Active from '../../assets/icons/hovericon4.svg'
 import img5Active from '../../assets/icons/hoverIcon5.svg'
 import img6Active from '../../assets/icons/hoverIcon6.svg'
-
-
 
 export const travelOptions = [
   { icon: img1, activeIcon: img6Active, title: 'Flights', route: '/bookings/flights' },
