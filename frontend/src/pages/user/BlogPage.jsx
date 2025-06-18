@@ -1,6 +1,6 @@
 import ReusableHero from "../../components/reusable/ReusableHero"
 import BlogSection from "../../components/HomeSection/HomePage/BlogSection"
-import img from '../../assets/image/blog/blog-hero.png'
+import img from '../../assets/image/blog/blog-hero.jpeg'
 
 const BlogPage = () => {
     return (
