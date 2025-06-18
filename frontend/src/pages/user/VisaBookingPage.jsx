@@ -1,6 +1,5 @@
-import React from 'react';
 import VisaListing from '../../components/HomeSection/BookingPage/VisaListing';
-import ImageBox from '../../components/HomeSection/BookingPage/imageBox';
+import ImageBox from '../../components/HomeSection/BookingPage/ImageBox';
 import VisaProcessSteps from '../../components/HomeSection/BookingPage/VisaProcessSteps';
 VisaProcessSteps
 
