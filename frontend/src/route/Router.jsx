@@ -3,20 +3,20 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import HomeLayout from '../layouts/HomeLayout';
 import AdminLayout from '../layouts/AdminLayout';
-import { AuthProvider } from '../contexts/AuthContext';
+// import { AuthProvider } from '../contexts/AuthContext';
 import Loading from '../components/reusable/Loading';
 import UserAuth from '../services/auth/UserAuth';
-import GuestGuard from '../services/auth/GuestGuard';
+// import GuestGuard from '../services/auth/GuestGuard';
 import AdminAuthGuard from '../services/auth/AdminAuthGuard';
 import AdminPublicRoute from '../services/auth/AdminPublicRoute';
 
 // Lazy-loaded pages
 const HomePage = lazy(() => import('../pages/user/HomePage'));
 const LoginPage = lazy(() => import('../pages/admin/LoginPage'));
-const UserLoginPage = lazy(() => import('../pages/user/UserLoginPage'));
-const SignUpPage = lazy(() => import('../pages/user/SignUpPage'));
-const ForgotPasswordPage = lazy(() => import('../pages/user/ForgotPasswordPage'));
-const resetPasswordPage = lazy(() => import('../pages/user/ResetPasswordPage'));
+// const UserLoginPage = lazy(() => import('../pages/user/UserLoginPage'));
+// const SignUpPage = lazy(() => import('../pages/user/SignUpPage'));
+// const ForgotPasswordPage = lazy(() => import('../pages/user/ForgotPasswordPage'));
+// const resetPasswordPage = lazy(() => import('../pages/user/ResetPasswordPage'));
 const AboutPage = lazy(() => import('../pages/user/AboutPage'));
 const BlogPage = lazy(() => import('../pages/user/BlogPage'));
 const BookingPage = lazy(() => import('../pages/user/BookingsPage'));
@@ -40,7 +40,7 @@ const AdminBlogEditPage = lazy(() => import('../pages/admin/AdminBlogEditPage'))
 const AdminDestinationPage = lazy(() => import('../pages/admin/AdminDestinationPage'));
 const AdminDestinationFormPage = lazy(() => import('../pages/admin/AdminDestinationFormPage'));
 
-// const NotFoundPage = lazy(() => import('../pages/shared/NotFoundPage'));
+const NotFoundPage = lazy(() => import('../pages/shared/NotFountPage'));
 
 // Suspense wrapper
 const withSuspense = (Component) => (
@@ -53,9 +53,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: (
-      <AuthProvider>
-        <HomeLayout />
-      </AuthProvider>
+      <HomeLayout />
     ),
     children: [
       {
@@ -137,34 +135,34 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: '/login',
-    element: (
-      <AuthProvider>
-        <GuestGuard>
-          {withSuspense(UserLoginPage)}
-        </GuestGuard>
-      </AuthProvider>
-    ),
-  },
-  {
-    path: '/signup',
-    element: (
-      <AuthProvider>
-        <GuestGuard>
-          {withSuspense(SignUpPage)}
-        </GuestGuard>
-      </AuthProvider>
-    ),
-  },
-  {
-    path: '/forgot-password',
-    element: withSuspense(ForgotPasswordPage),
-  },
-  {
-    path: '/reset-password',
-    element: withSuspense(resetPasswordPage),
-  },
+  // {
+  //   path: '/login',
+  //   element: (
+  //     <AuthProvider>
+  //       <GuestGuard>
+  //         {withSuspense(UserLoginPage)}
+  //       </GuestGuard>
+  //     </AuthProvider>
+  //   ),
+  // },
+  // {
+  //   path: '/signup',
+  //   element: (
+  //     <AuthProvider>
+  //       <GuestGuard>
+  //         {withSuspense(SignUpPage)}
+  //       </GuestGuard>
+  //     </AuthProvider>
+  //   ),
+  // },
+  // {
+  //   path: '/forgot-password',
+  //   element: withSuspense(ForgotPasswordPage),
+  // },
+  // {
+  //   path: '/reset-password',
+  //   element: withSuspense(resetPasswordPage),
+  // },
   {
     path: '/admin/login',
     element: (
@@ -233,12 +231,11 @@ const router = createBrowserRouter([
         ],
       },
     ],
-  }
-
-  // {
-  //   path: '*',
-  //   element: withSuspense(NotFoundPage),
-  // },
+  },
+  {
+    path: '*',
+    element: withSuspense(NotFoundPage),
+  },
 ]);
 
 export default router;

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/image/logo/logo.png';
 import { IoPower } from "react-icons/io5";
+import { RiLogoutCircleRLine } from "react-icons/ri";
 import { adminLogoutApi } from '../../services/api/adminApi'; // Make sure the path is correct
 
 const AdminNavbar = () => {
@@ -43,7 +44,7 @@ const AdminNavbar = () => {
           onClick={toggleModal}
           className="bg-white text-red-600 w-10 h-10 rounded-full flex items-center justify-center border-2 hover:bg-red-600 hover:text-white shadow transition-colors duration-200"
         >
-          <IoPower className="w-5 h-5 " />
+          <RiLogoutCircleRLine className="w-5 h-5 " />
         </button>
 
         {showModal && (
