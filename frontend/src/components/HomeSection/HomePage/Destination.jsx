@@ -44,9 +44,9 @@ const Destination = () => {
       <SectionHeading
         heading="Featured Destinations"
         variant={isHomePage ? "home" : "hotel"}
-        top={isHomePage ? "mt-10" : "mt-0"}
+        top={isHomePage ? "mt-8" : "mt-0"}
         align={isHomePage ? "center" : "center"}
-        py={isHomePage ? "py-17 md:py-20 lg:py-40" : "py-7 md:py-10"}
+        py={isHomePage ? "py-17 md:py-20 lg:py-35" : "py-7 md:py-10"}
         {...(isHomePage && {
           backgroundText: "Destination",
           subtext:

@@ -1,15 +1,15 @@
 import React from 'react';
 
-const SectionHeading = ({ backgroundText = '', heading, subtext = '', align = 'center', py='py-17 md:py-20 lg:py-40' ,variant,top='mt-10'}) => {
+const SectionHeading = ({ backgroundText = '', heading, subtext = '', align = 'center', py='py-17 md:py-20 lg:py-35' ,variant,top='mt-8'}) => {
    const isCentered = align === 'center';
   const isHotelPage = variant === 'hotel';
 
   return (
     <section className=''>
-      <div className={`relative w-full px-4 ${py} overflow-visible mt-0 md:${top}  text-${align}`}>
+      <div className={`relative w-full px-4 ${py} overflow-visible mt-0 md:${top}  text-${align} `}>
         {/* Background large text (only if centered) */}
         {isCentered && backgroundText && (
-          <h1 className="font-coastal-clean absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+          <h1 className="font-coastal-clean absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  
             whitespace-nowrap
             text-[15vw] sm:text-[8vw] md:text-[11vw]
             text-secondary-blue opacity-8
