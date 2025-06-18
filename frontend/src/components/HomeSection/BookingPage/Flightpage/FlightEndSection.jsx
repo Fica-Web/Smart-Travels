@@ -1,5 +1,5 @@
 import React from 'react'
-import img from '../../../../assets/image/booking/flight/flightendimg.png'
+import img from '../../../../assets/image/booking/flight/flightendimg.jpeg'
 
 const FlightEndSection = () => {
   return (
