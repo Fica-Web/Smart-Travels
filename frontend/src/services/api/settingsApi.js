@@ -14,7 +14,6 @@ export const getSettings = async () => {
 export const updateSettings = async (data) => {
   try {
     const response = await settingsInstance.patch('/', data); // ✅ correct path
-    console.log('✅ Settings updated:', response.data);
     return response.data;
   } catch (error) {
     console.error('❌ Error updating settings:', error.response?.data || error.message);

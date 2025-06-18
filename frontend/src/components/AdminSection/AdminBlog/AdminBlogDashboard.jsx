@@ -12,10 +12,8 @@ const AdminBlogDashboard = () => {
   const navigate = useNavigate();
 
   const loadBlogs = async () => {
-    console.log('Axios baseURL:', blogsInstance.defaults.baseURL);
     try {
       const res = await getAllBlogs();
-      console.log('Blogs loaded successfully:', res.data);
       const blogData = Array.isArray(res.data) ? res.data : res.data.blogs || [];
       setBlogs(blogData);
     } catch (err) {

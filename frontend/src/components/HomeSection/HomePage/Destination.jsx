@@ -25,7 +25,6 @@ const Destination = () => {
   useEffect(() => {
     const fetchDestinations = async () => {
       const result = await getPublishedDestinationsApi();
-      console.log("Fetched destinations:", result.data);
       if (result.success) {
         setDestinations(result.data.destinations || []);
 

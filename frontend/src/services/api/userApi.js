@@ -96,7 +96,6 @@ export const userLogoutApi = async () => {
 export const getAllUsersApi = async (params) => {
     try {
         const response = await userInstance.get('/all-users', { params });
-        console.log('Fetch all Users API Response:', response.data);
         return { success: true, data: response.data };
     } catch (error) {
         console.error('Fetch all Users API Error:', error.response?.data);

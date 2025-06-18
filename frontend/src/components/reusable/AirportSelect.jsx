@@ -88,7 +88,6 @@ const AirportSelect =forwardRef( ({ value, onChange, placeholder, name, ...rest 
       defaultOptions={defaultOptions}
       onMenuOpen={handleMenuOpen}
       onChange={(selected) => {
-    console.log("Selected airport:", selected);
     onChange(selected,name);
   }}
       placeholder={placeholder}

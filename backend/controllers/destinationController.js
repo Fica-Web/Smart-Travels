@@ -151,8 +151,6 @@ export const createDestination = async (req, res) => {
             }
         }
 
-        console.log('Request body:', req.body);
-
         // Validate required fields
         if (!title || !destination || !duration || !overview || !req.file || !days || days.length === 0) {
             return res.status(400).json({ message: 'Title, destination, overview, duration, cover image, and at least one day plan are required.' });
@@ -333,7 +331,6 @@ export const deleteDestination = async (req, res) => {
         if (destination.coverImageId) {
             try {
                 const result = await cloudinary.uploader.destroy(destination.coverImageId);
-                console.log("Cloudinary image deletion result:", result);
             } catch (cloudErr) {
                 console.error("Error deleting image from Cloudinary:", cloudErr);
             }

@@ -57,7 +57,6 @@ const createBlogApi = async (data) => {
 const getSingleBlogApi = async (id) => {
   try {
     const response = await blogsInstance.get(`/${id}`);
-    console.log("Fetched blog data:", response.data);  // Log the full response for debugging
     return response.data; // Make sure to return response.data directly
   } catch (error) {
     console.log(`Error fetching blog ${id}:`, error.response?.data || error.message);
@@ -94,7 +93,6 @@ const updateBlogApi = async (id, data) => {
   try {
       console.log('Update blog works')
       const response = await blogsInstance.put(`/${id}`, data, config);
-      console.log('updated blogs response:', response);
       toast.success(response.data.message)
       return response.data;
   } catch (error) {
