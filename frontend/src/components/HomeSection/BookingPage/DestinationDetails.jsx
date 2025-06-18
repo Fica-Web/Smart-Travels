@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getDestinationBySlugApi } from '../../../services/api/destinationApi';
 import { IoFlagSharp } from "react-icons/io5";
-import TripDetails from './TripDetails';
+import TripDetails from './Tripdetails';
 import ContactSection from './ContactSection';
 import Loading from '../../reusable/Loading';
 
