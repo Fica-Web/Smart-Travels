@@ -6,7 +6,7 @@ import { FiCalendar, FiUser } from 'react-icons/fi';
 
 const BlogCard = ({ blog, isHomepage }) => {
   return (
-    <div className="bg-white shadow rounded-3xl overflow-hidden border border-t-0 border-gray-300 flex flex-col transition duration-300 group relative pt-4 md:pt-0 ">
+    <div className=" shadow rounded-3xl overflow-hidden border border-t-0 border-gray-300 flex flex-col transition duration-300 group relative   ">
   {/* Top Right Icon Button */}
   <Link
     to={`/blog/${blog._id}`}
