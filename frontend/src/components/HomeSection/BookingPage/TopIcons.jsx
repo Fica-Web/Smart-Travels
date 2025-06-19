@@ -9,6 +9,14 @@ const TopIcons = () => {
   // Set initial active route to current pathname or default to flights
   const [active, setActive] = useState(location.pathname || '/bookings/flights');
 
+  const isActive = (route) => {
+  if (route === '/bookings/trips') {
+    return location.pathname.startsWith('/bookings/trips');
+  }
+  return location.pathname === route;
+};
+
+
   useEffect(() => {
     // Treat "/bookings" as "/bookings/flights"
     const normalizedPath = location.pathname === '/bookings' ? '/bookings/flights' : location.pathname;
@@ -29,15 +37,14 @@ const TopIcons = () => {
             onClick={() => handleNavigate(item.route)}
           >
             <img
-              src={active === item.route ? item.activeIcon : item.icon}
+             src={isActive(item.route) ? item.activeIcon : item.icon}
               alt={`${item.title} Icon`}
               className="w-[23px] h-[23px]"
             />
 
-            <p
-              className={`mt-1 text-sm md:mt-0 md:ml-2 md:text-lg font-semibold whitespace-nowrap no-underline ${active === item.route ? 'text-blue-600' : 'text-secondary-blue'
-                }`}
-            >
+           <p className={`mt-1 text-sm md:mt-0 md:ml-2 md:text-lg font-semibold whitespace-nowrap no-underline 
+  ${isActive(item.route) ? 'text-blue-600' : 'text-secondary-blue'}`}>
+
               <span className="block md:hidden">{item.mobileTitle || item.title}</span>
               <span className="hidden md:block">{item.title}</span>
             </p>
