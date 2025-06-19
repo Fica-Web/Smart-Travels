@@ -91,7 +91,6 @@ const updateBlogApi = async (id, data) => {
   };
 
   try {
-      console.log('Update blog works')
       const response = await blogsInstance.put(`/${id}`, data, config);
       toast.success(response.data.message)
       return response.data;
