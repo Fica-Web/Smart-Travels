@@ -54,7 +54,7 @@ const Destination = () => {
       />
 
       {/* Wrap swiper and nav buttons */}
-      <div className="relative mt-8 md:mt-1"   >
+      <div className={`relative ${isHomePage ? "mt-8 md:mt-1" : "mt-8 md:mt-8 py-10"}`}>
 
         {/* Left nav button (conditionally shown) */}
         {activeIndex > 0 && (

@@ -147,12 +147,18 @@ const CountrySelect = forwardRef(
         alignItems: "center",
         gap: "0.5rem",
       }),
-      menu: (provided) => ({
-        ...provided,
-        width: isHotel ? '200px' : 'auto',
-        marginLeft: isHotel ? '-20px' : '',
-        zIndex: 30,
-      }),
+    menu: (provided) => {
+  const controlWidth = selectRef?.current?.select?.controlRef?.offsetWidth;
+  return {
+    ...provided,
+    width: isHotel 
+      ? '200px' 
+      : (controlWidth ? `${controlWidth}px` : 'auto'),
+    marginLeft: isHotel ? '-20px' : '',
+    zIndex: 30,
+  }
+},
+
     };
 
     return (
@@ -191,11 +197,10 @@ const CountrySelect = forwardRef(
             }, 0); // Fix: closes the menu right after selection
           }}
           placeholder={placeholder}
-          menuPortalTarget={document.body}
-          styles={{
-            ...((variant === 'visa' || variant === 'hotel-image') ? customStyles : {}),
-            menuPortal: (base) => ({ ...base, zIndex: 9999 }),
-          }}
+         styles={{
+    ...customStyles,  // always apply customStyles
+    menuPortal: (base) => ({ ...base, zIndex: 9999 }),
+  }}
           components={{
             SingleValue: customSingleValue,
             Option: customOption,

@@ -43,7 +43,7 @@ const ChooseUs = () => {
                         </p>
                     </div>
 
-                    <div className="w-full bg-[#4A94D0]/10 rounded-3xl hidden lg:flex items-center justify-center mx-auto text-xl font-semibold px-4 md:px-6 p-4 ">
+                    <div className="w-full bg-[#4A94D0]/10 rounded-3xl hidden lg:flex items-center justify-center mx-auto text-xl font-semibold ">
                         <img
                             src={img2}
                             alt=""

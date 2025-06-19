@@ -56,17 +56,18 @@ const Footer = () => {
             </p>
           </div>
           <div className='flex justify-start items-center gap-6'>
-            <div>
+            <div className='cursor-pointer'>
               <a
                 href={settings.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-8 h-8 bg-secondary-blue rounded-full text-white transform transition-transform duration-300 hover:scale-110"
+                className="inline-flex items-center justify-center w-8 h-8 bg-secondary-blue rounded-full text-white transform transition-transform duration-300 hover:scale-110 cursor-pointer"
               >
                 <FaInstagram size={20} />
               </a>
             </div>
-            <div>
+
+            <div className='cursor-pointer'>
               <a
                 href={settings.facebook}
                 target="_blank"
@@ -76,7 +77,7 @@ const Footer = () => {
                 <SlSocialFacebook size={20} />
               </a>
             </div>
-            <div>
+            <div className='cursor-pointer'>
               <a
                 href={settings.tiktok}
                 target="_blank"
@@ -122,7 +123,7 @@ const Footer = () => {
           <div className='text-secondary-blue'>
             <h4 className="font-semibold mb-3 text-secondary-blue">Services</h4>
             <ul className="space-y-2 text-secondary-blue text-md">
-              {servicesData.slice(0,5).map((item, index) => (
+              {servicesData.slice(0, 5).map((item, index) => (
                 <li key={index}>
                   <Link
                     to={item.path} // Ensure each item in servicesData has a `path` property

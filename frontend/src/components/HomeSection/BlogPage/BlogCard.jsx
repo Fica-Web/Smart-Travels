@@ -28,7 +28,7 @@ const BlogCard = ({ blog, isHomepage }) => {
   </Link>
 
   {/* Content */}
-  <div className="flex flex-col justify-between h-full p-4 border-secondary-blue rounded-b-3xl space-y-1 ">
+  <div className="flex flex-col justify-between p-4 border-secondary-blue rounded-b-3xl space-y-1 ">
     <Link to={`/blog/${blog._id}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
       <h3 className="text-xl font-semibold text-secondary-blue">
         {blog.title}
@@ -36,9 +36,10 @@ const BlogCard = ({ blog, isHomepage }) => {
     </Link>
 
     {!isHomepage && (
-      <p className="hidden sm:block text-sm sm:text-base text-secondary-blue/80 line-clamp-3 leading-relaxed">
-        {blog.description}
-      </p>
+      <p className="hidden sm:block text-sm sm:text-base text-secondary-blue/80 leading-relaxed overflow-hidden text-justify" style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' }}>
+  {blog.description}
+</p>
+
     )}
 
  <div className="flex items-center text-sm sm:text-base text-secondary-blue/80 pt-2">

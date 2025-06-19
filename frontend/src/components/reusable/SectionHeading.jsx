@@ -32,10 +32,10 @@ const SectionHeading = ({ backgroundText = '', heading, subtext = '', align = 'c
         )}
 
         {/* Foreground heading */}
-        <div className={`${isCentered ? 'absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-[5%] md:translate-y-[55%] ' : ''} z-10`}>
+        <div className={`${isCentered ? 'absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-[2%] md:translate-y-[55%] ' : ''} `}>
           <h2
             className={` 
-    ${isHotelPage ? 'inline whitespace-nowrap text-2xl font-bold  text-center   text-secondary-blue ' : 'inline whitespace-nowrap overflow-hidden text-ellipsis max-w-[90vw] text-base sm:text-2xl md:text-3xl lg:text-4xl font-semibold'} 
+    ${isHotelPage ? 'inline whitespace-nowrap text-2xl font-bold  text-center   text-secondary-blue pb-8 ' : 'inline whitespace-nowrap overflow-hidden text-ellipsis max-w-[90vw] text-base sm:text-2xl md:text-3xl lg:text-4xl font-semibold'} 
     text-secondary-blue ${!isCentered ? 'text-left' : ''}`}
           >
             {heading}
