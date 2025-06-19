@@ -15,7 +15,7 @@ const HelpBox = ({ settings ,paragraphtext='Our Destination expert will be happy
                     <MdLocalPhone size={16} />
                 </div>
                 <a
-                    href="mailto:Info@rukntravels.com"
+                    href={`tel:${settings.contactNumber}`}
                     className="hover:text-[#005BF0] transition text-secondary-blue "
                 >
                     {settings.contactNumber}

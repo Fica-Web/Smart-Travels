@@ -44,9 +44,8 @@ const Destination = () => {
       <SectionHeading
         heading="Featured Destinations"
         variant={isHomePage ? "home" : "hotel"}
-        top={isHomePage ? "mt-10" : "mt-0"}
         align={isHomePage ? "center" : "center"}
-        py={isHomePage ? "py-17 md:py-20 lg:py-40" : "py-7 md:py-10"}
+        py={isHomePage ? "py-17 md:py-20 lg:py-27" : "py-7 md:py-10"}
         {...(isHomePage && {
           backgroundText: "Destination",
           subtext:
@@ -55,7 +54,7 @@ const Destination = () => {
       />
 
       {/* Wrap swiper and nav buttons */}
-      <div className="relative mt-8 md:mt-10 "   >
+      <div className="relative mt-8 md:mt-1"   >
 
         {/* Left nav button (conditionally shown) */}
         {activeIndex > 0 && (
