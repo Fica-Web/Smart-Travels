@@ -8,6 +8,7 @@ const CountrySelect = forwardRef(
     const [options, setOptions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [menuOpen, setMenuOpen] = useState(false);
+    const [controlWidth, setControlWidth] = useState(null);
 
     const selectRef = useRef(null);
 
@@ -56,7 +57,8 @@ const CountrySelect = forwardRef(
           .map((country) => ({
             label: country.name.common,
             value: country.name.common,
-            flag: country.flags.svg,
+            flag: `https://flagcdn.com/w80/${country.cca2.toLowerCase()}.png`,
+
           }))
           .sort((a, b) => a.label.localeCompare(b.label));
 
@@ -72,11 +74,25 @@ const CountrySelect = forwardRef(
 
     useEffect(() => {
       fetchCountries();
+
+      setTimeout(() => {
+        if (selectRef?.current?.controlRef?.offsetWidth) {
+          setControlWidth(selectRef.current.controlRef.offsetWidth);
+        }
+      }, 0);
     }, []);
+
 
     const customSingleValue = ({ data }) => (
       <div className="flex items-center gap-2">
-        {data.flag && <img src={data.flag} alt={data.label} className="w-5 h-4 object-cover rounded-sm" />}
+        {data.flag && (
+          <img
+            src={data.flag}
+            alt={data.label}
+            className="w-5 h-4 object-cover rounded-sm"
+            onError={(e) => { e.target.style.display = 'none' }}
+          />
+        )}
         <span>{data.label}</span>
       </div>
     );
@@ -147,17 +163,15 @@ const CountrySelect = forwardRef(
         alignItems: "center",
         gap: "0.5rem",
       }),
-    menu: (provided) => {
-  const controlWidth = selectRef?.current?.select?.controlRef?.offsetWidth;
-  return {
-    ...provided,
-    width: isHotel 
-      ? '200px' 
-      : (controlWidth ? `${controlWidth}px` : 'auto'),
-    marginLeft: isHotel ? '-20px' : '',
-    zIndex: 30,
-  }
-},
+      menu: (provided) => ({
+        ...provided,
+        width: isHotel
+          ? '200px'
+          : (controlWidth ? `${controlWidth}px` : '200px'), // fallback safe
+        marginLeft: isHotel ? '-20px' : '',
+        zIndex: 30,
+      })
+
 
     };
 
@@ -197,10 +211,10 @@ const CountrySelect = forwardRef(
             }, 0); // Fix: closes the menu right after selection
           }}
           placeholder={placeholder}
-         styles={{
-    ...customStyles,  // always apply customStyles
-    menuPortal: (base) => ({ ...base, zIndex: 9999 }),
-  }}
+          styles={{
+            ...customStyles,  // always apply customStyles
+            menuPortal: (base) => ({ ...base, zIndex: 9999 }),
+          }}
           components={{
             SingleValue: customSingleValue,
             Option: customOption,
