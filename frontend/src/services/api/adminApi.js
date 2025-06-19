@@ -32,7 +32,6 @@ const adminLogoutApi = async () => {
 
 const fetchDashboardDataApi = async (serviceType = '') => {
     try {
-        console.log("Fetching dashboard data with serviceType:", serviceType);
         const response = await adminInstance.get('/dashboard', {
             params: serviceType ? { serviceType } : {},
         });

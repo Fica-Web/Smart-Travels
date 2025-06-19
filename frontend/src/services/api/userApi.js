@@ -5,7 +5,6 @@ export const userLoginApi = async (credentials) => {
     try {
         const response = await userInstance.post('/login', credentials);
         setAccessToken(response.data.accessToken);
-        console.log('Login API Response:', response.data);
         return response.data;
     } catch (error) {
         console.error('Login API Error:', error.response?.data);
@@ -16,7 +15,6 @@ export const userLoginApi = async (credentials) => {
 export const userSignupApi = async (data) => {
     try {
         const response = await userInstance.post('/signup', data);
-        console.log('Signup API Response:', response.data);
         return { success: true, data: response.data };
     } catch (error) {
         console.error('Signup API Error:', error.response?.data || error);
