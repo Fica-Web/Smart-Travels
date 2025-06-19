@@ -66,7 +66,7 @@ const SingleDestination = ({ dest }) => {
                 {/* Right */}
                 <div className="flex items-center space-x-2">
                     <a
-                        href="https://wa.me/+971527418272"
+                        href="https://wa.me/+971526070722"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:text-green-600"
