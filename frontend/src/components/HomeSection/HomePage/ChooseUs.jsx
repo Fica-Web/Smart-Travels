@@ -18,12 +18,12 @@ const ChooseUs = () => {
             />
 
             {/* Responsive Wrapper with items-stretch for equal column height */}
-            <div className="w-full flex flex-col lg:grid lg:grid-cols-[auto_auto_auto] pt-4 md:pt-5  gap-8 p-1 md:p-5 items-stretch justify-center">
+            <div className="w-full flex flex-col lg:grid lg:grid-cols-[auto_auto_auto] pt-4 md:pt-5  gap-8 p-1 md:p-5 items-stretch justify-center ">
 
                 {/* Left Column */}
-                <div className="flex flex-col justify-between w-full h-full space-y-3 items-center order-1 md:order-none">
+                <div className="flex flex-col justify-between w-full h-full space-y-3 items-center order-1 md:order-none ">
 
-                    <div className="w-full bg-[#4A94D0]/10 rounded-3xl flex flex-col justify-center px-6 text-left text-xl space-y-2 p-3">
+                    <div className="w-full bg-[#4A94D0]/10 rounded-3xl flex flex-col justify-center text-left text-xl space-y-2 p-4 md:p-4">
                         <div className="text-white p-3 rounded-full w-fit bg-gradient-to-b from-[#005BF0] to-[#63CCF6]">
                             <FaMapMarkedAlt className="text-2xl" />
                         </div>
@@ -33,7 +33,7 @@ const ChooseUs = () => {
                         </p>
                     </div>
 
-                    <div className="w-full bg-[#4A94D0]/10 rounded-3xl flex flex-col justify-center px-6 text-left text-xl space-y-2 p-3">
+                    <div className="w-full bg-[#4A94D0]/10 rounded-3xl flex flex-col justify-center  text-left text-xl space-y-2 p-4">
                         <div className="text-white p-3 rounded-full w-fit bg-gradient-to-b from-[#005BF0] to-[#63CCF6]">
                             <Ri24HoursFill className="text-2xl" />
                         </div>

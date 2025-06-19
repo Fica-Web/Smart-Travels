@@ -29,17 +29,17 @@ const BlogSection = ({ isHomePage = false }) => {
   const [firstBlog, ...remainingBlogs] = blogs;
 
   return (
-    <div className="px-4 md:px-20 ">
+    <div className="px-4 md:px-20  ">
       {isHomePage && (
         <SectionHeading
           backgroundText="TRAVEL BLOG"
           heading="Discover Travel Tips & Trends"
-          subtext="Get inspired with travel tips, guides, and real stories that help you plan smarter and travel better."
+          subtext="Travel isn’t just about places—it’s about the moments, visuals, and emotions that stay with you. Discover them all here."
         />
       )}
 
       {loading ? (
-        <div className="flex justify-center items-center h-68">
+        <div className="flex justify-center items-center h-68 ">
           {/* <p className="text-secondary-blue text-lg">Loading blogs...</p> */}
         </div>
       ) : (

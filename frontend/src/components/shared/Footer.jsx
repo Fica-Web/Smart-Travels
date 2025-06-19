@@ -178,7 +178,7 @@ const Footer = () => {
       {/* Bottom Section */}
       <div className="mt-8 space-y-8 ">
         {/* Copyright */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full text-sm text-secondary-blue ">
+        <div className="flex flex-col md:flex-row justify-between items-center w-full text-sm text-secondary-blue ">
           <div>
             <p className="flex items-center flex-wrap justify-center gap-1 text-center whitespace-nowrap text-secondary-blue">
               Copyright <AiOutlineCopyright className="text-secondary-blue" /> 2025,Rukn Travels. All Rights Reserved
@@ -198,9 +198,6 @@ const Footer = () => {
               </Link>
             </span>
           </div>
-
-
-
         </div>
 
         {/* Adventure Text */}
