@@ -18,7 +18,7 @@ const SingleBlog = ({ isHomePage, firstBlog, remainingBlogs }) => {
   {isHomePage && firstBlog && (
     <>
       {/* Mobile View (sm and below) */}
-      <div className="block md:hidden pt-4 md:pt-0">
+      <div className="block md:hidden pt-4 md:pt-0 ">
         <BlogCard blog={firstBlog} isHomepage={false} />
       </div>
 
@@ -78,7 +78,7 @@ const SingleBlog = ({ isHomePage, firstBlog, remainingBlogs }) => {
   )}
 
   {/* Blog Grid */}
-  <div className="grid gap-12 mt-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+  <div className="grid gap-12 mt-12 md:mt-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
     {isHomePage
       ? remainingBlogs.slice(0, 3).map((blog) => (
           <BlogCard key={blog._id} blog={blog} isHomepage={true} />

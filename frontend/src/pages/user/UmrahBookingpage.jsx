@@ -9,6 +9,7 @@ const UmrahBookingPage = () => {
           We are currently working hard to bring you the best Umrah booking experience.
           Please stay tuned! This page will be available soon with exciting features to help you plan your spiritual journey easily.
         </p>
+        
       </div>
     </div>
   );
