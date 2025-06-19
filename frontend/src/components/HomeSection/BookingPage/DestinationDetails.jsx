@@ -13,15 +13,10 @@ const DestinationDetails = () => {
 
     useEffect(() => {
         const fetchDestination = async () => {
-            console.log('Fetching destination with Slug:',slug);
-
             const response = await getDestinationBySlugApi(slug);
-
-            console.log('API response:', response);
 
             if (response.success) {
                 setDestination(response.data.destination);
-                console.log('Destination data set:', response.data); // ✅ log extracted data
             } else {
                 console.error('Failed to load destination:', response.message); // ❌ handle failure
             }

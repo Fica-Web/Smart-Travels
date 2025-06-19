@@ -36,7 +36,6 @@ const fetchDashboardDataApi = async (serviceType = '') => {
         const response = await adminInstance.get('/dashboard', {
             params: serviceType ? { serviceType } : {},
         });
-        console.log("Dashboard Data:", response);
         return { success: true, data: response.data.dashboardData };
     } catch (error) {
         console.error("Error fetching dashboard Data:", error);

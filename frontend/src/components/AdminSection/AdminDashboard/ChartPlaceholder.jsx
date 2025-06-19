@@ -12,14 +12,12 @@ const ChartPlaceholder = ({ initialData = [], fetchFilteredChartData }) => {
     const [chartType, setChartType] = useState('bar');
     const [chartData, setChartData] = useState([]);
     const [serviceType, setServiceType] = useState('');
-    const [loading, setLoading] = useState(true); // start in loading state
+    const [loading, setLoading] = useState(true);
 
-    // Update chartData when initialData arrives
+    // Always set loading to false when initialData changes, even if empty
     useEffect(() => {
-        if (initialData.length > 0) {
-            setChartData(initialData);
-            setLoading(false);
-        }
+        setChartData(initialData);
+        setLoading(false);
     }, [initialData]);
 
     const handleChartTypeChange = (_, newType) => {
@@ -31,7 +29,7 @@ const ChartPlaceholder = ({ initialData = [], fetchFilteredChartData }) => {
         setServiceType(selected);
 
         if (!selected) {
-            setChartData(initialData); // Reset to initial data
+            setChartData(initialData);
             return;
         }
 
@@ -40,9 +38,12 @@ const ChartPlaceholder = ({ initialData = [], fetchFilteredChartData }) => {
             const response = await fetchFilteredChartData(selected);
             if (response.success) {
                 setChartData(response.data.inquiriesChart || []);
+            } else {
+                setChartData([]);
             }
         } catch (err) {
             console.error(err);
+            setChartData([]);
         } finally {
             setLoading(false);
         }
@@ -86,6 +87,12 @@ const ChartPlaceholder = ({ initialData = [], fetchFilteredChartData }) => {
                 {loading ? (
                     <Box display="flex" alignItems="center" justifyContent="center" height="100%">
                         <CircularProgress />
+                    </Box>
+                ) : chartData.length === 0 ? (
+                    <Box display="flex" alignItems="center" justifyContent="center" height="100%">
+                        <Typography variant="subtitle1" color="textSecondary">
+                            No inquiries available.
+                        </Typography>
                     </Box>
                 ) : (
                     <ResponsiveContainer width="100%" height="100%">

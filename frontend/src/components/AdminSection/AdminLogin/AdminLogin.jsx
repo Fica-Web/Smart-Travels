@@ -44,7 +44,6 @@ export default function AdminLogin() {
             const response = await adminLoginApi({ username, email, password });
 
             if (response?.token) {
-                console.log('✅ Admin login successful:', response);
                 navigate('/admin');
             }
         } catch (error) {
