@@ -31,6 +31,7 @@ const Footer = () => {
       try {
         const res = await getSettings();
         setSettings(res.data.data);
+        console.log('settings',res.data.data)
 
       } catch (err) {
         console.log('Failed to load settings');
@@ -58,7 +59,7 @@ const Footer = () => {
           <div className='flex justify-start items-center gap-6'>
             <div className='cursor-pointer'>
               <a
-                href={settings.instagram}
+                onClick={() => window.open(settings.instagramUrl, '_blank', 'noopener,noreferrer')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-8 h-8 bg-secondary-blue rounded-full text-white transform transition-transform duration-300 hover:scale-110 cursor-pointer"
@@ -69,7 +70,7 @@ const Footer = () => {
 
             <div className='cursor-pointer'>
               <a
-                href={settings.facebook}
+                onClick={() => window.open(settings.facebookUrl, '_blank', 'noopener,noreferrer')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-8 h-8 bg-secondary-blue  rounded-full text-white transform transition-transform duration-300 hover:scale-110"
@@ -79,7 +80,7 @@ const Footer = () => {
             </div>
             <div className='cursor-pointer'>
               <a
-                href={settings.tiktok}
+                                onClick={() => window.open(settings.tiktokUrl, '_blank', 'noopener,noreferrer')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-8 h-8 bg-secondary-blue  rounded-full text-white transform transition-transform duration-300 hover:scale-110"
