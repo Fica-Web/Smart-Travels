@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { travelOptions } from '../../../data/HomeSection/travelOperations';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -6,25 +6,19 @@ const TopIcons = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Set initial active route to current pathname or default to flights
-  const [active, setActive] = useState(location.pathname || '/bookings/flights');
+  const getNormalizedPath = () => {
+    return location.pathname === '/bookings' ? '/bookings/flights' : location.pathname;
+  };
 
   const isActive = (route) => {
-  if (route === '/bookings/trips') {
-    return location.pathname.startsWith('/bookings/trips');
-  }
-  return location.pathname === route;
-};
-
-
-  useEffect(() => {
-    // Treat "/bookings" as "/bookings/flights"
-    const normalizedPath = location.pathname === '/bookings' ? '/bookings/flights' : location.pathname;
-    setActive(normalizedPath);
-  }, [location.pathname]);
+    const normalizedPath = getNormalizedPath();
+    if (route === '/bookings/trips') {
+      return normalizedPath.startsWith('/bookings/trips');
+    }
+    return normalizedPath === route;
+  };
 
   const handleNavigate = (route) => {
-    setActive(route);
     navigate(route);
   };
 
