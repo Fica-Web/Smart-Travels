@@ -50,12 +50,7 @@ const ItinerarySection = ({ destination }) => {
   )
 }
 
-
-
-
-
 const Inclusions = ({ destination }) => {
-  console.log("Inclusions array:", destination.inclusions);
 
   return (
     <div className="p-4 text-secondary-blue md:max-w-[337.6px]">

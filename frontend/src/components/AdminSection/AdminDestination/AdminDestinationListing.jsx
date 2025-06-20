@@ -18,7 +18,6 @@ const AdminDestinationListing = () => {
 
             if (response.success) {
                 setDestinations(response.data.destinations);
-                console.log(response.data.totalPages);
                 setTotalPages(response.data.totalPages);
             } else {
                 console.error('Error fetching destinations:', response.message)

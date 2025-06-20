@@ -23,7 +23,6 @@ const AdminSettingsPage = () => {
       try {
         const res = await getSettings();
         setSettings(res.data.data);
-        console.log('settings',res.data.data)
         setFormValues(res.data.data);
       } catch (err) {
         toast.error('Failed to load settings');

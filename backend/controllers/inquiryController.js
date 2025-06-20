@@ -17,8 +17,6 @@ export const createInquiry = async (req, res) => {
             message,
         } = req.body;
 
-        console.log("Received inquiry data:", req.body);
-
         if (!name || !phone || !serviceType) {
             return res.status(400).json({ success: false, message: "Name, phone, and service type are required." });
         }

@@ -76,7 +76,6 @@ const CoverImageUpload = ({
         onCroppedImage(file); // Pass the cropped image to the parent component
         setPreview(URL.createObjectURL(file));
         setShowCropModal(false);
-        console.log("Cropping success:", file.size);
       } catch (error) {
         console.error("Error cropping image", error);
       } finally {
