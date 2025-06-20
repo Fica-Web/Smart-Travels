@@ -88,8 +88,6 @@ const ImageSection = () => {
     },
   ];
 
-
-
   const handleQuerySubmit = ({ formData }) => {
     console.log("hotel form data:", formData);
   };

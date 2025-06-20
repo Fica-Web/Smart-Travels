@@ -12,7 +12,6 @@ const AdminBlogEditor = () => {
     const fetchBlog = async () => {
       try {
         const res = await getSingleBlogApi(id);
-        console.log('Fetched blog:', res); // ✅ for debugging
         setBlog(res.data?.blog || res.blog || res); // ✅ ensure correct structure
       } catch (err) {
         console.error('Error loading blog:', err);

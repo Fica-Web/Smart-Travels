@@ -11,7 +11,6 @@ const TripsBooking = () => {
   const fetchDestinations = async () => {
     setLoading(true);
     const response = await getPublishedDestinationsApi();
-    console.log('Destinations:', response.data);
     if (response.success) {
       const sortedDestinations = [...response.data.destinations].sort((a, b) => {
         const nameA = (a.country || a.name || a.title || '').toLowerCase();

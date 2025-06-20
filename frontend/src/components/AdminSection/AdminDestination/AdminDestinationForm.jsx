@@ -38,7 +38,6 @@ const AdminDestinationForm = ({ destinationId }) => {
             (async () => {
                 setLoading(true);
                 const res = await getDestinationByIdApi(destinationId);
-                console.log('res:', res)
                 if (res.success) {
                     const destination = res.data.destination;
                     setFormData({
@@ -150,7 +149,6 @@ const AdminDestinationForm = ({ destinationId }) => {
         }
 
         if (isEditMode) {
-            console.log('Updating destination with ID:', destinationId);
             const response = await updateDestinationApi(formData, destinationId);
             if (response.success) {
                 toast.success(response.message || "Destination updated successfully");
@@ -161,7 +159,6 @@ const AdminDestinationForm = ({ destinationId }) => {
                 setErrors(prev => ({ ...prev, server: response.message }));
             }
         } else {
-            console.log('Creating new destination');
             const response = await createDestinationApi(formData);
             if (response.success) {
                 toast.success("Destination created successfully");
