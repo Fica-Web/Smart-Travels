@@ -15,24 +15,12 @@ const SectionHeading = ({ backgroundText = '', heading, subtext = '', align = 'c
             text-secondary-blue opacity-8
             uppercase tracking-wide pointer-events-none select-none leading-none "
           >
-            {backgroundText.split(" ").map((word, index) => (
-              <span key={index} className="inline-block">
-                {index === 0 ? (
-                  <>
-                    <span className="text-[125%]">{word[0]}</span>
-                    {word.slice(1)}
-                  </>
-                ) : (
-                  word
-                )}
-                &nbsp;
-              </span>
-            ))}
+            {backgroundText}
           </h1>
         )}
 
         {/* Foreground heading */}
-        <div className={`${isCentered ? 'absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-[2%] md:translate-y-[55%] ' : ''} `}>
+        <div className={`${isCentered ? 'absolute top-1/2 left-1/2 -translate-x-1/2  ' : ''} `}>
           <h2
             className={` 
     ${isHotelPage ? 'inline whitespace-nowrap text-2xl font-bold  text-center   text-secondary-blue pb-8 ' : 'inline whitespace-nowrap overflow-hidden text-ellipsis max-w-[90vw] text-base sm:text-2xl md:text-3xl lg:text-4xl font-semibold'} 
