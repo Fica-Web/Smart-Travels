@@ -20,7 +20,7 @@ const SectionHeading = ({ backgroundText = '', heading, subtext = '', align = 'c
         )}
 
         {/* Foreground heading */}
-        <div className={`${isCentered ? 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[1%] md:-translate-y-[4%] ' : ''} `}>
+        <div className={`${isCentered ? 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[22%] md:-translate-y-[4%] ' : ''} `}>
           <h2
             className={` 
     ${isHotelPage ? 'inline whitespace-nowrap text-2xl font-bold  text-center   text-secondary-blue pb-8 ' : 'inline whitespace-nowrap overflow-hidden text-ellipsis max-w-[90vw] text-base sm:text-2xl md:text-3xl lg:text-4xl font-semibold'} 
