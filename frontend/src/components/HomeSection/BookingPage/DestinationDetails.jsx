@@ -58,7 +58,7 @@ const DestinationDetails = () => {
                     <TripDetails destination={destination} />
                 </div>
                 <div className='w-full md:w-[500px] flex flex-col '>
-                    <ContactSection  destination={destination}/>
+                    <ContactSection  destination={destination} />
                 </div>
             </div>
 

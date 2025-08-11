@@ -1,37 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import img1 from '../../../../assets/image/booking/umrah/umrah1.png';
-import img2 from '../../../../assets/image/booking/umrah/umrah2.png';
-
-const packages = [
-    {
-        id: 1,
-        title: "Economy Umrah Package (By Air)",
-        slug: "economy-umrah-package-by-air",
-        nights: "5 Nights with visa, flights, hotels & ziyarit included.",
-        price: "AED 450",
-        tag: "Economy",
-        image: img2, // replace with your image
-    },
-    {
-        id: 2,
-        title: "Economy Umrah Package (By Air)",
-        slug: "economy-umrah-package-by-air-2",
-        nights: "5 Nights with visa, flights, hotels & ziyarit included.",
-        price: "AED 450",
-        tag: "Economy",
-        image: img1, // replace with your image
-    },
-    {
-        id: 3,
-        title: "Economy Umrah Package (By Air)",
-        slug: "economy-umrah-package-by-air-3",
-        nights: "5 Nights with visa, flights, hotels & ziyarit included.",
-        price: "AED 450",
-        tag: "Economy",
-        image: img2, // replace with your image
-    },
-];
+import umrahPackages from '../../../../data/HomeSection/umrahPackages';
 
 export const UmrahListingPage = () => {
     return (
@@ -49,7 +17,7 @@ export const UmrahListingPage = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {packages.map((pkg) => (
+                {umrahPackages.map((pkg) => (
                     <SingleUmrahCard key={pkg.id} pkg={pkg} />
                 ))}
             </div>
