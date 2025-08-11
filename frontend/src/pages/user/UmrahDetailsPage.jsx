@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { FaPlay } from "react-icons/fa"; // for the small arrow icon
 import { TbLocationFilled } from "react-icons/tb";
 import umrahPackages from "../../data/HomeSection/umrahPackages";
 import ContactSection from "../../components/HomeSection/BookingPage/ContactSection";
@@ -16,41 +15,28 @@ const UmrahDetailsPage = () => {
 
     return (
         <div>
-            <div>
-                <h2>
-                    Umrah Packages
+            {/* Header */}
+            <div className="mb-5">
+                <h2 className="text-2xl font-bold text-secondary-blue">
+                    {pkg.title || "Umrah Package"}
                 </h2>
+                {pkg.description && (
+                    <p className="text-gray-600 mt-1 text-sm">{pkg.description}</p>
+                )}
             </div>
 
+            {/* Main content */}
             <div className="flex flex-col lg:flex-row gap-10 items-start">
-                <div className="relative lg:w-1/2 w-full my-5">
-                    <h2 className="font-semibold text-secondary-blue lg:text-xl text-lg mb-4">
-                        Day-by-Day Itinerary
-                    </h2>
-                    {pkg.inclusions?.map((item, index) => (
-                        <div key={index} className="pb-6 relative pl-6 ">
-                            {/* Left vertical dashed line - hide for last element */}
-                            {index !== pkg.inclusions.length - 1 && (
-                                <div className="absolute left-1 top-3 bottom-0 w-px border-l border-dashed border-gray-400 z-0 "/>
-                            )}
-
-                            {/* Icon on top of the border */}
-                            <div className="absolute left-[-4px] top-2 z-10  rounded-full">
-                                <TbLocationFilled size={14} className="text-secondary-blue rotate-45" />
-                            </div>
-
-                            {/* Content */}
-                            <div className="relative z-10 text-secondary-blue  text-lg">
-                                <p className="">
-                                    {item}
-                                </p>
-                            </div>
-                        </div>
-                    ))}
+                {/* Itinerary */}
+                <div className=" lg:w-1/2 w-full">
+                    <ItineraryList title="Day-by-Day Itinerary" items={pkg.inclusions} />
+                    <ItineraryList title="Umrah VISA Documents" items={pkg.documents} />
+                    <ItineraryList title="Package Exclusions" items={pkg.exclusions} />
                 </div>
 
-                {/* <div className='w-full md:w-[500px] flex flex-col '>
-                    <ContactSection  destination={destination} />
+                {/* Contact Form */}
+                {/* <div className="w-full md:w-[500px]">
+                    <ContactSection destination={pkg.title} />
                 </div> */}
             </div>
         </div>
@@ -58,3 +44,37 @@ const UmrahDetailsPage = () => {
 };
 
 export default UmrahDetailsPage;
+
+// Reusable itinerary list component
+const ItineraryList = ({ title, items }) => {
+    if (!items || items.length === 0) {
+        return null;
+    }
+
+    return (
+        <div className="relative my-5">
+            <h2 className="font-semibold text-secondary-blue lg:text-xl text-lg mb-5">
+                {title}
+            </h2>
+
+            {items.map((item, index) => (
+                <div key={index} className="pb-6 relative pl-6">
+                    {/* Left vertical dashed line - hide for last element */}
+                    {index !== items.length - 1 && (
+                        <div className="absolute left-1 top-3 bottom-0 w-px border-l border-dashed border-gray-400 z-0" />
+                    )}
+
+                    {/* Icon */}
+                    <div className="absolute left-[-4px] top-2 z-10 rounded-full bg-white">
+                        <TbLocationFilled size={14} className="text-secondary-blue rotate-45" />
+                    </div>
+
+                    {/* Content */}
+                    <div className="relative z-10 text-secondary-blue text-">
+                        <p>{item}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+};
