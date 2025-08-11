@@ -24,6 +24,7 @@ const FlightsBookingPage = lazy(() => import('../pages/user/FlightsBookingPage')
 const HotelsBookingPage = lazy(() => import('../pages/user/HotelsBookingPage'));
 const VisaBookingPage = lazy(() => import('../pages/user/VisaBookingPage'));
 const UmrahBookingPage = lazy(() => import('../pages/user/UmrahBookingpage'));
+const UmrahDetailsPage = lazy(() => import('../pages/user/UmrahDetailsPage'));
 const TripsBookingPage = lazy(() => import('../pages/user/TripsBookingPage'));
 const DestinationDetailsPage = lazy(() => import('../pages/user/DestinationDetailsPage'));
 const InsuranceBookingPage = lazy(() => import('../pages/user/InsuranceBookingPage'));
@@ -99,19 +100,28 @@ const router = createBrowserRouter([
           },
           {
             path: 'umrah',
-            element: withSuspense(UmrahBookingPage)
+            children: [
+              {
+                index: true,
+                element: withSuspense(UmrahBookingPage)
+              },
+              {
+                path: ':slug',
+                element: withSuspense(UmrahDetailsPage) // This will show the details of a specific Umrah package
+              }
+            ],
           },
           {
             path: 'trips',
             children: [
-               {
-            index: true,
-            element: withSuspense(TripsBookingPage),
-          },
-          {
-            path: ':slug',
-            element: withSuspense(DestinationDetailsPage),
-          },
+              {
+                index: true,
+                element: withSuspense(TripsBookingPage),
+              },
+              {
+                path: ':slug',
+                element: withSuspense(DestinationDetailsPage),
+              },
             ]
           },
           {

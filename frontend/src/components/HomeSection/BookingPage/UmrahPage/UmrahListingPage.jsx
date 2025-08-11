@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import img1 from '../../../../assets/image/booking/umrah/umrah1.png';
 import img2 from '../../../../assets/image/booking/umrah/umrah2.png';
 
@@ -6,6 +7,7 @@ const packages = [
     {
         id: 1,
         title: "Economy Umrah Package (By Air)",
+        slug: "economy-umrah-package-by-air",
         nights: "5 Nights with visa, flights, hotels & ziyarit included.",
         price: "AED 450",
         tag: "Economy",
@@ -14,6 +16,7 @@ const packages = [
     {
         id: 2,
         title: "Economy Umrah Package (By Air)",
+        slug: "economy-umrah-package-by-air-2",
         nights: "5 Nights with visa, flights, hotels & ziyarit included.",
         price: "AED 450",
         tag: "Economy",
@@ -22,6 +25,7 @@ const packages = [
     {
         id: 3,
         title: "Economy Umrah Package (By Air)",
+        slug: "economy-umrah-package-by-air-3",
         nights: "5 Nights with visa, flights, hotels & ziyarit included.",
         price: "AED 450",
         tag: "Economy",
@@ -62,7 +66,7 @@ const SingleUmrahCard = ({ pkg }) => {
                 style={{ backgroundImage: `url(${pkg.image})` }}
             >
 
-                <span className="absolute top-3 right-3  text-xs px-3 py-1 rounded-md z-10 bg-white/90">
+                <span className="absolute top-5 right-5  text-xs px-3 py-1 rounded-md z-10 bg-white/90">
                     {pkg.tag}
                 </span>
 
@@ -80,7 +84,9 @@ const SingleUmrahCard = ({ pkg }) => {
                             {pkg.price}
                         </span>
                         <button className="bg-white/90 text-primary-blue text-sm  px-5 py-1 rounded-md hover:scale-105 transition transform duration-300 cursor-pointer">
-                            View Details
+                            <Link to={`/bookings/umrah/${pkg.slug}`}>
+                                View Details
+                            </Link>
                         </button>
                     </div>
                 </div>
