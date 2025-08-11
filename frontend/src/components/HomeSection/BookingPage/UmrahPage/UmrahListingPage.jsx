@@ -1,0 +1,90 @@
+import React from 'react';
+import img1 from '../../../../assets/image/booking/umrah/umrah1.png';
+import img2 from '../../../../assets/image/booking/umrah/umrah2.png';
+
+const packages = [
+    {
+        id: 1,
+        title: "Economy Umrah Package (By Air)",
+        nights: "5 Nights with visa, flights, hotels & ziyarit included.",
+        price: "AED 450",
+        tag: "Economy",
+        image: img2, // replace with your image
+    },
+    {
+        id: 2,
+        title: "Economy Umrah Package (By Air)",
+        nights: "5 Nights with visa, flights, hotels & ziyarit included.",
+        price: "AED 450",
+        tag: "Economy",
+        image: img1, // replace with your image
+    },
+    {
+        id: 3,
+        title: "Economy Umrah Package (By Air)",
+        nights: "5 Nights with visa, flights, hotels & ziyarit included.",
+        price: "AED 450",
+        tag: "Economy",
+        image: img2, // replace with your image
+    },
+];
+
+export const UmrahListingPage = () => {
+    return (
+        <section className="py-12 bg-white">
+            <div className="text-center lg:max-w-5xl mx-auto mb-8  lg:mb-12">
+                <h2 className="text-2xl font-bold mb-3 text-center text-secondary-blue ">
+                    Trusted Umrah Services for a Spiritual Journey
+                </h2>
+                <p className="text-secondary-blue">
+                    Embark on a blessed journey with our carefully designed Umrah packages.
+                    Enjoy hassle-free visa processing, comfortable accommodations, and guided
+                    ziyarah to the most sacred sites. We take care of every detail so you can
+                    focus on your prayers and spiritual fulfillment.
+                </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {packages.map((pkg) => (
+                    <SingleUmrahCard key={pkg.id} pkg={pkg} />
+                ))}
+            </div>
+        </section>
+    )
+}
+
+const SingleUmrahCard = ({ pkg }) => {
+    return (
+        <div className="rounded-2xl overflow-hidden">
+            {/* Image as background */}
+            <div
+                className="relative h-80 bg-center bg-cover text-secondary-blue"
+                style={{ backgroundImage: `url(${pkg.image})` }}
+            >
+
+                <span className="absolute top-3 right-3  text-xs px-3 py-1 rounded-md z-10 bg-white/90">
+                    {pkg.tag}
+                </span>
+
+                {/* Content section */}
+                <div className="p-5 z-10 absolute bottom-0 left-0 right-0 flex text-white">
+                    <div className='w-1/2'>
+                        <h3 className="lg:text-2xl text-lg font-semibold">
+                            {pkg.title}
+                        </h3>
+                        <p className="text-sm mt-1">{pkg.nights}</p>
+                    </div>
+
+                    <div className="mt-4 flex flex-col justify-end gap-5 items-end w-1/2">
+                        <span className="px-3 py-1 rounded-md text-xs border border-white">
+                            {pkg.price}
+                        </span>
+                        <button className="bg-white/90 text-primary-blue text-sm  px-5 py-1 rounded-md hover:scale-105 transition transform duration-300 cursor-pointer">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
