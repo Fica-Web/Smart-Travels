@@ -27,8 +27,6 @@ const ContactForm = ({
     [messageFieldName]: defaultMessage,
   };
 
-  console.log('ContactForm destination:', destination);
-
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
