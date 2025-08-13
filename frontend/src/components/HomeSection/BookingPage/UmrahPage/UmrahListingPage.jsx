@@ -25,14 +25,14 @@ export const UmrahListingPage = () => {
             </div>
 
             <div
-                className="relative bg-cover w-full h-auto pt-10 mt-7 rounded-tl-4xl rounded-tr-4xl rounded-br-4xl"
+                className="relative lg:block hidden bg-cover w-full h-auto pt-10 mt-7 rounded-tl-4xl rounded-tr-4xl rounded-br-4xl"
                 style={{ backgroundImage: `url(${bgImg})` }}
             >
                 {/* Blue overlay */}
                 <div className="absolute inset-0 bg-primary-blue/60 rounded-tl-4xl rounded-tr-4xl rounded-br-4xl"></div>
 
                 {/* Content */}
-                <div className='lg:flex hidden gap-5'>
+                <div className='lg:flex gap-5'>
                     <img
                         src={img2}
                         alt="Umrah Hero"
@@ -80,7 +80,7 @@ const SingleUmrahCard = ({ pkg }) => {
                         <span className="px-3 py-1 rounded-md text-xs border border-white">
                             {pkg.price}
                         </span>
-                        <Link to={`/bookings/umrah/${pkg.slug}`} className="bg-white/90 text-primary-blue text-sm  px-5 py-1 rounded-md hover:scale-105 transition transform duration-300 cursor-pointer">
+                        <Link to={`/bookings/umrah/${pkg.slug}`} className="bg-white/90 text-primary-blue text-sm  lg:px-5 px-2 py-1 rounded-md hover:scale-105 transition transform duration-300 cursor-pointer">
                             View Details
                         </Link>
                     </div>
