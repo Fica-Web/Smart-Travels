@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import umrahPackages from '../../../../data/HomeSection/umrahPackages';
+import bgImg from '../../../../assets/image/booking/umrah/bg-img.png';
+import img2 from '../../../../assets/image/booking/umrah/img2.png'
 
 export const UmrahListingPage = () => {
     return (
@@ -21,6 +23,33 @@ export const UmrahListingPage = () => {
                     <SingleUmrahCard key={pkg.id} pkg={pkg} />
                 ))}
             </div>
+
+            <div
+                className="relative bg-cover w-full h-auto pt-10 mt-7 rounded-tl-4xl rounded-tr-4xl rounded-br-4xl"
+                style={{ backgroundImage: `url(${bgImg})` }}
+            >
+                {/* Blue overlay */}
+                <div className="absolute inset-0 bg-primary-blue/60 rounded-tl-4xl rounded-tr-4xl rounded-br-4xl"></div>
+
+                {/* Content */}
+                <div className='lg:flex hidden gap-5'>
+                    <img
+                        src={img2}
+                        alt="Umrah Hero"
+                        className="relative z-10 lg:w-1/2"
+                    />
+
+                    <div className='lg:w-1/2 flex flex-col gap-5 justify-center items-center lg:px-24 text-white z-10'>
+                        <h2 className='text-4xl font-semibold'>
+                            “Travel with Confidence, Worship with Peace.”
+                        </h2>
+                        <p className='text-lg'>
+                            Complete Umrah packages with flights, visa, hotels & guided ziyarat — everything arranged for your blessed journey.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </section>
     )
 }
