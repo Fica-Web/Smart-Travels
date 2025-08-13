@@ -1,9 +1,13 @@
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { TbLocationFilled } from "react-icons/tb";
+import { getSettings } from "../../services/api/settingsApi";
 import umrahPackages from "../../data/HomeSection/umrahPackages";
-import ContactSection from "../../components/HomeSection/BookingPage/ContactSection";
+import ContactForm from "../../components/reusable/ContactForm";
+import HelpBox from "../../components/reusable/HelpBox";
 
 const UmrahDetailsPage = () => {
+    const [settings, setSettings] = useState({})
     const { slug } = useParams();
 
     // Find the package with matching slug
@@ -11,6 +15,23 @@ const UmrahDetailsPage = () => {
 
     if (!pkg) {
         return <div className="p-10 text-center text-red-500">Package not found</div>;
+    }
+
+    useEffect(() => {
+        const fetchSettings = async () => {
+            try {
+                const res = await getSettings();
+                setSettings(res.data.data);
+            } catch (err) {
+                console.log('Failed to load settings');
+            }
+        };
+        fetchSettings();
+    }, []);
+
+    const umrahData = {
+        serviceType: 'umrah',
+        destination: pkg.title,
     }
 
     return (
@@ -35,9 +56,17 @@ const UmrahDetailsPage = () => {
                 </div>
 
                 {/* Contact Form */}
-                {/* <div className="w-full md:w-[500px]">
-                    <ContactSection destination={pkg.title} />
-                </div> */}
+                <div className="flex flex-col gap-5 items-end w-full">
+                    <ContactForm
+                        title="Send a Query"
+                        buttonText="Send Query"
+                        messageFieldName="location"
+                        messageLabel="Location"
+                        messagePlaceholder="Enter your location"
+                        des
+                    />
+                    <HelpBox settings={settings} />
+                </div>
             </div>
         </div>
     );

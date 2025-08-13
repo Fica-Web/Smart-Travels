@@ -40,22 +40,20 @@ const SingleUmrahCard = ({ pkg }) => {
 
                 {/* Content section */}
                 <div className="p-5 z-10 absolute bottom-0 left-0 right-0 flex text-white">
-                    <div className='w-1/2'>
+                    <div className='w-7/12'>
                         <h3 className="lg:text-2xl text-lg font-semibold">
                             {pkg.title}
                         </h3>
                         <p className="text-sm mt-1">{pkg.nights}</p>
                     </div>
 
-                    <div className="mt-4 flex flex-col justify-end gap-5 items-end w-1/2">
+                    <div className="mt-4 flex flex-col justify-end gap-5 items-end w-5/12">
                         <span className="px-3 py-1 rounded-md text-xs border border-white">
                             {pkg.price}
                         </span>
-                        <button className="bg-white/90 text-primary-blue text-sm  px-5 py-1 rounded-md hover:scale-105 transition transform duration-300 cursor-pointer">
-                            <Link to={`/bookings/umrah/${pkg.slug}`}>
-                                View Details
-                            </Link>
-                        </button>
+                        <Link to={`/bookings/umrah/${pkg.slug}`} className="bg-white/90 text-primary-blue text-sm  px-5 py-1 rounded-md hover:scale-105 transition transform duration-300 cursor-pointer">
+                            View Details
+                        </Link>
                     </div>
                 </div>
             </div>

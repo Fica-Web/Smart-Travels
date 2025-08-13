@@ -7,7 +7,7 @@ const umrahPackages = [
         title: "Umrah Package By Air",
         slug: "umrah-package-by-air",
         nights: "5 Nights with visa, flights, hotels & ziyarit included.",
-        price: "AED 450",
+        price: "AED —",
         tag: "By Air",
         image: img2,
         inclusions: [
@@ -44,7 +44,7 @@ const umrahPackages = [
         title: "Umrah Package By Bus (Kerala)",
         slug: "umrah-package-by-bus-kerala",
         nights: "8 Nights with visa, hotels & ziyarit included.",
-        price: "Adult & Child: AED — , Infant: AED 750",
+        price: "AED — ",
         tag: "By Bus (Kerala)",
         image: img1,
         inclusions: [

@@ -8,7 +8,7 @@ const Whatsapp = () => {
         href="https://wa.me/+971526070722"
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-green-500 text-white rounded-full w-20 h-20 flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300"
+        className="bg-green-500 text-white rounded-full lg:w-20 w-14 lg:h-20 h-14 flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300"
       >
         <FaWhatsapp className="text-4xl" />
       </a>
