@@ -13,6 +13,7 @@ export const createInquiry = async (req, res) => {
             visaDetails,
             destinationDetails,
             insuranceDetails,
+            umrahDetails,
             country,
             message,
         } = req.body;
@@ -63,6 +64,12 @@ export const createInquiry = async (req, res) => {
                 }
                 break;
 
+            case "umrah": // ✅ new case
+                if (umrahDetails && Object.keys(umrahDetails).length > 0) {
+                    inquiryData.umrahDetails = umrahDetails;
+                }
+                break;
+
             default:
                 // Optionally: return error if unknown serviceType
                 return res.status(400).json({ success: false, message: "Invalid service type." });
@@ -106,17 +113,21 @@ export const createInquiry = async (req, res) => {
                 </table>
 
                 ${serviceType === "flight"
-                            ? `<h3 style="margin-top: 24px; color: #fea034;">✈️ Flight Details</h3><pre style="background: #f9f9f9; padding: 10px; border-radius: 4px;">${JSON.stringify(flightDetails, null, 2)}</pre>`
-                            : serviceType === "hotel"
-                                ? `<h3 style="margin-top: 24px; color: #fea034;">🏨 Hotel Details</h3><pre style="background: #f9f9f9; padding: 10px; border-radius: 4px;">${JSON.stringify(hotelDetails, null, 2)}</pre>`
-                                : serviceType === "visa"
-                                    ? `<h3 style="margin-top: 24px; color: #fea034;">🛂 Visa Details</h3><pre style="background: #f9f9f9; padding: 10px; border-radius: 4px;">${JSON.stringify(visaDetails, null, 2)}</pre>`
-                                    : serviceType === "destination"
-                                        ? `<h3 style="margin-top: 24px; color: #fea034;">🌍 Destination Details</h3><pre style="background: #f9f9f9; padding: 10px; border-radius: 4px;">${JSON.stringify(destinationDetails, null, 2)}</pre>`
-                                        : serviceType === "insurance"
-                                            ? `<h3 style="margin-top: 24px; color: #fea034;">🛡️ Insurance Details</h3><pre style="background: #f9f9f9; padding: 10px; border-radius: 4px;">${JSON.stringify(insuranceDetails, null, 2)}</pre>`
-                                            : ""
-                        }
+                ? `<h3 style="margin-top: 24px; color: #fea034;">✈️ Flight Details</h3><pre style="background: #f9f9f9; padding: 10px; border-radius: 4px;">${JSON.stringify(flightDetails, null, 2)}</pre>`
+                : serviceType === "hotel"
+                    ? `<h3 style="margin-top: 24px; color: #fea034;">🏨 Hotel Details</h3><pre style="background: #f9f9f9; padding: 10px; border-radius: 4px;">${JSON.stringify(hotelDetails, null, 2)}</pre>`
+                    : serviceType === "visa"
+                        ? `<h3 style="margin-top: 24px; color: #fea034;">🛂 Visa Details</h3><pre style="background: #f9f9f9; padding: 10px; border-radius: 4px;">${JSON.stringify(visaDetails, null, 2)}</pre>`
+                        : serviceType === "destination"
+                            ? `<h3 style="margin-top: 24px; color: #fea034;">🌍 Destination Details</h3><pre style="background: #f9f9f9; padding: 10px; border-radius: 4px;">${JSON.stringify(destinationDetails, null, 2)}</pre>`
+                            : serviceType === "insurance"
+                                ? `<h3 style="margin-top: 24px; color: #fea034;">🛡️ Insurance Details</h3><pre style="background: #f9f9f9; padding: 10px; border-radius: 4px;">${JSON.stringify(insuranceDetails, null, 2)}</pre>`
+                                : serviceType === "umrah"
+                                    ? `<h3 style="margin-top: 24px; color: #fea034;">🕋 Umrah Details</h3>
+                                        <pre style="background: #f9f9f9; padding: 10px; border-radius: 4px;">
+                                        ${JSON.stringify(umrahDetails, null, 2)}</pre>`
+                                    : ""
+            }
 
                 <p style="margin-top: 24px; color: #888;">Smart Travels Admin Panel</p>
             </div>

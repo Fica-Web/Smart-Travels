@@ -19,7 +19,7 @@ const inquirySchema = new mongoose.Schema(
         serviceType: {
             type: String,
             required: true,
-            enum: ['flight', 'hotel', 'visa', 'destination', 'insurance', ],
+            enum: ['flight', 'hotel', 'visa', 'destination', 'insurance', 'umrah' ],
         },
 
         // Optional fields depending on serviceType
@@ -40,6 +40,9 @@ const inquirySchema = new mongoose.Schema(
         visaDetails: {
             destinationCountry: String,
             // travelDate: Date,
+        },
+        umrahDetails: {
+            umrahPackageName: String,
         },
         destinationDetails: {
             id: {

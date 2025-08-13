@@ -31,7 +31,7 @@ const UmrahDetailsPage = () => {
 
     const umrahData = {
         serviceType: 'umrah',
-        destination: pkg.title,
+        umrahPackageName: pkg.title,
     }
 
     return (
@@ -63,7 +63,7 @@ const UmrahDetailsPage = () => {
                         messageFieldName="location"
                         messageLabel="Location"
                         messagePlaceholder="Enter your location"
-                        des
+                        destination={umrahData}
                     />
                     <HelpBox settings={settings} />
                 </div>
