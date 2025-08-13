@@ -28,6 +28,7 @@ const serviceColorMap = {
     visa: "#E8F5E9",
     destination: "#F3E5F5",
     insurance: "#FCE4EC",
+    umrah: '#E0F7FA'
 };
 
 function InquiryDetailsDialog({ open, onClose, inquiry }) {
@@ -44,6 +45,7 @@ function InquiryDetailsDialog({ open, onClose, inquiry }) {
         visaDetails,
         destinationDetails,
         insuranceDetails,
+        umrahDetails,
         nationality,
         status,
         createdAt,
@@ -55,6 +57,7 @@ function InquiryDetailsDialog({ open, onClose, inquiry }) {
         visa: visaDetails,
         destination: destinationDetails,
         insurance: insuranceDetails,
+        umrah: umrahDetails,
     };
 
     const details = serviceTypeToDetailsMap[serviceType];

@@ -114,6 +114,12 @@ const ContactForm = ({
           };
           break;
 
+        case 'umrah':
+          payload.umrahDetails = {
+            umrahPackageName: destination.umrahPackageName || '',
+          };
+          break;
+
         case 'destination':
           payload.destinationDetails = {
             id: destination?.destination?._id || '',
