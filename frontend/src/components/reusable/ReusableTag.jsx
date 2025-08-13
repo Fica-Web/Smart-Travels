@@ -3,7 +3,7 @@ const tagColors = {
     "flight": "bg-green-100 text-green-700",
     "hotel": "bg-yellow-100 text-yellow-800",
     "insurance": "bg-purple-100 text-purple-700",
-    "package": "bg-pink-100 text-pink-700",
+    "destination": "bg-pink-100 text-pink-700",
     "Other": "bg-gray-100 text-gray-700",
 };
 

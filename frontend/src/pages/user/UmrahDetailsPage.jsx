@@ -5,6 +5,7 @@ import { getSettings } from "../../services/api/settingsApi";
 import umrahPackages from "../../data/HomeSection/umrahPackages";
 import ContactForm from "../../components/reusable/ContactForm";
 import HelpBox from "../../components/reusable/HelpBox";
+import ImportantNote from "../../components/HomeSection/BookingPage/UmrahPage/ImportantNote";
 
 const UmrahDetailsPage = () => {
     const [settings, setSettings] = useState({})
@@ -66,6 +67,9 @@ const UmrahDetailsPage = () => {
                         destination={umrahData}
                     />
                     <HelpBox settings={settings} />
+
+                    <ImportantNote />
+
                 </div>
             </div>
         </div>
