@@ -32,14 +32,14 @@ export const UmrahListingPage = () => {
                 <div className="absolute inset-0 bg-primary-blue/60 rounded-tl-4xl rounded-tr-4xl rounded-br-4xl"></div>
 
                 {/* Content */}
-                <div className='lg:flex gap-5'>
+                <div className='lg:flex justify-between gap-5'>
                     <img
                         src={img2}
                         alt="Umrah Hero"
-                        className="relative z-10 lg:w-1/2"
+                        className="relative z-10 lg:w-5/12"
                     />
 
-                    <div className='lg:w-1/2 flex flex-col gap-5 justify-center items-center lg:px-24 text-white z-10'>
+                    <div className='lg:w-6/12 flex flex-col gap-5 justify-center items-center lg:px-32 text-white z-10'>
                         <h2 className='text-4xl font-semibold'>
                             “Travel with Confidence, Worship with Peace.”
                         </h2>
@@ -59,7 +59,7 @@ const SingleUmrahCard = ({ pkg }) => {
         <div className="rounded-2xl overflow-hidden">
             {/* Image as background */}
             <div
-                className="relative h-80 bg-center bg-cover text-secondary-blue"
+                className="relative h-80 lg:h-96 bg-center bg-cover text-secondary-blue"
                 style={{ backgroundImage: `url(${pkg.image})` }}
             >
 
