@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { TbLocationFilled } from "react-icons/tb";
+import economy from '../../assets/image/booking/umrah/economy.svg'
 import { getSettings } from "../../services/api/settingsApi";
 import umrahPackages from "../../data/HomeSection/umrahPackages";
 import ContactForm from "../../components/reusable/ContactForm";
@@ -38,13 +39,14 @@ const UmrahDetailsPage = () => {
     return (
         <div>
             {/* Header */}
-            <div className="mb-5">
+            <div className="mb-5 flex justify-between items-center">
                 <h2 className="text-2xl font-bold text-secondary-blue">
                     {pkg.title || "Umrah Package"}
                 </h2>
-                {pkg.description && (
-                    <p className="text-gray-600 mt-1 text-sm">{pkg.description}</p>
-                )}
+                <div className="flex items-center gap-1 ">
+                    <img src={economy} alt="icon" />
+                    <p className="">Economy</p>
+                </div>
             </div>
 
             {/* Main content */}
@@ -57,7 +59,7 @@ const UmrahDetailsPage = () => {
                 </div>
 
                 {/* Contact Form */}
-                <div className="flex flex-col gap-5 items-end w-full">
+                <div className="flex flex-col gap-5 items-end w-full lg:mt-5">
                     <ContactForm
                         title="Send a Query"
                         buttonText="Send Query"
