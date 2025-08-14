@@ -43,7 +43,7 @@ const UmrahDetailsPage = () => {
                 <h2 className="text-2xl font-bold text-secondary-blue">
                     {pkg.title || "Umrah Package"}
                 </h2>
-                <div className="flex items-center gap-1 ">
+                <div className="lg:flex hidden items-center gap-1 ">
                     <img src={economy} alt="icon" />
                     <p className="">Economy</p>
                 </div>
